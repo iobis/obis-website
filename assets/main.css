@@ -6,6 +6,26 @@
     --taxon: #BA487F;
 }
 
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+  
+#footer {
+    margin-top: auto;
+}
+
+#logos img {
+    height: 40px;
+}
+
 h2 {
     margin-top: 2.5rem;
     margin-bottom: 1rem;
@@ -52,6 +72,11 @@ section {
 
 .section-dark {
     background-color: var(--light-grey);
+}
+
+.section-verydark {
+    background-color: var(--bs-gray-dark);
+    color: #ffffff;
 }
 
 .section-light {
