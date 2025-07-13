@@ -3,6 +3,7 @@
     --highlight: #B1B695;
     --mof: #648DB3;
     --dna: #DA6C6C;
+    --taxon: #BA487F;
 }
 
 h2 {
@@ -93,6 +94,10 @@ section {
 
 .tag-dna {
     background-color: var(--dna);
+}
+
+.tag-taxon {
+    background-color: var(--taxon);
 }
 
 .btn, .btn:hover, .btn:focus, .btn:focus-visible, .btn:active, .btn:target, .btn:disabled {
