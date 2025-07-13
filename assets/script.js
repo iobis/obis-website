@@ -179,11 +179,19 @@ async function renderTimeplot(element, query) {
     }
     const results = await response.json();
     
-    const maxYear = new Date().getFullYear();
-    const startYear = 1950;
+    const years = results.map(d => d.year);
+    let minYear = Math.min(...years);
+    let maxYear = Math.max(...years);
+
+    let startYear = 1950;
+    let endYear = new Date().getFullYear();
+
+    if (maxYear && maxYear < 1950) {
+        startYear = minYear - 5;
+    }
     
     const yearMap = new Map();
-    for (let year = startYear; year <= maxYear; year++) {
+    for (let year = startYear; year <= endYear; year++) {
         yearMap.set(year, 0);
     }
     
