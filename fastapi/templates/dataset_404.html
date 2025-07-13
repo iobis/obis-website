@@ -1,0 +1,18 @@
+<section class="section-dense pb-0">
+  <div class="container">
+      
+    {% if blacklist and blacklist.get("new_id") %}
+      <h1>Dataset superseded</h1>
+      <p>The dataset with identifier {{ dataset_id }} has been superseded by <a href="/dataset/{{ blacklist.new_id }}">{{ blacklist.new_id }}</a>.</p>
+    {% elif blacklist %}
+      <h1>Dataset deleted</h1>
+      <p>
+        The dataset with identifier {{ dataset_id }} was deleted{% if blacklist.get("created") %} on {{ blacklist.created }}{% endif %}.
+      </p>
+    {% else %}
+      <h1>Dataset not found</h1>
+      <p>No dataset with identifier {{ dataset_id }} was found.</p>
+    {% endif %}
+
+  </div>
+</section>

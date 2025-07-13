@@ -30,25 +30,41 @@ def get_metadata(dataset_id: str):
             dataset["clean_contacts"] = process_contacts(dataset["contacts"])
     except Exception as e:
         print(e)
-        raise HTTPException(status_code=404, detail="Dataset not found")
+        return None
     return dataset
+
+
+def get_blacklist(dataset_id: str):
+    api_url = f"https://api.obis.org/dataset/blacklist/{dataset_id}"
+    try:
+        print(api_url)
+        response = requests.get(api_url)
+        response.raise_for_status()
+        results = response.json()["results"]
+        if len(results) > 0:
+            return results[0]
+        else:
+            return None
+    except Exception as e:
+        print(e)
+        return None
 
 
 def process_contacts(contacts):
     unique_contacts = {}
     
     for contact in contacts:
-        givenname = contact.get('givenname') or ''
-        surname = contact.get('surname') or ''
+        givenname = contact.get("givenname") or ""
+        surname = contact.get("surname") or ""
         name = f"{givenname} {surname}".strip()
         if not name:
-            name = contact.get('organization') or ''
+            name = contact.get("organization") or ""
         if not name:
             continue
             
         if name not in unique_contacts or (
-            contact.get('organization') and 
-            not unique_contacts[name].get('organization')
+            contact.get("organization") and 
+            not unique_contacts[name].get("organization")
         ):
             unique_contacts[name] = contact
             unique_contacts[name]["clean_name"] = name
@@ -62,6 +78,24 @@ async def dataset_page(request: Request, dataset_id: str):
     # dataset metadata
 
     dataset = get_metadata(dataset_id)
+
+    if dataset is None:
+
+        blacklist = get_blacklist(dataset_id)
+
+        dataset_block = templates.get_template("dataset_404.html").render(
+            dataset_id=dataset_id,
+            blacklist=blacklist
+        )
+
+        return shell_templates.TemplateResponse(
+            request=request,
+            name="portal/index.html",
+            context={
+                "title": "Dataset not found",
+                "content": dataset_block
+            }
+        )
 
     # statistics
 
