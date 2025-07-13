@@ -9,9 +9,9 @@ source_dir = "../web"
 target_dir = "../obisnew"
 
 
-def update_source_folder():
+def update_source_folder(branch: str):
     os.chdir(source_dir)
-    subprocess.run(["git", "checkout", "patching"])
+    subprocess.run(["git", "checkout", branch])
     subprocess.run(["git", "pull"])
 
 
@@ -140,25 +140,25 @@ def migrate_posts(processors):
 
 if __name__ == "__main__":
 
-    update_source_folder()
+    update_source_folder("master")
 
     # pages
     
-    migrate_file("about/visionmission.md", "about/visionmission.md", [remove_script_blocks, remove_image_blocks])
-    migrate_file("about/nodes.md", "about/nodes.md", [remove_script_blocks, lambda content: remove_includes(content, "mapfooter.html")])
-    migrate_file("about/governance.md", "about/governance.md", [remove_script_blocks])
-    migrate_file("about/sponsor.md", "about/partner.md", [remove_script_blocks, migrate_images])
+    # migrate_file("about/visionmission.md", "about/visionmission.md", [remove_script_blocks, remove_image_blocks])
+    # migrate_file("about/nodes.md", "about/nodes.md", [remove_script_blocks, lambda content: remove_includes(content, "mapfooter.html")])
+    # migrate_file("about/governance.md", "about/governance.md", [remove_script_blocks])
+    # migrate_file("about/sponsor.md", "about/partner.md", [remove_script_blocks, migrate_images])
 
-    migrate_file("whatwedo/core-activities.md", "whatwedo/core-activities.md", [remove_script_blocks, migrate_images])
-    migrate_file("whatwedo/impact.md", "whatwedo/impact.md", [remove_script_blocks, migrate_images])
-    migrate_file("whatwedo/objectives.md", "whatwedo/objectives.md", [remove_script_blocks, migrate_images, remove_includes])
+    # migrate_file("whatwedo/core-activities.md", "whatwedo/core-activities.md", [remove_script_blocks, migrate_images])
+    # migrate_file("whatwedo/impact.md", "whatwedo/impact.md", [remove_script_blocks, migrate_images])
+    # migrate_file("whatwedo/objectives.md", "whatwedo/objectives.md", [remove_script_blocks, migrate_images, remove_includes])
 
-    migrate_file("data/contribute.md", "data/contribute.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
-    migrate_file("data/quality.md", "data/quality.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
-    migrate_file("data/cite.md", "data/cite.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
-    migrate_file("data/datapolicy.md", "data/datapolicy.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
-    migrate_file("community/coordinationgroups.md", "community/coordinationgroups.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
+    # migrate_file("data/contribute.md", "data/contribute.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
+    # migrate_file("data/quality.md", "data/quality.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
+    # migrate_file("data/cite.md", "data/cite.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
+    # migrate_file("data/datapolicy.md", "data/datapolicy.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
+    # migrate_file("community/coordinationgroups.md", "community/coordinationgroups.md", [remove_script_blocks, migrate_images, remove_includes, remove_lines])
 
     # posts and usecases
 
-    # migrate_posts([migrate_images, process_thumbnail, remove_includes])
+    migrate_posts([migrate_images, process_thumbnail, remove_includes])

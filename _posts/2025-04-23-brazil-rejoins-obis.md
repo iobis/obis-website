@@ -1,0 +1,45 @@
+---
+author: OBIS
+excerpt: As one of the world's megadiverse countries, Brazil has a crucial role in
+  biodiversity data collection in all realms. Discover how the OBIS Brazil Node aims
+  to contribute!
+feed: true
+image: /images/brazil2-thumb.png
+lang: en
+layout: post
+purpose: news
+tags:
+- OBIS Nodes
+- OBIS Community
+- Brazil
+title: OBIS Brazil - Unleashing the data potential of a marine megadiverse country
+---
+
+<img alt="Dolphins swimming in Canal da Sela Ginete, Atol das Rocas, Brazil" src="/images/obis_brazil.jpg" style="width: 100%;">
+<i>Dolphins swimming in Canal da Sela Ginete, Atol das Rocas, Brazil. Photo: The Ocean Agency / The Ocean Image Bank</i>  
+<br><br>
+
+
+As one of the world's megadiverse countries, Brazil has a crucial role in biodiversity data collection in all realms. After a short interruption due to internal reorganization, the OBIS Brazil Node is back in operation. Hosted by the SiBBr, the Brazilian Biodiversity Information System, the renewed OBIS Node aims to improve marine biodiversity data coverage in the region, focusing, among other things, on gap-filling and the possibility of integrating local and Indigenous knowledge into available datasets. This programme was so exciting we had to discuss it with Clara Baringo Fonseca and Keila Juarez, the two managers of the OBIS Brazil Node.
+
+Historically, marine data collection in Brazil has always trailed behind observations of terrestrial ecosystems. "For a long time, Brazil's main biodiversity strategy was focused on terrestrial ecosystem observations," says Clara Baringo Fonseca. She explains that due to a long-term combination of limited available resources and socio-economic factors, there is a quality, quantity and coverage gap between ocean and terrestrial biodiversity observations in the country. This national context was reflected in the history of the OBIS Brazil Node, which started in the early 2000s under the Center for Marine Biology of the University of São Paulo by Fabio Lang da Silveira and Rubens M. Lopes but after several years of remaining dormant revived again in 2019 under the Long-term Ecological Research Program Coastal Habitats programme of the Federal University of Espírito Santo (PELD-HCES) and was managed by Ana Carolina Mazzuco. The OBIS Brazil Node at that time concentrated on filling precise, topical, but crucial biodiversity data gaps, such as seafloor ecosystem variations. At the end of 2024, after a short idling transition period, the OBIS Brazil Node moved to be hosted by the SiBBr. "This was not a take-over; it was a natural continuation," explains Clara Baringo Fonseca. "We were already contributing to the Global Biodiversity Information Facility (GBIF) as a Node and using the common OBIS-GBIF IPT. When we were offered the opportunity to become the OBIS Brazil Node, we naturally accepted it\!"
+
+The OBIS Brazil Node is now part of Brazil's National Biodiversity Data Platform, coordinated by the Ministry of Science and Technology and operated by SiBBr. "This platform already plays a key role in supporting data mobilization for terrestrial biodiversity and now aims to extend its reach to marine datasets," notes Keila Juarez. "A recent report from Brazil's National Geography and Statistics Institute showed that marine records are still far behind terrestrial data in quantity and coverage, giving us a lot of room for improvement," she adds.
+
+### **Mobilizing data and channelling contributions: making sure that no data is left behind**
+
+Brazil's marine biodiversity data landscape is diverse and fragmented, with collections and studies not yet ready to be integrated into OBIS. "One of our first tasks is to identify the main research institutions that deal with marine data and bring them together," says Clara Baringo Fonseca. "We know marine biodiversity data is held in institutions and private companies. We are working on building bridges with national actors with marine-related activities, encouraging them to share their data through our national platform and then through OBIS." Data centralization and clear, well-signposted data flows are crucial to mend the Brazilian national marine biodiversity data landscape. "The current landscape is a patchwork," explains Clara Baringo Fonseca, "with Brazilian marine data in GBIF but not on the national platform nor in OBIS, other data in OBIS but not elsewhere, some data just on our national platform with no further connections. We want to change that to a clear flow where the provider publishes on national and global platforms. Both are important."
+
+For Clara, centralizing Brazilian marine biodiversity data flows will allow for reinforcing quality controls to ensure that all inputs are standardized and comply with the requirements of global platforms like OBIS and GBIF. It will also increase uptake from Brazilian decision-makers, developing a one-stop shop for all national biodiversity data and eventually making national contributors more visible. The approach supports science and policymaking. National authorities and funding agencies also have a role to play in restructuring the Brazilian biodiversity data landscape. The team hopes that becoming an OBIS Node will strengthen its position to advocate with national authorities. "We need ministries and funders to include clear recommendations in their grant guidelines: data generated by publicly-funded research must comply with FAIR Principles to guarantee its availability on our national platform and shared internationally," Keila Juarez urged. 
+
+Eventually, beyond improving scientific knowledge, Brazil's ambitions are to reinforce its role and strengthen its position as a substantial biodiversity data contributor on the global stage. "After we have found unpublished data, we aim to organize it and process it through standards, adding measurements and facts and prepping it ready for publication", she says. "We want to increase data impact, nationally and globally. And make sure that no Brazilian marine data is left behind".
+
+### **The crucial role of capacity-building and the importance of integrating local and Indigenous knowledge into datasets**
+
+In their data mobilization efforts, beyond building interpersonal and interinstitutional connections with data providers, Clara Baringo Fonseca and Keila Juarez can rely on a strong asset from the National Biodiversity Data Platform: a long experience in training and capacity building. The platform provides technical support and extensive training to Brazilian scientific communities, with over a hundred online sessions annually. "We have developed a very local, audience-specific capacity building and training strategy," says Clara Baringo Fonseca. "Our approach is directly built on community feedback. We realized that one-to-one, ultra-personalized, hands-on training works fantastically. We utilize the trainee's own data to increase uptake and reduce adoption latency." These training and capacity-building workshops cover many topics, from how to publish a paper to data quality management, FAIR and CARE principles and cutting-edge observation techniques like environmental DNA."
+
+Brazil is also working closely with neighbouring countries, such as Colombia and Argentina, to better integrate local and Indigenous marine-related knowledge into datasets. "We are working with something called “frictionless data”, explains Clara Baringo Fonseca, "which allows us to integrate non-data elements, such as an audio recording, an interview text or even more complex components, into a dataset. We use metadata to build a shell compatible with FAIR principles and community-accepted standards." This process is already in place for terrestrial-related knowledge and is currently being implemented for marine-related datasets. "We want to ensure that marine-related incorporated knowledge is very much aligned with the CARE and FAIR principles," explains Keila Juarez, "and is complemented by cutting-edge technologies such as biomolecular approaches."
+
+### **Regional Cooperation for a larger impact**
+
+The OBIS Brazil team actively collaborates with other OBIS Nodes in the Latin America and Caribbean region, co-designing tools and mutualising resources. "We are getting increasingly organized, aiming at accelerating and strengthening national and regional data flows," says Clara Baringo Fonseca. The team has developed a publishing tool originally to tackle several regional challenges, such as manual measurements data conversion, the lack of standardization in measurement metadata, low technical capacity for data preparation and data cleaning bottlenecks. The [Mycena tool](https://mycena.sibbr.gov.br/) simplifies converting biodiversity sampling data into the Darwin Core format, specifically for biotic and abiotic measurements. "We plan to present the tool in an upcoming regional group meeting to gather feedback and implement it. Regional collaboration between OBIS Nodes in Latin America and the Caribbean pushes borders and resource limitations, with progress at the end," concludes Clara Baringo Fonseca.
