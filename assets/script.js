@@ -490,6 +490,132 @@ function renderTaxonTable(containerId, endpoint, filter, pageSize = 10) {
         
 }
 
+function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
+
+    const fields = [
+        "phylum",
+        "class",
+        "order",
+        "scientificName",
+        "eventDate",
+        "decimalLongitude",
+        "decimalLatitude",
+        "dataset_id",
+        "occurrenceID",
+        "institutionID",
+        "collectionID",
+        "datasetID",
+        "institutionCode",
+        "collectionCode", 
+        "ownerInstitutionCode",
+        "catalogNumber",
+        "recordNumber", 
+        "materialEntityID",
+        "associatedSequences",
+        "materialSampleID",
+        "eventID", 
+        "parentEventID",
+        "fieldNumber",
+        "taxonConceptID"
+    ];
+
+    let afterStack = [null];
+    let currentPage = 0;
+    let totalResults = 0;
+
+    async function fetchOccurrences(page) {
+        let after = afterStack[page] || null;
+        currentPage = page;
+
+        const paramsObj = {
+            size: pageSize,
+            ...filter
+        };
+        if (after) paramsObj.after = after;
+
+        const params = new URLSearchParams(paramsObj);
+        const url = `https://api.obis.org${endpoint}?${params}`;
+        const resultsDiv = document.getElementById(containerId);
+
+        // fix height
+        if (Array.from(resultsDiv.children).some(child => child.tagName === 'DIV')) {
+            const height = resultsDiv.offsetHeight;
+            resultsDiv.style.height = height + "px";
+        }
+
+        resultsDiv.innerHTML = "";
+
+        try {
+            const response = await fetch(url);
+            const data = await response.json();
+
+            totalResults = data.total || 0;
+
+            if (data && data.results && data.results.length > 0) {
+                let html = `<div style='overflow-x:auto;'><table class=\"table table-sm\"><thead><tr>`;
+                html += `<th></th>`;
+                for (const field of fields) {
+                    html += `<th style='white-space:nowrap;'>${field}</th>`;
+                }
+                html += `</tr></thead><tbody>`;
+
+                for (const row of data.results) {
+                    html += `<tr>`;
+                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}" target="_blank">json</a></td>`
+                    for (const field of fields) {
+                        html += `<td style='white-space:nowrap;'>${row[field] ? row[field] : ''}</td>`;
+                    }
+                    html += `</tr>`;
+                }
+                html += '</tbody></table></div>';
+
+                const start = currentPage * pageSize + 1;
+                const end = start + data.results.length - 1;
+                html += `<div class=\"d-flex flex-column flex-md-row align-items-center mt-4\">`;
+                html += `<div class=\"d-flex mb-2 mb-md-0\">`;
+                html += `<button class=\"btn btn-sm me-2 pagination-prev\" ${currentPage === 0 ? 'disabled' : ''}>Previous</button>`;
+                html += `<button class=\"btn btn-sm pagination-next\" ${data.results.length < pageSize ? 'disabled' : ''}>Next</button>`;
+                html += `</div>`;
+                html += `<div class=\"ms-3\">Showing ${start}-${end} of ${totalResults.toLocaleString("en-US") } results</div>`;
+                html += `</div>`;
+
+                resultsDiv.innerHTML = html;
+
+                const prevButton = resultsDiv.querySelector(".pagination-prev");
+                const nextButton = resultsDiv.querySelector(".pagination-next");
+                if (prevButton && !prevButton.disabled) {
+                    prevButton.addEventListener("click", () => {
+                        if (currentPage > 0) {
+                            afterStack.pop();
+                            fetchOccurrences(currentPage - 1);
+                        }
+                    });
+                }
+                if (nextButton && !nextButton.disabled) {
+                    nextButton.addEventListener("click", () => {
+                        const last = data.results[data.results.length - 1];
+                        afterStack.push(last.id || last.occurrenceID);
+                        fetchOccurrences(currentPage + 1);
+                    });
+                }
+            } else {
+                resultsDiv.innerHTML = "<p>No results found.</p>";
+            }
+        } catch (error) {
+            resultsDiv.innerHTML = "<p>Error fetching results.</p>";
+            console.error(error);
+        }
+
+        // reset height
+        requestAnimationFrame(() => {
+            resultsDiv.style.height = "";
+        });
+    }
+
+    afterStack = [null];
+    fetchOccurrences(0);
+}
+
 async function renderMeasurementTypes(element, filter) {
     const params = new URLSearchParams({
         facets: 'measurementTypeCombination',
