@@ -561,7 +561,7 @@ function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
 
                 for (const row of data.results) {
                     html += `<tr>`;
-                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}" target="_blank">json</a></td>`
+                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}?dna=true&mof=true" target="_blank">json</a></td>`
                     for (const field of fields) {
                         html += `<td style='white-space:nowrap;'>${row[field] ? row[field] : ''}</td>`;
                     }
