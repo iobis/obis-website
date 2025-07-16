@@ -113,9 +113,7 @@
   
       {% if dataset.core != "taxon" %}
       <div class="row">
-        {% with filter="datasetid=" + dataset.id|string %}
-        {% include "components/map.html" %}
-        {% endwith %}
+        <div id="m"></div>
       </div>
 
       <div class="row align-items-center">
@@ -254,7 +252,7 @@ fetchTaxonomy({ datasetid: "{{ dataset.id }}" }).then(convertToSunburst).then((d
     };
     Plotly.newPlot("sunburst", data, layout);
 });
-
+renderMap("m", { datasetid: "{{ dataset.id }}" })
 renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
 renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
 {% if dataset.statistics.MeasurementOrFact %}

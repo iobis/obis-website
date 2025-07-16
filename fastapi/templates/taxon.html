@@ -88,9 +88,7 @@
 
 <div class="row">
     <div class="col">
-        {% with filter="taxonid=" + taxon.taxonID|string %}
-        {% include "components/map.html" %}
-        {% endwith %}
+        <div id="m"></div>
     </div>
 </div>
 
@@ -125,4 +123,5 @@ renderDatasetTable("datasets", { taxonid: "{{ taxon.taxonID }}" });
 renderTimeplot("timeplot", { taxonid: "{{ taxon.taxonID }}" })
 renderEnvironmentPlots("envplot", { taxonid: "{{ taxon.taxonID }}" })
 renderTaxonTable("children", "/taxon/{{ taxon.taxonID }}/children", {})
+renderMap("m", { taxonid: "{{ taxon.taxonID }}" })
 </script>
