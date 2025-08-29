@@ -20,7 +20,7 @@ The OBIS Nodes are the powerful knowledge lighthouses of the OBIS network. Sprea
 
 # Explore the OBIS Nodes
 
-You can use the ROBIS Regional and OBIS Thematic Nodes lists below or scroll down to our interactive map. 
+You can use the Regional and OBIS Thematic Nodes lists below or scroll down to our interactive map. 
 
 ## OBIS Regional Nodes
 
