@@ -8,7 +8,7 @@ title: OBIS Data policy
 
 # OBIS Data policy
 
-This data policy is an extract from the [OBIS Manual](https://manual.obis.org/). Please refer to the manual for the latest version of the OBIS data policy. 
+This data policy is an extract from the [OBIS Manual](https://manual.obis.org/policy.html). Please refer to the manual for the latest version of the OBIS data policy. 
 
 The Ocean Biodiversity Information System (OBIS) is an international data-sharing network that provides open access to marine biodiversity data. OBIS operates under the framework of the **Intergovernmental Oceanographic Commission of UNESCO (IOC-UNESCO)** and adheres to international best practices for data sharing.
 
