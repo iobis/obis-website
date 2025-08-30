@@ -46,8 +46,6 @@ menu:
       url: "/about/governance"
     - title: "Team and contacts"
       url: "/contact"
-    - title: "Become a partner"
-      url: "/about/partner"
   - title: "What we do"
     subitems:
     - title: "Core activities"
