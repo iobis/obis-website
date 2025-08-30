@@ -73,8 +73,6 @@ menu:
       url: "/sources"
     - title: "Quality control"
       url: "/data/quality"
-    - title: "How to cite OBIS"
-      url: "/data/cite"
     - title: "Data policy"
       url: "/data/datapolicy"
   - title: "Community"
