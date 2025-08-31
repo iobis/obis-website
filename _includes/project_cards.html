@@ -7,7 +7,21 @@
         <h5 class="card-title">
             <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
         </h5>
+        {% if project.start_date %}
+        <p class="card-text">{{ project.start_date }} - {{ project.end_date }}</p>
+        {% endif %}
+        {% if project.description %}
         <p class="card-text">{{ project.description }}</p>
+        {% endif %}
+        {% if project.website %}
+        <p class="card-text">Website: <a href="{{ project.website }}" target="_blank">{{ project.website }}</a></p>
+        {% endif %}
+        {% if project.contact %}
+        <p class="card-text">Contact: {{ project.contact }}</p>
+        {% endif %}
+        {% if project.funding %}
+        <p class="card-text">Funding: {{ project.funding }}</p>
+        {% endif %}
         </div>
     </div>
     </div>
