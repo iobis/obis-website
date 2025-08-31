@@ -22,6 +22,9 @@
         {% if project.funding %}
         <p class="card-text">Funding: {{ project.funding }}</p>
         {% endif %}
+        {% if project.tag %}
+        <p class="card-text"><a href="/tag/{{ project.tag | slugify }}"><span class="badge tag mb-1">{{ project.tag }}</span></a></p>
+        {% endif %}
         </div>
     </div>
     </div>
