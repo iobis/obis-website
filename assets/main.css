@@ -240,3 +240,8 @@ section {
 .card-title a {
     text-decoration: none;
 }
+
+.table-nowrap-first th:first-child,
+.table-nowrap-first td:first-child {
+    white-space: nowrap;
+}
