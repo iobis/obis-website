@@ -37,7 +37,7 @@ We provide periodic exports of the entire set of quality controlled presence rec
 
 This export contains two folders with parquet files, one for the Occurrence records and one for the (Extended)MeasurementOrFact records. Here's an example showing how the occurrence data can be queried using R and DuckDB:
 
-```txt
+```r
 library(DBI)
 
 con <- dbConnect(duckdb::duckdb())
@@ -50,7 +50,7 @@ dbDisconnect(con, shutdown = TRUE)
 
 Here's an example of a spatial query:
 
-```txt
+```r
 con <- dbConnect(duckdb::duckdb())
 result <- dbGetQuery(con, "
     install spatial;
@@ -67,7 +67,7 @@ dbDisconnect(con, shutdown = TRUE)
 
 In addition to GeoParquet, we also have a TSV export available. Note that these files are a lot larger and slower to work with compared to parquet. Here's an example in R that reads the occurrence TSV file in chunks and extracts the records of interest:
 
-```txt
+```r
 library(dplyr)
 library(readr)
 
@@ -99,12 +99,12 @@ OBIS data exports include all Darwin Core fields provided by the data provider a
 | dataset_id | Internal dataset identifier assigned by OBIS. |
 | decimalLongitude | Parsed and validated by OBIS. |
 | decimalLatitude | Parsed and validated by OBIS. |
-| date_start | Unix timestamp based on `eventDate` (start). |
-| date_mid | Unix timestamp based on `eventDate` (middle). |
-| date_end | Unix timestamp based on `eventDate` (end). |
-| date_year | Year based on `eventDate`. |
-| scientificName | Valid scientific name based on the `scientificNameID` or derived by matching the provided `scientificName` with WoRMS |
-| originalScientificName | The `scientificName` as provided. |
+| date_start | Unix timestamp based on eventDate (start). |
+| date_mid | Unix timestamp based on eventDate (middle). |
+| date_end | Unix timestamp based on eventDate (end). |
+| date_year | Year based on eventDate. |
+| scientificName | Valid scientific name based on the scientificNameID or derived by matching the provided scientificName with WoRMS |
+| originalScientificName | The scientificName as provided. |
 | minimumDepthInMeters | Parsed and validated by OBIS. |
 | maximumDepthInMeters | Parsed and validated by OBIS. |
 | coordinateUncertaintyInMeters | Parsed and validated by OBIS. |
@@ -120,7 +120,7 @@ OBIS data exports include all Darwin Core fields provided by the data provider a
 | freshwater | Freshwater environment flag based on WoRMS. |
 | terrestrial | Terrestrial environment flag based on WoRMS. |
 | taxonRank | Based on WoRMS. |
-| AphiaID | AphiaID for the valid name based on the `scientificNameID` or derived by matching the provided `scientificName` with WoRMS. |
+| AphiaID | AphiaID for the valid name based on the scientificNameID or derived by matching the provided scientificName with WoRMS. |
 | redlist_category | IUCN Red List category. |
 | superdomain | Based on WoRMS. |
 | domain | Based on WoRMS. |

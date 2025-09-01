@@ -5,6 +5,9 @@ url: ""
 
 markdown: kramdown
 encoding: UTF-8
+kramdown:
+  syntax_highlighter: rouge
+  input: GFM
 permalink: pretty
 
 plugins:
