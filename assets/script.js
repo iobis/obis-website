@@ -957,7 +957,7 @@ function renderMap(element, filter) {
     const legendId = uniqueId + "_legend";
 
     container.innerHTML = `
-        <div class="map-container my-5" style="height: 500px; width: 100%;">
+        <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
             <div id="${mapId}" style="height: 100%; width: 100%"></div>
             <div id="${legendId}" class="map-legend">
                 <div><span style="background:#2c7bb6;margin-right:6px;"></span>1</div>
@@ -965,6 +965,9 @@ function renderMap(element, filter) {
                 <div><span style="background:#ffffbf;margin-right:6px;"></span>100</div>
                 <div><span style="background:#fdae61;margin-right:6px;"></span>1,000</div>
                 <div><span style="background:#d7191c;margin-right:6px;"></span>&gt;10,000</div>
+            </div>
+            <div id="${uniqueId}_click-message" class="map-click-message">
+                Click the map to<br/>start interacting
             </div>
         </div>
     `;
@@ -1039,6 +1042,10 @@ function renderMap(element, filter) {
         map.once("click", function() {
             map.scrollZoom.enable();
             map.dragPan.enable();
+            const clickMessage = document.getElementById(`${uniqueId}_click-message`);
+            if (clickMessage) {
+                clickMessage.style.display = 'none';
+            }
         });
     });
 }
