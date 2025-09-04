@@ -61,8 +61,6 @@ menu:
       url: "/whatwedo/impact"
     - title: "Objectives"
       url: "/whatwedo/objectives"
-    - title: "Use cases"
-      url: "/usecases"
   - title: "Data"
     subitems:
     - title: "Data access"
@@ -78,6 +76,8 @@ menu:
       url: "/data/quality"
     - title: "Data policy"
       url: "/data/datapolicy"
+    - title: "Use cases"
+      url: "/usecases"
   - title: "Community"
     subitems:
     - title: "News"
