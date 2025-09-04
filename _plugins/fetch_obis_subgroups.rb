@@ -14,7 +14,7 @@ module Obis
     def generate(site)
       return unless build_enabled?(site)
 
-      cache_file = File.join(site.source, "_data", "obis_subgroups_cache.json")
+      cache_file = File.join(site.source, "_cache", "obis_subgroups_cache.json")
       
       if File.exist?(cache_file) && (Time.now - File.mtime(cache_file)) < 3600
         Jekyll.logger.info("OBIS", "Using cached subgroups data")
@@ -33,7 +33,6 @@ module Obis
       prioritize_subgroup!(subgroups, 432)
       enrich_with_obis_metadata!(subgroups, name_to_node)
 
-      # Cache the result
       FileUtils.mkdir_p(File.dirname(cache_file))
       File.write(cache_file, JSON.pretty_generate(subgroups))
       Jekyll.logger.info("OBIS", "Cached subgroups data to #{cache_file}")
@@ -105,12 +104,11 @@ module Obis
         node = name_to_node[g["groupname"]]
         next unless node
         urls = node["url"] || []
+        g["id"] = node["id"]
         g["lat"] = node["lat"]
         g["lon"] = node["lon"]
         g["description"] = node["description"]
         g["url"] = urls.is_a?(Array) ? (urls.first || nil) : urls
-        # Also expose OBIS node contacts if present
-        g["contacts"] = node["contacts"] if node.key?("contacts")
       end
     end
 
