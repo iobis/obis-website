@@ -1,6 +1,7 @@
 require "json"
 require "net/http"
 require "uri"
+require "fileutils"
 
 module Obis
   class FetchObisSubgroups < Jekyll::Generator
@@ -13,6 +14,15 @@ module Obis
     def generate(site)
       return unless build_enabled?(site)
 
+      cache_file = File.join(site.source, "_data", "obis_subgroups_cache.json")
+      
+      if File.exist?(cache_file) && (Time.now - File.mtime(cache_file)) < 3600
+        Jekyll.logger.info("OBIS", "Using cached subgroups data")
+        cached_data = JSON.parse(File.read(cache_file))
+        site.data["obis_subgroups"] = cached_data
+        return
+      end
+
       Jekyll.logger.info("OBIS", "Fetching OceanExpert groups...")
       oe_root = fetch_json(format(OE_BASE_URL, group_id: OE_ROOT_ID))
       subgroups = build_subgroups_with_members(oe_root)
@@ -22,6 +32,11 @@ module Obis
 
       prioritize_subgroup!(subgroups, 432)
       enrich_with_obis_metadata!(subgroups, name_to_node)
+
+      # Cache the result
+      FileUtils.mkdir_p(File.dirname(cache_file))
+      File.write(cache_file, JSON.pretty_generate(subgroups))
+      Jekyll.logger.info("OBIS", "Cached subgroups data to #{cache_file}")
 
       site.data["obis_subgroups"] = subgroups
     rescue => e
