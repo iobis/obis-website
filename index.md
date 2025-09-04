@@ -46,22 +46,22 @@ layout: default
         <div class="row">
           
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">141M</div>
+            <div class="display-5 fw-bold">{{ site.data.statistics.presence | divided_by: 1000000 }}M</div>
             <div>species observations</div>
           </div>
 
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">195K</div>
+            <div class="display-5 fw-bold">{{ site.data.statistics.species | divided_by: 1000 }}K</div>
             <div>marine species</div>
           </div>
 
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">36</div>
+            <div class="display-5 fw-bold">{{ site.data.obis_subgroups.size }}</div>
             <div>nodes worldwide</div>
           </div>
 
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">27M</div>
+            <div class="display-5 fw-bold">{{ site.data.statistics.dna | divided_by: 1000000 }}M</div>
             <div>DNA sequences</div>
           </div>
 

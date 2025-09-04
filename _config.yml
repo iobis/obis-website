@@ -15,8 +15,8 @@ plugins:
   - jekyll-get-json
 
 jekyll_get_json:
-  - data: nodes
-    json: "https://api.obis.org/node"
+  - data: statistics
+    json: https://api.obis.org/statistics/summaries
 
 exclude:
   - README.md
