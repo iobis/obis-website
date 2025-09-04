@@ -8,10 +8,10 @@ permalink: /contact/
 
 <h1>Team and contacts</h1>
 
-{% assign nodes = site.data.nodes.results %}
+{% assign nodes = site.data.obis_subgroups %}
 {% for node in nodes %}
   <section class="section-superdense">
-    <h4 class="nodename">{{ node.name }}</h4>
+    <h4 class="nodename">{{ node.groupname }}</h4>
     <p>
     {% for u in node.url %}
         <a href="{{ u }}" target="_blank">{{ u }}</a>
@@ -19,10 +19,16 @@ permalink: /contact/
     </p>
 
     <div class="row">
-        {% for contact in node.contacts %}
+        {% for contact in node.members %}
         <div class="col-md-3">
-            <p><b>{{ contact.givenname }} {{ contact.surname }}</b>
-            <br/>{{ contact.email }}</p>
+            <p><b>{{ contact.fname }} {{ contact.lname }}</b>
+            {% if contact.groupRole %}
+            <br/>{{ contact.groupRole }}
+            {% endif %}
+            {% if contact.email %}
+            <br/>{{ contact.email }}
+            {% endif %}
+            </p>
         </div>
         {% endfor %}
     </div>

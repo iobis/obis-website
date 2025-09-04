@@ -1,0 +1,110 @@
+require "json"
+require "net/http"
+require "uri"
+
+module Obis
+  class FetchObisSubgroups < Jekyll::Generator
+    priority :normal
+
+    OE_ROOT_ID = 386
+    OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json"
+    OBIS_NODES_URL = "https://api.obis.org/node"
+
+    def generate(site)
+      return unless build_enabled?(site)
+
+      Jekyll.logger.info("OBIS", "Fetching OceanExpert groups...")
+      oe_root = fetch_json(format(OE_BASE_URL, group_id: OE_ROOT_ID))
+      subgroups = build_subgroups_with_members(oe_root)
+      Jekyll.logger.info("OBIS", "Fetching OBIS nodes metadata...")
+      obis_nodes = fetch_json(OBIS_NODES_URL)
+      name_to_node = map_nodes_by_name(obis_nodes)
+
+      prioritize_subgroup!(subgroups, 432)
+      enrich_with_obis_metadata!(subgroups, name_to_node)
+
+      site.data["obis_subgroups"] = subgroups
+    rescue => e
+      Jekyll.logger.warn("OBIS", "Failed to fetch OceanExpert groups: #{e.class}: #{e.message}")
+    end
+
+    private
+
+    def build_enabled?(site)
+      # Allow disabling via _config.yml: obis_fetch_subgroups: false
+      site.config.fetch("obis_fetch_subgroups", true)
+    end
+
+    def http_get(uri_str)
+      uri = URI.parse(uri_str)
+      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+        req = Net::HTTP::Get.new(uri.request_uri)
+        req["User-Agent"] = "obisnew-jekyll-plugin/1.0 (+https://obis.org)"
+        req["Accept"] = "application/json"
+        http.read_timeout = 30
+        http.open_timeout = 10
+        res = http.request(req)
+        unless res.is_a?(Net::HTTPSuccess)
+          raise "HTTP #{res.code} for #{uri_str}"
+        end
+        res.body
+      end
+    end
+
+    def fetch_json(url)
+      body = http_get(url)
+      JSON.parse(body)
+    end
+
+    def extract_members(group_json)
+      members = group_json.fetch("members", {}) || {}
+      members.values
+    end
+
+    def build_subgroups_with_members(root_group_json)
+      subgroups = root_group_json.fetch("subGroups", []) || []
+      subgroups.map do |sg|
+        sg_id = sg["idGroup"]
+        next nil if sg_id.nil?
+        details = fetch_json(format(OE_BASE_URL, group_id: sg_id))
+        {
+          "idGroup" => details.fetch("idGroup", sg_id),
+          "groupname" => details.fetch("groupname", sg["groupname"]),
+          "members" => extract_members(details)
+        }
+      end.compact
+    end
+
+    def map_nodes_by_name(obis_nodes)
+      results = obis_nodes.fetch("results", []) || []
+      mapping = {}
+      results.each do |node|
+        name = node["name"]
+        mapping[name] = node if name && !name.empty?
+      end
+      mapping
+    end
+
+    def enrich_with_obis_metadata!(groups, name_to_node)
+      groups.each do |g|
+        node = name_to_node[g["groupname"]]
+        next unless node
+        urls = node["url"] || []
+        g["lat"] = node["lat"]
+        g["lon"] = node["lon"]
+        g["description"] = node["description"]
+        g["url"] = urls.is_a?(Array) ? (urls.first || nil) : urls
+        # Also expose OBIS node contacts if present
+        g["contacts"] = node["contacts"] if node.key?("contacts")
+      end
+    end
+
+    def prioritize_subgroup!(groups, target_id)
+      idx = groups.index { |g| g["idGroup"].to_s == target_id.to_s }
+      return if idx.nil? || idx.zero?
+      groups.unshift(groups.delete_at(idx))
+    end
+  end
+end
+
+
