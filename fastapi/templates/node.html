@@ -18,6 +18,11 @@
             </div>
             {% endfor %}
         </div>
+
+        <div class="row">
+            <div id="m"></div>
+        </div>
+    
     </div>
 </section>
 
@@ -38,4 +43,5 @@
 <script>
 renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
 renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
+renderMap("m", { nodeid: "{{ node.id }}" })
 </script>
