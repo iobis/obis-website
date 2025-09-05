@@ -37,11 +37,19 @@
 </section>
 
 <section class="section-dense">
-    <div id="sunburst" style="height: 600px;"></div>
+    <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+            <div id="timeplot"></div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div id="sunburst" style="height: 600px;"></div>
+        </div>
+    </div>
 </section>
 
 <script>
 renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
 renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
 renderMap("m", { nodeid: "{{ node.id }}" })
+renderTimeplot("timeplot", { nodeid: "{{ node.id }}" })
 </script>
