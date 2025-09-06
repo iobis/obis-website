@@ -2,6 +2,7 @@ require "json"
 require "net/http"
 require "uri"
 require "fileutils"
+require "dotenv"
 
 module Obis
   class FetchObisSubgroups < Jekyll::Generator
@@ -9,10 +10,14 @@ module Obis
 
     OE_ROOT_ID = 386
     OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json"
+    OE_LOGIN_URL = "https://oceanexpert.org/api/login_check"
     OBIS_NODES_URL = "https://api.obis.org/node"
 
     def generate(site)
       return unless build_enabled?(site)
+
+      # Load environment variables from .env file
+      Dotenv.load
 
       cache_file = File.join(site.source, "_cache", "obis_subgroups_cache.json")
       
@@ -23,9 +28,12 @@ module Obis
         return
       end
 
+      Jekyll.logger.info("OBIS", "Authenticating with OceanExpert...")
+      auth_token = authenticate_with_oceanexpert(site)
+      
       Jekyll.logger.info("OBIS", "Fetching OceanExpert groups...")
-      oe_root = fetch_json(format(OE_BASE_URL, group_id: OE_ROOT_ID))
-      subgroups = build_subgroups_with_members(oe_root)
+      oe_root = fetch_json(format(OE_BASE_URL, group_id: OE_ROOT_ID), auth_token)
+      subgroups = build_subgroups_with_members(oe_root, auth_token)
       Jekyll.logger.info("OBIS", "Fetching OBIS nodes metadata...")
       obis_nodes = fetch_json(OBIS_NODES_URL)
       name_to_node = map_nodes_by_name(obis_nodes)
@@ -45,16 +53,58 @@ module Obis
     private
 
     def build_enabled?(site)
-      # Allow disabling via _config.yml: obis_fetch_subgroups: false
       site.config.fetch("obis_fetch_subgroups", true)
     end
 
-    def http_get(uri_str)
+    def authenticate_with_oceanexpert(site)
+      username = ENV["OCEANEXPERT_USERNAME"]
+      password = ENV["OCEANEXPERT_PASSWORD"]
+      
+      unless username && password
+        Jekyll.logger.warn("OBIS", "OceanExpert credentials not found in environment variables (OCEANEXPERT_USERNAME, OCEANEXPERT_PASSWORD), proceeding without authentication")
+        return nil
+      end
+
+      uri = URI.parse(OE_LOGIN_URL)
+      Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
+        req = Net::HTTP::Post.new(uri.request_uri)
+        req["User-Agent"] = "obisnew-jekyll-plugin/1.0 (+https://obis.org)"
+        req["Content-Type"] = "application/json"
+        req.body = JSON.generate({
+          "username" => username,
+          "password" => password
+        })
+        
+        http.read_timeout = 30
+        http.open_timeout = 10
+        res = http.request(req)
+        
+        unless res.is_a?(Net::HTTPSuccess)
+          raise "Authentication failed: HTTP #{res.code} for #{OE_LOGIN_URL}"
+        end
+        
+        response_data = JSON.parse(res.body)
+        token = response_data["token"]
+        
+        unless token
+          raise "No token received from OceanExpert authentication"
+        end
+        
+        Jekyll.logger.info("OBIS", "Successfully authenticated with OceanExpert")
+        token
+      end
+    rescue => e
+      Jekyll.logger.warn("OBIS", "OceanExpert authentication failed: #{e.class}: #{e.message}")
+      nil
+    end
+
+    def http_get(uri_str, auth_token = nil)
       uri = URI.parse(uri_str)
       Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == "https") do |http|
         req = Net::HTTP::Get.new(uri.request_uri)
         req["User-Agent"] = "obisnew-jekyll-plugin/1.0 (+https://obis.org)"
         req["Accept"] = "application/json"
+        req["Authorization"] = "Bearer #{auth_token}" if auth_token
         http.read_timeout = 30
         http.open_timeout = 10
         res = http.request(req)
@@ -65,8 +115,8 @@ module Obis
       end
     end
 
-    def fetch_json(url)
-      body = http_get(url)
+    def fetch_json(url, auth_token = nil)
+      body = http_get(url, auth_token)
       JSON.parse(body)
     end
 
@@ -75,12 +125,12 @@ module Obis
       members.values
     end
 
-    def build_subgroups_with_members(root_group_json)
+    def build_subgroups_with_members(root_group_json, auth_token = nil)
       subgroups = root_group_json.fetch("subGroups", []) || []
       subgroups.map do |sg|
         sg_id = sg["idGroup"]
         next nil if sg_id.nil?
-        details = fetch_json(format(OE_BASE_URL, group_id: sg_id))
+        details = fetch_json(format(OE_BASE_URL, group_id: sg_id), auth_token)
         {
           "idGroup" => details.fetch("idGroup", sg_id),
           "groupname" => details.fetch("groupname", sg["groupname"]),

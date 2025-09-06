@@ -25,8 +25,8 @@ permalink: /contact/
             {% if contact.groupRole %}
             <br/>{{ contact.groupRole }}
             {% endif %}
-            {% if contact.email %}
-            <br/>{{ contact.email }}
+            {% if contact.email1 %}
+            <br/><a href="mailto:{{ contact.email1 }}">{{ contact.email1 }}</a>
             {% endif %}
             </p>
         </div>
