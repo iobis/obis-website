@@ -8,25 +8,28 @@ permalink: /contact/
 
 <h1>Team and contacts</h1>
 
+<p>For general enquiries and technical questions, contact the OBIS Secretariat at <a href="mailto:helpdesk@obis.org">helpdesk@obis.org</a>.</p>
+
 {% assign nodes = site.data.obis_subgroups %}
 {% for node in nodes %}
   <section class="section-superdense">
     <h4 class="nodename">{{ node.groupname }}</h4>
     <p>
-    {% for u in node.url %}
-        <a href="{{ u }}" target="_blank">{{ u }}</a>
-    {% endfor %}
+    {% if node.url %}
+        <a href="{{ node.url }}" target="_blank">Website</a> | 
+    {% endif %}
+    <a href="/node/{{ node.id }}" target="_blank">Node page</a>
     </p>
 
-    <div class="row">
+    <div class="row contacts">
         {% for contact in node.members %}
-        <div class="col-md-3">
-            <p><b>{{ contact.fname }} {{ contact.lname }}</b>
-            {% if contact.groupRole %}
-            <br/>{{ contact.groupRole }}
+        <div class="col-md-3 contact">
+            <p><b><a href="https://oceanexpert.org/expert/{{ contact.idInd }}" target="_blank">{{ contact.fname }} {{ contact.lname }}</a></b>
+            {% if contact.groupRole and contact.groupRole != "" %}
+            <br/><span class="contact-role">{{ contact.groupRole }}</span>
             {% endif %}
             {% if contact.email1 %}
-            <br/><a href="mailto:{{ contact.email1 }}">{{ contact.email1 }}</a>
+            <br/><span class="contact-email">{{ contact.email1 }}</span>
             {% endif %}
             </p>
         </div>
