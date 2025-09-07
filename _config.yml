@@ -1,7 +1,7 @@
 title: Ocean Biodiversity Information System (OBIS)
 description: Ocean Biodiversity Information System (OBIS)
 baseurl: ""
-url: ""
+url: "https://obis.org"
 
 markdown: kramdown
 encoding: UTF-8
@@ -13,6 +13,7 @@ permalink: pretty
 plugins:
   - jekyll-feed
   - jekyll-get-json
+  - jekyll-sitemap
 
 jekyll_get_json:
   - data: statistics

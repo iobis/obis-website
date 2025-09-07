@@ -32,3 +32,4 @@ gem "http_parser.rb", "~> 0.6.0", :platforms => [:jruby]
 
 gem "jekyll-get-json", "~> 1.0"
 gem "dotenv", "~> 2.8"
+gem "jekyll-sitemap"
