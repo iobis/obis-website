@@ -1,9 +1,9 @@
 ---
 title: Subscribe to the OBIS newsletter!
-shorttitle: Subscribe
+shorttitle: Newsletter
 layout: page
 lang: en
-identifier: subscribe
+identifier: newsletter
 ---
 
 <div id="mc_embed_signup" class="col-md-8 nopadding">
