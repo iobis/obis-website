@@ -8,8 +8,7 @@ title: A global pillar for marine biodiversity data
 
 # A global pillar for marine biodiversity data
 
-OBIS is the world's largest open-access repository for marine biodiversity data, with over 135,000,000 presence records and close to 185,000,000 measurements and facts contained in more than 5,500 datasets, including 27,000,000 DNA and DNA-derived sequences.  
-We are a global community of 34 Regional and Thematic Nodes representing over 1,000 institutions and over 6,000 scientists and data managers from 99 countries. We contribute to advancing marine science to improve our knowledge of the Ocean. We support evidence-based conservation efforts to safeguard the health of our Ocean and our Planet.
+OBIS is the world's largest open-access repository for marine biodiversity data. We are a global community of 29 Regional and 7 Thematic Nodes representing more than 1,000 institutions and over 6,000 scientists and data managers from all over the world. We contribute to advancing marine science to improve our knowledge of the Ocean. We support evidence-based conservation efforts to safeguard the health of our Ocean and our Planet.
 <br>
 <br>
 <br>
@@ -20,7 +19,7 @@ We are a global community of 34 Regional and Thematic Nodes representing over 1,
 <br>
 ### **Data you can trust**
 
-With more than two decades of existence, OBIS is among the world's most respected biodiversity data initiatives. As a community, we are working together to collect and integrate marine biodiversity data to make it accessible to the widest possible audiences. Our work is based on Open Science principles, allowing for the highest possible collaborative approach and ensuring maximum quality control. The OBIS community gathers world-renowned, independent, leading marine science experts applying the latest tools, standards, innovations, and processes to data-based ocean observations.
+With more than two decades of existence, OBIS is among the world's most respected biodiversity data initiatives. As a community, we are working together to collect and integrate marine biodiversity data to make it accessible to the widest possible audiences. Our work is based on Open Science principles, allowing for the highest possible collaborative approach and ensuring maximum quality control. The OBIS community gathers world-renowned, independent, leading marine science experts applying the latest tools, standards, innovations, and processes to data-based Ocean observations.
 <br>
 <br>
 <br>
