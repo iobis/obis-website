@@ -85,6 +85,8 @@ menu:
       url: "/events"
     - title: "Coordination groups"
       url: "/community/coordinationgroups"
+    - title: "OBIS Newsletter"
+      url: "/community/newsletter"
     - title: "OBIS Discourse"
       url: "https://obis.discourse.group/"
       target: "_blank"
