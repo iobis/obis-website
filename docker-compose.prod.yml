@@ -6,6 +6,7 @@ services:
     command: jekyll build
     environment:
       - JEKYLL_ENV=production
+    user: "1000:1000"
     volumes:
       - ./:/srv/jekyll
       - ./_site:/srv/jekyll/_site
