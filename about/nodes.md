@@ -70,3 +70,58 @@ Thematic OBIS Nodes are organizations that contribute data to OBIS, usually base
 
 
 ## The OBIS Nodes map
+
+<script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
+<link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
+
+<div id="nodesmap" class="mt-5 mb-4" style="height: 700px; width:100%;"></div>
+
+<script>
+  mapboxgl.accessToken = "pk.eyJ1IjoiaW9kZXBvIiwiYSI6ImNrd2txMXRyaTFpNjkybm1sZWxwemtrbWsifQ.KtiKSQsLSwvnDtfg9T9qdA";
+  const map = new mapboxgl.Map({
+    container: "nodesmap",
+    style: "mapbox://styles/iodepo/cmc12im9k01gq01qw2jw8317y",
+    center: [0, 20],
+    zoom: 1,
+    projection: "mercator",
+    attributionControl: false,
+    scrollZoom: false,
+    dragPan: false
+  });
+  map.on("load", function() {
+    fetch("https://api.obis.org/node")
+      .then(function(r) { return r.json(); })
+      .then(function(data) {
+        const features = (data.results || [])
+          .filter(function(n) { return typeof n.lon === "number" && typeof n.lat === "number"; })
+          .map(function(n) {
+            return {
+              type: "Feature",
+              geometry: { type: "Point", coordinates: [n.lon, n.lat] },
+              properties: {
+                id: n.id,
+                name: n.name,
+                url: Array.isArray(n.url) && n.url.length ? n.url[0] : ''
+              }
+            };
+          });
+
+        features.forEach(function(f) {
+          const props = f.properties || {};
+          const name = props.name || 'OBIS Node';
+          const url = props.url ? '<br/><a href="' + props.url + '" target="_blank" rel="noopener">Visit website</a>' : "";
+
+          const popup = new mapboxgl.Popup({ closeButton: false })
+            .setHTML("<strong>" + name + "</strong>" + url);
+
+          new mapboxgl.Marker({ color: "#B1B695" })
+            .setLngLat(f.geometry.coordinates)
+            .setPopup(popup)
+            .addTo(map);
+        });
+      })
+      .catch(function(err) {
+        console.error("Failed to load OBIS nodes", err);
+      });
+  });
+</script>
