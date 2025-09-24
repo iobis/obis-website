@@ -3,10 +3,9 @@ version: '3.8'
 services:
   jekyll:
     image: jekyll/jekyll:latest
-    command: jekyll build
+    command: bundle exec jekyll build
     environment:
       - JEKYLL_ENV=production
-    user: "1000:1000"
     volumes:
       - ./:/srv/jekyll
       - ./_site:/srv/jekyll/_site
