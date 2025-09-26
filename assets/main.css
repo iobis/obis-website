@@ -1,6 +1,8 @@
 :root {
     --light-grey: #f6f6f6;
+    --tags: #B1B695;
     --highlight: #B1B695;
+    --node: #B1B695;
     --mof: #648DB3;
     --dna: #DA6C6C;
     --taxon: #BA487F;
@@ -107,7 +109,7 @@ section {
 }
 
 .tag {
-    background-color: var(--highlight);
+    background-color: var(--tags);
     color: #ffffff;
     font-weight: normal;
     font-size: 0.9rem;
@@ -121,18 +123,22 @@ section {
     background-color: var(--dna);
 }
 
-.tag-taxon {
-    background-color: var(--taxon);
+.tag-dna {
+    background-color: var(--dna);
+}
+
+.tag-node {
+    background-color: var(--node);
 }
 
 .btn, .btn:hover, .btn:focus, .btn:focus-visible, .btn:active, .btn:target, .btn:disabled {
-    background-color: var(--highlight) !important;
+    background-color: var(--tags) !important;
     color: #ffffff;
     font-weight: normal;
     padding: 0.375rem 0.75rem;
     min-width: 80px;
     text-align: center;
-    border-color: var(--highlight);
+    border-color: var(--tags);
 }
 
 .btn-light, .btn-light:hover, .btn-light:focus, .btn-light:focus-visible, .btn-light:active, .btn-light:target, .btn-light:disabled {
@@ -154,7 +160,7 @@ section {
 .btn:disabled {
     cursor: not-allowed;
     opacity: 0.7;
-    border-color: var(--highlight);
+    border-color: var(--tags);
 }
 
 .badge-download {
