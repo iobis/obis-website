@@ -2,11 +2,9 @@
 layout: default
 ---
 
-<section class="section-light">
+<section class="section-highlight">
   <div class="container">
-    <h2>News</h2>
-
-    <p class="tagline">Get the latest on all things OBIS</p>
+    <h2>Featured news and stories</h2>
 
     {% assign filtered_posts = site.posts | sort: 'date' | reverse %}
     {% include post_cards.html filtered_posts=filtered_posts limit=6 %}
@@ -14,7 +12,7 @@ layout: default
 
 </section>
 
-<section class="section-dark">
+<section class="section-light">
   <div class="container">
     <h2>Use cases</h2>
 
@@ -23,17 +21,7 @@ layout: default
   </div>
 </section>
 
-<section class="section-light">
-  <div class="container">
-
-  <h2>Projects</h2>
-
-  {% include project_cards.html %}
-
-  </div>
-</section>
-
-<section class="section-dark">
+<section class="section-highlight">
   <div class="container">
 
     <div class="row align-items-center">

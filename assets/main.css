@@ -1,7 +1,8 @@
 :root {
     --light-grey: #f6f6f6;
-    --tags: #B1B695;
+    --tags: #2f6fef;
     --highlight: #B1B695;
+    --highlight-background: #cddee7;
     --node: #B1B695;
     --mof: #648DB3;
     --dna: #DA6C6C;
@@ -81,12 +82,42 @@ section {
     color: #ffffff;
 }
 
+.section-highlight {
+    background-color: var(--highlight-background);
+    color: #000000;
+}
+
 .section-light {
     background-color: #ffffff;
 }
 
 .card {
     border-radius: 10px;
+}
+
+.section-light .card-img-top {
+    background-color: var(--light-grey);
+}
+
+.section-dark .card {
+    background-color: #ffffff;
+    border: 0px;
+}
+
+.card-blank {
+    background-color: transparent !important;
+    border: 0px;
+}
+
+.card-blank .card-body {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.card-title a {
+    text-decoration: none;
+    color: #000000;
+    font-size: 0.85em;
 }
 
 .card-img-top, .card-img-top img {
@@ -96,15 +127,6 @@ section {
 
 .section-light .card {
     background-color: var(--light-grey);
-    border: 0px;
-}
-
-.section-light .card-img-top {
-    background-color: var(--light-grey);
-}
-
-.section-dark .card {
-    background-color: #ffffff;
     border: 0px;
 }
 
@@ -168,10 +190,6 @@ section {
     background-color: #eeeeee;
     text-decoration: none;
     font-weight: normal;
-}
-
-.card-title a {
-    color: #000000;
 }
 
 .tagline {
@@ -251,10 +269,6 @@ section {
     height: 100%;
     margin: 0;
     padding: 0;
-}
-
-.card-title a {
-    text-decoration: none;
 }
 
 .table-nowrap-first th:first-child,
