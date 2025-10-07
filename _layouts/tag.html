@@ -2,9 +2,9 @@
 layout: page
 ---
 
-{% assign filtered_posts = site.posts %}
+{% assign filtered_posts = site.posts | where_exp: "post", "post.purpose != 'usecase'" %}
 {% if page.tag %}
-  {% assign filtered_posts = site.posts | where_exp: "post", "post.tags contains page.tag" %}
+  {% assign filtered_posts = filtered_posts | where_exp: "post", "post.tags contains page.tag" %}
 {% endif %}
 
 {% assign filtered_usecases = site.usecases %}
