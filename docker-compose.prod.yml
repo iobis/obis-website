@@ -32,6 +32,10 @@ services:
     volumes:
       - ./_site:/usr/share/nginx/html
       - ./nginx/prod.conf:/etc/nginx/conf.d/default.conf
+      - nginx_cache:/var/cache/nginx
     depends_on:
       - jekyll
       - fastapi
+
+volumes:
+  nginx_cache:

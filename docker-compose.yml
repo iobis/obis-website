@@ -30,3 +30,7 @@ services:
       - "80:80"
     volumes:
       - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+      - nginx_cache:/var/cache/nginx
+
+volumes:
+  nginx_cache:
