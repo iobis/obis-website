@@ -163,7 +163,7 @@ function renderPublisherItem(item) {
     return `
         <div class="area-result">
             <div class="d-flex align-items-center gap-2 mb-3">
-                <a href="/publisher/${item.id}"><strong>${item.name}</strong></a>
+                <a href="/organization/${item.id}"><strong>${item.name}</strong></a>
                 <span class="badge bg-light text-dark">${item.records.toLocaleString("en-US")} records</span>
             </div>
         </div>

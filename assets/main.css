@@ -7,6 +7,7 @@
     --mof: #648DB3;
     --dna: #DA6C6C;
     --taxon: #BA487F;
+    --black: rgb(33, 37, 41);
 }
 
 html, body {
@@ -186,10 +187,18 @@ section {
 }
 
 .badge-download {
-    color: #000000;
+    color: var(--black);
+    background-color: #fafafa;
+    text-decoration: none;
+    font-weight: normal;
+}
+
+.badge-mapper {
+    color: var(--black);
     background-color: #eeeeee;
     text-decoration: none;
     font-weight: normal;
+    font-size: 0.9rem;
 }
 
 .tagline {
