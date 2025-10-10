@@ -20,73 +20,9 @@ The recommended way to access OBIS data depends on the size of your subset and t
 | R package | Programmatic download of smaller subsets and checklists using R | Data frame | <https://github.org/iobis/robis> |
 | API | Programmatic access to smaller subsets, checklists, and statistics | JSON | <https://api.obis.org> |
 | AWS Open Data | Analysis of large subsets | GeoParquet | <https://github.com/iobis/obis-open-data> |
-| Full exports | Analysis of large subsets, presence occurrences only <span class="badge bg-warning text-dark">Deprecated</span> | GeoParquet, CSV | See below |
 | OBIS helpdesk | Contact the OBIS helpdesk if you are experiencing issues downloading or working with data | Any | <mailto:helpdesk@obis.org> |
 
 All data exported from OBIS contains fields submitted by the data provider as well as fields added by OBIS during data ingestion. An overview of the data fields can be found below.
-
-## Full exports
-
-<span class="badge bg-warning text-dark">Deprecated</span>
-
-We provide periodic exports of the entire set of quality controlled presence records as GeoParquet and TSV. This is the easiest way to download data for large scale analyses. Absence records and records of insufficient quality (for example, missing coordinates or ambiguous taxonomy) are not included.
-
-#### GeoParquet
-
-<button class="btn btn-primary" onclick="dl(this, 'https://obis-open-data.s3.amazonaws.com/snapshots/obis_20250318_parquet.zip')">Download</button>
-
-This export contains two folders with parquet files, one for the Occurrence records and one for the (Extended)MeasurementOrFact records. Here's an example showing how the occurrence data can be queried using R and DuckDB:
-
-```r
-library(DBI)
-
-con <- dbConnect(duckdb::duckdb())
-result <- dbGetQuery(con, "
-    select * from read_parquet('occurrence/*.parquet')
-    where genus == 'Abra'
-")
-dbDisconnect(con, shutdown = TRUE)
-```
-
-Here's an example of a spatial query:
-
-```r
-con <- dbConnect(duckdb::duckdb())
-result <- dbGetQuery(con, "
-    install spatial;
-    load spatial;
-    select * from read_parquet('occurrence/*.parquet')
-    where ST_Intersects(geometry, ST_GeomFromText('POLYGON ((2.831383 51.212045, 2.896957 51.212045, 2.896957 51.240211, 2.831383 51.240211, 2.831383 51.212045))'))
-")
-dbDisconnect(con, shutdown = TRUE)
-```
-
-#### TSV
-
-<button class="btn btn-primary" onclick="dl(this, 'https://obis-open-data.s3.amazonaws.com/snapshots/obis_20250318_tsv.zip')">Download</button>
-
-In addition to GeoParquet, we also have a TSV export available. Note that these files are a lot larger and slower to work with compared to parquet. Here's an example in R that reads the occurrence TSV file in chunks and extracts the records of interest:
-
-```r
-library(dplyr)
-library(readr)
-
-callback <- function(df, index) {
-  df %>% filter(genus == "Abra")  
-}
-
-read_delim_chunked("occurrence.tsv", DataFrameCallback$new(callback), delim = "\t", progress = TRUE, col_types = cols(.default = "c"))
-```
-
-{% raw  %}
-<script>
-function dl(button, s3path) {
-    button.disabled = true;
-    $.get("https://api.obis.org/metrics/logusage?agent=full_export");
-    window.open(s3path, "_blank");
-};
-</script>
-{% endraw %}
 
 ## Data fields
 
