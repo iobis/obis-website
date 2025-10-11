@@ -9,6 +9,7 @@ module Jekyll
       self.process(@name)
       self.read_yaml(File.join(base, '_layouts'), 'tag.html')
       self.data['tag'] = tag
+      self.data['slug'] = slug
       self.data['title'] = "Posts tagged with \"#{tag}\""
       self.data['permalink'] = "/tag/#{slug}/"
     end
@@ -27,10 +28,16 @@ module Jekyll
         all_docs += site.collections['usecases'].docs
       end
 
-      tags = all_docs.flat_map { |doc| doc.data['tags'] || [] }.uniq
+      # Group tags by their slugified version (case-insensitive)
+      tag_groups = {}
+      all_docs.each do |doc|
+        (doc.data['tags'] || []).each do |tag|
+          slug = slugify(tag)
+          tag_groups[slug] ||= tag  # Keep first occurrence of tag for display
+        end
+      end
 
-      tags.each do |tag|
-        slug = slugify(tag)
+      tag_groups.each do |slug, tag|
         site.pages << TagPage.new(site, site.source, File.join('tag', slug), tag, slug)
       end
     end
