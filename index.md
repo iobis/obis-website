@@ -8,6 +8,7 @@ layout: default
 
     {% assign filtered_posts = site.posts | sort: 'date' | reverse %}
     {% include post_cards.html filtered_posts=filtered_posts limit=6 %}
+    <p><a href="/news">Continue here for more news</a></p>
   </div>
 
 </section>
@@ -18,6 +19,8 @@ layout: default
 
     {% assign filtered_usecases = site.usecases %}
     {% include usecase_cards.html filtered_usecases=filtered_usecases limit=6 %}
+    <p><a href="/usecases">Read more use cases here</a></p>
+
   </div>
 </section>
 
