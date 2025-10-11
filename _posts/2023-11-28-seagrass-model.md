@@ -7,7 +7,7 @@ excerpt: This study provides the first comprehensive global assessment of how cl
   sources of data and expert knowledge, to develop species distribution models under
   various scenarios.
 feed: true
-image: barnabas-2023-thumb.jpg
+image: /images/barnabas-2023-thumb.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1038/s41477-023-01445-6

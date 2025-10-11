@@ -6,7 +6,7 @@ excerpt: This study looks at the current state of research on the reproduction o
   were found to have any aspect of their reproduction reported in the literature highlighting
   significant gaps and priorities for future research.
 feed: true
-image: waller-main-image.jpg
+image: /images/waller-main-image.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1007/s00227-023-04182-8

@@ -7,7 +7,7 @@ excerpt: Understanding the diversity and distribution of fish egg and larvae in 
   identification. OBIS was used to validate and confirm the distribution range, habitat
   and occurrence of the species detected by metabarcoding.
 feed: true
-image: govender-2023-thumb.png
+image: /images/govender-2023-thumb.png
 lang: en
 layout: post
 link: https://doi.org/10.1371/journal.pone.0284961

@@ -6,7 +6,7 @@ excerpt: This study compiled and analysed occurrence records of Cumacea from var
   the Arctic Ocean. The data from this study resulted in the creation of a new OBIS
   dataset of Icelandic Cumacea (ICECU) from the IceAGE and PASCAL expedition records.
 feed: true
-image: islandic-cumacea.png
+image: /images/islandic-cumacea.png
 lang: en
 layout: post
 link: https://doi.org/10.7717/peerj.12379

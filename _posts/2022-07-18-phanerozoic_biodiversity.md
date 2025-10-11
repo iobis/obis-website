@@ -5,7 +5,7 @@ excerpt: Is there a limit to global biodiversity in our oceans? This recent stud
   topic in evolutionary ecology and has led to the authors proposing a new hypothesis,
   the ‘diversity hotspots hypothesis’.
 feed: true
-image: Phanerozoic_biodiversity.png
+image: /images/Phanerozoic_biodiversity.png
 lang: en
 layout: post
 link: https://doi.org/10.1038/s41586-022-04932-6

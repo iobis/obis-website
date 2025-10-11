@@ -5,7 +5,7 @@ excerpt: Echinoids are an important component of the Cenozoic marine benthic com
   the Late Miocene to recent, a period of remarkable paleogeographic and paleoclimate
   changes.
 feed: true
-image: echinoids_mediterranean.png
+image: /images/echinoids_mediterranean.png
 lang: en
 layout: post
 link: https://www.app.pan.pl/article/item/app009932022.html

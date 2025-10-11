@@ -4,7 +4,7 @@ excerpt: How species traits of cephalopods and malacostracans, extracted from th
   OBIS database contributed to evidence of cold-water species deepening in response
   to warming waters in the Mediterranean Sea.
 feed: true
-image: patterns_of_depth_shift.png
+image: /images/patterns_of_depth_shift.png
 lang: en
 layout: post
 link: https://doi.org/10.1111/geb.13414

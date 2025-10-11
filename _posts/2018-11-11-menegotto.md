@@ -6,7 +6,7 @@ excerpt: In a study published in Nature Communications in November 2018, researc
   from OBIS and other public datasets to identify missing occurrences (gaps) across
   species latitudinal range.
 feed: true
-image: menegotto.png
+image: /images/menegotto.png
 lang: en
 layout: post
 link: https://doi.org/10.1038/s41467-018-07217-7

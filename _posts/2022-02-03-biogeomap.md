@@ -5,7 +5,7 @@ excerpt: A global analysis of the benthic fauna of the lower bathyal using data 
   2022 by Watling & Lapointe (2022) proposed a revision of the bathyal provinces of
   the world.
 feed: true
-image: Bioregions-small.jpg
+image: /images/Bioregions-small.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.dsr.2022.103703

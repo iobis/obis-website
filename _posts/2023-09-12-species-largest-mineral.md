@@ -7,7 +7,7 @@ excerpt: This study offers the first comprehensive synthesis of published data f
   in this research were extracted from OBIS highlighting its value as a global data
   repository for marine biodiversity.
 feed: true
-image: rabone-main-image.png
+image: /images/rabone-main-image.png
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.cub.2023.04.052

@@ -7,7 +7,7 @@ excerpt: The development of deep-sea equipment has allowed researchers to start 
   correlation to the regions of extensive species discovery and the locational distribution
   of advanced deep-sea equipment.
 feed: true
-image: deep-sea_equipment.jpg
+image: /images/deep-sea_equipment.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.isci.2021.103299

@@ -9,7 +9,7 @@ excerpt: In a study published in Proceedings of the Royal Society B in October 2
   questions in ecology and evolutionary biology.
 feed: true
 identifier: fish evolutionary diversity
-image: fishdiversity.png
+image: /images/fishdiversity.png
 lang: en
 layout: post
 link: http://dx.doi.org/10.1098/rspb.2018.1314

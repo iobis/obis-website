@@ -6,7 +6,7 @@ excerpt: The red algae, "Lophocladia lallemandii", one of the worst invasive spe
   identifying, monitoring and managing invasives. OBIS served as a useful data repository
   to confirm the occurrence of this misidentified species.
 feed: true
-image: golo-main-image.jpg
+image: /images/golo-main-image.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.marpolbul.2023.114970

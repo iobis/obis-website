@@ -9,7 +9,7 @@ excerpt: Advancements in technology have improved our knowledge of how different
   telemetry methods are the most effective tool for demonstrating connectivity, but
   that significant gaps and obstacles remain in this field of research.
 feed: true
-image: kot-main-image.jpg
+image: /images/kot-main-image.jpg
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.biocon.2023.110142

@@ -17,8 +17,7 @@ tags:
 - eDNA
 - marine invasive species
 - Policy
-title: PacMAN Fiji achieves "Marine Invasive Species Monitoring-Ready" status as project
-  is completed
+title: PacMAN Fiji achieves &quot;Marine Invasive Species Monitoring-Ready&quot; status as project is completed
 ---
 
 Marine invasive species threaten biodiversity, ecosystems, and the livelihoods of Small Island Developing States (SIDS) like Fiji. These organisms disrupt fragile marine ecosystems, endanger native species, and undermine the blue economy. PacMAN was designed to combat these challenges by equipping Fiji with state-of-the-art tools, robust protocols, and expert training to enable rapid detection and effective management. 

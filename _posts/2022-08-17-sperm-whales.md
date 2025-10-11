@@ -13,7 +13,7 @@ excerpt: Marine environments in the Arctic regions continue to be altered due to
   presence over the 5 year study period, closely related to the minimum sea ice concentration
   of each year.
 feed: true
-image: sperm_whales.png
+image: /images/sperm_whales.png
 lang: en
 layout: post
 link: https://doi.org/10.1111/gcb.16166

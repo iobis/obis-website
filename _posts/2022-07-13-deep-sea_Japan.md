@@ -7,7 +7,7 @@ excerpt: New insights and video footage of possibly the largest deep-sea-endemic
   teleost fish species with total length over 2 m, the Giant Grenadier, Albatrossia
   pectoralis.
 feed: true
-image: deep-sea_Japan.png
+image: /images/deep-sea_Japan.png
 lang: en
 layout: post
 link: https://doi.org/10.3389/fmars.2022.945758

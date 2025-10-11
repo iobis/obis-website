@@ -6,7 +6,7 @@ excerpt: Species distribution modeling (SDM) as a tool to predict the probabilit
   OBIS and an array of other data sources. These distribution predictions will ultimately
   allow for better protection and conservation of the threatened giant manta ray.
 feed: true
-image: manta_rays.png
+image: /images/manta_rays.png
 lang: en
 layout: post
 link: https://doi.org/10.1038/s41598-022-10482-8

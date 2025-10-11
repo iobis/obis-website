@@ -5,7 +5,7 @@ excerpt: Presence data sourced from OBIS, amongst other repositories and literat
   mobile predator shark, the broadnose sevengill shark, based on environmental niche
   modeling.
 feed: true
-image: shark_distribution.png
+image: /images/shark_distribution.png
 lang: en
 layout: post
 link: https://doi.org/10.1002/lno.12168

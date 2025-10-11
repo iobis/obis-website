@@ -5,7 +5,7 @@ excerpt: By extracting depth data of extant  benthic and pelagic Brachyuran crab
   able to interpret the fossil species examined herein, to have been an active swimmer,
   most likely hunting and predating on pelagic comma shrimps.
 feed: true
-image: jenkins_image.png
+image: /images/jenkins_image.png
 lang: en
 layout: post
 link: https://doi.org/10.1016/j.isci.2021.103579
