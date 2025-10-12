@@ -1,5 +1,5 @@
 <div class="row row-cols-1 row-cols-md-3 g-4">
-{% assign project_pages = site.pages | where: "layout", "project" | sort: "title" %}
+{% assign project_pages = site.pages | where: "layout", "project" | sort: "end_date" | reverse %}
 {% for project in project_pages %}
     <div class="col">
     <div class="card h-100">
@@ -8,7 +8,7 @@
             <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
         </h5>
         {% if project.start_date %}
-        <p class="card-text">{{ project.start_date }} - {{ project.end_date }}</p>
+        <p class="card-text">{{ project.start_date }} → {{ project.end_date }}</p>
         {% endif %}
         {% if project.description %}
         <p class="card-text">{{ project.description }}</p>
