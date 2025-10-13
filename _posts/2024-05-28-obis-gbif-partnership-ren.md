@@ -11,6 +11,7 @@ layout: post
 purpose: news
 tags:
 - OBIS
+- GBIF
 - Partnerships
 title: OBIS and GBIF endorse joint strategy and action plan for marine biodiversity
   data
