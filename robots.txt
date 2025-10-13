@@ -1,0 +1,76 @@
+Sitemap: https://obis.org/sitemap.xml
+
+# Default crawl delay for all bots
+User-agent: *
+Crawl-delay: 10
+
+# Google bots - more permissive
+User-agent: Googlebot
+Crawl-delay: 2
+
+User-agent: Googlebot-Image
+Crawl-delay: 5
+
+User-agent: Googlebot-Mobile
+Crawl-delay: 2
+
+# Bing
+User-agent: Bingbot
+Crawl-delay: 5
+
+# Common legitimate bots - moderate rate
+User-agent: Slurp
+Crawl-delay: 5
+
+User-agent: DuckDuckBot
+Crawl-delay: 5
+
+User-agent: Baiduspider
+Crawl-delay: 10
+
+User-agent: YandexBot
+Crawl-delay: 5
+
+User-agent: facebot
+Crawl-delay: 10
+
+User-agent: ia_archiver
+Crawl-delay: 10
+
+# Aggressive crawlers - slow them down
+User-agent: AhrefsBot
+Crawl-delay: 30
+
+User-agent: SemrushBot
+Crawl-delay: 30
+
+User-agent: MJ12bot
+Crawl-delay: 30
+
+User-agent: DotBot
+Crawl-delay: 30
+
+User-agent: BLEXBot
+Crawl-delay: 30
+
+User-agent: PetalBot
+Crawl-delay: 30
+
+# Block known scrapers and malicious bots
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
