@@ -228,7 +228,7 @@ async function renderTimeplot(element, query) {
             t: 50,
             pad: 4
         },
-        height: 300
+        height: 350
     };
 
     Plotly.newPlot(element, data, layout, {
@@ -256,6 +256,16 @@ async function renderEnvironmentPlots(element, query) {
         }
     }];
 
+    const sssData = [{
+        type: 'bar',
+        x: data.sss.map(d => `${d.sss}-${d.sss + 5}`),
+        y: data.sss.map(d => d.records),
+        name: 'SSS',
+        marker: {
+            color: '#B1B695'
+        }
+    }];
+
     const depthData = [{
         type: 'bar',
         x: data.depth.map((d, i) => {
@@ -273,6 +283,32 @@ async function renderEnvironmentPlots(element, query) {
         xaxis: {
             title: {
                 text: 'Sea surface temperature (°C)',
+                standoff: 10
+            },
+            type: 'category',
+            fixedrange: true
+        },
+        yaxis: {
+            title: {
+                text: "Records",
+                standoff: 10
+            },
+            fixedrange: true
+        },
+        margin: {
+            l: 50,
+            r: 20,
+            b: 50,
+            t: 0,
+            pad: 4
+        },
+        height: 150
+    };
+
+    const sssLayout = {
+        xaxis: {
+            title: {
+                text: 'Sea surface salinity (PSU)',
                 standoff: 10
             },
             type: 'category',
@@ -337,12 +373,15 @@ async function renderEnvironmentPlots(element, query) {
     document.getElementById(element).appendChild(container);
 
     const sstContainer = document.createElement('div');
+    const sssContainer = document.createElement('div');
     const depthContainer = document.createElement('div');
 
     container.appendChild(sstContainer);
+    container.appendChild(sssContainer);
     container.appendChild(depthContainer);
 
     Plotly.newPlot(sstContainer, sstData, sstLayout, config);
+    Plotly.newPlot(sssContainer, sssData, sssLayout, config);
     Plotly.newPlot(depthContainer, depthData, depthLayout, config);
 }
 
