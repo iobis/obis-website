@@ -1,8 +1,9 @@
 <html>
 {% include head.html %}
 
-<script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
-<link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
+<script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+<link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+
 <style>
   #headermap {
     height: 300px;
@@ -54,10 +55,39 @@
 </div>
 
 <script>
-  mapboxgl.accessToken = 'pk.eyJ1IjoiaW9kZXBvIiwiYSI6ImNrd2txMXRyaTFpNjkybm1sZWxwemtrbWsifQ.KtiKSQsLSwvnDtfg9T9qdA';
-  const map = new mapboxgl.Map({
+  const map = new maplibregl.Map({
     container: 'headermap',
-    style: 'mapbox://styles/iodepo/cmc12im9k01gq01qw2jw8317y',
+    style: {
+        version: 8,
+        glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+        sources: {
+            coastlines: {
+                type: "vector",
+                tiles: ["https://tiles.obis.org/coastlines_tiles/{z}/{x}/{y}.pbf"],
+                minzoom: 0,
+                maxzoom: 14
+            }
+        },
+        layers: [
+            {
+                id: "background",
+                type: "background",
+                paint: {
+                    "background-color": "#ffffff"
+                }
+            },
+            {
+                id: "coastlines",
+                type: "line",
+                source: "coastlines",
+                "source-layer": "coastlines",
+                paint: {
+                    "line-color": "#000000",
+                    "line-width": 0.5
+                }
+            }
+        ]
+    },
     center: [-50, 50],
     zoom: 4,
     projection: 'mercator',
@@ -70,7 +100,6 @@
       map.dragPan.enable();
   });
   map.on("load", function() {
-
     map.addSource("occurrence", {
         type: "vector",
         tiles: [

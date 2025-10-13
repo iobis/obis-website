@@ -1088,3 +1088,133 @@ function renderMap(element, filter) {
         });
     });
 }
+
+function renderMapLibre(element, filter) {
+    let container = (typeof element === "string") ? document.getElementById(element) : element;
+    if (!container) return;
+
+    const uniqueId = "map_" + Math.random().toString(36).substr(2, 9);
+    const mapId = uniqueId + "_map";
+    const legendId = uniqueId + "_legend";
+
+    container.innerHTML = `
+        <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
+            <div id="${mapId}" style="height: 100%; width: 100%"></div>
+            <div id="${legendId}" class="map-legend">
+                <div><span style="background:#2c7bb6;margin-right:6px;"></span>1</div>
+                <div><span style="background:#abd9e9;margin-right:6px;"></span>10</div>
+                <div><span style="background:#ffffbf;margin-right:6px;"></span>100</div>
+                <div><span style="background:#fdae61;margin-right:6px;"></span>1,000</div>
+                <div><span style="background:#d7191c;margin-right:6px;"></span>&gt;10,000</div>
+            </div>
+            <div id="${uniqueId}_click-message" class="map-click-message">
+                Click the map to<br/>start interacting
+            </div>
+        </div>
+    `;
+
+    const map = new maplibregl.Map({
+        container: mapId,
+        center: [0, 25],
+        zoom: 0,
+        style: {
+            version: 8,
+            glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+            sources: {
+                coastlines: {
+                    type: "vector",
+                    tiles: ["https://tiles.obis.org/coastlines_tiles/{z}/{x}/{y}.pbf"],
+                    minzoom: 0,
+                    maxzoom: 14
+                }
+            },
+            layers: [
+                {
+                    id: "background",
+                    type: "background",
+                    paint: {
+                        "background-color": "#ffffff"
+                    }
+                },
+                {
+                    id: "coastlines",
+                    type: "line",
+                    source: "coastlines",
+                    "source-layer": "coastlines",
+                    paint: {
+                        "line-color": "#000000",
+                        "line-width": 1
+                    }
+                }
+            ]
+        },
+        projection: "mercator",
+        attributionControl: false,
+        scrollZoom: false,
+        dragPan: false
+    });
+
+    let params = new URLSearchParams(filter).toString();
+
+    map.on("load", function() {
+        map.addSource("occurrence", {
+            type: "vector",
+            tiles: [
+                `https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?${params}`
+            ],
+            scheme: "xyz"
+        });
+
+        map.addLayer({
+            id: "obis-occurrence-layer-" + uniqueId,
+            type: "fill",
+            source: "occurrence",
+            "source-layer": "grid",
+            paint: {
+                "fill-color": [
+                    "interpolate",
+                    ["linear"],
+                    ["get", "doc_count"],
+                    0, "#2c7bb6",
+                    10, "#abd9e9",
+                    100, "#ffffbf",
+                    1000, "#fdae61",
+                    10000, "#d7191c"
+                ],
+                "fill-opacity": 0.8
+            }
+        });
+
+        map.addLayer({
+            id: "numbers-layer-" + uniqueId,
+            type: "symbol",
+            source: "occurrence",
+            "source-layer": "grid",
+            layout: {
+                "text-field": ["to-string", ["get", "doc_count"]],
+                "text-size": 10,
+                "text-anchor": "center"
+            },
+            paint: {
+                "text-color": "#000000",
+                "text-halo-color": "rgba(255, 255, 255, 1)",
+                "text-halo-width": 1,
+                "text-halo-blur": 0
+            }
+        });
+
+        map.addControl(new maplibregl.ScaleControl({
+            maxWidth: 100,
+            unit: "metric"
+        }));
+
+        map.once("click", function() {
+            map.scrollZoom.enable();
+            map.dragPan.enable();
+            const clickMessage = document.getElementById(`${uniqueId}_click-message`);
+            if (clickMessage) {
+                clickMessage.style.display = 'none';
+            }
+        });
+    });
+}
