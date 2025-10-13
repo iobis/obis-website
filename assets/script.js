@@ -1089,7 +1089,7 @@ function renderMap(element, filter) {
     });
 }
 
-function renderMapLibre(element, filter) {
+function renderMaplibre(element, filter) {
     let container = (typeof element === "string") ? document.getElementById(element) : element;
     if (!container) return;
 
@@ -1143,7 +1143,8 @@ function renderMapLibre(element, filter) {
                     "source-layer": "coastlines",
                     paint: {
                         "line-color": "#000000",
-                        "line-width": 1
+                        "line-width": 0.5,
+                        "line-opacity": 0.3
                     }
                 }
             ]
