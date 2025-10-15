@@ -987,7 +987,7 @@ function renderRedListBadge(category) {
     return "";
 }
 
-function renderMap(element, filter) {
+function renderMapOld(element, filter) {
     let container = (typeof element === "string") ? document.getElementById(element) : element;
     if (!container) return;
 
@@ -1089,7 +1089,7 @@ function renderMap(element, filter) {
     });
 }
 
-function renderMaplibre(element, filter) {
+function renderMap(element, filter) {
     let container = (typeof element === "string") ? document.getElementById(element) : element;
     if (!container) return;
 
@@ -1121,9 +1121,21 @@ function renderMaplibre(element, filter) {
             version: 8,
             glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
             sources: {
-                coastlines: {
+                // coastlines: {
+                //     type: "vector",
+                //     tiles: ["https://tiles.obis.org/coastlines_tiles/{z}/{x}/{y}.pbf"],
+                //     minzoom: 0,
+                //     maxzoom: 14
+                // },
+                land_polygons: {
                     type: "vector",
-                    tiles: ["https://tiles.obis.org/coastlines_tiles/{z}/{x}/{y}.pbf"],
+                    tiles: ["https://tiles.obis.org/land_tiles/{z}/{x}/{y}.pbf"],
+                    minzoom: 0,
+                    maxzoom: 14
+                },
+                gebco_filtered: {
+                    type: "vector",
+                    tiles: ["https://tiles.obis.org/gebco_filtered_tiles/{z}/{x}/{y}.pbf"],
                     minzoom: 0,
                     maxzoom: 14
                 }
@@ -1133,20 +1145,41 @@ function renderMaplibre(element, filter) {
                     id: "background",
                     type: "background",
                     paint: {
-                        "background-color": "#ffffff"
+                        "background-color": "#dbdbdc"
                     }
                 },
                 {
-                    id: "coastlines",
-                    type: "line",
-                    source: "coastlines",
-                    "source-layer": "coastlines",
+                    id: "land_polygons",
+                    type: "fill",
+                    source: "land_polygons",
+                    "source-layer": "land",
                     paint: {
-                        "line-color": "#000000",
-                        "line-width": 0.5,
-                        "line-opacity": 0.3
+                        "fill-color": "#fcfcfd",
+                        "fill-opacity": 1.0
+                    }
+                },
+                {
+                    id: "contours",
+                    type: "line",
+                    source: "gebco_filtered",
+                    "source-layer": "gebco_filtered",
+                    paint: {
+                        "line-color": "#044062",
+                        "line-width": 0.2,
+                        "line-opacity": 0.33
                     }
                 }
+                // {
+                //     id: "coastlines",
+                //     type: "line",
+                //     source: "coastlines",
+                //     "source-layer": "coastlines",
+                //     paint: {
+                //         "line-color": "#000000",
+                //         "line-width": 0.5,
+                //         "line-opacity": 0.3
+                //     }
+                // }
             ]
         },
         projection: "mercator",
