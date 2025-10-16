@@ -16,8 +16,7 @@ layout: default
 <section class="section-light">
   <div class="container">
     <h2>Use cases</h2>
-
-    {% assign filtered_usecases = site.usecases %}
+    {% assign filtered_usecases = site.usecases | sort: 'date' | reverse %}
     {% include usecase_cards.html filtered_usecases=filtered_usecases limit=6 %}
     <p><a href="/usecases">Read more use cases here</a></p>
 
