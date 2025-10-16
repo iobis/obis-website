@@ -1,8 +1,22 @@
 Sitemap: https://obis.org/sitemap.xml
 
-# Default crawl delay for all bots
-User-agent: *
-Crawl-delay: 20
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
 
 # Google bots - more permissive
 User-agent: Googlebot
@@ -37,40 +51,5 @@ Crawl-delay: 20
 User-agent: ia_archiver
 Crawl-delay: 60
 
-# Aggressive crawlers - slow them down
-User-agent: AhrefsBot
-Crawl-delay: 60
-
-User-agent: SemrushBot
-Crawl-delay: 60
-
-User-agent: MJ12bot
-Crawl-delay: 60
-
-User-agent: DotBot
-Crawl-delay: 60
-
-User-agent: BLEXBot
-Crawl-delay: 60
-
-User-agent: PetalBot
-Crawl-delay: 60
-
-# Block known scrapers and malicious bots
-User-agent: SemrushBot
-Disallow: /
-
-User-agent: AhrefsBot
-Disallow: /
-
-User-agent: MJ12bot
-Disallow: /
-
-User-agent: BLEXBot
-Disallow: /
-
-User-agent: PetalBot
-Disallow: /
-
-User-agent: DotBot
-Disallow: /
+User-agent: *
+Crawl-delay: 20
