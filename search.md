@@ -9,8 +9,8 @@ title: Search
         <div class="col-md-2">
             <label for="entity" class="form-label">Search for</label>
             <select id="entity" class="form-select">
-                <option value="dataset" selected>Dataset</option>
-                <option value="taxon">Scientific name</option>
+                <option value="taxon" selected>Scientific name</option>
+                <option value="dataset">Dataset</option>
                 <option value="common">Common name</option>
                 <option value="area">Area</option>
                 <option value="country">Publisher country</option>
