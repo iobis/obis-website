@@ -1101,6 +1101,7 @@ function renderMap(element, filter) {
         <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
             <div id="${mapId}" style="height: 100%; width: 100%"></div>
             <div id="${legendId}" class="map-legend">
+                <p>Records</p>
                 <div><span style="background:#2c7bb6;margin-right:6px;"></span>1</div>
                 <div><span style="background:#abd9e9;margin-right:6px;"></span>10</div>
                 <div><span style="background:#ffffbf;margin-right:6px;"></span>100</div>
@@ -1240,7 +1241,9 @@ function renderMap(element, filter) {
         map.addControl(new maplibregl.ScaleControl({
             maxWidth: 100,
             unit: "metric"
-        }));
+        }), 'bottom-left');
+
+        map.addControl(new maplibregl.FullscreenControl(), 'bottom-left');
 
         map.once("click", function() {
             map.scrollZoom.enable();
