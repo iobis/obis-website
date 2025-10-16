@@ -12,8 +12,9 @@ tags:
 - tutorial
 purpose: news
 feed: true
-thumbnail: parquet-thumb.png
+image: /images/thumbnails/parquet-thumb.png
 ---
+
 <img alt="" src="/images/nenad-novakovic-mHX5e1gFQVo-unsplash.jpg" style="width: 100%;">
 <i>Image: Nenad Novaković / Unsplash</i>  
 <br><br>
