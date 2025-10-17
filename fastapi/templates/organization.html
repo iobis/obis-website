@@ -6,7 +6,12 @@
 
         <p>Organization</p>
         <h1>{{ organization.name }}</h1>
-        <a href="https://mapper.obis.org?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+        <p><a href="https://mapper.obis.org?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Open in mapper</a></p>
+
+        <div class="row">
+            <div id="m"></div>
+        </div>
+
     </div>
 </section>
 
@@ -21,10 +26,19 @@
 </section>
 
 <section class="section-dense">
-    <div id="sunburst" style="height: 600px;"></div>
+    <div class="row align-items-center">
+        <div class="col-12 col-md-6">
+            <div id="timeplot"></div>
+        </div>
+        <div class="col-12 col-md-6">
+            <div id="sunburst" style="height: 600px;"></div>
+        </div>
+    </div>
 </section>
 
 <script>
 renderSunburst("sunburst", { instituteid: "{{ organization.id }}" });
+renderTimeplot("timeplot", { instituteid: "{{ organization.id }}" });
 renderDatasetTable("datasets", { instituteid: "{{ organization.id }}" });
+renderMap("m", { instituteid: "{{ organization.id }}" })
 </script>
