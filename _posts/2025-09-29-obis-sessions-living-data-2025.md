@@ -8,10 +8,6 @@ layout: post
 purpose: news
 tags:
 - Living Data 2025
-- community
-- capacity development
-- Darwin Core
-- Policy
 title: All the OBIS sessions at Living Data 2025 at a glance!
 ---
 
@@ -25,6 +21,15 @@ You can click on each session title to learn more.
 The name in italic indicates the OBIS community member co-leading the session. 
 
 The list below only displays the OBIS-led sessions. Organized or co-organized by members of the OBIS Community, these sessions explore essential topics fundamental to OBIS’s objectives. For the OBIS-related sessions and a complete overview of the conference, please refer to the Living Data 2025 full programme [here](https://www.livingdata2025.com/program.html)  
+
+## **Do you want to bring your insights to the Living Data 2025 stage? We've got you covered!** 
+We give you the opportunity to bring out your questions directly to the attention of the OBIS sessions co-leads. 
+Choose an OBIS session in the list below, pick a topic, and share your question through our form! 
+All submitted questions will be passed on to the session co-leads, who can bring them up during their session's discussion. 
+**Questions can be submitted up to 24 hours before each session.**
+<a class="btn btn-primary" href="https://ee-eu.kobotoolbox.org/egLDTuF7" role="button">Submit your question</a>
+
+---
 
 ## **21 October 2025**
 
@@ -71,6 +76,10 @@ The list below only displays the OBIS-led sessions. Organized or co-organized by
 ---
 
 ##  **23 October 2025**
+
+- **8:30 – 10:00**
+  **Globally Trusted Data for Ocean Conservation, Management and Biodiversity Action** A general presentation of OBIS during the plenary. 
+  *Dan Lear*
 
 - **10:45 – 12:45**  
   [**Community Engagement and Capacity Building for Increased Biodiversity Data Accessibility (Part 2)**](https://www.livingdata2025.com/program.html?session=6798479-2_2025-10-23_Ballroom+B1)  
