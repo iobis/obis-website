@@ -56,9 +56,21 @@
   </div>
 </section>
 
+<section class="section-dense">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <h2>Taxa</h2>
+        <div id="taxa"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <script>
 renderSunburst("sunburst", { areaid: "{{ area.id }}" });
 renderDatasetTable("datasets", { areaid: "{{ area.id }}" });
 renderPublisherTable("publishers", { areaid: "{{ area.id }}" });
 renderTimeplot("timeplot", { areaid: "{{ area.id }}" })
+renderTaxonTable("taxa", "/checklist", { areaid: "{{ area.id }}" })
 </script>
