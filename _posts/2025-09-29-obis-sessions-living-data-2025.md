@@ -107,4 +107,4 @@ All submitted questions will be passed on to the session co-leads, who can bring
 
 ---
 
-  <iframe src="https://ee-eu.kobotoolbox.org/i/egLDTuF7" width="800" height="600"></iframe>
+<p class="pt-3 text-center"><a class="btn btn-primary btn-lg" href="https://ee-eu.kobotoolbox.org/i/egLDTuF7" target="_blank">Submit your questions for sessions</a></p>
