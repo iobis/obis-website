@@ -26,7 +26,10 @@ The list below only displays the OBIS-led sessions. Organized or co-organized by
 We give you the opportunity to bring out your questions directly to the attention of the OBIS sessions co-leads. 
 Choose an OBIS session in the list below, pick a topic, and share your question through our form! 
 All submitted questions will be passed on to the session co-leads, who can bring them up during their session's discussion. 
+
 **Questions can be submitted up to 24 hours before each session.**
+
+
 <a class="btn btn-primary" href="https://ee-eu.kobotoolbox.org/egLDTuF7" role="button">Submit your question</a>
 
 ---
