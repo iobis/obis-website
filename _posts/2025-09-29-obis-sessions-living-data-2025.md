@@ -22,7 +22,7 @@ The name in italic indicates the OBIS community member co-leading the session.
 
 The list below only displays the OBIS-led sessions. Organized or co-organized by members of the OBIS Community, these sessions explore essential topics fundamental to OBIS’s objectives. For the OBIS-related sessions and a complete overview of the conference, please refer to the Living Data 2025 full programme [here](https://www.livingdata2025.com/program.html)  
 
-## **Do you want to bring your insights to the Living Data 2025 stage? We've got you covered!** 
+## **Do you want to bring your voice to the Living Data 2025 stage but cannot attend the event? We've got you covered!** 
 We give you the opportunity to bring out your questions directly to the attention of the OBIS sessions co-leads. 
 Choose an OBIS session in the list below, pick a topic, and share your question through our form! 
 All submitted questions will be passed on to the session co-leads, who can bring them up during their session's discussion. 
