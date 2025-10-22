@@ -5,7 +5,10 @@
     <div class="container">
 
         <h1>{{ node.name }}</h1>
-        <p><a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a></p>
+        <p>
+            <a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+            <a href="/explore?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+        </p>
 
         <p>{{ node.description }}</p>
 

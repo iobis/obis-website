@@ -6,7 +6,10 @@
 
         <p>Organization</p>
         <h1>{{ organization.name }}</h1>
-        <p><a href="https://mapper.obis.org?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Open in mapper</a></p>
+        <p>
+            <a href="https://mapper.obis.org?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+            <a href="/explore?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+        </p>
 
         <div class="row">
             <div id="m"></div>
