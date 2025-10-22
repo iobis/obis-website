@@ -591,7 +591,7 @@ function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
             totalResults = data.total || 0;
 
             if (data && data.results && data.results.length > 0) {
-                let html = `<div style='overflow-x:auto;'><table class=\"table table-sm\"><thead><tr>`;
+                let html = `<div style='overflow-x:auto;'><table class=\"table\"><thead><tr>`;
                 html += `<th></th>`;
                 for (const field of fields) {
                     html += `<th style='white-space:nowrap;'>${field}</th>`;
@@ -600,9 +600,13 @@ function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
 
                 for (const row of data.results) {
                     html += `<tr>`;
-                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}?dna=true&mof=true" target="_blank">json</a></td>`
+                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}?dna=true&mof=true" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></a></td>`
                     for (const field of fields) {
-                        html += `<td style='white-space:nowrap;'>${row[field] ? row[field] : ''}</td>`;
+                        if (field === 'dataset_id') {
+                            html += `<td style='white-space:nowrap;'><a href="/dataset/${row[field]}" target="_blank">${row[field] ? row[field] : ''}</a></td>`;
+                        } else {
+                            html += `<td style='white-space:nowrap;'>${row[field] ? row[field] : ''}</td>`;
+                        }
                     }
                     html += `</tr>`;
                 }
@@ -1253,5 +1257,34 @@ function renderMap(element, filter) {
                 clickMessage.style.display = 'none';
             }
         });
+
+        class CustomControl {
+            constructor(options) {
+                this.options = options;
+            }
+    
+            onAdd(map) {
+                this.map = map;
+                this.container = document.createElement('div');
+                this.container.className = 'maplibregl-ctrl maplibregl-ctrl-group explore-control'; // Apply default control styling
+                this.container.innerHTML = '<button></button>';
+                this.container.querySelector('button').addEventListener('click', () => {
+                    const bounds = this.map.getBounds();
+                    const wkt = `POLYGON((${bounds.getWest().toFixed(5)} ${bounds.getSouth().toFixed(5)}, ${bounds.getEast().toFixed(5)} ${bounds.getSouth().toFixed(5)}, ${bounds.getEast().toFixed(5)} ${bounds.getNorth().toFixed(5)}, ${bounds.getWest().toFixed(5)} ${bounds.getNorth().toFixed(5)}, ${bounds.getWest().toFixed(5)} ${bounds.getSouth().toFixed(5)}))`;
+                    let explore_filter = {...filter, geometry: wkt};
+                    let explore_params = new URLSearchParams(explore_filter).toString();
+                    window.open(`/explore?${explore_params}`, '_blank');
+                });
+                return this.container;
+            }
+    
+            onRemove() {
+                this.container.parentNode.removeChild(this.container);
+                this.map = undefined;
+            }
+        }
+
+        const myCustomControl = new CustomControl({});
+        map.addControl(myCustomControl, 'bottom-left');
     });
 }
