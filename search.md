@@ -111,7 +111,7 @@ function updateURL() {
     const entity = document.getElementById("entity").value;
     const query = document.getElementById("query").value.trim();
     const params = new URLSearchParams();
-    if (entity && entity !== "dataset") {
+    if (entity) {
         params.set("entity", entity);
     }
     if (query) {

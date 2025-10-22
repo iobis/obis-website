@@ -10,7 +10,7 @@ title: Search
 
 <section class="section-superdense">
   <div class="container">
-    <h2>Explore</h2>
+    <h2>Explore occurrences</h2>
     <div id="applied-filters" class="mb-3"></div>
     <div id="m"></div>
 
