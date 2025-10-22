@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Search
+title: Explore
 ---
 
 <script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
