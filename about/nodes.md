@@ -14,6 +14,9 @@ shorttitle: Nodes
 title: OBIS Nodes
 ---
 
+<script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
+<link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+
 # OBIS Nodes
 
 The OBIS Nodes are the powerful knowledge lighthouses of the OBIS network. Spread across the globe, the OBIS Regional Nodes and the OBIS Thematic Nodes connect local expertise to the global OBIS platform. The OBIS Nodes are the main entry point to the OBIS Community. They support data holders in integrating their data into OBIS. Each Node works closely with data providers—researchers, institutions, and local, national or regional biodiversity monitoring programs—to ensure that high-quality, standardized marine biodiversity data integrates into OBIS. OBIS Nodes play a crucial role beyond data management: they contribute to local capacity-building through training and workshops and help elevate local and national data contributors to the global level. They engage with local scientific and citizen communities, support local capacity development, promote data-related best practices, connect with decision-makers and relay their needs to the OBIS Community. The Nodes are essential to make OBIS a global operational and collaborative initiative.
@@ -77,51 +80,85 @@ Thematic OBIS Nodes are organizations that contribute data to OBIS, usually base
 <div id="nodesmap" class="mt-5 mb-4" style="height: 700px; width:100%;"></div>
 
 <script>
-  mapboxgl.accessToken = "pk.eyJ1IjoiaW9kZXBvIiwiYSI6ImNrd2txMXRyaTFpNjkybm1sZWxwemtrbWsifQ.KtiKSQsLSwvnDtfg9T9qdA";
-  const map = new mapboxgl.Map({
-    container: "nodesmap",
-    style: "mapbox://styles/iodepo/cmc12im9k01gq01qw2jw8317y",
+  const map = new maplibregl.Map({
+    container: 'nodesmap',
+    style: {
+        version: 8,
+        glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+        sources: {
+            coastlines: {
+                type: "vector",
+                tiles: ["https://tiles.obis.org/coastlines_tiles/{z}/{x}/{y}.pbf"],
+                minzoom: 0,
+                maxzoom: 14
+            }
+        },
+        layers: [
+            {
+                id: "background",
+                type: "background",
+                paint: {
+                    "background-color": "#ffffff"
+                }
+            },
+            {
+                id: "coastlines",
+                type: "line",
+                source: "coastlines",
+                "source-layer": "coastlines",
+                paint: {
+                    "line-color": "#000000",
+                    "line-width": 0.5
+                }
+            }
+        ]
+    },
     center: [0, 20],
     zoom: 1,
-    projection: "mercator",
+    projection: 'mercator',
     attributionControl: false,
     scrollZoom: false,
     dragPan: false
   });
+  map.once("click", function() {
+      map.scrollZoom.enable();
+      map.dragPan.enable();
+  });
   map.on("load", function() {
     fetch("https://api.obis.org/node")
-      .then(function(r) { return r.json(); })
-      .then(function(data) {
-        const features = (data.results || [])
-          .filter(function(n) { return typeof n.lon === "number" && typeof n.lat === "number"; })
-          .map(function(n) {
-            return {
-              type: "Feature",
-              geometry: { type: "Point", coordinates: [n.lon, n.lat] },
-              properties: {
-                id: n.id,
-                name: n.name,
-                url: Array.isArray(n.url) && n.url.length ? n.url[0] : ''
-              }
-            };
-          });
-
-        features.forEach(function(f) {
-          const props = f.properties || {};
-          const name = props.name || 'OBIS Node';
-          const url = props.url ? '<br/><a href="' + props.url + '" target="_blank" rel="noopener">Visit website</a>' : "";
-
-          const popup = new mapboxgl.Popup({ closeButton: false })
-            .setHTML("<strong>" + name + "</strong>" + url);
-
-          new mapboxgl.Marker({ color: "#B1B695" })
-            .setLngLat(f.geometry.coordinates)
-            .setPopup(popup)
-            .addTo(map);
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+      const features = (data.results || [])
+        .filter(function(n) { return typeof n.lon === "number" && typeof n.lat === "number"; })
+        .map(function(n) {
+          return {
+            type: "Feature",
+            geometry: { type: "Point", coordinates: [n.lon, n.lat] },
+            properties: {
+              id: n.id,
+              name: n.name,
+              url: Array.isArray(n.url) && n.url.length ? n.url[0] : ''
+            }
+          };
         });
-      })
-      .catch(function(err) {
-        console.error("Failed to load OBIS nodes", err);
+
+      features.forEach(function(f) {
+        const props = f.properties || {};
+        const name = props.name || 'OBIS Node';
+        const url = props.url ? '<br/><a href="' + props.url + '" target="_blank" rel="noopener">Visit website</a>' : "";
+
+        const popup = new mapboxgl.Popup({ closeButton: false })
+          .setHTML("<strong>" + name + "</strong>" + url);
+
+        new maplibregl.Marker({ color: "#B1B695" })
+          .setLngLat(f.geometry.coordinates)
+          .setPopup(popup)
+          .addTo(map);
       });
-  });
+    })
+    .catch(function(err) {
+      console.error("Failed to load OBIS nodes", err);
+    });
+});
+
 </script>
