@@ -600,7 +600,7 @@ function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
 
                 for (const row of data.results) {
                     html += `<tr>`;
-                    html += `<td><a href="https://api.obis.org/occurrence/${row.id}?dna=true&mof=true" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></a></td>`
+                    html += `<td><a href="/occurrence/${row.id}" target="_blank"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="black" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><path d="m21 21-4.35-4.35"></path></svg></a></td>`
                     for (const field of fields) {
                         if (field === 'dataset_id') {
                             html += `<td style='white-space:nowrap;'><a href="/dataset/${row[field]}" target="_blank">${row[field] ? row[field] : ''}</a></td>`;

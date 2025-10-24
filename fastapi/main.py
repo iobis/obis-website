@@ -7,6 +7,7 @@ from node import router as node_router
 from dataset import router as dataset_router
 from taxon import router as taxon_router
 from area import router as area_router
+from occurrence import router as occurrence_router
 from country import router as country_router
 from organization import router as organization_router
 from doi import router as doi_router
@@ -28,3 +29,4 @@ app.include_router(country_router, prefix="/country")
 app.include_router(organization_router, prefix="/organization")
 app.include_router(doi_router, prefix="/doi")
 app.include_router(export_router, prefix="/export")
+app.include_router(occurrence_router, prefix="/occurrence")
