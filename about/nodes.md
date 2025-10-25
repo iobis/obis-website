@@ -63,7 +63,7 @@ Regional OBIS Nodes (RONs) are organizations that have committed to continuing t
 
 Thematic OBIS Nodes are organizations that contribute data to OBIS, usually based on taxonomic groups rather than geographic regions.
 
-- [**Fish OBIS**](https://obis.org/2018/05/08/fishnode/) (Fish species)
+- [**Fish OBIS**](https://obis.org/node/dcb0c76d-46a1-4e07-9a69-98cf3fd67576) (Fish species)
 - [**HAB OBIS**](https://obis.org/node/33dec23c-af65-4fb1-a437-79543c562ef0) (Harmful Algal Blooms)
 - [**OBIS Deep Sea**](https://obis.org/node/6f3223e3-50a6-4ba5-b02c-0037ae3863ce) (Deep-sea ecosystems)
 - [**OBIS ISA**](https://obis.org/node/9d2d95be-32eb-4d81-8911-32cb8bc641c8) (International Seabed Authority)
