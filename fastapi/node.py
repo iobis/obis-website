@@ -26,7 +26,9 @@ async def node_page(request: Request, node_id: str):
         raise HTTPException(status_code=404, detail="Node not found")
 
     statistics = get_statistics({
-        "nodeid": node_id
+        "nodeid": node_id,
+        "dropped": "include",
+        "absence": "include"
     })
 
     quality_statistics = get_quality_statistics({

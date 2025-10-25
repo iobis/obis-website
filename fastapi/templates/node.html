@@ -2,72 +2,69 @@
 <script src="/assets/script.js"></script>
 
 <section class="section-dense pb-0">
-    <div class="container">
+  <div class="container">
 
-        <h1>{{ node.name }}</h1>
-        <p>
-            <a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
-            <a href="/explore?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
-        </p>
+      <h1>{{ node.name }}</h1>
+      <p>
+          <a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+          <a href="/explore?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+      </p>
 
-        <div class="mt-5 mb-3">
-            <ul class="nav nav-tabs" id="myTab" role="tablist">
-              <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
-              </li>
-              <li class="nav-item" role="presentation">
-                <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
-              </li>
-            </ul>
-          </div>    
-        </div>
-    </section>
+      <div class="mt-5 mb-3">
+          <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+              <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+            </li>
+            <li class="nav-item" role="presentation">
+              <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
+            </li>
+          </ul>
+        </div>    
+      </div>
+  </section>
 
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-      
-      
-        <section class="section-dense pt-0">
-            <div class="container">
-        
-            <p>{{ node.description }}</p>
+  <div class="tab-content" id="myTabContent">
+      <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 
-            <div class="row">
-                {% for contact in node.contacts %}
-                <div class="col-md-4">
-                    <p><b>{{ contact.givenname }} {{ contact.surname }}</b>
-                    <br/>{{ contact.email }}</p>
-                </div>
-                {% endfor %}
-            </div>
+<section class="section-dense pt-0">
+<div class="container">
 
-            <div class="row">
-                <div id="m"></div>
-            </div>
-        </div>
-    </section>
+<p>{{ node.description }}</p>
 
-    <section class="section-dense section-dark">
-        <div class="container">
-            <h2>Datasets</h2>
-            <div id="datasets"></div>
-        </div>
-    </section>
-
-    <section class="section-dense">
-        <div class="container">
-            <div class="row align-items-center">
-                <div class="col-12 col-md-6">
-                    <div id="timeplot"></div>
-                </div>
-                <div class="col-12 col-md-6">
-                    <div id="sunburst" style="height: 600px;"></div>
-                </div>
-            </div>
-        </div>
-    </section>
-
+<div class="row">
+{% for contact in node.contacts %}
+<div class="col-md-4">
+<p><b>{{ contact.givenname }} {{ contact.surname }}</b>
+<br/>{{ contact.email }}</p>
 </div>
+{% endfor %}
+</div>
+<div class="row">
+<div id="m"></div>
+</div>
+</div>
+</section>
+
+  <section class="section-dense section-dark">
+      <div class="container">
+          <h2>Datasets</h2>
+          <div id="datasets"></div>
+      </div>
+  </section>
+
+  <section class="section-dense">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-12 col-md-6">
+                  <div id="timeplot"></div>
+              </div>
+              <div class="col-12 col-md-6">
+                  <div id="sunburst" style="height: 600px;"></div>
+              </div>
+          </div>
+      </div>
+  </section>
+
 </div>
 
 <div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
@@ -95,9 +92,9 @@
               <td>
                 <div style="display: flex; align-items: center; gap: 0.5em;">
                   <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ stats.total / statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ stats.total / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <span>{{ (stats.total / statistics.Occurrence * 100)|round(1) }}%</span>
+                  <span>{{ (stats.total / statistics.records * 100)|round(1) }}%</span>
                 </div>
               </td>
             </tr>
@@ -140,9 +137,9 @@
               <td>
                 <div style="display: flex; align-items: center; gap: 0.5em;">
                   <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ records / statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                    <div class="progress-bar" role="progressbar" style="width: {{ records / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                   </div>
-                  <span>{{ (records / statistics.Occurrence * 100)|round(1) }}%</span>
+                  <span>{{ (records / statistics.records * 100)|round(1) }}%</span>
                 </div>
               </td>
             </tr>
@@ -158,6 +155,7 @@
     </div>
 
   </div>
+</div>
 
 <script>
 renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
