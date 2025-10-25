@@ -14,7 +14,7 @@ shell_templates = Jinja2Templates(directory="static")
 
 @router.get("/{occurrence_id}", response_class=HTMLResponse)
 async def occurrence(request: Request, occurrence_id: str):
-    url = f"https://api.obis.org/occurrence/{occurrence_id}?mof=true&dna=true"
+    url = f"https://api.obis.org/occurrence/{occurrence_id}?mof=true&dna=true&dropped=include"
     try:
         response = requests.get(url)
         response.raise_for_status()
