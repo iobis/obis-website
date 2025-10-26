@@ -14,6 +14,14 @@ plugins:
   - jekyll-feed
   - jekyll-get-json
   - jekyll-sitemap
+  - jekyll-paginate-v2
+
+pagination:
+  enabled: true
+  per_page: 12
+  permalink: '/page/:num/'
+  title: ' - page :num'
+  sort_reverse: true
 
 jekyll_get_json:
   - data: statistics
