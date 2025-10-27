@@ -54,7 +54,9 @@
   </a>
 </div>
 
+<script src="https://unpkg.com/@geomatico/maplibre-cog-protocol@0.5.0/dist/index.js"></script>
 <script>
+  maplibregl.addProtocol('cog', MaplibreCOGProtocol.cogProtocol);
   const map = new maplibregl.Map({
     container: 'headermap',
     style: {
@@ -89,7 +91,7 @@
         ]
     },
     center: [-50, 50],
-    zoom: 4,
+    zoom: 10,
     projection: 'mercator',
     attributionControl: false,
     scrollZoom: false,
@@ -100,33 +102,45 @@
       map.dragPan.enable();
   });
   map.on("load", function() {
-    map.addSource("occurrence", {
-        type: "vector",
-        tiles: [
-            "https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?scientificname=Gadus"
-        ],
-        scheme: "xyz"
+    // map.addSource("occurrence", {
+    //     type: "vector",
+    //     tiles: [
+    //         "https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?scientificname=Gadus"
+    //     ],
+    //     scheme: "xyz"
+    // });
+
+    // map.addLayer({
+    //     id: "obis-occurrence-layer",
+    //     type: "fill",
+    //     source: "occurrence",
+    //     "source-layer": "grid",
+    //     paint: {
+    //         "fill-color": [
+    //             "interpolate",
+    //             ["linear"],
+    //             ["get", "doc_count"],
+    //             0, "#2c7bb6",
+    //             10, "#abd9e9",
+    //             100, "#ffffbf",
+    //             1000, "#fdae61",
+    //             10000, "#d7191c"
+    //         ],
+    //         "fill-opacity": 0.3
+    //     }
+    //   });
+
+    map.addSource('imageSource', {
+      type: 'raster',
+      url: 'cog://http://localhost/images/151324.tif',
+      tileSize: 256
     });
 
     map.addLayer({
-        id: "obis-occurrence-layer",
-        type: "fill",
-        source: "occurrence",
-        "source-layer": "grid",
-        paint: {
-            "fill-color": [
-                "interpolate",
-                ["linear"],
-                ["get", "doc_count"],
-                0, "#2c7bb6",
-                10, "#abd9e9",
-                100, "#ffffbf",
-                1000, "#fdae61",
-                10000, "#d7191c"
-            ],
-            "fill-opacity": 0.3
-        }
-      });
+      id: 'imageLayer',
+      source: 'imageSource',
+      type: 'raster'
+    });
     });
 
 </script>
