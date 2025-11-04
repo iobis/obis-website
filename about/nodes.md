@@ -147,7 +147,7 @@ Thematic OBIS Nodes are organizations that contribute data to OBIS, usually base
         const name = props.name || 'OBIS Node';
         const url = props.url ? '<br/><a href="' + props.url + '" target="_blank" rel="noopener">Visit website</a>' : "";
 
-        const popup = new mapboxgl.Popup({ closeButton: false })
+        const popup = new maplibregl.Popup({ closeButton: false })
           .setHTML("<strong>" + name + "</strong>" + url);
 
         new maplibregl.Marker({ color: "#B1B695" })
