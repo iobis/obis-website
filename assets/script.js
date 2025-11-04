@@ -190,12 +190,19 @@ async function renderTimeplot(element, query) {
         startYear = minYear - 5;
     }
     
+    const filteredResults = results.filter(r => r.year >= startYear);
+    
+    if (filteredResults.length === 0) {
+        document.getElementById(element).innerHTML = '<div style="display: flex; align-items: center; justify-content: center; height: 350px;">No date information available</div>';
+        return;
+    }
+    
     const yearMap = new Map();
     for (let year = startYear; year <= endYear; year++) {
         yearMap.set(year, 0);
     }
     
-    results.filter(r => r.year >= startYear).forEach(r => yearMap.set(r.year, r.records));
+    filteredResults.forEach(r => yearMap.set(r.year, r.records));
     
     const data = [{
         type: 'bar',
@@ -219,7 +226,8 @@ async function renderTimeplot(element, query) {
                 text: 'Records',
                 standoff: 10
             },
-            fixedrange: true
+            fixedrange: true,
+            range: [0, null]
         },
         margin: {
             l: 50,
@@ -231,7 +239,7 @@ async function renderTimeplot(element, query) {
         height: 350
     };
 
-    Plotly.newPlot(element, data, layout, {
+    Plotly.newPlot(elementEl, data, layout, {
         responsive: true,
         displayModeBar: false
     });
