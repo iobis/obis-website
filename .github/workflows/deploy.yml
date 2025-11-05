@@ -1,0 +1,21 @@
+name: Deploy to server
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Install sshpass
+      run: sudo apt-get install sshpass
+
+    - name: Deploy
+      env:
+        SSH_USER: ${{ secrets.SSH_USER }}
+        SSH_PASSWORD: ${{ secrets.SSH_PASSWORD }}
+      run: |
+        sshpass -p "$SSH_PASSWORD" ssh -o StrictHostKeyChecking=no "$SSH_USER"@portal.obis.org 'bash ~/rebuild.sh'
