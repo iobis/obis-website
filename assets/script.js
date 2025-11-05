@@ -239,7 +239,7 @@ async function renderTimeplot(element, query) {
         height: 350
     };
 
-    Plotly.newPlot(elementEl, data, layout, {
+    Plotly.newPlot(document.getElementById(element), data, layout, {
         responsive: true,
         displayModeBar: false
     });
