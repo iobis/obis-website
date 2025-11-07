@@ -16,7 +16,6 @@ module Obis
     def generate(site)
       return unless build_enabled?(site)
 
-      # Load environment variables from .env file
       Dotenv.load
 
       cache_file = File.join(site.source, "_cache", "obis_subgroups_cache.json")
@@ -131,10 +130,13 @@ module Obis
         sg_id = sg["idGroup"]
         next nil if sg_id.nil?
         details = fetch_json(format(OE_BASE_URL, group_id: sg_id), auth_token)
+        members = extract_members(details)
+        sort_members!(members)
+
         {
           "idGroup" => details.fetch("idGroup", sg_id),
           "groupname" => details.fetch("groupname", sg["groupname"]),
-          "members" => extract_members(details)
+          "members" => members
         }
       end.compact
     end
@@ -160,6 +162,27 @@ module Obis
         g["description"] = node["description"]
         g["url"] = urls.is_a?(Array) ? (urls.first || nil) : urls
       end
+    end
+
+    def sort_members!(members)
+      sorted = members.each_with_index.sort_by do |member, idx|
+        role = member.fetch("groupRole", "")
+        normalized_role = role.to_s.downcase
+
+        priority = if normalized_role.include?("obis manager")
+          0
+        elsif normalized_role.include?("node manager")
+          1
+        elsif normalized_role.include?("manager")
+          2
+        else
+          3
+        end
+
+        [priority, idx]
+      end.map(&:first)
+
+      members.replace(sorted)
     end
 
     def prioritize_subgroup!(groups, target_id)
