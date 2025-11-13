@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A Digital Foundation for the BBNJ Agreement \- Potential contributions of OBIS to the implementation of the High Seas Treaty
+title: A Digital Foundation for the BBNJ Agreement - Potential contributions of OBIS to the implementation of the High Seas Treaty
 lang: en
 author: OBIS
 excerpt: Explore how OBIS, with its expertise, data and tools, can support the operationalization of the upcoming BBNJ Agreement  
@@ -11,7 +11,7 @@ purpose: news
 feed: true
 image: /images/OceanImageBank_MasayukiAgawa_thumb.jpg
 ---
-<img alt="Hammerhead sharks swimming" src="/OceanImageBank_MasayukiAgawa_main.jpg" style="width: 100%;">
+<img alt="Hammerhead sharks swimming" src="/images/OceanImageBank_MasayukiAgawa_main.jpg" style="width: 100%;">
 <i>Hammerhead sharks swimming. Photo: Masayuki Agawa / Ocean Image Bank</i>  
 <br><br>
 The "Agreement under the United Nations Convention on the Law of the Sea on the conservation and sustainable use of marine biological diversity of areas beyond national jurisdiction", commonly referred to as the BBNJ Agreement or the "High Seas Treaty", is a landmark international legal text that directly addresses biodiversity-related challenges in the high seas. A breakthrough for marine conservation, the treaty relies on an innovative structure, the Clearing-House Mechanism (CHM), for its operationalisation. The CHM serves as the central information hub of the BBNJ Agreement, bringing together initiatives that support the treaty and making it easier for countries, scientists, and other stakeholders to find, share, and access relevant data, information, and knowledge. In this article, we explore how OBIS is particularly well-positioned to support the BBNJ Agreement's transition to full operational capacity.
