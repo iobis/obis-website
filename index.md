@@ -46,7 +46,7 @@ layout: default
           </div>
 
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">{{ site.data.statistics.datasets }}</div>
+            <div class="display-5 fw-bold">{{ site.data.statistics.datasets | number_with_delimiter }}</div>
             <div>datasets</div>
           </div>
 
@@ -58,6 +58,11 @@ layout: default
           <div class="col-6 col-md-4 mb-4">
             <div class="display-5 fw-bold">{{ site.data.statistics.dna | divided_by: 1000000 }}M</div>
             <div>DNA sequences</div>
+          </div>
+
+          <div class="col-6 col-md-4 mb-4">
+            <div class="display-5 fw-bold">{{ site.data.statistics.mof | divided_by: 1000000 }}M</div>
+            <div>measurements and facts</div>
           </div>
 
           <div class="col-6 col-md-4 mb-4">
