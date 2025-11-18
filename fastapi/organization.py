@@ -4,6 +4,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 import requests
 import urllib
+from lib import get_statistics
 
 router = APIRouter()
 
@@ -24,8 +25,13 @@ async def organization_page(request: Request, organization_id: str):
         print(e)
         raise HTTPException(status_code=404, detail="Organization not found")
 
+    statistics = get_statistics({
+        "instituteid": organization_id
+    })
+
     block = templates.get_template("organization.html").render(
-        organization=organization
+        organization=organization,
+        statistics=statistics        
     )
 
     return shell_templates.TemplateResponse(

@@ -11,6 +11,33 @@
             <a href="/explore?instituteid={{ organization.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
         </p>
 
+        <div class="row mt-5">
+            <div class="col col-6 col-md-3 d-flex justify-content-center">
+                <div class="text-end">
+                    <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.records) }}</div>
+                    <div>occurrence records</div>
+                </div>
+            </div>
+            <div class="col col-6 col-md-3 d-flex justify-content-center">
+                <div class="text-end">
+                    <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
+                    <div>taxa</div>
+                </div>
+            </div>
+            <div class="col col-6 col-md-3 d-flex justify-content-center">
+                <div class="text-end">
+                    <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
+                    <div>species</div>
+                </div>
+            </div>
+            <div class="col col-6 col-md-3 d-flex justify-content-center">
+                <div class="text-end">
+                    <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.datasets) }}</div>
+                    <div>datasets</div>
+                </div>
+            </div>
+        </div>
+
         <div class="row">
             <div id="m"></div>
         </div>

@@ -2,164 +2,192 @@
 <script src="/assets/script.js"></script>
 
 <section class="section-dense pb-0">
-  <div class="container">
-
-      <h1>{{ node.name }}</h1>
-      <p>
-          <a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
-          <a href="/explore?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
-      </p>
-
-      <div class="mt-5 mb-3">
-          <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
-            </li>
-          </ul>
+    <div class="container">
+        
+        <h1>{{ node.name }}</h1>
+        <p>
+            <a href="https://mapper.obis.org?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+            <a href="/explore?nodeid={{ node.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+        </p>
+        
+        <div class="mt-5 mb-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
+                </li>
+            </ul>
         </div>    
-      </div>
-  </section>
-
-  <div class="tab-content" id="myTabContent">
-      <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-<section class="section-dense pt-0">
-<div class="container">
-
-<p>{{ node.description }}</p>
-
-<div class="row">
-{% for contact in node.contacts %}
-<div class="col-md-4">
-<p><b>{{ contact.givenname }} {{ contact.surname }}</b>
-<br/>{{ contact.email }}</p>
-</div>
-{% endfor %}
-</div>
-<div class="row">
-<div id="m"></div>
-</div>
-</div>
+    </div>
 </section>
 
-  <section class="section-dense section-dark">
-      <div class="container">
-          <h2>Datasets</h2>
-          <div id="datasets"></div>
-      </div>
-  </section>
-
-  <section class="section-dense">
-      <div class="container">
-          <div class="row align-items-center">
-              <div class="col-12 col-md-6">
-                  <div id="timeplot"></div>
-              </div>
-              <div class="col-12 col-md-6">
-                  <div id="sunburst" style="height: 600px;"></div>
-              </div>
-          </div>
-      </div>
-  </section>
-
-</div>
-
-<div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
-
-    <div class="container mb-5">
-      <div class="mb-4">
-        <h3>Missing and invalid fields</h3>
-
-        {% if quality_statistics.fields %}
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Field</th>
-              <th>Missing</th>
-              <th>Invalid</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for field, stats in quality_statistics.fields.items() %}
-            <tr>
-              <td>{{ field }}</td>
-              <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
-              <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
-              <td>
-                <div style="display: flex; align-items: center; gap: 0.5em;">
-                  <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ stats.total / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <span>{{ (stats.total / statistics.records * 100)|round(1) }}%</span>
+<div class="tab-content" id="myTabContent">
+    <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        
+        <section class="section-dense pt-0">
+            <div class="container">
+                
+                <div class="row">
+                    <div class="col col-md-8">
+                        
+                        <p>{{ node.description }}</p>
+                        
+                        <div class="row">
+                            {% for contact in node.contacts %}
+                            <div class="col-md-4">
+                                <p><b>{{ contact.givenname }} {{ contact.surname }}</b>
+                                    <br/>{{ contact.email }}
+                                </p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                            
+                    <div class="col col-md-4 mb-2">
+                        <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.records) }}</div>
+                                <div>occurrence records</div>
+                            </div>
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
+                                <div>taxa</div>
+                            </div>
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
+                                <div>species</div>
+                            </div>
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.datasets) }}</div>
+                                <div>datasets</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
-        <p>No missing or invalid fields.</p>
-        {% endif %}
-      </div>
-      <div>
-        <h3>Quality flags</h3>
-  
-        <p>The OBIS data quality flags are documented at <a href="https://github.com/iobis/obis-qc" target="_blank">https://github.com/iobis/obis-qc</a>.</p>
-  
-        {% if quality_statistics.flags %}
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Flag</th>
-              <th>Dropped</th>
-              <th>Records</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for flag, records in quality_statistics.flags.items() %}
-            <tr>
-              <td>{{ flag }}</td>
-              <td>
-                {% if flag in ['NO_COORD', 'NO_MATCH', 'NOT_MARINE', 'LAT_OUT_OF_RANGE', 'LON_OUT_OF_RANGE'] %}
-                  <i class="bi bi-check-lg"></i>
-                {% endif %}
-              </td>
-              <td>
-                <a href="/explore?dropped=include&absence=include&nodeid={{ node.id }}&flags={{ flag }}" target="_blank">
-                  {{ "{:0,.0f}".format(records) if records else "" }}
-                </a>
-              </td>
-              <td>
-                <div style="display: flex; align-items: center; gap: 0.5em;">
-                  <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ records / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <span>{{ (records / statistics.records * 100)|round(1) }}%</span>
+                        
+                <div class="row">
+                    <div id="m"></div>
                 </div>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
-        <p>No quality flags.</p>
-        {% endif %}
-  
-      </div>
-  
+            </div>
+        </section>
+                
+        <section class="section-dense section-dark">
+            <div class="container">
+                <h2>Datasets</h2>
+                <div id="datasets"></div>
+            </div>
+        </section>
+                
+        <section class="section-dense">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <div id="timeplot"></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div id="sunburst" style="height: 600px;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+                
     </div>
-
-  </div>
+            
+    <div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
+        
+        <div class="container mb-5">
+            <div class="mb-4">
+                <h3>Missing and invalid fields</h3>
+                
+                {% if quality_statistics.fields %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Field</th>
+                            <th>Missing</th>
+                            <th>Invalid</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for field, stats in quality_statistics.fields.items() %}
+                        <tr>
+                            <td>{{ field }}</td>
+                            <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
+                            <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.5em;">
+                                    <div class="progress" style="width: 200px;">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ stats.total / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span>{{ (stats.total / statistics.records * 100)|round(1) }}%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No missing or invalid fields.</p>
+                {% endif %}
+            </div>
+            <div>
+                <h3>Quality flags</h3>
+                
+                <p>The OBIS data quality flags are documented at <a href="https://github.com/iobis/obis-qc" target="_blank">https://github.com/iobis/obis-qc</a>.</p>
+                
+                {% if quality_statistics.flags %}
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Flag</th>
+                            <th>Dropped</th>
+                            <th>Records</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for flag, records in quality_statistics.flags.items() %}
+                        <tr>
+                            <td>{{ flag }}</td>
+                            <td>
+                                {% if flag in ['NO_COORD', 'NO_MATCH', 'NOT_MARINE', 'LAT_OUT_OF_RANGE', 'LON_OUT_OF_RANGE'] %}
+                                <i class="bi bi-check-lg"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="/explore?dropped=include&absence=include&nodeid={{ node.id }}&flags={{ flag }}" target="_blank">
+                                    {{ "{:0,.0f}".format(records) if records else "" }}
+                                </a>
+                            </td>
+                            <td>
+                                <div style="display: flex; align-items: center; gap: 0.5em;">
+                                    <div class="progress" style="width: 200px;">
+                                        <div class="progress-bar" role="progressbar" style="width: {{ records / statistics.records * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                    </div>
+                                    <span>{{ (records / statistics.records * 100)|round(1) }}%</span>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                <p>No quality flags.</p>
+                {% endif %}
+                
+            </div>
+            
+        </div>
+        
+    </div>
 </div>
 
 <script>
-renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
-renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
-renderMap("m", { nodeid: "{{ node.id }}" })
-renderTimeplot("timeplot", { nodeid: "{{ node.id }}" })
+    renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
+    renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
+    renderMap("m", { nodeid: "{{ node.id }}" })
+    renderTimeplot("timeplot", { nodeid: "{{ node.id }}" })
 </script>

@@ -4,265 +4,265 @@
 {{ jsonld }}
 
 <section class="section-dense pb-0">
-  <div class="container">
-      
-    <p>Dataset</p>
-    <h1>{{ dataset.title }}</h1>
-    <p>
-      {% for node in dataset.nodes %}
-      <a href="/node/{{ node.id }}"><span class="badge tag tag-node">{{ node.name }}</span></a>
-      {% endfor %}
-      {% if dataset.statistics.MeasurementOrFact %}
-      <span class="badge tag tag-mof">MeasurementOrFact</span>
-      {% endif %}
-      {% if dataset.statistics.DNADerivedData %}
-      <span class="badge tag tag-dna">DNADerivedData</span>
-      {% endif %}
-      {% if dataset.core == "taxon" %}
-      <span class="badge tag tag-taxon">Checklist</span>
-      {% endif %}
-      <a href="https://mapper.obis.org?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
-      <a href="/explore?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
-    </p>
-    <div class="mt-5 mb-3">
-      <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-          <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
-        </li>
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
-        </li>
-        {% if dataset.statistics.MeasurementOrFact %}
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="mof-tab" data-bs-toggle="tab" data-bs-target="#mof" type="button" role="tab" aria-controls="profile" aria-selected="false">Measurement types</button>
-        </li>
-        {% endif %}
-        {% if dataset.statistics.DNADerivedData %}
-        <li class="nav-item" role="presentation">
-          <button class="nav-link" id="dna-tab" data-bs-toggle="tab" data-bs-target="#dna" type="button" role="tab" aria-controls="profile" aria-selected="false">DNA derived data</button>
-        </li>
-        {% endif %}
-      </ul>
+    <div class="container">
+        
+        <p>Dataset</p>
+        <h1>{{ dataset.title }}</h1>
+        <p>
+            {% for node in dataset.nodes %}
+            <a href="/node/{{ node.id }}"><span class="badge tag tag-node">{{ node.name }}</span></a>
+            {% endfor %}
+            {% if dataset.statistics.MeasurementOrFact %}
+            <span class="badge tag tag-mof">MeasurementOrFact</span>
+            {% endif %}
+            {% if dataset.statistics.DNADerivedData %}
+            <span class="badge tag tag-dna">DNADerivedData</span>
+            {% endif %}
+            {% if dataset.core == "taxon" %}
+            <span class="badge tag tag-taxon">Checklist</span>
+            {% endif %}
+            <a href="https://mapper.obis.org?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
+            <a href="/explore?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+        </p>
+        <div class="mt-5 mb-3">
+            <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
+                </li>
+                {% if dataset.statistics.MeasurementOrFact %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="mof-tab" data-bs-toggle="tab" data-bs-target="#mof" type="button" role="tab" aria-controls="profile" aria-selected="false">Measurement types</button>
+                </li>
+                {% endif %}
+                {% if dataset.statistics.DNADerivedData %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="dna-tab" data-bs-toggle="tab" data-bs-target="#dna" type="button" role="tab" aria-controls="profile" aria-selected="false">DNA derived data</button>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        
     </div>
-
-  </div>
 </section>
 
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-
-    <div class="container mb-5">
-      
-      <div class="row">
-        <div class="col col-md-9">
-          <p>{{ dataset.abstract }}</p>
-
-          {% if dataset.citation %}
-          <p>Citation: <i>{{ dataset.citation }}</i></p>
-          {% endif %}
-
-          {% if dataset.published %}
-          <p>Published: {{ dataset.published | datetimeformat }}</p>
-          {% endif %}
-      
-          <p>URL: <a href="{{ dataset.url }}" target="_blank">{{ dataset.url }}</a></p>
-      
-          <div class="row">
-            {% for contact in dataset.clean_contacts %}
-              <div class="col-md-4">
-              <p><b>{{ contact.clean_name }}</b>
-              <br/>{% if contact.organization %}{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}{% endif %}</p>
-              </div>
-            {% endfor %}
-          </div>
-    
-        </div>
-        <div class="col col-md-3 mb-2">
-          <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
-            <div class="text-center text-md-end">
-              <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}</div>
-              <div>occurrence records</div>
-            </div>
-            {% if dataset.statistics.MeasurementOrFact %}
-            <div class="text-center text-md-end">
-              <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.MeasurementOrFact) }}</div>
-              <div>measurements and facts</div>
-            </div>
-            {% endif %}
-            {% if dataset.statistics.DNADerivedData %}
-            <div class="text-center text-md-end">
-              <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.DNADerivedData) }}</div>
-              <div>sequences</div>
-            </div>
-            {% endif %}
-            {% if statistics.taxa %}
-            <div class="text-center text-md-end">
-              <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
-              <div>taxa</div>
-            </div>
-            {% endif %}
-            {% if statistics.species %}
-            <div class="text-center text-md-end">
-              <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
-              <div>species</div>
-            </div>
-            {% endif %}
-          </div>
-        </div>
-      </div>
-  
-      {% if dataset.core != "taxon" %}
-      <div class="row">
-        <div id="m"></div>
-      </div>
-
-      <div class="row align-items-center">
-        <div class="col-12 col-md-6">
-          <div id="timeplot"></div>
-        </div>
-        <div class="col-12 col-md-6">
-          <div id="sunburst" style="height: 600px;"></div>
-        </div>
-      </div>
-      {% endif %}
-  
-    </div>
-
-    {% if dataset.core != "taxon" %}
-    <section class="section-dense section-dark">
-      <div class="container">
-        <div class="row">
-          <div class="col">
-            <h2>Taxa</h2>
-            <div id="taxa"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-    {% endif %}
-    
-  </div>
-
-  <div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
-
-    <div class="container mb-5">
-      <div class="mb-4">
-        <h3>Missing and invalid fields</h3>
-
-        {% if quality_statistics.fields %}
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Field</th>
-              <th>Missing</th>
-              <th>Invalid</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for field, stats in quality_statistics.fields.items() %}
-            <tr>
-              <td>{{ field }}</td>
-              <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
-              <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
-              <td>
-                <div style="display: flex; align-items: center; gap: 0.5em;">
-                  <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ stats.total / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <span>{{ (stats.total / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
+    <div class="tab-pane show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+        
+        <div class="container mb-5">
+            
+            <div class="row">
+                <div class="col col-md-9">
+                    <p>{{ dataset.abstract }}</p>
+                    
+                    {% if dataset.citation %}
+                    <p>Citation: <i>{{ dataset.citation }}</i></p>
+                    {% endif %}
+                    
+                    {% if dataset.published %}
+                    <p>Published: {{ dataset.published | datetimeformat }}</p>
+                    {% endif %}
+                    
+                    <p>URL: <a href="{{ dataset.url }}" target="_blank">{{ dataset.url }}</a></p>
+                    
+                    <div class="row">
+                        {% for contact in dataset.clean_contacts %}
+                        <div class="col-md-4">
+                            <p><b>{{ contact.clean_name }}</b>
+                                <br/>{% if contact.organization %}{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}{% endif %}</p>
+                            </div>
+                            {% endfor %}
+                        </div>
+                        
+                    </div>
+                    <div class="col col-md-3 mb-2">
+                        <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}</div>
+                                <div>occurrence records</div>
+                            </div>
+                            {% if dataset.statistics.MeasurementOrFact %}
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.MeasurementOrFact) }}</div>
+                                <div>measurements and facts</div>
+                            </div>
+                            {% endif %}
+                            {% if dataset.statistics.DNADerivedData %}
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.DNADerivedData) }}</div>
+                                <div>sequences</div>
+                            </div>
+                            {% endif %}
+                            {% if statistics.taxa %}
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
+                                <div>taxa</div>
+                            </div>
+                            {% endif %}
+                            {% if statistics.species %}
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
+                                <div>species</div>
+                            </div>
+                            {% endif %}
+                        </div>
+                    </div>
                 </div>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
-        <p>No missing or invalid fields.</p>
-        {% endif %}
-      </div>
-      <div>
-        <h3>Quality flags</h3>
-  
-        <p>The OBIS data quality flags are documented at <a href="https://github.com/iobis/obis-qc" target="_blank">https://github.com/iobis/obis-qc</a>.</p>
-  
-        {% if quality_statistics.flags %}
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Flag</th>
-              <th>Dropped</th>
-              <th>Records</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for flag, records in quality_statistics.flags.items() %}
-            <tr>
-              <td>{{ flag }}</td>
-              <td>
-                {% if flag in ['NO_COORD', 'NO_MATCH', 'NOT_MARINE', 'LAT_OUT_OF_RANGE', 'LON_OUT_OF_RANGE'] %}
-                  <i class="bi bi-check-lg"></i>
+                
+                {% if dataset.core != "taxon" %}
+                <div class="row">
+                    <div id="m"></div>
+                </div>
+                
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <div id="timeplot"></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <div id="sunburst" style="height: 600px;"></div>
+                    </div>
+                </div>
                 {% endif %}
-              </td>
-              <td>
-                <a href="/explore?dropped=include&absence=include&datasetid={{ dataset.id }}&flags={{ flag }}" target="_blank">
-                  {{ "{:0,.0f}".format(records) if records else "" }}
-                </a>
-              </td>
-              <td>
-                <div style="display: flex; align-items: center; gap: 0.5em;">
-                  <div class="progress" style="width: 200px;">
-                    <div class="progress-bar" role="progressbar" style="width: {{ records / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-                  </div>
-                  <span>{{ (records / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
+                
+            </div>
+            
+            {% if dataset.core != "taxon" %}
+            <section class="section-dense section-dark">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <h2>Taxa</h2>
+                            <div id="taxa"></div>
+                        </div>
+                    </div>
                 </div>
-              </td>
-            </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-        {% else %}
-        <p>No quality flags.</p>
+            </section>
+            {% endif %}
+            
+        </div>
+        
+        <div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
+            
+            <div class="container mb-5">
+                <div class="mb-4">
+                    <h3>Missing and invalid fields</h3>
+                    
+                    {% if quality_statistics.fields %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Field</th>
+                                <th>Missing</th>
+                                <th>Invalid</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for field, stats in quality_statistics.fields.items() %}
+                            <tr>
+                                <td>{{ field }}</td>
+                                <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
+                                <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5em;">
+                                        <div class="progress" style="width: 200px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{ stats.total / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span>{{ (stats.total / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No missing or invalid fields.</p>
+                    {% endif %}
+                </div>
+                <div>
+                    <h3>Quality flags</h3>
+                    
+                    <p>The OBIS data quality flags are documented at <a href="https://github.com/iobis/obis-qc" target="_blank">https://github.com/iobis/obis-qc</a>.</p>
+                    
+                    {% if quality_statistics.flags %}
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Flag</th>
+                                <th>Dropped</th>
+                                <th>Records</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for flag, records in quality_statistics.flags.items() %}
+                            <tr>
+                                <td>{{ flag }}</td>
+                                <td>
+                                    {% if flag in ['NO_COORD', 'NO_MATCH', 'NOT_MARINE', 'LAT_OUT_OF_RANGE', 'LON_OUT_OF_RANGE'] %}
+                                    <i class="bi bi-check-lg"></i>
+                                    {% endif %}
+                                </td>
+                                <td>
+                                    <a href="/explore?dropped=include&absence=include&datasetid={{ dataset.id }}&flags={{ flag }}" target="_blank">
+                                        {{ "{:0,.0f}".format(records) if records else "" }}
+                                    </a>
+                                </td>
+                                <td>
+                                    <div style="display: flex; align-items: center; gap: 0.5em;">
+                                        <div class="progress" style="width: 200px;">
+                                            <div class="progress-bar" role="progressbar" style="width: {{ records / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
+                                        </div>
+                                        <span>{{ (records / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
+                                    </div>
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                    {% else %}
+                    <p>No quality flags.</p>
+                    {% endif %}
+                    
+                </div>
+                
+            </div>
+            
+        </div>
+        
+        <div class="tab-pane" id="mof" role="tabpanel" aria-labelledby="mof-tab">
+            <div class="container mb-5">
+                <h3>Measurement types</h3>
+                <div id="mofs"></div>
+            </div>
+        </div>
+        
+        <div class="tab-pane" id="dna" role="tabpanel" aria-labelledby="dna-tab">
+            <div class="container mb-5">
+                <h3>DNA derived data</h3>
+                <div id="dnas"></div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        fetchTaxonomy({ datasetid: "{{ dataset.id }}" }).then(convertToSunburst).then((data) => {
+            var layout = {
+                margin: {l: 0, r: 0, b: 30, t: 30},
+                sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
+                // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
+            };
+            Plotly.newPlot("sunburst", data, layout);
+        });
+        renderMap("m", { datasetid: "{{ dataset.id }}" })
+        renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
+        renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
+        {% if dataset.statistics.MeasurementOrFact %}
+        renderMeasurementTypes("mofs", { datasetid: "{{ dataset.id }}" })
         {% endif %}
-  
-      </div>
-  
-    </div>
-
-  </div>
-
-  <div class="tab-pane" id="mof" role="tabpanel" aria-labelledby="mof-tab">
-    <div class="container mb-5">
-      <h3>Measurement types</h3>
-      <div id="mofs"></div>
-    </div>
-  </div>
-
-  <div class="tab-pane" id="dna" role="tabpanel" aria-labelledby="dna-tab">
-    <div class="container mb-5">
-      <h3>DNA derived data</h3>
-      <div id="dnas"></div>
-    </div>
-  </div>
-</div>
-
-<script>
-fetchTaxonomy({ datasetid: "{{ dataset.id }}" }).then(convertToSunburst).then((data) => {
-    var layout = {
-        margin: {l: 0, r: 0, b: 30, t: 30},
-        sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-        // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
-    };
-    Plotly.newPlot("sunburst", data, layout);
-});
-renderMap("m", { datasetid: "{{ dataset.id }}" })
-renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
-renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
-{% if dataset.statistics.MeasurementOrFact %}
-renderMeasurementTypes("mofs", { datasetid: "{{ dataset.id }}" })
-{% endif %}
-{% if dataset.statistics.DNADerivedData %}
-renderDNATable("dnas", { datasetid: "{{ dataset.id }}" })
-{% endif %}
-</script>
+        {% if dataset.statistics.DNADerivedData %}
+        renderDNATable("dnas", { datasetid: "{{ dataset.id }}" })
+        {% endif %}
+    </script>
