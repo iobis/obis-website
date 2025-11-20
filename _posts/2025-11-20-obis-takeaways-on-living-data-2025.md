@@ -1,6 +1,6 @@
 ---
 layout: post
-title: A look-back at Living Data 2025 through the OBIS lens \- Five takeaways on the future of biodiversity data
+title: A look-back at Living Data 2025 through the OBIS lens - Five takeaways on the future of biodiversity data
 lang: en
 author: OBIS
 excerpt: Get the OBIS perspective on Living Data 2025, complete key messages, takeaways, and full access to all OBIS-related recorded sessions.   
