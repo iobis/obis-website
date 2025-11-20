@@ -22,11 +22,15 @@ At a time when AI has become a powerful and ubiquitous buzzword, often stealing 
 Across the entire data cycle, from fieldwork to remote sensing and modelling, scientists worldwide collect, prepare, verify, and curate biodiversity data. Public participation and citizen engagement can further support these efforts. Humans are the origin, the enabling force, and one of the beneficiaries of the biodiversity data value chain. Scientists and citizens make data actionable for decision-makers whose choices influence the livelihoods and well-being of communities, professionals, and citizens. Ultimately, humans connect technology, data, science, and action, ensuring that knowledge-based impact benefits nature and people. 
 
 **Related OBIS sessions and presentations:**   
-→ *Community Engagement and Capacity Building for Increased Biodiversity Data Accessibility* ([Part 1](https://youtu.be/lp2mQVWBPD0) and [Part 2](https://youtu.be/XKZjB_HKoR0)) by Maheva Bagard Laursen, Katherine Tattersall (OBIS Co-Chair/OBIS Australia), Elizabeth Lawrence (OBIS Secretariat), and Mélianie Raymond  
-→  [*Building Capacity for Marine Biodiversity Data Sharing: Reflections from the Marine Biological Data Mobilization Workshops*](https://youtu.be/bFL6Wt6BKU4?t=1452) by Ana Carolina Peralta (OBIS Caribbean Node Manager), Jonathan Pye (OBIS Product Coordination Group Co-Chair), Tim van der Stap, Elizabeth Lawrence, Laura Brenskelle, Tylar Murray, Mathew Biddle (OBIS USA), and Stephen Formel (OBIS Secretariat)  
-→ [*The Power and Pitfalls of Civic Science*](https://youtu.be/6xv7y5TQxUg) by Dan Lear (OBIS Co-Chair/OBIS-UK), Ruben Perez Perez (OBIS Data Coordination Group Co-Chair), and Ely Wallis  
-→ *Globally Trusted Data for Ocean Conservation, Management and Biodiversity Action* by Ward Appeltans (Head of the OBIS Secretariat), Laurent Chmiel (OBIS Secretariat), Dan Lear, and Katherine Tattersall (video unavailable)  
-→ [*From Shore to Server: Connecting Marine Civic Science to Global Biodiversity Data through DASSH and OBIS-UK*](https://youtu.be/6xv7y5TQxUg?t=1212) *by* Chloe Figueroa Ashforth (OBIS-UK), Julie Bunt (OBIS-UK), Dan Lear
+→ *Community Engagement and Capacity Building for Increased Biodiversity Data Accessibility* ([Part 1](https://youtu.be/lp2mQVWBPD0) and [Part 2](https://youtu.be/XKZjB_HKoR0)) by Maheva Bagard Laursen, Katherine Tattersall (OBIS Co-Chair/OBIS Australia), Elizabeth Lawrence (OBIS Secretariat), and Mélianie Raymond
+
+→  [*Building Capacity for Marine Biodiversity Data Sharing: Reflections from the Marine Biological Data Mobilization Workshops*](https://youtu.be/bFL6Wt6BKU4?t=1452) by Ana Carolina Peralta (OBIS Caribbean Node Manager), Jonathan Pye (OBIS Product Coordination Group Co-Chair), Tim van der Stap, Elizabeth Lawrence, Laura Brenskelle, Tylar Murray, Mathew Biddle (OBIS USA), and Stephen Formel (OBIS Secretariat)
+
+→ [*The Power and Pitfalls of Civic Science*](https://youtu.be/6xv7y5TQxUg) by Dan Lear (OBIS Co-Chair/OBIS-UK), Ruben Perez Perez (OBIS Data Coordination Group Co-Chair), and Ely Wallis
+
+→ *Globally Trusted Data for Ocean Conservation, Management and Biodiversity Action* by Ward Appeltans (Head of the OBIS Secretariat), Laurent Chmiel (OBIS Secretariat), Dan Lear, and Katherine Tattersall (video unavailable)
+
+→ [*From Shore to Server: Connecting Marine Civic Science to Global Biodiversity Data through DASSH and OBIS-UK*](https://youtu.be/6xv7y5TQxUg?t=1212) by Chloe Figueroa Ashforth (OBIS-UK), Julie Bunt (OBIS-UK), Dan Lear
 
 ## **Takeaway \#2: Working together to accelerate data mobilization**
 
@@ -39,9 +43,12 @@ Cross-disciplinary collaborations also took a large space at Living Data 2025\. 
 Regional cooperation plays an equally crucial role in data mobilization: shared challenges, culture, and approaches encourage cooperation, driven by a common interest in finding solutions. At Living Data 2025, initiatives such as the OBIS Network for Latin America and the Caribbean (OBIS-LAC) and the EurOBIS & EMODnet Biology cooperation showed how they address specific local needs by lowering publication barriers, preventing data silos, and unlocking shelved datasets. Initiatives such as the [Marine Biological Data Mobilization Workshops](https://ioos.github.io/bio_mobilization_workshop/) further support regions in building the skills they need. Together, these efforts create coherent value chains, with solutions adapted to specific contexts, and illustrate how capacity development leads to data mobilization, crucially transforming local holders into global contributors.  
 
 **Related OBIS sessions and presentations:**   
-**→** *[OBIS Capacity Development Initiatives in light of the OBIS-GBIF Strategy*](https://youtu.be/lp2mQVWBPD0?t=2528) by Ana Carolina Peralta and Elizabeth Lawrence  
-→ [*A Global Ocean Biodiversity Observing System supporting governance framework implementation*](https://youtu.be/PuhKbhiv680) by Ward Appeltans (Head of the OBIS Secretariat), Andrew Rodrigues, Emma Heslop, Audrey Darnaude, Frank Muller-Karger  
+→ [*OBIS Capacity Development Initiatives in light of the OBIS-GBIF Strategy*](https://youtu.be/lp2mQVWBPD0?t=2528) by Ana Carolina Peralta and Elizabeth Lawrence
+
+→ [*A Global Ocean Biodiversity Observing System supporting governance framework implementation*](https://youtu.be/PuhKbhiv680) by Ward Appeltans (Head of the OBIS Secretariat), Andrew Rodrigues, Emma Heslop, Audrey Darnaude, Frank Muller-Karger
+
 → [*EurOBIS & EMODnet Biology as two of the driving forces behind marine biodiversity data capacity building within Europe*](https://youtu.be/lp2mQVWBPD0?t=3310) by Leen Vandepitte (EurOBIS Node Manager), Cyril Radermecker, Lynn Delgat, Joana Beja, Ruben Perez Perez  
+
 → [*Developing capacity through regional cooperation: how regional hubs enhance local scientific voices*](https://youtu.be/bFL6Wt6BKU4) by Laurent Chmiel  (OBIS Secretariat), Ana Carolina Peralta (OBIS Caribbean Node Manager), and Ruben Perez Perez, with added panelists Martha Vides Casado (OBIS Colombia) and Erika Montoya Cadavid (OBIS Colombia).   
 
 ## **Takeaway \#3: The need for trusted data to support action** 
@@ -52,12 +59,18 @@ Beyond trust, biodiversity data should provide contextual elements to better inf
 
 **Related OBIS sessions and presentations:**   
 → [*Enhancing Data Policy & Biodiversity Monitoring: Quality, Gap Analysis & Environmental Integration*](https://youtu.be/_mo4wRclBCs) by Clara Baringo Fonseca (OBIS Brazil), Keila Macfadem Juarez (OBIS Brazil), Silas C. Principe (OBIS Secretariat), Pieter Provoost, Maria Cornthwaite (OBIS Canada), and Jonathan Pye  
-**→** *[Beyond Species Occurrences: Harnessing eMoF Data for Marine Biodiversity Science*](https://youtu.be/Zgy1Kiy_gP0?t=35) by Elizabeth Lawrence and Silas C. Principe  
+→ [*Beyond Species Occurrences: Harnessing eMoF Data for Marine Biodiversity Science*](https://youtu.be/Zgy1Kiy_gP0?t=35) by Elizabeth Lawrence and Silas C. Principe
+
 → [*Linking species and habitat observations: Cross-Thematic Integration in EMODnet for Context-Enriched Marine Biodiversity Data*](https://youtu.be/Zgy1Kiy_gP0?t=740) by Ville Karvinen, Joana Beja, Leen Vandepitte, Ruben Perez Perez, Bart Vanhoorne, Graeme Duncan, Hellen Lillis, and Dan Lear  
-**→** *[Integrating (and increasing the use of) additional data types*](https://youtu.be/Zgy1Kiy_gP0) by Silas C. Principe, Elizabeth Lawrence, and Ruben Perez Perez  
+
+→ [*Integrating (and increasing the use of) additional data types*](https://youtu.be/Zgy1Kiy_gP0) by Silas C. Principe, Elizabeth Lawrence, and Ruben Perez Perez
+
 → [*Opening new frontiers with near-real time biological ocean data*](https://youtu.be/PuhKbhiv680?t=1857) by Jonathan Pye, Ian Jonsen, Clive McMahon, Ward Appeltans, Elizabeth Lawrence, Ana Lara-Lopez, Audrey Darnaude  
-**→** *[Ocean data application for biodiversity-inclusive Marine Spatial Planning*](https://youtu.be/PuhKbhiv680?t=3127) by Silas C. Principe, Pieter Provoost, Ward Appeltans, the MPA Europe team, Anna Addamo, and Mark Costello  
+
+→ [*Ocean data application for biodiversity-inclusive Marine Spatial Planning*](https://youtu.be/PuhKbhiv680?t=3127) by Silas C. Principe, Pieter Provoost, Ward Appeltans, the MPA Europe team, Anna Addamo, and Mark Costello  
+
 → [*Trust, Traceability & Transparency: Tackling biodiversity data provenance*](https://youtu.be/lz7SnZ9Ejx4) by Dan Lear, Elizabeth Lawrence, and Pieter Provoost (OBIS Secretariat)  
+
 → *Matching decision-making needs with actionable data products to drive biodiversity monitoring impact* by Steve Formel, Laurent Chmiel, and Silas Principe (video unavailable) 
 
 ## **Takeaway \#4: Innovation for radical impact** 
@@ -68,11 +81,16 @@ At the conference, OBIS showed that eDNA can accelerate the scale, frequency, ge
 
 **Related OBIS sessions and presentations:**   
 → [*A multi-evidence approach for flagging taxonomic misidentifications in marine eDNA metabarcoding datasets*](https://youtu.be/bCf2fTe9J_c?t=5377) by Pieter Provoost, Saara Suominen (OBIS Secretariat), Silas Principe, Ward Appeltans  
+
 → *Integrating DNA Reference Databases and Molecular Taxon Concepts in Biodiversity Databases* by Urmas Kõljalg, Emilie Boulanger (OBIS Secretariat), Tobias Frøslev, Rutger Vos, and Pieter Provoost  
 (video unavailable)   
+
 → [eDNA Expeditions \- Scaling Biodiversity Monitoring Globally Through Community Science](https://youtu.be/PuhKbhiv680?t=4416) by Saara Suominen, Pieter Provoost, Silas Principe, and Ward Appeltans  
+
 → [*From Observation to Impact: Co-created tools emphasize the role of data management in global biodiversity observing systems*](https://youtu.be/PuhKbhiv680?t=186) by Elizabeth Lawrence and Lina Mtwana Nordlund  
+
 → [*Improving data management strategies, sharing, and FAIRness of DNA-derived Biodiversity Data, Part 2*](https://youtu.be/bCf2fTe9J_c) (Part 1 is unavailable as video) by Saara Suominen and Erika Montoya Cadavid (OBIS Colombia)  
+
 → [*Bridging the Gap: Simplifying Metadata Flows with an EOV Application*](https://youtu.be/lz7SnZ9Ejx4?t=2013) by Elizabeth Lawrence
 
 
