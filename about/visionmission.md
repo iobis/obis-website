@@ -6,24 +6,34 @@ shorttitle: Vision and mission
 title: Vision and mission
 ---
 
-# Vision and mission
+# OBIS ision, mission and strategic objectives
 
 <script src="{{ site.baseurl }}/json/milestones.json"></script>
 <script src="{{ site.baseurl }}/assets/d3/d3.min.js"></script>
 <script src="{{ site.baseurl }}/js/timeline.js"></script> 
 
-**VISION** To be the most comprehensive gateway to the world’s ocean biodiversity and biogeographic data and information required to address pressing coastal and world ocean concerns.  
+## **Vision** 
+A global data ecosystem for marine biodiversity that is comprehensive, integrated, inclusive and accessible, enabling sustained ecosystem services for a healthy ocean.  
 
-**MISSION** To build and maintain a global alliance that collaborates with scientific communities to facilitate free and open access to, and application of, biodiversity and biogeographic data and information on marine life. 
+## **Mission** 
+Lead the coordination of effective marine biodiversity data mobilisation and deliver integrated, standardized high-quality data, information products and services to answer the needs of the global community.
+ 
 
 
-#### Objectives  
+## **Strategic objectives**  
+### **Objective I: Build a sustainable global marine biodiversity data infrastructure**
+→ Establish a highly accessible, scientifically trusted, fully integrated, and interoperable global data infrastructure that aligns with the IOC data architecture.
+→ Ensure adherence to international data standards and frameworks, respecting FAIR and CARE principles.
+→ Support sustained data flows and delivery of the Biology and Ecosystems Essential Ocean Variables (EOVs) of the Global Ocean Observing System (GOOS)
+→ Secure long-term archiving of marine biodiversity data and information, enabling seamless worldwide exchange and accessibility.
 
-  * Provide world’s largest scientific knowledge base on the diversity, distribution and abundance of all marine organisms in an integrated and standardized format (as a contribution to Aichi biodiversity target 19)
-  * Facilitate the integration of biogeographic information with physical and chemical environmental data, to facilitate climate change studies
-  * Contribute to a concerted global approach to marine biodiversity and ecosystem monitoring, through guidelines on standards and best practices, including globally agreed Essential Ocean Variables, observing plans, and indicators in collaboration with other IOC programs
-  * Support the assessment of the state of marine biological diversity to better inform policy makers, and respond to the needs of regional and global processes such as the UN World Ocean Assessment (WOA) and the Intergovernmental Science-Policy Platform on Biodiversity and Ecosystem Services (IPBES)
-  * Provide data, information and tools to support the identification of biologically important marine and coastal habitats for the development of marine spatial plans and other area-based management plans (e.g. for the identification of Ecologically or Biologically Significant marine Areas (EBSAs) under the Convention on Biological Diversity.
-  * Increase the institutional and professional capacity in marine biodiversity and ecosystem data collection, management, analysis and reporting tools, as part of IOC's Ocean Teacher Global Academy (OTGA)
-  * Provide information and guidance on the use of biodiversity data for education and research and provide state of the art services to society including decision makers
-  * Provide a global platform for international collaboration between national and regional marine biodiversity and ecosystem monitoring programmes, enhancing Member States and global contributions to inter alia, the Global Ocean Observing System (GOOS) and the Global Earth Observing System of Systems (GEOSS)
+### **Objective II: Support evidence-based ocean biodiversity policy**
+→ Support commitments to international biodiversity agreements by co-designing and aligning data, information products, and services with major policy frameworks (e.g., the Kunming-Montreal Global Biodiversity Framework and the BBNJ Agreement) and national, regional, and global assessments (e.g., UN World Ocean Assessment, IPBES, IOC StOR).
+
+### **Objective III: Deliver operational biodiversity data services**
+→ Deliver operational biodiversity data, information products, and services, including decision support tools, for monitoring, managing, and protecting marine ecosystems, multi-hazard early warning and mitigation systems, and Sustainable Ocean Planning and Management (SOPM).
+
+### **Objective IV: Empower communities through capacity development and collaboration**
+→ Ensure equitable capacity to collect, manage, publish, access, and use marine biodiversity data for all, through capacity development, innovation, and targeted community initiatives and strengthened collaboration.
+
+
