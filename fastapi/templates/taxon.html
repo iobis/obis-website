@@ -54,10 +54,10 @@
 <p>
     <a href="https://www.marinespecies.org/aphia.php?p=taxdetails&id={{ taxon.taxonID }}" target="_blank"><span class="badge tag tag-mof">WoRMS: {{ taxon.taxonID }}</span></a>
     {% if taxon.ncbi_id %}
-    <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi/wwwtax.cgi?mode=Info&id={{ taxon.taxonID }}" target="_blank"><span class="badge tag tag-mof">NCBI: {{ taxon.ncbi_id }}</span></a>
+    <a href="https://www.ncbi.nlm.nih.gov/Taxonomy/Browser/wwwtax.cgi/wwwtax.cgi?mode=Info&id={{ taxon.ncbi_id }}" target="_blank"><span class="badge tag tag-mof">NCBI: {{ taxon.ncbi_id }}</span></a>
     {% endif %}
     {% if taxon.bold_id %}
-    <a href="https://v3.boldsystems.org/index.php/Taxbrowser_Taxonpage?taxid={{ taxon.taxonID }}" target="_blank"><span class="badge tag tag-mof">BOLD: {{ taxon.bold_id }}</span></a>
+    <a href="https://v3.boldsystems.org/index.php/Taxbrowser_Taxonpage?taxid={{ taxon.bold_id }}" target="_blank"><span class="badge tag tag-mof">BOLD: {{ taxon.bold_id }}</span></a>
     {% endif %}
     <a href="https://mapper.obis.org?taxonid={{ taxon.taxonID }}" class="badge badge-mapper" target="blank">Open in mapper</a>
     <a href="/explore?taxonid={{ taxon.taxonID }}" class="badge badge-mapper" target="blank">Explore occurrences</a>

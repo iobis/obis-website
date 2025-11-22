@@ -46,4 +46,4 @@ async def area(request: Request, area_id: int):
         )
     except Exception as e:
         print(e)
-        raise HTTPException(status_code=404, detail="Area not found") 
+        raise HTTPException(status_code=404, detail="Area not found")
