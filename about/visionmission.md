@@ -1,10 +1,12 @@
 ---
 identifier: visionmission
 lang: en
-layout: post
+layout: page_narrow
 shorttitle: Vision and mission
 title: OBIS vision, mission, and strategic objectives
 ---
+
+# OBIS vision, mission, and strategic objectives
 
 ## **Vision** 
 A global data ecosystem for marine biodiversity that is comprehensive, integrated, inclusive and accessible, enabling sustained ecosystem services for a healthy ocean.  
