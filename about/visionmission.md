@@ -1,7 +1,7 @@
 ---
 identifier: visionmission
 lang: en
-layout: page
+layout: post
 shorttitle: Vision and mission
 title: Vision and mission
 ---
