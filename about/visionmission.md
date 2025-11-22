@@ -3,11 +3,8 @@ identifier: visionmission
 lang: en
 layout: post
 shorttitle: Vision and mission
-title: Vision and mission
+title: OBIS vision, mission, and strategic objectives
 ---
-
-# OBIS vision, mission, and strategic objectives
-
 <script src="{{ site.baseurl }}/json/milestones.json"></script>
 <script src="{{ site.baseurl }}/assets/d3/d3.min.js"></script>
 <script src="{{ site.baseurl }}/js/timeline.js"></script> 
