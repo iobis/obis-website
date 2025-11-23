@@ -1,7 +1,7 @@
 ---
 identifier: governance
 lang: en
-layout: page
+layout: narrow
 shorttitle: Governance
 title: Governance
 ---
