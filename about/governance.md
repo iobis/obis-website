@@ -10,15 +10,12 @@ title: Governance
 
 After the successful decade-long Census of Marine Life project, for which OBIS was the data and information dissemination component, OBIS found a new home when in June 2009, the Member States of IOC-UNESCO adopted OBIS as part of its IODE programme. The IOC-UNESCO Member States had repeatedly identified the need to acquire biogeographic data for ocean and coastal resource management and agreed that knowledge of the ocean’s biodiversity is of such importance to national and global environmental issues that the responsibility for OBIS’ continuing success should be assumed by governments. The information below provides information on how OBIS fits into the mandates from the United Nations, UNESCO and IOC, and provide links to the decisions and recommendations and the workplan which are developed as part of the OBIS steering group and IODE.
 
-#### OBIS in the United Nations
-
+## OBIS in the United Nations ecosystem
 The United Nations General Assembly (UNGA) recognizes OBIS for its contribution to Marine Scientific Research:
-
 * UNGA Resolution [A/RES/70/235](http://daccess-ods.un.org/access.nsf/Get?Open&DS=A/RES/70/235&Lang=E) paragraph 254 
 * UNGA Resolution [A/RES/69/245](http://daccess-ods.un.org/access.nsf/Get?Open&DS=A/RES/69/245&Lang=E) paragraph 247
 
-## United Nations Educational, Scientific and Cultural Organization (UNESCO)
-
+## OBIS and the United Nations Educational, Scientific and Cultural Organization (UNESCO)
 OBIS is part of [IOC's Medium-Term Strategy 2014-2021](http://unesdoc.unesco.org/images/0022/002282/228221m.pdf) adopted by IOC Resolution [XXVII-2](http://unesdoc.unesco.org/images/0022/002214/221456e.pdf) and UNESCO resolutions [37 C/5.21](http://unesdoc.unesco.org/images/0022/002261/226162e.pdf) and [38 C/5.17](http://unesdoc.unesco.org/images/0024/002433/243325e.pdf).
 
 OBIS contributes to UNESCO's 5th strategic objective and 3rd main line of action: **Promoting international scientific cooperation on critical challenges to sustainable development**, and specfically part (ii) promote the generation and sharing of knowledge in relation to natural resources, and capacity building through international scientific collaboration for *the protection and sustainable management of the ocean and coasts*, terrestrial ecosystems, *biodiversity*, freshwater security and the rational management of the Earth’s geological resources. Implementation will include, inter alia, the coordination of monitoring activities, the production of scientific assessments, catalyzing international collaborative projects, capacity-building, and the designation of site-specific examples of sustainable development. UNESCO's Main line of action 3 is about **Promoting knowledge and capacity for protecting and sustainably managing the ocean and coasts** through:
@@ -27,7 +24,7 @@ OBIS contributes to UNESCO's 5th strategic objective and 3rd main line of action
 * Risks and impacts of ocean-related hazard reduced, climate change adaptation and mitigation measures taken, and policies for healthy ocean ecosystems developed and implemented by Member States;
 * Member States’ institutional capacities reinforced to *protect and sustainably manage ocean and coastal resources*.
 
-## Intergovernmental Oceanographic Commission (IOC) of UNESCO
+## OBIS and the Intergovernmental Oceanographic Commission (IOC) of UNESCO
 
 The [Intergovernmental Oceanographic Commission](http://ioc.unesco.org) (IOC) of UNESCO was created in 1960 to promote international cooperation and to coordinate programmes in research, services and capacity building, in order to generate knowledge about the nature and resources of the ocean and coastal areas; and to apply that knowledge for the improvement of management, sustainable development, the protection of the marine environment, and the decision-making processes of its Member States. It is at the heart of IOC's vision that scientific understanding and systematic observations of the ocean should underpin sustainable development and global governance for a healthy ocean.
 
@@ -36,18 +33,15 @@ IOC is a competent international organization under the UN Convention on the Law
 The recommendations from IODE are submitted to the IOC Assembly for adoption.
 
 IOC Decisions related to OBIS:
-
 * [IOC-XXVIII/Dec.7.2.1](/about/ioc-28): Expresses its appreciation to the UNESCO Director-General for establishing a regular programme position for OBIS (shared with GOOS Biology) in March 2015 (June 2015)
 * [IOC-XXVIII/Dec.6.1](/about/ioc-28-ipbes): Encourages the increased participation of IOC in the work of the IPBES through OBIS and other relevant IOC programmes (June 2015)
 * [IOC-XXVII/Dec.5.3.4.1](/about/ioc-27): Calls to support OBIS as part of the Regular Programme (June 2013)
 * [IOC-XXV-4](/about/ioc-25): adoption of OBIS by IOC (June 2009)
 
-## International Oceanographic Data and Information Exchange (IODE)
-
+## OBIS and the International Oceanographic Data and Information Exchange (IODE)
 OBIS is a project of the [International Oceanographic Data and Information Exchange](http://www.iode.org) (IODE) programme. IODE, established in 1961, enhances marine research, exploitation and development by facilitating the exchange of oceanographic data and information between participating Member States and by meeting the needs of users for data and information products. 
 
 The objectives of IODE are:
-
 *	to facilitate and promote the exchange of all marine data and information including metadata, products and information in real-time, near real time and delayed mode;
 *	to ensure the long term archival, management and services of all marine data and information;
 *	to promote the use of international standards, and develop or help in the development of standards and methods for the global exchange of marine data and information, using the most appropriate information management and information technology;
@@ -65,7 +59,8 @@ IODE Recommendations related to OBIS:
 The SG-OBIS has an advising role to the IODE Committee on OBIS’s vision and mission, and its strategy for sustainability and further development (including assisting with seeking funding). The SG-OBIS prepares, for submission to the IODE committee, OBIS’ workplan, reviews progress and guides and identifies any technical or scientific issues as relevant to the implementation of the work plan. The SG-OBIS has established several (long-term) Task Teams and (shorter-term ad-hoc) Project Teams to share responsibilities between members of the OBIS community. The SG-OBIS is composed of the [managers of the OBIS Nodes](/contact) and meets once per year.
 
 SG-OBIS recommendations and decisions:
-
+* [SG-OBIS-XII](https://obis.org/2024/05/30/sgobis12/) (March 2024)
+* [SG-OBIS-XI](https://obis.org/2023/06/01/sgobis11/) (May 2023)
 * [SG-OBIS-X](https://obis.org/2022/06/03/sgobis10/) (May 2022)
 * [SG-OBIS interim meeting](https://obis.org/2021/07/01/obisec4/) (May 2021)
 * [SG-OBIS-IX](https://obis.org/2020/12/14/sgobis9/) (November 2020)
