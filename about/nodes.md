@@ -9,7 +9,7 @@ custom_js:
 - assets/bootstrap3-typeahead.min.js
 identifier: nodes
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Nodes
 title: OBIS Nodes
 ---
