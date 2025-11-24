@@ -16,9 +16,9 @@ Lead the coordination of effective marine biodiversity data mobilisation and del
 
 ## **Strategic objectives**  
 #### **Objective I: Build a sustainable global marine biodiversity data infrastructure**
-→ Establish a highly accessible, scientifically trusted, fully integrated, and interoperable global data infrastructure that aligns with the IOC data architecture.
-→ Ensure adherence to international data standards and frameworks, respecting FAIR and CARE principles.
-→ Support sustained data flows and delivery of the Biology and Ecosystems Essential Ocean Variables (EOVs) of the Global Ocean Observing System (GOOS)
+→ Establish a highly accessible, scientifically trusted, fully integrated, and interoperable global data infrastructure that aligns with the IOC data architecture.  
+→ Ensure adherence to international data standards and frameworks, respecting FAIR and CARE principles.  
+→ Support sustained data flows and delivery of the Biology and Ecosystems Essential Ocean Variables (EOVs) of the Global Ocean Observing System (GOOS)  
 → Secure long-term archiving of marine biodiversity data and information, enabling seamless worldwide exchange and accessibility.
 
 #### **Objective II: Support evidence-based ocean biodiversity policy**
