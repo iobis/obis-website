@@ -5,9 +5,8 @@ lang: en
 author: OBIS
 excerpt: This release contributes to providing a more equitable access to OBIS data and marine biodiversity information around the world.
 tags: 
-- actionable data
 - Parquet
-- full OBIS occurrence dataset
+- DTO-BioFlow 
 - DuckDB
 - tutorial
 purpose: news
