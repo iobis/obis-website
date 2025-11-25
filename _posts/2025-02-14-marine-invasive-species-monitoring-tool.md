@@ -12,7 +12,7 @@ tags:
 - community
 - capacity development
 - IODC-III
-- Policy
+- PacMAN
 title: PacMAN by OBIS - A transposable sea-to-screen framework to fight marine biorisk
 ---
 
