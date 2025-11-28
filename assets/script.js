@@ -1181,6 +1181,31 @@ function renderMap(element, filter) {
                         "line-width": 0.2,
                         "line-opacity": 0.33
                     }
+                },
+                {
+                    id: "contour-labels",
+                    type: "symbol",
+                    source: "gebco_filtered",
+                    "source-layer": "gebco_filtered",
+                    minzoom: 6,
+                    layout: {
+                        "text-field": ["to-string", ["abs", ["get", "DEPTH"]]],
+                        "text-font": ["Open Sans Regular", "Arial Unicode MS Regular"],
+                        "text-size": 10,
+                        "symbol-placement": "line",
+                        "symbol-spacing": 100,
+                        "text-rotation-alignment": "map",
+                        "text-pitch-alignment": "viewport",
+                        "text-allow-overlap": false,
+                        "text-ignore-placement": false,
+                        "text-optional": false
+                    },
+                    paint: {
+                        "text-color": "#044062",
+                        "text-halo-color": "#ffffff",
+                        "text-halo-width": 1.5,
+                        "text-halo-blur": 1
+                    }
                 }
                 // {
                 //     id: "coastlines",
