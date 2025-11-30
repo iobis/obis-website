@@ -30,7 +30,7 @@ You can use the Regional and OBIS Thematic Nodes lists below or scroll down to o
 Regional OBIS Nodes (RONs) are organizations that have committed to continuing to support OBIS within a geographic and/or national region using resources they have obtained. This includes serving data online and developing a data provider and end-user community. Some RONs provide tools and different language versions of the OBIS website.
 
 - [**AfrOBIS**](/node/14fc439c-707d-41d6-a3d4-b9d2696205fe) (Sub-Saharan Africa)
-- [**Antartic OBIS**](/node/dc6c6ea2-83f5-4b18-985a-9efff6320d69) (Antarctic)
+- [**Antarctic OBIS**](/node/dc6c6ea2-83f5-4b18-985a-9efff6320d69) (Antarctic)
 - [**Arctic OBIS**](/node/da50007b-7871-46cf-8530-441b5836d2c1) (Arctic)
 - [**Caribbean OBIS**](/node/8385435b-bcf5-4bec-b827-8b480163d479) (Caribbean)
 - [**ESP OBIS**](/node/fd3a5df5-6a6f-46ca-a9c6-e61896a3f355) (Tropical and Subtropical Eastern South Pacific)
