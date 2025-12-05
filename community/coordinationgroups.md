@@ -31,7 +31,7 @@ Its responsibilities include:
 
 ## OBIS Data Coordination Group (DCG)
 
-Co-chair: [Ruber Perez](https://marineinfo.org/imis?module=person&persid=36274)
+Co-chair: [Rubén Pérez Pérez](https://marineinfo.org/imis?module=person&persid=36274)
 Co-chairs *ad interim*: [Dan Lear](https://oceanexpert.org/expert/23316) and [Katherine Tattersall](https://oceanexpert.org/expert/35925) 
 
 The Data Coordination Group aims to ensure the quality, interoperability, and alignment of OBIS data with global biodiversity and ocean observing standards and support Nodes in publishing high-quality, standardized marine biodiversity data. 
