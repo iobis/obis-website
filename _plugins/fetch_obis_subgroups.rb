@@ -8,7 +8,7 @@ module Obis
   class FetchObisSubgroups < Jekyll::Generator
     priority :normal
 
-    OE_ROOT_ID = 386
+    OE_ROOT_IDS = [386, 503, 538]
     OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json"
     OE_LOGIN_URL = "https://oceanexpert.org/api/login_check"
     OBIS_NODES_URL = "https://api.obis.org/node"
@@ -30,21 +30,41 @@ module Obis
       Jekyll.logger.info("OBIS", "Authenticating with OceanExpert...")
       auth_token = authenticate_with_oceanexpert(site)
       
-      Jekyll.logger.info("OBIS", "Fetching OceanExpert groups...")
-      oe_root = fetch_json(format(OE_BASE_URL, group_id: OE_ROOT_ID), auth_token)
-      subgroups = build_subgroups_with_members(oe_root, auth_token)
       Jekyll.logger.info("OBIS", "Fetching OBIS nodes metadata...")
       obis_nodes = fetch_json(OBIS_NODES_URL)
       name_to_node = map_nodes_by_name(obis_nodes)
 
-      prioritize_subgroup!(subgroups, 432)
-      enrich_with_obis_metadata!(subgroups, name_to_node)
+      Jekyll.logger.info("OBIS", "Fetching OceanExpert groups...")
+      all_groups_data = {}
+      
+      OE_ROOT_IDS.each do |root_id|
+        begin
+          Jekyll.logger.info("OBIS", "Processing group #{root_id}...")
+          oe_root = fetch_json(format(OE_BASE_URL, group_id: root_id), auth_token)
+          
+          if root_id == 386
+            # For group 386, fetch subgroups with members
+            subgroups = build_subgroups_with_members(oe_root, auth_token)
+            prioritize_subgroup!(subgroups, 432)
+            enrich_with_obis_metadata!(subgroups, name_to_node)
+            all_groups_data[root_id.to_s] = subgroups
+          else
+            # For groups 503 and 538, fetch only members
+            members = extract_members(oe_root)
+            sort_members!(members)
+            all_groups_data[root_id.to_s] = members
+          end
+        rescue => e
+          Jekyll.logger.warn("OBIS", "Failed to process group #{root_id}: #{e.class}: #{e.message}")
+          all_groups_data[root_id.to_s] = []
+        end
+      end
 
       FileUtils.mkdir_p(File.dirname(cache_file))
-      File.write(cache_file, JSON.pretty_generate(subgroups))
+      File.write(cache_file, JSON.pretty_generate(all_groups_data))
       Jekyll.logger.info("OBIS", "Cached subgroups data to #{cache_file}")
 
-      site.data["obis_subgroups"] = subgroups
+      site.data["obis_subgroups"] = all_groups_data
     rescue => e
       Jekyll.logger.warn("OBIS", "Failed to fetch OceanExpert groups: #{e.class}: #{e.message}")
     end
@@ -120,8 +140,18 @@ module Obis
     end
 
     def extract_members(group_json)
-      members = group_json.fetch("members", {}) || {}
-      members.values
+      members = group_json["members"]
+      return [] if members.nil?
+      
+      # Members can be a hash (object) or already an array
+      if members.is_a?(Hash)
+        # Convert hash to array of values, filtering out any nil values
+        members.values.compact
+      elsif members.is_a?(Array)
+        members.compact
+      else
+        []
+      end
     end
 
     def build_subgroups_with_members(root_group_json, auth_token = nil)

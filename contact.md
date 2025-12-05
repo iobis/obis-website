@@ -10,7 +10,7 @@ permalink: /contact/
 
 <p>For general enquiries and technical questions, contact the OBIS Secretariat at <a href="mailto:helpdesk@obis.org">helpdesk@obis.org</a>.</p>
 
-{% assign nodes = site.data.obis_subgroups %}
+{% assign nodes = site.data.obis_subgroups['386'] %}
 {% for node in nodes %}
   <section class="section-superdense">
     <h4 class="nodename">{{ node.groupname }}</h4>
