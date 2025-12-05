@@ -14,7 +14,7 @@ Consolidated around dedicated work plans, each Coordination Group addresses shar
 
 The OBIS Coordination Groups reflect the collective engagement sustaining the OBIS Community to advance Ocean knowledge and support informed marine conservation decision-making.
 
-**OBIS Nodes Coordination Group (NCG)**
+## OBIS Nodes Coordination Group (NCG)
 
 Co-chairs: [Maria Cornwaithe](https://www.geds-sage.gc.ca/en/GEDS/?pgid=015&dn=Q049Q09STlRIV0FJVEVcMkMgTUFSSUEsT1U9RkFELUZBRCxPVT1TVEFSLVNUQVIsT1U9U0NJLVNDSSxPVT1SREctREdSLE9VPVJFR1BBQy1SRUdQQUMsT1U9RE0tU00sT1U9REZPLU1QTyxPPUdDLEM9Q0E=) and [John Nicholls](https://oceanexpert.org/expert/27029)
 
@@ -29,7 +29,7 @@ Its responsibilities include:
 * Capture and share success stories and community updates.
 * Maintain shared resources and FAQs, and coordinate with the PCG and DCG.
 
-**OBIS Data Coordination Group (DCG)**
+## OBIS Data Coordination Group (DCG)
 
 Co-chair: [Ruber Perez](https://marineinfo.org/imis?module=person&persid=36274)
 Co-chairs *ad interim*: [Dan Lear](https://oceanexpert.org/expert/23316) and [Katherine Tattersall](https://oceanexpert.org/expert/35925) 
@@ -55,7 +55,7 @@ Membership:
 {% endfor %}
 </ul>
 
-**OBIS Product Coordination Group (PCG)**
+## OBIS Product Coordination Group (PCG)
 
 Co-chairs: [Stephen Formel](https://oceanexpert.org/expert/54167) and [Jon Pye](https://oceantrackingnetwork.org/staff/) 
 
@@ -69,6 +69,8 @@ Its responsibilities include:
 * Coordinate product-related efforts among Nodes, partners (e.g., GOOS, GBIF), and users.
 * Support early warning systems, synthesis groups, and validation by experts and local communities.
 * Align product quality control procedures and support the development of analytical tools (e.g., JupyterHub, R packages).
+
+Membership:
 
 <ul>
 {% assign dcg_members = site.data.obis_subgroups['503'] %}
