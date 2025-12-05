@@ -51,7 +51,7 @@ module Obis
           else
             # For groups 503 and 538, fetch only members
             members = extract_members(oe_root)
-            sort_members!(members)
+            sort_members_by_last_name!(members)
             all_groups_data[root_id.to_s] = members
           end
         rescue => e
@@ -211,6 +211,16 @@ module Obis
 
         [priority, idx]
       end.map(&:first)
+
+      members.replace(sorted)
+    end
+
+    def sort_members_by_last_name!(members)
+      return if members.nil? || members.empty?
+      
+      sorted = members.sort_by do |member|
+        member.fetch("lname", "").to_s.downcase
+      end
 
       members.replace(sorted)
     end
