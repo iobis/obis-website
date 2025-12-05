@@ -121,6 +121,12 @@ async function loadRecentDatasets() {
       const card = document.createElement("div");
       card.className = "col";
 
+      const nodeBadges = dataset.nodes && dataset.nodes.length > 0
+        ? dataset.nodes.map(node => 
+            `<a href="/node/${node.id}"><span class="badge tag">${node.name}</span></a>`
+          ).join(' ')
+        : '';
+
       card.innerHTML = `
       <div class="card">
         <div class="card-body">
@@ -128,6 +134,7 @@ async function loadRecentDatasets() {
             <a href="/dataset/${dataset.id}">${dataset.title}</a>
           </h5>
           <p class="card-text">${formatDate(dataset.published)}</p>
+          ${nodeBadges ? `<p>${nodeBadges}</p>` : ''}
           <p class="card-text">${truncateText(dataset.abstract, 500)}</p>
         </div>
       </div>
