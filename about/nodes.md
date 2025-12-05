@@ -14,8 +14,8 @@ shorttitle: Nodes
 title: OBIS Nodes
 ---
 
-<script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
-<link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+<script src="/assets/maplibre-gl.js"></script>
+<link href="/assets/maplibre-gl.css" rel="stylesheet" />
 
 # OBIS Nodes
 

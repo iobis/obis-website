@@ -15,11 +15,8 @@ layout: default
 
 <section class="section-light">
   <div class="container">
-    <h2>Use cases</h2>
-    {% assign filtered_usecases = site.usecases | sort: 'date' | reverse %}
-    {% include usecase_cards.html filtered_usecases=filtered_usecases limit=6 %}
-    <p><a href="/usecases">Read more use cases here</a></p>
-
+    <h2>Recent datasets</h2>
+    <div id="datasets" class="row row-cols-1 row-cols-md-3 g-4"></div>
   </div>
 </section>
 
@@ -85,8 +82,11 @@ layout: default
 
 <section class="section-light">
   <div class="container">
-    <h2>Recent datasets</h2>
-    <div id="datasets" class="row row-cols-1 row-cols-md-3 g-4"></div>
+    <h2>Use cases</h2>
+    {% assign filtered_usecases = site.usecases | sort: 'date' | reverse %}
+    {% include usecase_cards.html filtered_usecases=filtered_usecases limit=6 %}
+    <p><a href="/usecases">Read more use cases here</a></p>
+
   </div>
 </section>
 

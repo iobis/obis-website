@@ -3,8 +3,8 @@ layout: page
 title: Explore
 ---
 
-<script src='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.js'></script>
-<link href='https://unpkg.com/maplibre-gl@latest/dist/maplibre-gl.css' rel='stylesheet' />
+<script src="/assets/maplibre-gl.js"></script>
+<link href="/assets/maplibre-gl.css" rel="stylesheet" />
 <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
 <script src="/assets/script.js"></script>
 
