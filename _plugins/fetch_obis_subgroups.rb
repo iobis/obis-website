@@ -9,7 +9,7 @@ module Obis
     priority :normal
 
     OE_ROOT_IDS = [386, 503, 538]
-    OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json"
+    OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json?limit=1000"
     OE_LOGIN_URL = "https://oceanexpert.org/api/login_check"
     OBIS_NODES_URL = "https://api.obis.org/node"
 
