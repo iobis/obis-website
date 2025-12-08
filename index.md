@@ -48,7 +48,7 @@ layout: default
           </div>
 
           <div class="col-6 col-md-4 mb-4">
-            <div class="display-5 fw-bold">{{ site.data.obis_subgroups.size }}</div>
+            <div class="display-5 fw-bold">{{ site.data.obis_subgroups['386'].size }}</div>
             <div>nodes worldwide</div>
           </div>
 
