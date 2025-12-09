@@ -8,6 +8,14 @@ title: OBIS vision, mission, and strategic objectives
 
 # OBIS vision, mission, and strategic objectives
 
+Operating under the <a href="https://www.ioc.unesco.org/en" target="_blank">Intergovernmental Oceanographic Commission</a> (IOC) of UNESCO, the Ocean Biodiversity Information System (OBIS) is the world's largest global open-access infrastructure for marine biodiversity data supported by a community of 36 Nodes and over 6000 contributors worldwide. We deliver interoperable, accessible, high-quality marine biodiversity data and fit-for-purpose, innovative services to support science, policy, and society. Our data and services contribute to global conservation frameworks and allow countries to build biodiversity baselines, meet their assessment and reporting needs, and support marine planning and management.
+
+We are involved at each step of the marine life data value chain, from local data mobilization and capacity development to standardization, quality control, and integration. We empower local data holders to become global marine life data contributors and make sure that, through our inclusive governance model, all voices of our community are represented and can participate. 
+
+We are dedicated to providing the knowledge that enables the protection of life in the ocean. 
+Because every species counts. 
+
+
 ## **Vision** 
 A global data ecosystem for marine biodiversity that is comprehensive, integrated, inclusive and accessible, enabling sustained ecosystem services for a healthy ocean.  
 
