@@ -18,13 +18,13 @@ During Phase I of the project (2022–2024), over 250 young citizen scientists f
 
 Building on this success, Phase II will run from 2026 to 2028\. This second phase shifts from a single global campaign to a longer-term monitoring effort. The project includes capacity development in biomolecular sampling, the possibility to involve local communities in the sampling events, and a rapid information loop that brings results directly back to each site to support any monitoring, management, and conservation needs.
 
-**How the project works**
+##  **How the project works**
 
 Selected sites will receive full technical support to run repeated eDNA surveys over the three years of the project. OBIS will provide the sampling kits and online training to guide participants step-by-step. Sampling follows a protocol that allows anyone, from experts to non-scientists, to collect scientifically valid material. All samples will be processed at a specialized biomolecular laboratory, which will generate site-specific curated species lists and biodiversity assessments. Analyses use a “tree-of-life” workflow capable of detecting biodiversity across domains, from microbes to megafauna.
 
 From these outputs, the OBIS team will build an interactive dashboard, similar to the [ones](https://dashboard.ednaexpeditions.org/) developed during Phase I, to help sites explore their results. Beyond the dashboard, OBIS will work jointly with participating sites to identify monitoring priorities and co-develop indicators that respond to local management and policy needs. All resulting data will be openly shared through OBIS in accordance with FAIR principles, contributing to advancing science and supporting policy at multiple scales.
 
-## 
+
 
 ## **What we ask from participating sites**
 
@@ -32,9 +32,6 @@ To get the most out of the project, the selected sites will need to be able to c
 
 The project team will handle everything else, including supplying eDNA sampling kits, processing samples, sequencing, building dashboards, and supporting data interpretation.
 
-## 
-
-## 
 
 ## **Interested in joining? Here is how to apply\!**
 
