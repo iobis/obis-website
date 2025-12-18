@@ -85,7 +85,7 @@ The dataset was originally a simple occurrence table published in 2008\. It then
 **Yi-Ming Gan:** Engaging with OBIS helped me grow professionally. Chairing the Data Quality Assessment and Enhancement Project Team, now the OBIS Data Coordination Group, pushed me to deepen my technical knowledge on data and formats, and gave me the confidence to take on leadership roles. Thanks to that experience, I can now give back and help the Community. 
 
 <br><br>
-<img alt="Sunset in de Weddell Sea during EWOS expedition Onboard FS Polarstern, 2022. Photo: ©Anton Van de Putte" src="/images/Antarctic_OBIS_composite.jpg" style="width: 100%;">
+<img alt="Sunset in de Weddell Sea during EWOS expedition Onboard FS Polarstern, 2022. Photo: ©Anton Van de Putte" src="/images/20220411_184808.jpg" style="width: 100%;">
 <i>Sunset in de Weddell Sea during EWOS expedition Onboard FS Polarstern, 2022. Photo: ©Anton Van de Putte</i>  
 
 <br><br>
