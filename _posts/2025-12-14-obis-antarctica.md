@@ -92,8 +92,10 @@ Antarctic Treaty Consultative Meeting (ATCM). Essential variables and dashboards
 **Yi-Ming Gan:** I want to speak about gender equality. In many professional settings related to data, I still see a clear imbalance, with fewer women represented. We need to address that imbalance and empower more women in this field.
 
 **Anton Van de Putte:** I agree with Ming. Data management remains a male-dominated area, and we need to improve representation. Supporting early-career women and providing leadership opportunities makes a real difference.
+
+◼️
 <br><br><br><br>
-**Dive deeper under the ice\!** 
+**→ Dive deeper under the ice\!** 
 
 Ropert-Coudert, Y., Van de Putte, A.P., Reisinger, R.R. et al. [*The retrospective analysis of Antarctic tracking data project*](https://doi.org/10.1038/s41597-020-0406-x). Sci Data 7, 94 (2020), and Hindell, M.A., Reisinger, R.R., Ropert-Coudert, Y. et al. [*Tracking of marine predators to protect Southern Ocean ecosystems*](https://doi.org/10.1038/s41586-020-2126-y). Nature 580, 87–92 (2020)
 
