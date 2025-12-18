@@ -31,6 +31,10 @@ We spoke with **Anton Van de Putte** ([OceanExpert](https://oceanexpert.org/expe
 The solution was to create a neutral, regional data initiative where scientists could deposit their marine biodiversity data: Antarctic OBIS. The Node operates under the Scientific Committee on Antarctic Research, reinforcing our commitment to Open Science principles, and enables us to provide independent, objective scientific information for evidence-based decision-making. 
 
 <br><br>
+<img alt="Anton Van de Putte (left), Manager of Antarctic OBIS, and Yi-Ming Gan (right), Data Manager of Antarctic OBIS" src="/images/Antarctic_OBIS_composite.jpg" style="width: 100%;">
+<i>Anton Van de Putte (left), Manager of Antarctic OBIS, and Yi-Ming Gan (right), Data Manager of Antarctic OBIS</i>  
+
+<br><br>
 **When did you join the team?** 
 
 **Anton Van de Putte**: I joined Antarctic OBIS in 2011, to support data management and publication, and became the Node Manager when Bruno Danis moved to a university position.
@@ -81,6 +85,10 @@ The dataset was originally a simple occurrence table published in 2008\. It then
 **Yi-Ming Gan:** Engaging with OBIS helped me grow professionally. Chairing the Data Quality Assessment and Enhancement Project Team, now the OBIS Data Coordination Group, pushed me to deepen my technical knowledge on data and formats, and gave me the confidence to take on leadership roles. Thanks to that experience, I can now give back and help the Community. 
 
 <br><br>
+<img alt="Sunset in de Weddell Sea during EWOS expedition Onboard FS Polarstern, 2022. Photo: ©Anton Van de Putte" src="/images/Antarctic_OBIS_composite.jpg" style="width: 100%;">
+<i>Sunset in de Weddell Sea during EWOS expedition Onboard FS Polarstern, 2022. Photo: ©Anton Van de Putte</i>  
+
+<br><br>
 **What is ahead for Antarctic OBIS?**
 
 **Anton Van de Putte:** The coming years will be very active for Antarctic observations. The Antarctica InSync project, beginning in 2027, is closely linked to Essential Ocean Variables, a strategic development for OBIS. The next International Polar Year will take place in 2032\. We are also very much focused on developing policy-support products for the region, such as contributions to the RED database, as well as the state-of-the-environment reporting for the Convention for the Conservation of Antarctic Marine Living Resources (CCAMLR) and the   
@@ -96,7 +104,10 @@ Antarctic Treaty Consultative Meeting (ATCM). Essential variables and dashboards
 ◼️
 <br><br><br><br>
 **→ Dive deeper under the ice\!** 
+These selected publications offer deeper insights into the data, methods, and collaborations suporting our understanding of Antarctic marine ecosystems. 
 
-Ropert-Coudert, Y., Van de Putte, A.P., Reisinger, R.R. et al. [*The retrospective analysis of Antarctic tracking data project*](https://doi.org/10.1038/s41597-020-0406-x). Sci Data 7, 94 (2020), and Hindell, M.A., Reisinger, R.R., Ropert-Coudert, Y. et al. [*Tracking of marine predators to protect Southern Ocean ecosystems*](https://doi.org/10.1038/s41586-020-2126-y). Nature 580, 87–92 (2020)
+Ropert-Coudert, Y., Van de Putte, A.P., Reisinger, R.R. et al. [*The retrospective analysis of Antarctic tracking data project*](https://doi.org/10.1038/s41597-020-0406-x). Sci Data 7, 94 (2020)
+
+Hindell, M.A., Reisinger, R.R., Ropert-Coudert, Y. et al. [*Tracking of marine predators to protect Southern Ocean ecosystems*](https://doi.org/10.1038/s41586-020-2126-y). Nature 580, 87–92 (2020)
 
 Woods, B., Trebilco, R., Walters, A. et al. [*Myctobase, a circumpolar database of mesopelagic fishes for new insights into deep pelagic prey fields*](https://doi.org/10.1038/s41597-022-01496-y). Sci Data 9, 404 (2022)
