@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Node Spotlight - Antarctic OBIS
+title: Node Spotlight - Antarctic OBIS, a gateway connecting Antarctic marine biodiversity data to the world
 lang: en
 author: OBIS
 excerpt: Discover how Antarctic OBIS turns hard-won Southern Ocean observations into open, standardised biodiversity data that fuels science, conservation, and polar policy.
