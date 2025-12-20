@@ -18,6 +18,8 @@ The Southern Ocean is a region of extremes: vast, remote, and ecologically uniqu
 
 We spoke with **Anton Van de Putte** ([OceanExpert](https://oceanexpert.org/expert/22246) / [Orcid](https://orcid.org/0000-0003-1336-5554)), Manager of Antarctic OBIS, and **Yi-Ming Gan** ([OceanExpert](https://oceanexpert.org/expert/31194) / [Orcid](https://orcid.org/0000-0001-7087-2646)), Data Manager of Antarctic OBIS, to learn more about the Node’s origins, role in the Arctic scientific landscape, and the challenges of managing polar biodiversity data.
 
+***OBIS Node Spotlight** is a new series of articles on our website that shines a light on the people working behind the scenes at OBIS Nodes. From building local capacity and supporting data providers to mobilising, standardising, curating, and publishing marine biodiversity data, as well as supporting field campaigns and expeditions, the series lifts the veil on the everyday work of OBIS Nodes.*
+
 <br><br>
 **OBIS: When was the Antarctic OBIS Node created?** 
 
