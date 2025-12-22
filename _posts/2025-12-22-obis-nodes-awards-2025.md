@@ -1,6 +1,6 @@
 ---
 layout: post
-title: OBIS Nodes Awards 2025
+title: OBIS Nodes Awards 2025 - Celebrating the Community and its collective achievements! 
 lang: en
 author: OBIS
 tags: 
