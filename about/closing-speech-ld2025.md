@@ -7,7 +7,7 @@ title: OBIS closing speech at Living Data 2025
 ---
 
 # **OBIS closing speech at Living Data 2025**
-
+<br><br><br>
 It's been such a fantastic week. 
 
 Five years ago, I would never have believed this was possible for OBIS. I'm so proud of my colleagues and the whole OBIS community — what we are achieving collectively is truly unbelievable. It was so inspiring to see all the contributions from our community during Living Data 2025, and witness the interactions and the discussions moving towards a shared common goal: mobilizing data for a better Planet. 
