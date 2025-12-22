@@ -7,10 +7,10 @@ tags:
 - eDNA Expeditions
 purpose: news
 feed: true
-image: /images/RR3-Films-Richard Brives-061225-111_thumb.jpg
+image: /images/eDNA_card.jpg
 ---
-<img alt="Sampling session at the lanch of the second phase of the eDNA Expeditions during UNOC-3, in the Port of Nice, France, in June 2025" src="/images/RR3-Films-Richard Brives-061225-111.jpg" style="width: 100%;">
-<i>Sampling session at the launch of the second phase of the eDNA Expeditions during UNOC-3, in the Port of Nice, France, in June 2025. Photo: RR3 Films / Richard Brives</i>  
+<img alt="" src="/images/eDNA_card.jpg" style="width: 100%;">
+<i></i>  
 <br><br>
 The second phase of the eDNA Expeditions—a project under the Intergovernmental Oceanographic Commission (IOC) of UNESCO, supported by Minderoo Foundation, led by OBIS, with technical collaboration of Wilderlab—aims to build a global environmental DNA (eDNA) sampling network across 25 marine sites. All biomolecular data collected at participating sites will directly support local management as well as decision-making, and will be openly shared through OBIS. We are now inviting marine protected sites worldwide to express their interest in joining the initiative.
 
