@@ -5,7 +5,7 @@ lang: en
 author: OBIS
 tags: 
 - Governance
-- OBIS-SG-13
+- SG-OBIS-13
 purpose: news
 feed: true
 image: /images/Kogia-Marla-Tomorug-2024_thumb.jpg
