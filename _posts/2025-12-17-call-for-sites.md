@@ -7,7 +7,7 @@ tags:
 - eDNA Expeditions
 purpose: news
 feed: true
-image: /images/eDNA_card.jpg
+image: /images/eDNA_card_2_thumb.jpg
 ---
 <img alt="" src="/images/eDNA_card.jpg" style="width: 100%;">
 <i></i>  
