@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 13th session of the OBIS Steering Group - A community-first workplan for 2026-2027 to support the next development phase
+title: OBIS Nodes Awards 2025
 lang: en
 author: OBIS
 tags: 
@@ -8,7 +8,7 @@ tags:
 - SG-OBIS-13
 purpose: news
 feed: true
-image: /images/community-heroes_card.jpg
+image: /images/community-heroes_card_thumb.jpg
 ---
 <img alt="OBIS Nodes Awards 2025 at OBIS-SG-13 in Bogotá, Colombia" src="/images/community-heroes_card.jpg" style="width: 100%;">
 <i>OBIS Nodes Awards 2025 at OBIS-SG-13 in Bogotá, Colombia</i>  
