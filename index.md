@@ -91,6 +91,11 @@ layout: default
 </section>
 
 <script>
+function stripHtmlTags(html) {
+   let doc = new DOMParser().parseFromString(html, "text/html");
+   return doc.body.textContent || "";
+}
+
 function truncateText(text, maxLength) {
   let ellipsis = "...";
   if (text.length <= maxLength) return text;
@@ -135,7 +140,7 @@ async function loadRecentDatasets() {
           </h5>
           <p class="card-text">${formatDate(dataset.published)}</p>
           ${nodeBadges ? `<p>${nodeBadges}</p>` : ''}
-          <p class="card-text">${truncateText(dataset.abstract, 500)}</p>
+          <p class="card-text">${truncateText(stripHtmlTags(dataset.abstract), 500)}</p>
         </div>
       </div>
       `;
