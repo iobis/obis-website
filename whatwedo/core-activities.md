@@ -1,7 +1,7 @@
 ---
 identifier: core-activities
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Core activities
 title: A global pillar for marine biodiversity data
 ---
