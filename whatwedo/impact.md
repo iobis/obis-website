@@ -1,7 +1,7 @@
 ---
 identifier: impact
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Impact
 title: High-impact data and products to improve Ocean biodiversity knowledge
 ---
