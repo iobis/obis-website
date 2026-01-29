@@ -1282,6 +1282,8 @@ function renderMap(element, filter) {
 
         map.addControl(new maplibregl.FullscreenControl(), 'bottom-left');
 
+        map.addControl(new maplibregl.GlobeControl(), 'bottom-left');
+
         map.once("click", function() {
             map.scrollZoom.enable();
             map.dragPan.enable();
