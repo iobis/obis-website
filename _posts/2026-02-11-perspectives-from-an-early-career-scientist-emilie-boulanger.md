@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Perspectives of an early-career scientist: a conversation with Emilie Boulanger
+title: Perspectives of an early-career scientist - A conversation with Emilie Boulanger
 lang: en
 author: OBIS
 tags: 
