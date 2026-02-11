@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 13th session of the OBIS Steering Group - A community-first workplan for 2026-2027 to support the next development phase
+title: Perspectives of an early-career scientist: a conversation with Emilie Boulanger
 lang: en
 author: OBIS
 tags: 
@@ -9,7 +9,7 @@ tags:
 - Early-career scientist
 purpose: news
 feed: true
-image: /images/obis_SG13_composite_thumb.jpg
+image: /images/DSCF0429_s.jpg
 ---
 <img alt="Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference" src="/images/DSCF0429_s.jpg" style="width: 100%;">
 <i>Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference</i>  
