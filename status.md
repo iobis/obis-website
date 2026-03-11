@@ -245,25 +245,30 @@ document.addEventListener("DOMContentLoaded", function () {
     `;
   }
 
-  fetch(apiUrl)
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("Request failed with status " + response.status);
-      }
-      return response.json();
-    })
-    .then(data => {
-      renderQueue(data.queue || []);
-      renderFeeds(data.feeds || []);
-      renderDatasets(data.datasets || []);
-    })
-    .catch(error => {
-      console.error("Failed to load status:", error);
-      showError("Unable to fetch OBIS status at this time.");
-      queueEl.innerHTML = '<p class="mb-0">No data.</p>';
-      feedsEl.innerHTML = '<p class="mb-0">No data.</p>';
-      datasetsEl.innerHTML = '<p class="mb-0">No data.</p>';
-    });
+  function loadStatus() {
+    fetch(apiUrl)
+      .then(response => {
+        if (!response.ok) {
+          throw new Error("Request failed with status " + response.status);
+        }
+        return response.json();
+      })
+      .then(data => {
+        renderQueue(data.queue || []);
+        renderFeeds(data.feeds || []);
+        renderDatasets(data.datasets || []);
+      })
+      .catch(error => {
+        console.error("Failed to load status:", error);
+        showError("Unable to fetch OBIS status at this time.");
+        queueEl.innerHTML = '<p class="mb-0">No data.</p>';
+        feedsEl.innerHTML = '<p class="mb-0">No data.</p>';
+        datasetsEl.innerHTML = '<p class="mb-0">No data.</p>';
+      });
+  }
+
+  loadStatus();
+  setInterval(loadStatus, 10000);
 });
 </script>
 
