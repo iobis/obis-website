@@ -18,24 +18,26 @@ Disallow: /
 User-agent: DotBot
 Disallow: /
 
-# Google bots - more permissive
 User-agent: Googlebot
 Crawl-delay: 2
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: Googlebot-Image
+Crawl-delay: 5
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
-Crawl-delay: 5
+Disallow: /table/occurrence
 
 User-agent: Googlebot-Mobile
 Crawl-delay: 5
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 # Bing
 User-agent: Bingbot
@@ -43,6 +45,7 @@ Crawl-delay: 5
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 # Common legitimate bots - moderate rate
 User-agent: Slurp
@@ -50,36 +53,42 @@ Crawl-delay: 10
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: DuckDuckBot
 Crawl-delay: 10
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: Baiduspider
 Crawl-delay: 20
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: YandexBot
 Crawl-delay: 20
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: facebot
 Crawl-delay: 20
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: ia_archiver
 Crawl-delay: 60
 Disallow: /explore
 Disallow: /explore/
 Disallow: /occurrence/
+Disallow: /table/occurrence
 
 User-agent: *
 Crawl-delay: 20
