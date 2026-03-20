@@ -2,15 +2,19 @@
 layout: default
 ---
 
-<section class="section-highlight">
+<section class="section-highlight pt-6 pb-5">
+  <div class="container">
+  {% include search_form.html centered=true %}
+  </div>
+</section>
+
+<section class="section-highlight pt-0">
   <div class="container">
     <h2>Featured news and stories</h2>
-
     {% assign filtered_posts = site.posts | sort: 'date' | reverse %}
     {% include post_cards.html filtered_posts=filtered_posts limit=6 %}
     <p><a href="/news">Continue here for more news</a></p>
   </div>
-
 </section>
 
 <section class="section-light">
@@ -91,6 +95,19 @@ layout: default
 </section>
 
 <script>
+function performSearch() {
+  const entityEl = document.getElementById("entity");
+  const queryEl = document.getElementById("query");
+  if (!entityEl || !queryEl) return;
+  const entity = entityEl.value;
+  const query = queryEl.value.trim();
+  if (!query) return;
+  const params = new URLSearchParams();
+  if (entity) params.set("entity", entity);
+  params.set("q", query);
+  window.location.href = "/search?" + params.toString();
+}
+
 function stripHtmlTags(html) {
    let doc = new DOMParser().parseFromString(html, "text/html");
    return doc.body.textContent || "";

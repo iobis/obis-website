@@ -5,25 +5,7 @@ title: Search
 
 <div class="section-light">
     <h1 class="mb-4">Search</h1>
-    <form class="row g-2 align-items-end mb-4" onsubmit="event.preventDefault(); performSearch();">
-        <div class="col-md-2">
-            <label for="entity" class="form-label">Search for</label>
-            <select id="entity" class="form-select">
-                <option value="taxon" selected>Scientific name</option>
-                <option value="dataset">Dataset</option>
-                <option value="common">Common name</option>
-                <option value="area">Area</option>
-                <option value="country">Publisher country</option>
-            </select>
-        </div>
-        <div class="col-md-4">
-            <label for="query" class="form-label">Search term</label>
-            <input type="text" id="query" class="form-control" placeholder="Enter search term" value="">
-        </div>
-        <div class="col-md-2 d-grid">
-            <button type="submit" class="btn">Search</button>
-        </div>
-    </form>
+    {% include search_form.html %}
     <div id="dataset-search-help" class="mt-3">
         Dataset search syntax:
         <code>+</code> signifies AND operation,
