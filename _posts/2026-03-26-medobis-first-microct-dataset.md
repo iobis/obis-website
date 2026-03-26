@@ -33,6 +33,7 @@ Working hands-on with micro-CT data helped MedOBIS to highlight several challeng
 
 <br><br>
 <video width="100%" autoplay loop muted playsinline>  <source src="/images/MAPWORMS_HCMR_scan-01842_v1_20250310_rec.mp4" type="video/mp4"></video>
+<i>3D volume rendering of Marphysa victori</i>
 <br><br>
 
 Yet, this milestone felt like a natural step forward. "Micro-CT technology has been used at the Hellenic Centre for Marine Research, the Institution hosting MedOBIS, for many years," says Dimitra Mavraki. "We knew that the technology had the potential to enrich the datasets we publish, and create new opportunities for research, comparison, education, and future technological applications". She explains that until now, such scans were hosted in a dedicated [online platform](https://microct.portal.lifewatchgreece.eu/) featuring a collection of annotated 3D specimens that users can explore interactively. Bringing these resources to MedOBIS opens new possibilities for connecting morphological research with global biodiversity data networks and sharing it with the world. 
