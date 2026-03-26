@@ -11,7 +11,7 @@ feed: true
 image: /images/gasteropod2.png
 ---
 <img alt="A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset." src="/images/gasteropod2.png" style="width: 100%;">
-<i>A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset.</i>  
+<p style="text-align: center;"><i>A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset.</i></p>  
 <br><br>
 
 Emerging data types often pose challenges for repositories in terms of management, standardization, and integration. MedOBIS, the OBIS Node for the Mediterranean, proposed a solution for this challenge and published its first-ever Darwin Core-formatted [dataset](https://obis.org/dataset/74e3f584-df52-43af-b7a3-cc1e10071649) that included micro-Computed Tomography Morphological image-derived information, along with biodiversity and environmental data on two species, *Chondrilla nucula* and *Hexaplex trunculus*.
@@ -26,14 +26,14 @@ Additionally, the team mobilized persistent internal micro-CT library identifier
 
 <br><br>
 <img alt="Overview of the event hierarchy through the publishing process." src="/images/gasteropod3.png" style="width: 100%;">
-<i>Overview of the event hierarchy through the publishing process.</i>  
+<p style="text-align: center;"><i>Overview of the event hierarchy through the publishing process.</i></p>  
 <br><br>
  
 Working hands-on with micro-CT data helped MedOBIS to highlight several challenges in data curation and management. Unlike with biodiversity data, micro-CT datasets still lack widely adopted metadata standards. In addition, their large file sizes make data organization and long-term storage more demanding. For this reason, the actual micro-CT image files are not uploaded directly to OBIS. Instead, within the OBIS dataset, these 3D resources are referenced by maintaining the relevant micro-CT identifiers (SampleID/ScanID) in the eventID field to ensure consistency at this stage. The long-term objective of MedOBIS is to link these 3D resources directly through their URLs. 
 
 <br><br>
 <video width="100%" autoplay loop muted playsinline>  <source src="/images/MAPWORMS_HCMR_scan-01842_v1_20250310_rec.mp4" type="video/mp4"></video>
-<i>3D volume rendering of Marphysa victori</i>
+<p style="text-align: center;"><i>3D volume rendering of Marphysa victori</i></p>
 <br><br>
 
 Yet, this milestone felt like a natural step forward. "Micro-CT technology has been used at the Hellenic Centre for Marine Research, the Institution hosting MedOBIS, for many years," says Dimitra Mavraki. "We knew that the technology had the potential to enrich the datasets we publish, and create new opportunities for research, comparison, education, and future technological applications". She explains that until now, such scans were hosted in a dedicated [online platform](https://microct.portal.lifewatchgreece.eu/) featuring a collection of annotated 3D specimens that users can explore interactively. Bringing these resources to MedOBIS opens new possibilities for connecting morphological research with global biodiversity data networks and sharing it with the world. 
