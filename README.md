@@ -39,7 +39,11 @@ Most content on this site lives in one of two places:
 - **Collection pages** — add a new Markdown file to the relevant `_collection` folder (see [Collections](#collections) below). `_posts` and `_usecases` use the filename format `YYYY-MM-DD-your-title.md`. All other collections use plain descriptive slugs (e.g. `obis_export.md`). Refer to an existing file in the same collection for the expected format.
 - **Standalone pages** — add a Markdown file to the appropriate top-level folder (e.g. `data/`, `about/`, `whatwedo/`) or to the root of the repo.
 
-All pages should include a YAML front matter block at the top. The available fields are:
+All pages should include a YAML front matter block at the top. The available fields can be understood by looking at existing pages.
+
+### Add a News Post:
+
+All posts (OBIS News items) should include the following YAML front matter block at the top:
 
 - `layout`: Should always be `post`
 - `title`: An excellent title, in quotes.
