@@ -400,3 +400,15 @@ section {
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
+
+/* Inline image license tooltip, triggered on hover. Based on GBIGF Hosted Portal SASS */
+.feature-img { position: relative; }
+.feature-img-license { position: absolute; z-index: 10; bottom: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; opacity: 0.9; font-size: 12px; color: white; }
+.feature-img-license:hover { opacity: 1; }
+.feature-img-license:hover .feature-img-license-text { display: block; }
+.feature-img-license:hover .feature-img-license-c { display: none; }
+.feature-img-license a { color: inherit; text-decoration: underline; }
+.feature-img-license-c { color: rgba(0,0,0,.9); background: #ffffffbb; display: flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; }
+.feature-img-license-c .icon { width: 1rem; height: 1rem; display: inline-block; }
+.feature-img-license-text { display: none; background: rgba(0,0,0,.5); padding: 3px; }
+.feature-img-license-text p { margin: 0; }
