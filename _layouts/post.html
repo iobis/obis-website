@@ -13,6 +13,12 @@
               <a href="/tag/{{ tag | slugify }}"><span class="badge tag mb-1">{{ tag }}</span></a>
           {% endfor %}
         </div>
+        {% if page.image %}
+        <img src="{{ page.image }}" alt="{{ page.imageAlt | default: page.title }}" style="width: 100%;">
+          {% if page.imageCaption %}
+          <p style="text-align: center;"><i>{{ page.imageCaption }}</i></p>
+          {% endif %}
+        {% endif %}
         {% if page.intro %}
         <p class="intro">{{ page.intro }}</p>
         {% endif %}
