@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "The new OBIS website is live!"
-subtitle: "Please be our cleaner shrimp."
+title: "The new OBIS website is live! Please be our cleaner shrimp."
+subtitle: 
 lang: en
 author: OBIS
 tags:
