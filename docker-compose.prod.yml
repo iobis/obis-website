@@ -7,9 +7,11 @@ services:
     command: bash -lc "bundle install && bundle exec jekyll build"
     environment:
       - JEKYLL_ENV=production
+      - BUNDLE_FROZEN=1
     volumes:
       - ./:/srv/jekyll
       - ./_site:/srv/jekyll/_site
+      - jekyll_bundle:/usr/local/bundle
 
   fastapi:
     build:
@@ -40,3 +42,4 @@ services:
 
 volumes:
   nginx_cache:
+  jekyll_bundle:
