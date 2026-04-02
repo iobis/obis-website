@@ -12,6 +12,7 @@ services:
       - ./:/srv/jekyll
       - ./_site:/srv/jekyll/_site
       - jekyll_bundle:/usr/local/bundle
+      - jekyll_disk_cache:/srv/jekyll/.jekyll-cache
 
   fastapi:
     build:
@@ -43,3 +44,4 @@ services:
 volumes:
   nginx_cache:
   jekyll_bundle:
+  jekyll_disk_cache:
