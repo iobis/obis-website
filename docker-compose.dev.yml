@@ -4,7 +4,7 @@ name: obis-website-dev
 services:
   jekyll:
     image: jekyll/jekyll:latest
-    command: bash -lc "bundle install && bundle exec jekyll build --disable-disk-cache"
+    command: bash -lc "chmod 777 /srv/jekyll/_site /srv/jekyll/_cache 2>/dev/null || true; chmod 666 /srv/jekyll/Gemfile.lock; bundle install && bundle exec jekyll build --disable-disk-cache"
     environment:
       - JEKYLL_ENV=production
       - BUNDLE_FROZEN=1
