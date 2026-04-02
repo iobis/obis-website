@@ -41,18 +41,18 @@ Most content on this site lives in one of two places:
 
 All pages should include a YAML front matter block at the top. The available fields are:
 
-`layout`: Should always be `post`
-`title`: An excellent title, in quotes.
-`subtitle`: An excellent subtitle, in quotes.
-`lang`: Usually `en` for English, but could be other value.
-`author`: Should always be 'OBIS'
-`tags`: consult Laurent.
-`purpose`: Should always be 'news'
-`feed`: Should always be 'true'
-`image`: A link to image on internet or to image in `assets/images`
-`imageCaption`: Text in quotes. A description of the image. Include link to WoRMS record if you reference a taxon.
-`imageAlt`: Text in quotes. Should clearly describe the image and might need more detail than the caption.
-`imageLicense`: Text in quotes. A description of the license under which the image is being used. Use links to give credit and make it easy for users to find the license.
+- `layout`: Should always be `post`
+- `title`: An excellent title, in quotes.
+- `subtitle`: An excellent subtitle, in quotes.
+- `lang`: Usually `en` for English, but could be other value.
+- `author`: Should always be 'OBIS'
+- `tags`: consult Laurent.
+- `purpose`: Should always be 'news'
+- `feed`: Should always be 'true'
+- `image`: A link to image on internet or to image in `assets/images`
+- `imageCaption`: Text in quotes. A description of the image. Include link to WoRMS record if you reference a taxon.
+- `imageAlt`: Text in quotes. Should clearly describe the image and might need more detail than the caption.
+- `imageLicense`: Text in quotes. A description of the license under which the image is being used. Use links to give credit and make it easy for users to find the license.
 
 #### Example frontmatter block
 
