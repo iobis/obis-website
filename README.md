@@ -73,7 +73,7 @@ imageAlt: "A Pacific cleaner shrimp (Lysmata amboinensis) cleans the mouth of a 
 imageLicense: "Ambon Cleaner Shrimp (_Lysmata amboinensis_) Umkhanyakude, ZA-NL, ZA. by aspearton via [inaturalist.org](https://www.inaturalist.org/photos/398634387), licensed under [CC-BY-NC](https://creativecommons.org/licenses/by-nc/4.0/)"
 ---
 
-Your post text starts here...
+Your post text starts here. You can use any valid Markdown to style it...
 
 ```
 
