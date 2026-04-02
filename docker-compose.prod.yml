@@ -4,7 +4,7 @@ name: obis-website-prod
 services:
   jekyll:
     image: jekyll/jekyll:latest
-    command: bash -lc "bundle install && bundle exec jekyll build"
+    command: bash -lc "bundle install && bundle exec jekyll build --disable-disk-cache"
     environment:
       - JEKYLL_ENV=production
       - BUNDLE_FROZEN=1
@@ -12,7 +12,6 @@ services:
       - ./:/srv/jekyll
       - ./_site:/srv/jekyll/_site
       - jekyll_bundle:/usr/local/bundle
-      - jekyll_disk_cache:/srv/jekyll/.jekyll-cache
 
   fastapi:
     build:
@@ -44,4 +43,3 @@ services:
 volumes:
   nginx_cache:
   jekyll_bundle:
-  jekyll_disk_cache:
