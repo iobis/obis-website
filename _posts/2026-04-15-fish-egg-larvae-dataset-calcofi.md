@@ -6,6 +6,7 @@ author: OBIS
 tags: 
 - CalCOFI
 - OBIS USA
+- BioEco EOVs
 purpose: news
 feed: true
 image: /images/bb9527600n_2.jpg
