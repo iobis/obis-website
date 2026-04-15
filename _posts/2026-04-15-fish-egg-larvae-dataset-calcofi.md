@@ -12,10 +12,11 @@ image: /images/bb9527600n_2.jpg
 ---
 
 <img alt="Scientists and ship crew recover CalBOBL (Bongo) net. Photo: NOAA Fisheries / James Wilkinson" src="/images/bb9527600n_2.jpg" style="width: 100%;">
-<p style="text-align: center;"><i>Scientists and ship crew recover CalBOBL (Bongo) net. Photo: NOAA Fisheries / James Wilkinson</i></p>  
+<p style="text-align: center;"><i>Scientists and ship crew recover CalBOBL (Bongo) net.<br>Photo: NOAA Fisheries / James Wilkinson</i></p>  
 <br><br>
 
 Turning decades of historical marine life records into standardized and FAIR data is a massive, but crucial challenge. Long-term data series on marine biodiversity are unique scientific assets that can help us understand how the ocean is changing. Making the "CalCOFI Fish Larvae & Egg Tows" dataset available through OBIS was made possible with a joint effort between the California Cooperative Oceanic Fisheries Investigations (CalCOFI), the Global Ocean Observing System (GOOS), and OBIS. The result is a Darwin Core-formatted dataset spanning 1951 to 2023, covering an area located mainly across the California Current, and containing 463,655 occurrence records, 610,816 measurements and facts, and observations of 539 species, accessible [here](https://obis.org/dataset/0e223f55-c826-4513-ae9a-b04cbf2e189c).
+<br><br>
 
 ### The challenge of making long-term marine biodiversity data accessible
 
@@ -25,7 +26,7 @@ Long-term ecological datasets on the scale of the "CalCOFI Fish Larvae & Egg Tow
 
 <br><br>
 <img alt="A researcher sorting a sample collected from the Continuous Underway Fish Egg Sampler (CUFES). CUFES samples are collected during transits between CalCOFI stations to see which fish species are spawning throughout the CalCOFI survey pattern. Photo: NOAA Fisheries / Angela Klemmedson" src="/images/bb0585544v_2.jpg" style="width: 100%;">
-<p style="text-align: center;"><i>A researcher sorting a sample collected from the Continuous Underway Fish Egg Sampler (CUFES). CUFES samples are collected during transits between CalCOFI stations to see which fish species are spawning throughout the CalCOFI survey pattern. Photo: NOAA Fisheries / Angela Klemmedson</i></p>  
+<p style="text-align: center;"><i>A researcher sorting a sample collected from the Continuous Underway Fish Egg Sampler (CUFES). CUFES samples are collected during transits between CalCOFI stations to see which fish species are spawning throughout the CalCOFI survey pattern.<br>Photo: NOAA Fisheries / Angela Klemmedson</i></p>  
 <br><br>
 
 The first phase involved a collaboration with the Ocean Data and Information System (ODIS) to make the CalCOFI datasets findable online. “After that, we wanted to step up and have our data directly integrated into OBIS, to make it fully and globally FAIR,” says Erin Satterthwaite. Standardising, quality-checking, and transforming a long-term historical dataset containing more than 400,000 occurrences into FAIR and trusted data is not a small task, especially when the goal is to create a reproducible publication workflow. “One of the huge challenges to solve remains to standardize formats, naming conventions, and structure across data spanning from the pre-digital to digital era, explains Erin Satterthwaite.    
@@ -38,6 +39,7 @@ The first phase involved a collaboration with the Ocean Data and Information Sys
 <br><br>
 
 Beyond the dataset itself, the publication process of "CalCOFI Fish Larvae & Egg Tows" offers a reproducible path for turning biodiversity data held institutionally into globally accessible information. “From the start, we wanted this publication process to OBIS to be a template that could be applied to other use cases,” says Erin Satterthwaite. “We wanted to provide a clear pathway for how long-term datasets can contribute to EOVs and the Global Ocean Observing System. It was amazing to see what can happen when you get the right people working together: I am really grateful for the GOOS, OBIS, ODIS teams, and all the ones who helped us navigate that process.” The teams involved were tightly focused on a common objective: ensuring that these long-term observations could eventually be published for global use. “We really wanted to support the CalCOFI team to unleash the full potential of their data,” says **Elizabeth Lawrence,** OBIS Training Officer. “We brought into this project our know-how and experience in structuring Core tables and organizing nested Events.” The workflow, fully available through [CalCOFI.io](http://calcofi.io), is designed to be transparent, transposable, and reproducible, offering a ready-to-use path for other institutions looking to publish long-term biodiversity observations through OBIS. 
+<br><br>
 
 ### More data to come
 
