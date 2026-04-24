@@ -65,6 +65,10 @@
                     <p><b>Published:</b> {{ dataset.published | datetimeformat }}</p>
                     {% endif %}
 
+                    {% if dataset.created %}
+                    <p><b>First registration:</b> {{ dataset.created | datetimeformat }}</p>
+                    {% endif %}
+
                     {% if dataset.intellectualrights %}
                     <p><b>License:</b> {{ dataset.intellectualrights }}</p>
                     {% endif %}
