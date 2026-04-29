@@ -13,7 +13,7 @@ image: /images/IndOBIS_IMG_8256.jpg
 ---
 
 <img alt="Field demonstration of the OceanEyes citizen science application during student outreach activities, promoting participatory marine biodiversity monitoring and digital species observation reporting in coastal India." src="/images/IndOBIS_IMG_8256.jpg" style="width: 100%;">
-<p style="text-align: center;"><i>Dr Hashim Manjebrayakath, IndOBIS Node Manager (left, grey shirt), and Johnny Konjarla, IndOBIS Data Manager (second from left, orange shirt), lead a field demonstration of the OceanEyes citizen science application during student outreach activities in coastal India, in March 2026.<br>Photo: CMLRE</i></p>  
+<p style="text-align: center;"><i>Dr Hashim Manjebrayakath, IndOBIS Node Manager (left, grey shirt), and Johnny Konjarla, IndOBIS Data Manager (second from left, orange shirt), lead a field demonstration of the OceanEyes citizen science app during student outreach activities in coastal India, in March 2026. Photo: CMLRE</i></p>  
 <br><br>
 
 IndOBIS, the OBIS Node for the Indian Ocean, coordinates marine biodiversity data from across the entire basin, the third-largest ocean after the Pacific and the Atlantic, holding almost 20% of water on Earth’s surface. The Indian Ocean is home to ecologically significant coral reef systems and some of the most biologically rich and diverse waters in the world. We spoke with Dr Hashim Manjebrayakath, IndOBIS Node Manager, and Johnny Konjarla, IndOBIS Data Manager, to learn more about how the Node’s structure and operations, its role in the national marine data landscape, its engagement with researchers and citizens, and its place within the wider OBIS Community.
