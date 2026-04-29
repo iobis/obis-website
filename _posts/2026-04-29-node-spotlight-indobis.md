@@ -25,14 +25,14 @@ IndOBIS, the OBIS Node for the Indian Ocean, coordinates marine biodiversity dat
 **Johnny Konjarla:** Maybe I can add a bit of historical context to complete that picture\! Back in the early 2000’s, IndOBIS started as part of the Census of Marine Life. After the Intergovernmental Oceanographic Commission (IOC) of UNESCO integrated OBIS, our Node moved to CMLRE, directly translating a shift in India’s strategic priorities in marine management and conservation. Then, in 2022, building on this foundation, IndOBIS, like most OBIS nodes, officially became an Associate Data Unit (ADU) under the International Oceanographic Data and Information Exchange (IODE) program of IOC. We collaborate closely with India’s IODE National Oceanographic Data Center (NODC), hosted at the Indian National Center for Ocean Information Services (INCOIS), which serves as India’s official repository for national oceanographic data. Both CMLRE and INCOIS operate under the Ministry of Earth Sciences.
 <br><br><br>
 <img alt="Aerial view of the Centre for Marine Living Resources and Ecology (CMLRE), Kochi, India, host institution of IndOBIS and a national centre for marine biodiversity research.<br>Photo: CMLRE" src="/images/IndOBIS_1_Atal Bhavan.JPG" style="width: 100%;">
-<p style="text-align: center;"><i>Aerial view of the Centre for Marine Living Resources and Ecology (CMLRE), Kochi, India, host institution of IndOBIS and a national centre for marine biodiversity research. Photo: CMLRE</i></p>  
-<br><br><br>
+<p style="text-align: center;"><i>Aerial view of the Centre for Marine Living Resources and Ecology (CMLRE), Kochi, India, host institution of IndOBIS and a national centre for marine biodiversity research.<br>Photo: CMLRE</i></p>  
+<br><br>
 **What drove the creation of IndOBIS?** 
 
 **Dr Hashim Manjebrayakath:** India is a very large ocean-facing country, with a coastline of over 11,000 km and a 2.3 million square kilometers of Exclusive Economic Zone (EEZ). Each year, India runs hundreds of marine-related scientific projects across different ministries. Before the creation of IndOBIS, and especially in the pre-digital era, this resulted in major data silos, with marine information being scattered across many institutions and locked there. One major driver to create IndOBIS was to completely reorganize the national marine data landscape and streamline the many data flows into a clear pathway, under the common objective to make that data accessible to all. 
 
 **Johnny Konjarla:** A coordinated and well-structured marine biodiversity data landscape is fundamental for India. It reinforces our country’s capacity to contribute and play a significant role in global frameworks like the Convention on Biological Diversity and the BBNJ Agreement. It supports national data needs for ocean conservation and management, as well as the sustainable use of marine resources to sustain the development of our blue economy. 
-<br><br>
+<br><br><br>
 **How does IndOBIS sit within the Indian marine research ecosystem today?**
 
 **Dr Hashim Manjebrayakath:** IndOBIS operates in a complex ecosystem, with numerous and very diverse sources producing data on marine life. Beyond the state-funded projects we already talked about, universities and research institutions also produce marine biodiversity data. We also try to aggregate local and traditional knowledge about marine species occurrences. Our efforts focus on getting all that data published globally into OBIS.  
@@ -45,7 +45,7 @@ IndOBIS, the OBIS Node for the Indian Ocean, coordinates marine biodiversity dat
 <br><br><br>
 <img alt="FORV Sagar Sampada, a multidisciplinary fisheries and oceanographic research vessel managed by CMLRE, supports marine biodiversity surveys and oceanographic research across the Indian Ocean. Photo: CMLRE" src="/images/IndOBIS_DSC_9540 (1).JPG" style="width: 100%;">
 <p style="text-align: center;"><i>FORV Sagar Sampada, a multidisciplinary fisheries and oceanographic research vessel managed by CMLRE, supports marine biodiversity surveys and oceanographic research across the Indian Ocean.<br>Photo: CMLRE</i></p>  
-<br><br><br>
+<br><br>
 
 **How do you incentivize local data holders, whether they are researchers or communities, to publish their data through IndOBIS?**
 
@@ -59,7 +59,7 @@ We mainly position ourselves as facilitators, supporting researchers to mobilize
 <br><br><br>
 <img alt="The snowflake moray eel, Echidna nebulosa, documented during underwater biodiversity surveys in Lakshadweep Islands during 2018. Photo: CMLRE" src="/images/IndOBIS_Echidna nebulosa.JPG" style="width: 100%;">
 <p style="text-align: center;"><i>The snowflake moray eel, Echidna nebulosa, documented during underwater biodiversity surveys in Lakshadweep Islands during 2018.<br>Photo: CMLRE</i></p>  
-<br><br><br>
+<br><br>
 
 **Do you still have local communities in India you have not yet connected with?**
 
@@ -73,7 +73,7 @@ We just published a [paper](https://link.springer.com/article/10.1007/s44289-026
 <br><br><br>
 <img alt="Screenshots of the landing page and home page of the OceanEyes app." src="/images/IndOBIS_OceanEyes App landing screen.png" style="width: 100%;">
 <p style="text-align: center;"><i>Screenshots of the landing page and home page of the OceanEyes app.<br>Image: OceanEyes</i></p>  
-<br><br><br>
+<br><br>
 
 **Let’s shift away from the citizens' perspective to focus on authorities and decision-makers: how was IndOBIS data used to support Indian marine policy or reporting?**
 
