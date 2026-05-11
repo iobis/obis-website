@@ -24,6 +24,8 @@ The OBIS Work Plan contributes to all five IOC high-level objectives.
 <br>
 
 ## Project outcomes
+<br>
+
 ### Outcome 1. Ensure an operational OBIS Nodes Coordination Group (NCG)
 Improve communication and promote exchanges between OBIS Nodes, and between the OBIS Nodes and the Secretariat.
 
@@ -40,7 +42,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 - D1.1: Meeting minutes shared through a public portal via the OBIS website.
 - D1.2: A revised version of the NCG meeting to give more space to Node-to-Node communication (standing deliverable).
 - D1.3: An improved OBIS Pulse newsletter to help circulate information horizontally among Nodes.
-<br>
+<br><br>
 
 ### Outcome 2. Create and adopt communication tools to leverage the visibility of the Nodes and their contributions
 
@@ -50,7 +52,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 
 **Deliverables**
 - D2.1: Create a building block-based communication toolkit aimed at funders, backers, and host organizations, that can be adapted to each OBIS Node.
-<br>
+<br><br>
 
 ### Outcome 3. Improve and track capacity among OBIS Nodes
 
@@ -65,7 +67,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 - D3.3: Create a process to capture essential capacity-related discussions across communication channels and save them to a FAQ.
 - D3.4: Create a central Node Knowledge Repository on the OBIS website to document processes, tools, and skills available for each Node. The Repository will be co-designed with the OBIS Nodes.
 
-<br>
+<br><br>
 ### Outcome 4. Ensure an operational Data Coordination Group (DCG)
 
 **Performance indicators**
@@ -75,7 +77,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 **Deliverables**
 - D4.1: Meeting minutes shared through a public portal via the OBIS website.
 - D4.2: Share within the DCG the list of prioritised activities for bi-monthly review and endorsement.
-<br>
+<br><br>
 
 ### Outcome 5. Review and support the alignment and adoption of data standards, specifications, and publication mechanisms
 
@@ -92,7 +94,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 - D5.3: Document a DwC-DP indexing strategy in collaboration with GBIF.
 - D5.4: Design and document an approach, implementation plan, and timeline to quantify and monitor EOV data within OBIS.
 - D5.5: Review OBIS guidelines on eDNA data, and plan and document training that will improve knowledge and eDNA data delivery within the OBIS network.
-<br>
+<br><br>
 
 ### Outcome 6. Ensure an operational Products Coordination Group (PCG)
 
@@ -102,7 +104,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 **Deliverables**
 - D6.1: Meeting minutes shared through a public portal in collaboration with the other Coordination Groups.
 
-<br>
+<br><br>
 ### Outcome 7. Robust operational deployment of the OBIS Products Catalogue
 
 **Performance indicators**
@@ -116,7 +118,7 @@ Improve communication and promote exchanges between OBIS Nodes, and between the 
 - D7.3: Active GitHub repository for monitoring and incorporating feedback from OBIS Nodes on appropriate language and nomenclature for metadata.
 - D7.4: Training material describing how OBIS uses the OBIS Products Catalogue, and indicating which data products should carry international policy indicators.
 
-<br>
+<br><br>
 ### Outcome 8. Data product pilot showcasing OBIS's ability to serve national policy outcomes and highlight the richness of available data in OBIS's national and regional Nodes
 
 **Performance indicators**
