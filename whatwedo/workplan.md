@@ -6,24 +6,25 @@ shorttitle: Workplan
 title: OBIS workplan for 2026
 ---
 
-# OBIS workplan for 2026
+# **OBIS workplan for 2026**
 
 The proposed work plan represents a realistic suite of activities that progresses the strategic aims of OBIS and aligns with the wider strategies of IOC. Where relevant, additional tasks have been identified that, where resources allow, will be integrated.
 
-## General objective
+## **General objective**
 See [OBIS objectives](/about/#objectives).
 
-## Governance
+## **Governance**
 The OBIS Work Plan is implemented by the OBIS Secretariat with the active support from the community through the OBIS Coordination Groups, who report to the OBIS Steering Group. The OBIS Executive Committee monitors the implementation. The OBIS Steering Group sets the priorities.
 
-## Duration
+## **Duration**
 Start date: 1 November 2025. End date: 31 October 2026.
 
-## Alignment with IOC
+## **Alignment with IOC**
 The OBIS Work Plan contributes to all five IOC high-level objectives.
 <br>
 
-## Project outcomes
+<br>
+## **Project outcomes**
 <br>
 
 ### Outcome 1. Ensure an operational OBIS Nodes Coordination Group (NCG)
