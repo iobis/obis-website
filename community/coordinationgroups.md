@@ -16,7 +16,7 @@ The OBIS Coordination Groups reflect the collective engagement sustaining the OB
 
 ## OBIS Nodes Coordination Group (NCG)
 
-Co-chairs: [Maria Cornwaithe](https://www.geds-sage.gc.ca/en/GEDS/?pgid=015&dn=Q049Q09STlRIV0FJVEVcMkMgTUFSSUEsT1U9RkFELUZBRCxPVT1TVEFSLVNUQVIsT1U9U0NJLVNDSSxPVT1SREctREdSLE9VPVJFR1BBQy1SRUdQQUMsT1U9RE0tU00sT1U9REZPLU1QTyxPPUdDLEM9Q0E=) and [John Nicholls](https://oceanexpert.org/expert/27029)
+Co-chairs: [Maria Cornthwaite](https://www.geds-sage.gc.ca/en/GEDS/?pgid=015&dn=Q049Q09STlRIV0FJVEVcMkMgTUFSSUEsT1U9RkFELUZBRCxPVT1TVEFSLVNUQVIsT1U9U0NJLVNDSSxPVT1SREctREdSLE9VPVJFR1BBQy1SRUdQQUMsT1U9RE0tU00sT1U9REZPLU1QTyxPPUdDLEM9Q0E=) and [John Nicholls](https://oceanexpert.org/expert/27029)
 
 The Nodes Coordination Group aims to serve as the main platform for OBIS Node managers and their representatives to communicate, collaborate, and ensure consistency and inclusivity in data mobilization, training, and engagement across the global OBIS Community.
 
