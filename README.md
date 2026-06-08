@@ -20,7 +20,7 @@ You'll need a free GitHub account to submit an issue. If you don't have one, you
 This repository has two deployment targets:
 
 - **`dev` branch** → https://dev.obis.org (staging)
-- **`master` branch** → https://obis.org (production)
+- **`main` branch** → https://obis.org (production)
 
 - PRs are required to merge into master — no one can push directly without a review
 - Only @pieterprovoost can force push — everyone else is blocked from overriding history
