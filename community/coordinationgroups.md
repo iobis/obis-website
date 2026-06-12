@@ -8,9 +8,9 @@ title: OBIS Coordination Groups
 
 # OBIS Coordination Groups
 
-The OBIS Data Coordination Group, Nodes Coordination Group and Product Coordination Group are a new structural element of the OBIS Community instated by the [12th Session of the OBIS Steering Group](https://obis.org/2024/05/30/sgobis12/) that took place on 25-29 March 2024. The Coordination Groups enterinate the restructuration of OBIS to better support its next development phase. The Coordination Groups combine and replace the former Task Teams and Project Teams for a more agile, responsive, and inclusive approach to reflect OBIS’s evolution as a dynamic, global community of practice.
+The OBIS Data Coordination Group, Nodes Coordination Group and Product Coordination Group are a new structural element of the OBIS Community instated by the [12th Session of the OBIS Steering Group](https://obis.org/2024/05/30/sgobis12/) that took place on 25-29 March 2024. The Coordination Groups instantiate the restructuring of OBIS to better support its next development phase. The Coordination Groups combine and replace the former Task Teams and Project Teams for a more agile, responsive, and inclusive approach to reflect OBIS’s evolution as a dynamic, global community of practice.
 
-Consolidated around dedicated work plans, each Coordination Group addresses shared topical priorities and tackles common challenges. The Coordination Groups are collaboration platforms for the Nodes to develop OBIS as a community and a global marine data biodiversity initiative. The Coordination Groups also help identify emerging needs through low-threshold feedback loops and contribute to continuously improving OBIS services and tools. The Coordination Groups also encourage inclusivity and diversity by creating a space for regional voices, ensuring the representativity of all contexts, from local to global. They power inter-node collaborations through experience, resource-sharing and direct interactions.  
+Consolidated around the [OBIS workplan](https://obis.org/whatwedo/workplan/), each Coordination Group addresses shared topical priorities and tackles common challenges. The Coordination Groups are collaboration platforms for the Nodes to develop OBIS as a community and a global marine data biodiversity initiative. The Coordination Groups also help identify emerging needs through low-threshold feedback loops and contribute to continuously improving OBIS services and tools. The Coordination Groups also encourage inclusivity and diversity by creating a space for regional voices, ensuring the representativity of all contexts, from local to global. They power inter-node collaborations through experience, resource-sharing and direct interactions.  
 
 The OBIS Coordination Groups reflect the collective engagement sustaining the OBIS Community to advance Ocean knowledge and support informed marine conservation decision-making.
 
@@ -31,7 +31,7 @@ Its responsibilities include:
 
 ## OBIS Data Coordination Group (DCG)
 
-Co-chair: [Rubén Pérez Pérez](https://marineinfo.org/imis?module=person&persid=36274)
+Co-chair: [Rubén Pérez-Pérez](https://oceanexpert.org/expert/37533) and [Victor Chocho](https://oceanexpert.org/expert/59824)
 Co-chairs *ad interim*: [Dan Lear](https://oceanexpert.org/expert/23316) and [Katherine Tattersall](https://oceanexpert.org/expert/35925) 
 
 The Data Coordination Group aims to ensure the quality, interoperability, and alignment of OBIS data with global biodiversity and ocean observing standards and support Nodes in publishing high-quality, standardized marine biodiversity data. 
@@ -54,6 +54,12 @@ Membership:
 <li>{{ contact.fname }} {{ contact.lname }}</li>
 {% endfor %}
 </ul>
+
+Progress Status [<small><small>June 2026</small></small>]:
+
+* Internal online workshop on publication of eDNA derived occurrences data scheduled in July; a longer more detailed course on the same topic is currently in development phase.
+* OBIS data ingestion pipelines updated to allow ingestion of large eDNA datasets; currently moving away from an occurrence-centric data storage to deal with mass replication.
+* Plan to quantify and track Essential Ocean Variables data within OBIS approved; currently in testing phase.
 
 ## OBIS Product Coordination Group (PCG)
 
