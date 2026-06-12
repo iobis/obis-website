@@ -12,10 +12,10 @@
             {% for node in dataset.nodes %}
             <a href="/node/{{ node.id }}"><span class="badge tag tag-node">{{ node.name }}</span></a>
             {% endfor %}
-            {% if dataset.statistics.MeasurementOrFact %}
+            {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
             <span class="badge tag tag-mof">MeasurementOrFact</span>
             {% endif %}
-            {% if dataset.statistics.DNADerivedData %}
+            {% if dataset.statistics and dataset.statistics.DNADerivedData %}
             <span class="badge tag tag-dna">DNADerivedData</span>
             {% endif %}
             {% if dataset.core == "taxon" %}
@@ -35,12 +35,12 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
                 </li>
-                {% if dataset.statistics.MeasurementOrFact %}
+                {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="mof-tab" data-bs-toggle="tab" data-bs-target="#mof" type="button" role="tab" aria-controls="profile" aria-selected="false">Measurement types</button>
                 </li>
                 {% endif %}
-                {% if dataset.statistics.DNADerivedData %}
+                {% if dataset.statistics and dataset.statistics.DNADerivedData %}
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="dna-tab" data-bs-toggle="tab" data-bs-target="#dna" type="button" role="tab" aria-controls="profile" aria-selected="false">DNA derived data</button>
                 </li>
@@ -92,28 +92,28 @@
                     <div class="col col-md-3 mb-2">
                         <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
                             <div class="text-center text-md-end">
-                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}</div>
+                                <div class="display-6 fw-bold">{% if dataset.statistics %}{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}{% else %}0{% endif %}</div>
                                 <div>occurrence records</div>
                             </div>
-                            {% if dataset.statistics.MeasurementOrFact %}
+                            {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.MeasurementOrFact) }}</div>
                                 <div>measurements and facts</div>
                             </div>
                             {% endif %}
-                            {% if dataset.statistics.DNADerivedData %}
+                            {% if dataset.statistics and dataset.statistics.DNADerivedData %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.DNADerivedData) }}</div>
                                 <div>sequences</div>
                             </div>
                             {% endif %}
-                            {% if statistics.taxa %}
+                            {% if statistics and statistics.taxa %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
                                 <div>taxa</div>
                             </div>
                             {% endif %}
-                            {% if statistics.species %}
+                            {% if statistics and statistics.species %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
                                 <div>species</div>
@@ -161,7 +161,7 @@
                 <div class="mb-4">
                     <h3>Missing and invalid fields</h3>
                     
-                    {% if quality_statistics.fields %}
+                    {% if quality_statistics and quality_statistics.fields %}
                     <table class="table">
                         <thead>
                             <tr>
@@ -178,12 +178,14 @@
                                 <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
                                 <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
                                 <td>
+                                    {% if dataset.statistics and dataset.statistics.Occurrence %}
                                     <div style="display: flex; align-items: center; gap: 0.5em;">
                                         <div class="progress" style="width: 200px;">
                                             <div class="progress-bar" role="progressbar" style="width: {{ stats.total / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <span>{{ (stats.total / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
                                     </div>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
@@ -198,7 +200,7 @@
                     
                     <p>The OBIS data quality flags are documented at <a href="https://github.com/iobis/obis-qc" target="_blank">https://github.com/iobis/obis-qc</a>.</p>
                     
-                    {% if quality_statistics.flags %}
+                    {% if quality_statistics and quality_statistics.flags %}
                     <table class="table">
                         <thead>
                             <tr>
@@ -223,12 +225,14 @@
                                     </a>
                                 </td>
                                 <td>
+                                    {% if dataset.statistics and dataset.statistics.Occurrence %}
                                     <div style="display: flex; align-items: center; gap: 0.5em;">
                                         <div class="progress" style="width: 200px;">
                                             <div class="progress-bar" role="progressbar" style="width: {{ records / dataset.statistics.Occurrence * 100 }}%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
                                         </div>
                                         <span>{{ (records / dataset.statistics.Occurrence * 100)|round(1) }}%</span>
                                     </div>
+                                    {% endif %}
                                 </td>
                             </tr>
                             {% endfor %}
@@ -271,10 +275,10 @@
         renderMap("m", { datasetid: "{{ dataset.id }}" })
         renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
         renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
-        {% if dataset.statistics.MeasurementOrFact %}
+        {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
         renderMeasurementTypes("mofs", { datasetid: "{{ dataset.id }}" })
         {% endif %}
-        {% if dataset.statistics.DNADerivedData %}
+        {% if dataset.statistics and dataset.statistics.DNADerivedData %}
         renderDNATable("dnas", { datasetid: "{{ dataset.id }}" })
         {% endif %}
     </script>
