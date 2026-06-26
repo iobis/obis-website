@@ -37,7 +37,7 @@ Based in Cape Town, South Africa, AfrOBIS, the OBIS Node for sub-Saharan Africa,
 
 **Tshikana Rasehlomi:** Two forces drove the creation of AfroOBIS: making African data accessible durably and stably, and supporting evidence-based decision-making in South Africa and on the continent. South Africa always had a dual approach to marine biodiversity data, with a focus on both continental and national levels. At the end of the 90s, when marine information was extremely fragmented across the continent, South Africa decided to be the driving force that would provide an authoritative regional source for all African marine biodiversity data. The objective was to digitize, collect, and centralize existing and upcoming data to integrate it into OBIS as part of the  Census of Marine Life programme, the global Sloan Foundation-funded initiative that created OBIS before it moved under the IOC of UNESCO. This pipeline was originally established through SADCO and then moved to the Department of Forestry, Fisheries, which led to the creation of AfrOBIS in 2005\. 
 
-<!-- >Two forces drove the creation of AfroOBIS: making African data accessible durably and stably, and supporting evidence-based decision-making in South Africa and on the continent.-->
+>Two forces drove the creation of AfroOBIS: making African data accessible durably and stably, and supporting evidence-based decision-making in South Africa and on the continent.
 
 The motivation for the country was to integrate African marine datasets into a global data ecosystem and to make sure that this data would remain visible and accessible. That was crucial for South African national policy, but also for bilateral and regional cooperation, as well as for international contributions. At a national level, South Africa needed to make this data accessible to support evidence-based decisions, such as the creation of marine protected areas and fisheries management. AfrOBIS continues to play the same role today: a lot of the data from AfrOBIS and the SADCO database is used for marine spatial planning across the region.
 <br><br><br>
@@ -59,6 +59,9 @@ Due to large discrepancies in structures and resources across the region, we hav
 
 A second major challenge is institutional. In some countries that used to provide data to AfrOBIS, changes in leadership and the absence of clear data-sharing policies have made contributions far less predictable. The key issue is to move from a culture of data ownership to one of data stewardship, where the value of data sharing is recognized by governments and institutions. We start seeing a real shift among individual scientists, who now understand the value of data citation, recognition, and visibility across borders. The remaining difficulty is convincing the leadership of their institutions to formalize that openness in policy.
 <br><br><br>
+
+>We invest heavily in capacity building. Over the years, we have run data management workshops and training sessions across the region
+
 **How do you incentivize data holders, whether researchers or institutions, to share their data through AfrOBIS?**
 
 **Tshikana Rasehlomi:** We invest heavily in capacity building. Over the years, we have run data management workshops and training sessions across the region, focused on the FAIR, CARE, and TRUST principles, and on the long-term value of making datasets visible and findable. When researchers understand that their datasets will receive persistent identifiers (DOIs) and proper citations for their datasets, the conversation shifts very quickly. 
@@ -92,7 +95,7 @@ We are also regularly asked to provide input into reporting under the Convention
 **Tshikana Rasehlomi:** It would be very difficult for me to single out one dataset\! But I am particularly happy with the linefish fisheries surveys, because we are now using them as a technology demonstrator. We have built dashboards showing how the species have been performing in terms of catch per unit effort, and that work is feeding into legislation on total allowable catch in South Africa. To see data move from collection to archive to legislation is genuinely rewarding. Policymakers do not always see the work involved in standardizing data to that level, but when you can show them the outcome through a dashboard, the appreciation is immediate.
 <br><br><br>
 
-<!--> Being part of the OBIS community means we can contribute to a truly global ocean data ecosystem while representing the interests of the sub-Saharan African region-->
+>Being part of the OBIS community means we can contribute to a truly global ocean data ecosystem while representing the interests of the sub-Saharan African region
 
 **Are there ongoing partnerships or collaborations you would like to highlight?**
 
