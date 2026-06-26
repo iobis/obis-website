@@ -215,6 +215,56 @@ section {
     max-width: 700px;
 }
 
+.container-post h3 {
+    margin-top: 2.5rem;
+    margin-bottom: 1.25rem;
+}
+
+.usecase-icon-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    width: 3.2rem;
+    height: 3.2rem;
+    padding: 0.6rem;
+    margin-right: 0.6rem;
+    vertical-align: middle;
+    position: relative;
+    top: -3px;
+}
+
+.usecase-icon-badge i {
+    font-size: 1.6rem;
+}
+
+.usecase-icon-badge-sm {
+    width: 2rem;
+    height: 2rem;
+    padding: 0.35rem;
+    border-radius: 6px;
+    margin-right: 0.5rem;
+    top: -2px;
+}
+
+.usecase-icon-badge-sm i {
+    font-size: 0.9rem;
+}
+
+.usecase-example {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+}
+
+.usecase-example-img {
+    width: 254px;
+    height: 143px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
 .contacts a {
     text-decoration: none;
 }
@@ -387,6 +437,48 @@ section {
     opacity: 0.7;
 }
 
+.usecase-category-tile {
+    width: 100%;
+    height: 180px;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    padding: 0 1.25rem;
+    background-color: var(--light-grey);
+    border-radius: 10px;
+    border: 0;
+    overflow: hidden;
+    transition: background-color 0.2s ease;
+}
+
+.usecase-category-tile:hover {
+    background-color: #eeeeee;
+}
+
+.usecase-category-icon-wrap {
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 0.75rem;
+}
+
+.usecase-category-icon {
+    font-size: 2rem;
+    color: var(--tags);
+}
+
+.usecase-category-title-wrap {
+    display: flex;
+    align-items: flex-start;
+    padding-top: 0rem;
+}
+
+.usecase-category-title {
+    color: var(--black);
+    font-weight: 500;
+    font-size: 1rem;
+    line-height: 1.3;
+    margin: 0;
+}
+
 .explore-control button {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23000000' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
@@ -399,4 +491,201 @@ section {
     background-color: white;
     cursor: pointer;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+/* Inline image license tooltip, triggered on hover. Based on GBIGF Hosted Portal SASS */
+.feature-img { position: relative; }
+.feature-img-license { position: absolute; z-index: 10; bottom: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; opacity: 0.9; font-size: 12px; color: white; }
+.feature-img-license:hover { opacity: 1; }
+.feature-img-license:hover .feature-img-license-text { display: block; }
+.feature-img-license:hover .feature-img-license-c { display: none; }
+.feature-img-license a { color: inherit; text-decoration: underline; }
+.feature-img-license-c { color: rgba(0,0,0,.9); background: #ffffffbb; display: flex; align-items: center; justify-content: center; width: 1.25rem; height: 1.25rem; }
+.feature-img-license-c .icon { width: 1rem; height: 1rem; display: inline-block; }
+.feature-img-license-text { display: none; background: rgba(0,0,0,.5); padding: 3px; }
+.feature-img-license-text p { margin: 0; }
+
+.usecase-read-more {
+    color: var(--black);
+    text-decoration: none;
+}
+.usecase-read-more:hover {
+    color: var(--black);
+    text-decoration: underline;
+}
+
+.status-implemented {
+    background-color: var(--tags);
+    color: #ffffff;
+}
+.status-ongoing {
+    background-color: #dce8ff;
+    color: var(--tags);
+}
+.status-potential {
+    background-color: #c8c8c8;
+    color: var(--black);
+}
+.status-published {
+    background-color: #1a3a8f;
+    color: #ffffff;
+}
+
+.meeting-badge {
+    background: var(--light-grey);
+    border-radius: 6px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.875rem;
+    transition: background-color 0.2s ease;
+    cursor: default;
+    color: var(--black);
+}
+.meeting-badge:hover {
+    background-color: #eeeeee;
+    color: var(--black);
+}
+.meeting-badge strong {
+    text-decoration: none;
+}
+.meeting-badge:hover strong {
+    text-decoration: underline;
+}
+
+/* ── FAQ ─────────────────────────────────────────────── */
+
+.faq-hero {
+    text-align: center;
+    padding: 2.5rem 0 1.25rem;
+}
+
+.faq-hero-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 2.5rem;
+}
+
+.faq-hero-subtitle {
+    color: #6c757d;
+    line-height: 1.4;
+    margin-bottom: 1.75rem;
+}
+
+.faq-search-wrap {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+.faq-search-group {
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.faq-search-icon {
+    background-color: #fff;
+    border-right: none;
+    color: #6c757d;
+    font-size: 1.1rem;
+}
+
+.faq-search-input {
+    border-left: none;
+    font-size: 1.05rem;
+    padding: 0.75rem 1rem;
+    border-radius: 0 10px 10px 0 !important;
+}
+
+.faq-search-input:focus {
+    box-shadow: none;
+    border-color: #dee2e6;
+}
+
+.faq-card {
+    background-color: var(--light-grey);
+    border: 0;
+}
+
+.faq-card .card-title a {
+    font-size: 1.275em;
+}
+
+.faq-card .card-title {
+    margin-bottom: 1rem;
+}
+
+.faq-card-category {
+    font-size: 0.75rem;
+    color: #6c757d;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin-bottom: 0.9rem;
+}
+
+.faq-card-teaser {
+    color: #444;
+    line-height: 1.5;
+}
+
+.faq-highlight {
+    background-color: #fff3cd;
+    border-radius: 2px;
+    padding: 0 1px;
+}
+
+.faq-body {
+    font-size: 1rem;
+    line-height: 1.75;
+}
+
+.faq-body h2,
+.faq-body h3 {
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+}
+
+.faq-body ul,
+.faq-body ol {
+    padding-left: 1.5rem;
+}
+
+.faq-body li {
+    margin-bottom: 0.3rem;
+}
+
+#faq-grid {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+/* ── Article blockquote ───────────────────────────────── */
+
+.container-post blockquote {
+    margin: 2rem 0;
+    padding: 0 0 0 50px;
+    border: none;
+    background: none;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.15;
+    color: var(--black);
+    text-align: left;
+    quotes: none;
+}
+
+.container-post blockquote p {
+    border-left: 2px solid #dddddd;
+    margin: 0 0 0 -25px;
+    padding-left: calc(25px + 0.75rem);
+}
+
+.container-post blockquote::before {
+    content: "\275D";
+    display: block;
+    font-size: 3.9375rem;
+    font-weight: normal;
+    font-style: normal;
+    line-height: 0.8;
+    color: #dddddd;
+    margin-left: -50px;
+    margin-bottom: -0.75rem;
 }
