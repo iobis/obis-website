@@ -11,7 +11,7 @@ title: OBIS workplan for 2026
 The proposed work plan represents a realistic suite of activities that progresses the strategic aims of OBIS and aligns with the wider strategies of IOC. Where relevant, additional tasks have been identified that, where resources allow, will be integrated. You can get an overview of the workplan in our article [here](https://obis.org/2025/12/22/obis-workplan-2026-2027/).
 
 ## **General objective**
-See [OBIS objectives](/about/#objectives).
+See [OBIS objectives](/about/visionmission/).
 
 ## **Governance**
 The OBIS Work Plan is implemented by the OBIS Secretariat with the active support from the community through the OBIS Coordination Groups, who report to the OBIS Steering Group. The OBIS Executive Committee monitors the implementation. The OBIS Steering Group sets the priorities.
