@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Every dataset has a story - MedOBIS publishes its first micro-Computed Tomography Morphological dataset
+title: "Every dataset has a story: how MedOBIS integrated micro-CT imaging data into Darwin Core"
 lang: en
 author: OBIS
 tags: 

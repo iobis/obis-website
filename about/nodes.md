@@ -78,7 +78,15 @@ Thematic OBIS Nodes are organizations that contribute data to OBIS, usually base
 <script src='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.js'></script>
 <link href='https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css' rel='stylesheet' />
 
-<div id="nodesmap" class="mt-5 mb-4" style="height: 700px; width:100%;"></div>
+<div id="nodesmap" class="mt-5 mb-4" style="
+  height: 700px;
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+"></div>
 
 <script>
   const map = new maplibregl.Map({

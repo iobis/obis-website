@@ -68,6 +68,8 @@ menu:
       url: "/partnerships"
     - title: "Impact"
       url: "/whatwedo/impact"
+    - title: "Workplan 2026-2027"
+      url: "/whatwedo/workplan"
   - title: "Data"
     subitems:
     - title: "Data access"

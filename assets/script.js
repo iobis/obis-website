@@ -544,6 +544,7 @@ function renderOccurrenceTable(containerId, endpoint, filter, pageSize = 10) {
         "class",
         "order",
         "scientificName",
+        "verbatimIdentification",
         "eventDate",
         "decimalLongitude",
         "decimalLatitude",
