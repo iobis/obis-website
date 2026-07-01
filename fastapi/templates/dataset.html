@@ -92,9 +92,15 @@
                     <div class="col col-md-3 mb-2">
                         <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
                             <div class="text-center text-md-end">
-                                <div class="display-6 fw-bold">{% if dataset.statistics %}{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}{% else %}0{% endif %}</div>
-                                <div>occurrence records</div>
+<div class="display-6 fw-bold">{% if dataset.statistics %}{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}{% else %}0{% endif %}</div>
+                                <div>total submitted occurrences</div>
                             </div>
+                            {% if dataset.statistics %}
+                            <div class="text-center text-md-end">
+                                <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence - (dataset.statistics.dropped or 0)) }}</div>
+                                <div>accepted occurrences</div>
+                            </div>
+                            {% endif %}
                             {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.MeasurementOrFact) }}</div>
@@ -268,7 +274,6 @@
             var layout = {
                 margin: {l: 0, r: 0, b: 30, t: 30},
                 sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-                // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
             };
             Plotly.newPlot("sunburst", data, layout);
         });

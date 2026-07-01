@@ -493,7 +493,7 @@ section {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
-/* Inline image license tooltip, triggered on hover. */
+/* Inline image license tooltip, triggered on hover. Based on GBIGF Hosted Portal SASS */
 .feature-img { position: relative; }
 .feature-img-license { position: absolute; z-index: 10; bottom: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; opacity: 0.9; font-size: 12px; color: white; }
 .feature-img-license:hover { opacity: 1; }
