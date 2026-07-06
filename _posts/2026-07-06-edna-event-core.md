@@ -22,9 +22,11 @@ DNA-derived marine biodiversity datasets can contain a huge amount of informatio
 
 Collected during a biodiversity survey around the Swedish island of Gotland, the dataset "Invertebrate eDNA Gotland Summer 2021" (Nordlund L M, Lüskow F, Lawrence E (2026). Invertebrate eDNA Gotland Summer 2021\. Version 2.1. OBIS Secretariat. Samplingevent dataset. [https://doi.org/10.25607/bgjoog](https://doi.org/10.25607/bgjoog)) demonstrates how eDNA, occurrence records, sampling events, and environmental measurements can all be neatly integrated using Event core in Darwin Core format, without causing information inflation. “The dataset is modest in size, containing 116 occurrence records,” explains **Florian Lüskow**, postdoctoral research fellow at Uppsala University, one of the authors, who was conducting this work within the EU-funded project BioEcoOcean. “That relatively small size for a DNA-derived occurrence dataset made it an ideal candidate to experiment with the Event core structure. The dataset was originally collected as part of a researcher-led biodiversity survey, showcasing that advanced biodiversity data standards are becoming accessible to individual researchers and smaller monitoring initiatives.” 
 
-<br><br>
+<br>
 
 > In addition to linking environmental measurements to Event Core, the dataset has also been aligned with Essential Ocean Variables (EOVs) through its metadata.
+
+<br>
 
 ### From Occurrence core to Event core
 
