@@ -11,7 +11,7 @@ purpose: news
 feed: true
 image: /images/Common_moon_jelly_Janine H.jpeg
 ---
-<img alt="A common moon jelly (Aurelia aurita), one of the species from the "Invertebrate eDNA Gotland Summer 2021 " dataset." src="/images/Common_moon_jelly_Janine H.jpeg" style="width: 100%;">
+
 <p style="text-align: center;"><i>A common moon jelly (Aurelia aurita), one of the species from the "Invertebrate eDNA Gotland Summer 2021 " dataset. Photo: Janine H. / iNaturalist</i></p>  
 <br><br>
 
