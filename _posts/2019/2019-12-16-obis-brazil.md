@@ -12,12 +12,11 @@ tags:
 - Brazil
 title: New home for OBIS Brazil
 ---
-
 <p>The Long-term Ecological Research Program Coastal Habitats of Espírito Santo in Brazil will operate the OBIS Brazil node and will be coordinated by Ms Ana Carolina Mazzuco as the new OBIS node manager.</p>
 
 <table>
 <tr>
-<td valign="top" width="30%"><img src="/images/brazil-flag-small.jpg" width="300px"></td>
+<td valign="top" width="30%"></td>
 <td valign="top" width="70%"><p>The Long-term Program of Ecological Research of the Coastal Habitats of Espírito Santo (PELD-HCES), which is part of the Brazilian Long-term Ecological Research Program (LTER) has become an IODE Associate Data Unit in order to run OBIS Brazil, the regional node for the South-West Atlantic, which has been dormant for a few years.</p>
 
 <p>PELD-HCES is currently monitoring benthic assemblages, oceanographic and sediment variables on coastal ecosystems including estuaries, mangroves and intertidal coastal reefs. They aim to assess the spatial-temporal patterns of benthic assemblages in the studied ecosystems along seasonal and interannual scales.</p>

@@ -10,12 +10,9 @@ tags:
 purpose: news
 feed: true
 image: /images/bb9527600n_2.jpg
+imageAlt: "Scientists and ship crew recover CalBOBL (Bongo) net. Photo: NOAA Fisheries / James Wilkinson"
+imageCaption: "Scientists and ship crew recover CalBOBL (Bongo) net.<br>Photo: NOAA Fisheries / James Wilkinson"
 ---
-
-<img alt="Scientists and ship crew recover CalBOBL (Bongo) net. Photo: NOAA Fisheries / James Wilkinson" src="/images/bb9527600n_2.jpg" style="width: 100%;">
-<p style="text-align: center;"><i>Scientists and ship crew recover CalBOBL (Bongo) net.<br>Photo: NOAA Fisheries / James Wilkinson</i></p>  
-<br><br>
-
 Turning decades of historical marine life records into standardized and FAIR data is a massive, but crucial challenge. Long-term data series on marine biodiversity are unique scientific assets that can help us understand how the ocean is changing. Making the *CalCOFI Fish Larvae & Egg Tows* dataset available through OBIS was made possible with a joint effort between the California Cooperative Oceanic Fisheries Investigations (CalCOFI), the Global Ocean Observing System (GOOS), and OBIS. The result is a Darwin Core-formatted dataset spanning 1951 to 2023, covering an area located mainly across the California Current, and containing 463,655 occurrence records, 610,816 measurements and facts, and observations of 539 species, accessible [here](https://obis.org/dataset/0e223f55-c826-4513-ae9a-b04cbf2e189c).
 <br><br>
 

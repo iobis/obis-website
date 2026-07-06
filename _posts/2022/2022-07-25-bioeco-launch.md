@@ -16,12 +16,11 @@ tags:
 - global ocean observing
 title: 'Launching: The GOOS BioEco portal'
 ---
-
 GOOS has officially announced the public launch of the BioEco portal! Follow [this link](https://goosocean.org/index.php?option=com_content&view=article&id=413:goos-bioeco-portal-the-place-to-go-for-information-on-biological-and-ecosystem-observations&catid=13&Itemid=125) to the announcement by GOOS.
 
 The [BioEco Portal](https://bioeco.goosocean.org/) is a freely available, open access platform that provides metadata and information on global ocean observing programmes that monitor Biological and Ecosystem (BioEco) [Essential Ocean Variables (EOV’s)](https://www.goosocean.org/index.php?option=com_content&view=article&id=14&Itemid=114). 
 
-<img src="/images/bioeco_map.png" width="60%" class="img-responsive img-responsive-50"/>
+
 <em>The BioEco Portal user interface with interactive map and programme filtering options</em>
 <br> 
 <p>&nbsp;</p>

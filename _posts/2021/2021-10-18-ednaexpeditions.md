@@ -20,10 +20,9 @@ tags:
 title: OBIS partners with marine World Heritage sites in a global project to study
   biodiversity.
 ---
-
 An ambitious project using environmental DNA (eDNA), to understand the richness of biodiversity at UNESCO’s marine World Heritage sites launches on the 18th of October 2021. It will involve the collection of genetic material from environmental samples across selected marine World Heritage sites by local citizens guided by expert support, with the aim of monitoring fish as well as species red-listed by the International Union for Conservation of Nature (IUCN).
 
-<img src="/images/thumbnails/edna-concept.png" class="img-responsive img-responsive-50" />
+
 <em>Photo - With eDNA collections, a snapshot of fish biodiversity can be detected from simple water samples. Credit: [FISHBIO](https://fishbio.com/) </em>
 <br>  
 

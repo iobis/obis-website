@@ -10,10 +10,9 @@ tags:
 purpose: news
 feed: true
 image: /images/thumbnails/OceanImageBank_JordanRobins_03_s.jpg
+imageAlt: "Photo: The Ocean Image Bank / Jordan Robins"
+imageCaption: "Photo: The Ocean Image Bank / Jordan Robins"
 ---
-<img alt="" src="/images/OceanImageBank_JordanRobins_03_s.jpg" style="width: 100%;">
-<i>Photo: The Ocean Image Bank / Jordan Robins</i>  
-<br><br>
 Understanding and protecting the Ocean requires interconnecting many observation layers across fields and disciplines. At Living Data 2025, OBIS, [GOOS](https://goosocean.org/), [MBON](https://marinebon.org), and [GBIF](https://www.gbif.org/)  co-hosted a dedicated [session](https://goosocean.org/news/ocean-observations-at-living-data-2025/) exploring how integrating biological, biogeochemical, and physical observations can transform our collective capacity to observe and understand the Ocean. 
 
 Combining physical, biogeochemical, and biological observations is essential to understand, monitor, and predict changes in the Ocean. Physical and chemical variables reveal how the Ocean changes, while biological and ecological observations show what these changes concretely mean to marine life. The complex interactions between marine life and its environment call for a holistic, data-based observing approach to support effective management and drive efficient policy responses. As part of the data ecosystem of the Intergovernmental Oceanographic Commission ([IOC](https://www.ioc.unesco.org/en)) of UNESCO, OBIS and GOOS are collaborating to ensure that high-quality marine biological and ecological observations flow seamlessly into global data systems, delivering crucial insights to those who need them the most. Through its community, GOOS defines the needs and the frameworks for coordinated and sustained Ocean observation, while OBIS operationalises the marine biodiversity data component. 

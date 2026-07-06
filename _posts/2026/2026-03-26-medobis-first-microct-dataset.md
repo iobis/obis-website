@@ -9,11 +9,9 @@ tags:
 purpose: news
 feed: true
 image: /images/gasteropod2.png
+imageAlt: "A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS"
+imageCaption: "A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset."
 ---
-<img alt="A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset." src="/images/gasteropod2.png" style="width: 100%;">
-<p style="text-align: center;"><i>A micro-CT scan of Hexaplex trunculus, the banded dye-murex, one of two species at the centre of MedOBIS's innovative morphological dataset.</i></p>  
-<br><br>
-
 Emerging data types often pose challenges for repositories in terms of management, standardization, and integration. MedOBIS, the OBIS Node for the Mediterranean, proposed a solution for this challenge and published its first-ever Darwin Core-formatted [dataset](https://obis.org/dataset/74e3f584-df52-43af-b7a3-cc1e10071649) that included micro-Computed Tomography Morphological image-derived information, along with biodiversity and environmental data on two species, *Chondrilla nucula* and *Hexaplex trunculus*.
 
 The [MACCIMO](https://maccimo.hcmr.gr/) project—Multi-level Approaches to Assess Climate Change Impact on Marine Organisms—investigates how climate change affects sessile marine invertebrates through a multipronged strategy that integrates multiple scientific approaches. This project was funded by the Hellenic Foundation for Research and Innovation (HFRI) under the “2nd Call for HFRI Research Projects to support Faculty Members & Researchers” (Project Number: 3280).  Sessile marine invertebrates are particularly sensitive to climate-related stressors due to their limited mobility and their inability to escape adverse environmental conditions. As part of experimentally simulated climate change scenarios, one of the project’s aims was to investigate potential morphological changes in two species: the chicken-liver sponge ([*Chondrilla nucula*](https://obis.org/taxon/134110), a sessile sponge permanently attached to the substrate) and the banded dye-murex ([*Hexaplex trunculus*](https://obis.org/taxon/140396), a medium-sized, low mobility sea snail historically famous for its use in creating purple and blue dyes). By examining how the morphology of these species responds to simulated climate stressors, the project aims to identify traits that can serve as indicators of environmental change.

@@ -9,12 +9,9 @@ tags:
 purpose: news
 feed: true
 image: /images/AfrOBIS_IMG_5.jpg
+imageAlt: "A field biologist deploying plankton nets to capture the micro-biodiversity driving our pelagic ecosystems."
+imageCaption: "A field biologist deploying plankton nets to capture the micro-biodiversity driving our pelagic ecosystems. Photo: AfrOBIS"
 ---
-
-<img alt="A field biologist deploying plankton nets to capture the micro-biodiversity driving our pelagic ecosystems." src="/images/AfrOBIS_IMG_5.jpg" style="width: 100%;">
-<p style="text-align: center;"><i>A field biologist deploying plankton nets to capture the micro-biodiversity driving our pelagic ecosystems. Photo: AfrOBIS</i></p>  
-<br><br>
-
 Based in Cape Town, South Africa, AfrOBIS, the OBIS Node for sub-Saharan Africa, contributes to coordinating marine biodiversity data from a vast region across African waters, stretching from the Gulf of Guinea to the Western Indian Ocean and the Southern Ocean. AfrOBIS is also aggregating data from two of the world's most productive marine systems: the Benguela Current on the west coast of Africa and the Agulhas Current on the east coast. We spoke with Tshikana Rasehlomi, AfrOBIS Node and Data Manager, to learn more about the role the Node plays as a connecting point for African marine biodiversity data, the challenges of mobilizing data and engaging with providers across so many countries, and, finally, how AfrOBIS is integrating new data types such as eDNA and acoustic monitoring.
 <br><br><br>
 **OBIS: Dear Tshikana, it's a pleasure to have this talk with you\! Could you introduce us to AfrOBIS?**

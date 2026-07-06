@@ -15,7 +15,6 @@ tags:
 - Iran
 title: OTGA/INIOAS/OBIS Training took place in Iran, 23-26 September 2018
 ---
-
 <p>A training course under the auspices of the Ocean Teacher Global Academy (OTGA) on Marine Biogeographic Data processing using OBIS was organized by the IOC of UNESCO and the Iranian National Institute for Oceanography and Atmospheric Science (INIOAS) at INIOAS, I.R.IRAN which also hosts the OBIS node for the Persian Gulf and the Gulf of Oman (PEGO-OBIS node).</p>
 
 <p>Aims & Objectives:
@@ -41,6 +40,6 @@ In particular, the participants were trained about WoRMS taxon match system, ins
 
 <p>All the training material is available online at the <a href="https://classroom.oceanteacher.org/course/view.php?id=353" target="_blank">OceanTeacher website</a>.</p> 
 
-<p><img src="/images/grouppicture-iran.png" width="100%" /></p>
+
 <p><img src="/images/hanieh-iran.png" width="100%" /></p>
 <p><img src="/images/presentation-iran.png" width="100%" /></p>
