@@ -45,5 +45,5 @@ The practical focus of the workshop was highlighted in participant feedback. "We
 
 As production and demand for DNA-derived information grow globally, it becomes crucial to accelerate the OBIS Community's ability to format, integrate, and publish this type of data. OBIS-led capacity development initiatives, such as this workshop, contribute to rapidly filling existing gaps, providing participants with the practical skills to ensure that DNA-derived observations can be mobilized in a FAIR, interoperable format and made readily available to support research, conservation and evidence-based decision-making. ◼️
 <br><br><br>
-→ The workshop slides can be accessed here: [https://iobis.github.io/obis_edna_slides_node_training/#/title-slide](https://iobis.github.io/obis_edna_slides_node_training/#/title-slide) 
+→ The workshop slides can be accessed here: [https://iobis.github.io/obis_edna_slides_node_training/#/title-slide](https://iobis.github.io/obis_edna_slides_node_training/#/title-slide)<br>
 → Explore the DNA-related pages in the OBIS Manual [https://manual.obis.org/dna_data](https://manual.obis.org/dna_data)
