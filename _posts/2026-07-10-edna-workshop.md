@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Increasing the OBIS Community's capacity to publish DNA-derived biodiversity data"
+title: "Increasing the capacity of the OBIS Community to publish DNA-derived biodiversity data"
 lang: en
 author: OBIS
 tags: 
