@@ -21,6 +21,9 @@ Disallow: /
 User-agent: Sogou
 Disallow: /
 
+User-agent: Bytespider
+Disallow: /
+
 User-agent: Googlebot
 Crawl-delay: 2
 Disallow: /explore
