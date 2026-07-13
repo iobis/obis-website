@@ -49,5 +49,5 @@ As production and demand for DNA-derived information grow globally, it becomes c
 → Explore the DNA-related pages in the [OBIS Manual](https://manual.obis.org/dna_data)
 
 <br><br>
-*This workshop was organized and coordinated by Ruben Pérez Pérez and Victor Chocho, Co-Chairs of the OBIS Data Coordination Group, as part of Deliverable 5.1 ("Advance the adoption of data standards within OBIS") of the OBIS Workplan for 2027-2028. The workshop content was delivered by the OBIS Secretariat.*
+*This workshop is part of the OBIS workplan under Outcome 5 "Review and support the alignment and adoption of data standards, specifications, and publication mechanisms", Deliverable 5.1 "Deliver two workshops to advance adoption of data standards within OBIS". The workshop took place as part of the activities of the [OBIS Data Coordination Group](https://obis.org/community/coordinationgroups/), co-chaired by Ruben Pérez Pérez and Victor Chocho. The workshop content was delivered by the OBIS Secretariat.*
 <br><br><br>
