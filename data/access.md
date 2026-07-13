@@ -17,8 +17,8 @@ The recommended way to access OBIS data depends on the size of your subset and t
 |---|---|---|
 | Mapper | Visual selection and download of smaller subsets | TSV | <https://mapper.obis.org> |
 | Search | Visual exploration of datasets and taxa | - | <https://obis.org/search> |
-| R package | Programmatic download of smaller subsets and checklists using R | Data frame | <https://github.com/iobis/robis> |
-| API | Programmatic access to smaller subsets, checklists, and statistics | JSON | <https://api.obis.org> |
+| R package | Programmatic download of smaller subsets and checklists using R<br><span class="alert alert-warning d-inline-block py-1 px-2 mt-1 mb-0"><strong>For large downloads:</strong> use the OBIS dataset on AWS Open Data. Do not parallelize downloads.</span> | Data frame | <https://github.com/iobis/robis> |
+| API | Programmatic access to smaller subsets, checklists, and statistics<br><span class="alert alert-warning d-inline-block py-1 px-2 mt-1 mb-0"><strong>For large downloads:</strong> use the OBIS dataset on AWS Open Data. Do not parallelize downloads.</span> | JSON | <https://api.obis.org> |
 | AWS Open Data | Analysis of large subsets | GeoParquet | <https://github.com/iobis/obis-open-data> |
 | OBIS helpdesk | Contact the OBIS helpdesk if you are experiencing issues downloading or working with data | Any | <mailto:helpdesk@obis.org> |
 
