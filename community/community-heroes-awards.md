@@ -2,11 +2,12 @@
 identifier: community-hero-awards-2025
 lang: en
 layout: page_narrow
-shorttitle: OBIS Community Hero Awards
-title: "OBIS Community Hero Awards: celebrating the people behind the data"
+shorttitle: OBIS Community Heroes Awards
+title: "OBIS Community Heroes Awards: celebrating the people behind the data"
 ---
 
-# OBIS Community Hero Awards: celebrating the people behind the data
+# OBIS Community Heroes Awards: celebrating the people behind the data
+<br>
 
 ## 2025 awardees
 
