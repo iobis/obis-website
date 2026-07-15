@@ -1,7 +1,7 @@
 ---
 identifier: coordinationgroups
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: OBIS Coordination Groups
 title: OBIS Coordination Groups
 ---
