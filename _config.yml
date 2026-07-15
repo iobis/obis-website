@@ -95,6 +95,8 @@ menu:
       url: "/events"
     - title: "Coordination groups"
       url: "/community/coordinationgroups"
+    - title: "Community Heroes Awards"
+      url: "/community/community-heroes-awards"      
     - title: "OBIS Newsletter"
       url: "/community/newsletter"
     - title: "OBIS Discourse"
