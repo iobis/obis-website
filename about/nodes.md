@@ -53,6 +53,7 @@ Regional OBIS Nodes (RONs) are organizations that have committed to continuing t
 - [**OBIS Korea**](/node/fc5278f9-ea56-4a01-a48a-f8c4071e3b3e) (Korea)
 - [**OBIS Malaysia**](/node/52486ef2-e094-4e8b-af77-6d434cf30ef2) (Malaysia)
 - [**OBIS Panama**](/node/f224ae79-1a05-4744-b0e6-934386bd71ed) (Panama)
+- [**OBIS Poland**](/node/dfef65ad-91ce-4fcb-ae2a-8145f9cbcf0b) (Poland)
 - [**OBIS UK**](/node/f92d5d7f-47a6-4605-9fd0-a8538dfde3fd) (United Kingdom)
 - [**OBIS USA**](/node/b7c47783-a020-4173-b390-7b57c4fa1426) (USA)
 - [**PEGO-OBIS**](/node/066e070a-04ca-4cee-acb3-66379fe49d49) (Persian Gulf and Gulf of Oman)
