@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "Node Spotlight: OBIS Malaysia, centralizing marine biodiversity data through RRC-UMT"
+title: "Node Spotlight: OBIS Malaysia, turning Malaysia's largest marine collection into global open data"
 lang: en
 author: OBIS
 tags: 
