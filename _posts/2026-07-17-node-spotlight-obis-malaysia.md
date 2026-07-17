@@ -11,7 +11,6 @@ feed: true
 image: /images/OBIS-Malaysia_g.jpeg
 ---
 
-<img alt="Active procurement of new marine fish specimens for the Repository & Reference Centre of Universiti Malaysia Terengganu (RRC-UMT) collection. Researchers are shown here conducting a meticulous sorting and identification of the specimens, which will be followed by imaging and cataloguing. Photo: OBIS Malaysia" src="/images/OBIS-Malaysia_g.jpeg" style="width: 100%;">
 <p style="text-align: center;"><i>Active procurement of new marine fish specimens for the Repository & Reference Centre of Universiti Malaysia Terengganu (RRC-UMT) collection. Researchers are shown here conducting a meticulous sorting and identification of the specimens, which will be followed by imaging and cataloguing. Photo: OBIS Malaysia</i></p>  
 <br><br>
 
