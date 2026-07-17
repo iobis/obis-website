@@ -4,6 +4,28 @@ import json
 import re
 
 
+def process_contacts(contacts):
+    unique_contacts = {}
+
+    for contact in contacts:
+        givenname = contact.get("givenname") or ""
+        surname = contact.get("surname") or ""
+        name = f"{givenname} {surname}".strip()
+        if not name:
+            name = contact.get("organization") or ""
+        if not name:
+            continue
+
+        if name not in unique_contacts or (
+            contact.get("organization") and
+            not unique_contacts[name].get("organization")
+        ):
+            unique_contacts[name] = contact
+            unique_contacts[name]["clean_name"] = name
+
+    return list(unique_contacts.values())
+
+
 def get_quality_statistics(filters: dict):
     params = urllib.parse.urlencode(filters)
     api_url = f"https://api.obis.org/statistics/qc?{params}"

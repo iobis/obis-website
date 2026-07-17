@@ -33,16 +33,42 @@
                     <div class="col col-md-8">
                         
                         <p>{{ node.description }}</p>
-                        
-                        <div class="row">
-                            {% for contact in node.contacts %}
-                            <div class="col-md-4">
-                                <p><b>{{ contact.givenname }} {{ contact.surname }}</b>
-                                    <br/>{{ contact.email }}
-                                </p>
+
+                        {% if node.feeds %}
+                        <div class="mt-4">
+                            <div class="row mb-2">
+                                <div class="col-md-2"><b>Feed URLs</b></div>
+                                <div class="col-md-10">
+                                    <ul class="list-unstyled mb-0">
+                                        {% for feed in node.feeds %}
+                                        {% if feed.url %}
+                                        <li class="text-break mb-1"><a href="{{ feed.url }}" target="_blank" rel="noopener">{{ feed.url }}</a></li>
+                                        {% endif %}
+                                        {% endfor %}
+                                    </ul>
+                                </div>
                             </div>
-                            {% endfor %}
                         </div>
+                        {% endif %}
+                        
+                        {% if node.clean_contacts %}
+                        <div class="mt-4">
+                            <p class="mb-3"><b>Contacts</b></p>
+                            <div class="row">
+                                {% for contact in node.clean_contacts %}
+                                <div class="col-md-4 mb-3">
+                                    <p class="mb-0"><i>{{ contact.clean_name }}</i>
+                                        {% if contact.organization %}
+                                        <br/>{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}
+                                        {% elif contact.email %}
+                                        <br/>{{ contact.email }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        {% endif %}
                     </div>
                             
                     <div class="col col-md-4 mb-2">

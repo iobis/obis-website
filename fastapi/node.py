@@ -4,7 +4,7 @@ from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 import requests
 import urllib
-from lib import get_quality_statistics, get_statistics
+from lib import get_quality_statistics, get_statistics, process_contacts
 
 router = APIRouter()
 
@@ -21,6 +21,8 @@ async def node_page(request: Request, node_id: str):
         response.raise_for_status()
         response_json = response.json()
         node = response_json["results"][0]
+        if node.get("contacts"):
+            node["clean_contacts"] = process_contacts(node["contacts"])
     except Exception as e:
         print(e)
         raise HTTPException(status_code=404, detail="Node not found")
