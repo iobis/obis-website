@@ -21,8 +21,7 @@ async def node_page(request: Request, node_id: str):
         response.raise_for_status()
         response_json = response.json()
         node = response_json["results"][0]
-        if node.get("contacts"):
-            node["clean_contacts"] = process_contacts(node["contacts"])
+        node["clean_contacts"] = process_contacts(node.get("contacts") or [])
     except Exception as e:
         print(e)
         raise HTTPException(status_code=404, detail="Node not found")

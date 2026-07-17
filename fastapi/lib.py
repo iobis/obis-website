@@ -5,6 +5,9 @@ import re
 
 
 def process_contacts(contacts):
+    if not contacts:
+        return []
+
     unique_contacts = {}
 
     for contact in contacts:

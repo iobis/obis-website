@@ -68,6 +68,23 @@
                                 {% endfor %}
                             </div>
                         </div>
+                        {% elif node.contacts %}
+                        <div class="mt-4">
+                            <p class="mb-3"><b>Contacts</b></p>
+                            <div class="row">
+                                {% for contact in node.contacts %}
+                                <div class="col-md-4 mb-3">
+                                    <p class="mb-0"><i>{{ contact.givenname }} {{ contact.surname }}</i>
+                                        {% if contact.organization %}
+                                        <br/>{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}
+                                        {% elif contact.email %}
+                                        <br/>{{ contact.email }}
+                                        {% endif %}
+                                    </p>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
                         {% endif %}
                     </div>
                             
