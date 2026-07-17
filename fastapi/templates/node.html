@@ -41,8 +41,8 @@
                                 <div class="col-md-10">
                                     <ul class="list-unstyled mb-0">
                                         {% for feed in node.feeds %}
-                                        {% if feed.url %}
-                                        <li class="text-break mb-1"><a href="{{ feed.url }}" target="_blank" rel="noopener">{{ feed.url }}</a></li>
+                                        {% if feed.website or feed.url %}
+                                        <li class="text-break mb-1"><a href="{{ feed.website or feed.url }}" target="_blank" rel="noopener">{{ feed.website or feed.url }}</a></li>
                                         {% endif %}
                                         {% endfor %}
                                     </ul>
