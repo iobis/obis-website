@@ -11,7 +11,7 @@ feed: true
 image: /images/OBIS-Malaysia_g.jpeg
 ---
 
-<p style="text-align: center;"><i>Active procurement of new marine fish specimens for the Repository & Reference Centre of Universiti Malaysia Terengganu (RRC-UMT) collection. Researchers are shown here conducting a meticulous sorting and identification of the specimens, which will be followed by imaging and cataloguing. Photo: OBIS Malaysia</i></p>  
+<p style="text-align: center;"><i>Researchers sort and identify new marine fish specimens for the Repository and Reference Centre of Universiti Malaysia Terengganu (RRC-UMT) collection, before imaging and cataloguing them. Photo: OBIS Malaysia</i></p>  
 <br><br>
 
 Operating from the Repository and Reference Centre of Universiti Malaysia Terengganu (UMT), the OBIS Malaysia Node works as a national marine biodiversity data hub that centralizes information and channels it to MyBIS, the [Malaysia Biodiversity Information System](https://www.mybis.gov.my/), and to OBIS. We spoke with Muhammad Hafiz bin Borkhanuddin, OBIS Malaysia Node Manager, about the Node's structure, its role in unifying the national marine data landscape, its engagement with researchers, and the opportunities that the eDNA Expeditions 2026-2028 project brings to Malaysia.
