@@ -32,7 +32,9 @@
                 <div class="row">
                     <div class="col col-md-8">
                         
+                        {% if node.description %}
                         <p>{{ node.description }}</p>
+                        {% endif %}
 
                         {% if node.feeds %}
                         <div class="mt-4">

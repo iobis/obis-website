@@ -333,6 +333,23 @@ section {
     white-space: nowrap;
 }
 
+.table-meeting-reports th,
+.table-meeting-reports td {
+    padding: 0.4rem 0.75rem 0.4rem 0;
+    vertical-align: top;
+}
+
+.table-meeting-reports th:first-child,
+.table-meeting-reports td:first-child {
+    white-space: nowrap;
+    padding-right: 1.25rem;
+}
+
+.table-meeting-reports th:last-child,
+.table-meeting-reports td:last-child {
+    padding-right: 0;
+}
+
 .highlighter-rouge {
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;

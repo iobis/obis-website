@@ -59,6 +59,7 @@ IODE Recommendations related to OBIS:
 The SG-OBIS has an advising role to the IODE Committee on OBIS’s vision and mission, and its strategy for sustainability and further development (including assisting with seeking funding). The SG-OBIS prepares, for submission to the IODE committee, OBIS’ workplan, reviews progress and guides and identifies any technical or scientific issues as relevant to the implementation of the work plan. The SG-OBIS has established several (long-term) Task Teams and (shorter-term ad-hoc) Project Teams to share responsibilities between members of the OBIS community. The SG-OBIS is composed of the [managers of the OBIS Nodes](/contact) and meets once per year.
 
 SG-OBIS recommendations and decisions:
+* [Meeting reports](/about/meeting-reports) (full list of SG-OBIS and OBIS-EC reports)
 * [SG-OBIS-XII](https://obis.org/2024/05/30/sgobis12/) (March 2024)
 * [SG-OBIS-XI](https://obis.org/2023/06/01/sgobis11/) (May 2023)
 * [SG-OBIS-X](https://obis.org/2022/06/03/sgobis10/) (May 2022)

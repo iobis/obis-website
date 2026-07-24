@@ -56,6 +56,8 @@ menu:
       url: "/about/nodes"
     - title: "Governance"
       url: "/about/governance"
+    - title: "Meeting reports"
+      url: "/about/meeting-reports"
     - title: "Team and contacts"
       url: "/contact"
   - title: "What we do"
