@@ -13,7 +13,7 @@ layout: default
     <h2>Featured news and stories</h2>
     {% assign filtered_posts = site.posts | sort: 'date' | reverse %}
     {% include post_cards.html filtered_posts=filtered_posts limit=6 %}
-    <p><a href="/news">Continue here for more news</a></p>
+    <p style="text-align: center; margin-top: 2.5rem; font-size: 1.53rem;"><a href="/news" class="usecase-read-more"><strong>Read more news ›</strong></a></p>
   </div>
 </section>
 
