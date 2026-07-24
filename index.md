@@ -150,14 +150,19 @@ async function loadRecentDatasets() {
         : '';
 
       card.innerHTML = `
-      <div class="card">
-        <div class="card-body">
+      <div class="card h-100" style="transition: background-color 0.2s ease; cursor: pointer;" onmouseover="this.style.backgroundColor='#eeeeee'" onmouseout="this.style.backgroundColor=''">
+        <div class="card-body" style="display: flex; flex-direction: column;">
           <h5 class="card-title">
             <a href="/dataset/${dataset.id}">${dataset.title}</a>
           </h5>
           <p class="card-text">${formatDate(dataset.published)}</p>
           ${nodeBadges ? `<p>${nodeBadges}</p>` : ''}
-          <p class="card-text">${truncateText(stripHtmlTags(dataset.abstract), 500)}</p>
+          <a href="/dataset/${dataset.id}" style="color: inherit; text-decoration: none;">
+            <p class="card-text" style="display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden;">${stripHtmlTags(dataset.abstract)}</p>
+          </a>
+          <div style="margin-top: auto; padding-top: 0.75rem;">
+            <a href="/dataset/${dataset.id}" class="usecase-read-more"><strong>Read more ›</strong></a>
+          </div>
         </div>
       </div>
       `;
