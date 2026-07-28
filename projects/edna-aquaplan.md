@@ -5,7 +5,10 @@ description: The eDNAqua-Plan project aims to advance the integration of eDNA-ba
 website: https://ednaquaplan.com
 start_date: 2023-09-01
 end_date: 2026-08-26
-contact: Emilie Boulanger (e.boulanger@unesco.org)
-funding: Funded by the European Union under the Horizon Europe Programme, Grant Agreement No. 101112800. 
+contact_name: Emilie Boulanger
+contact_url: https://oceanexpert.org/expert/65848
+contact_email: e.boulanger@unesco.org
+funding: "The eDNAqua-Plan project is funded by the European Union, Grant Agreement #101112800."
 tag: eDNAqua-Plan
+logo: /images/ednaquaplan_logo.png
 ---

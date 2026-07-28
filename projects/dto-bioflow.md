@@ -5,7 +5,10 @@ description: The core mission of the DTO-BioFlow Project is to unlock "sleeping"
 website: https://dto-bioflow.eu/
 start_date: 2023-09-01
 end_date: 2027-02-01
-contact: Saara Suominen (s.suominen@unesco.org)
-funding: This project is funded by the European Union (GA# 101112823).
+contact_name: Saara Suominen
+contact_url: https://oceanexpert.org/expert/43352
+contact_email: s.suominen@unesco.org
+funding: "The DTO-BioFlow project is funded by the European Union, Grant Agreement #101112823."
 tag: DTO-BioFlow
+logo: /images/dto-bioflow_logo.svg
 ---
