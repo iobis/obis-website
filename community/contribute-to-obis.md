@@ -23,7 +23,7 @@ To publish a dataset to OBIS, there are five main steps you must go through:
 4. Have your dataset undergo quality control checks
 5. Publish your data via an OBIS Node's Integrated Publishing Toolkit
 
-You will receive support and guidance at each step of the process. Read more about how to contribute to OBIS with marine biodiversity data: [https://obis.org/data/contribute/](https://obis.org/data/contribute/)
+You will receive support and guidance at each step of the process. Read more about how to contribute to OBIS with marine biodiversity data: [https://manual.obis.org/contribute.html#why-publish-data-to-obis](https://manual.obis.org/contribute.html#why-publish-data-to-obis)
 <br>
 
 ## Cite OBIS data
