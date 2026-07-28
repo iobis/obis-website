@@ -5,7 +5,10 @@ description: BioEcoOcean (2024-2027) is a Horizon Europe project with the goal o
 website: https://bioecoocean.org/
 start_date: 2024-02-01
 end_date: 2027-01-31
-contact: Elizabeth Lawrence (e.lawrence@unesco.org)
-funding: The BioEcoOcean project (Grant Agreement No. 101136748) is funded by the European Union.
+contact_name: Elizabeth Lawrence
+contact_url: https://oceanexpert.org/expert/50997
+contact_email: e.lawrence@unesco.org
+funding: "The BioEcoOcean project is funded by the European Union, Grant Agreement #101136748."
 tag: BioEcoOcean
+logo: /images/bioecoocean_logo.svg
 ---

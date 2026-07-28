@@ -1,29 +1,40 @@
-<div class="row row-cols-1 row-cols-md-3 g-4">
+<div class="row row-cols-1 row-cols-md-4 g-4">
 {% assign project_pages = site.pages | where: "layout", "project" | sort: "end_date" | reverse %}
 {% for project in project_pages %}
     <div class="col">
-    <div class="card h-100">
-        <div class="card-body">
-        <h5 class="card-title">
+    <div class="card h-100" style="background-color: #ffffff; border: 1px solid #dee2e6; transition: background-color 0.2s ease;" onmouseover="this.style.backgroundColor='#f8f9fa'" onmouseout="this.style.backgroundColor='#ffffff'">
+        {% if project.logo %}
+        <div style="height: 140px; display: flex; align-items: center; justify-content: center; padding: 3.2rem 1.25rem 2rem;">
+            <img src="{{ project.logo }}" alt="{{ project.title }} logo" style="max-height: 54px; max-width: 100%; object-fit: contain;">
+        </div>
+        {% elsif project.icon %}
+        <div style="height: 140px; display: flex; align-items: center; justify-content: center; padding: 3.2rem 1.25rem 2rem;">
+            <i class="{{ project.icon }}" style="font-size: 2.5rem; color: var(--tags);"></i>
+        </div>
+        {% endif %}
+        <div class="card-body" style="display: flex; flex-direction: column;">
+        <h5 class="card-title" style="font-weight: 700;">
             <a href="{{ project.url | relative_url }}">{{ project.title }}</a>
         </h5>
         {% if project.start_date %}
-        <p class="card-text">{{ project.start_date }} → {{ project.end_date }}</p>
+        <p class="card-text" style="font-size: 0.875rem; color: #6c757d;">{{ project.start_date | date: "%-d %B %Y" }} → {{ project.end_date | date: "%-d %B %Y" }}</p>
         {% endif %}
         {% if project.description %}
-        <p class="card-text">{{ project.description }}</p>
+        <p class="card-text" style="font-size: 0.875rem;">{{ project.description }}</p>
         {% endif %}
-        {% if project.website %}
-        <p class="card-text">Website: <a href="{{ project.website }}" target="_blank">{{ project.website }}</a></p>
-        {% endif %}
-        {% if project.contact %}
-        <p class="card-text">Contact: {{ project.contact }}</p>
-        {% endif %}
-        {% if project.funding %}
-        <p class="card-text">Funding: {{ project.funding }}</p>
+        {% if project.contact_name %}
+        <p class="card-text" style="font-size: 0.875rem;">Project contact:<br><a href="{{ project.contact_url }}" target="_blank" class="usecase-read-more">{{ project.contact_name }}</a><br>{{ project.contact_email }}</p>
         {% endif %}
         {% if project.tag %}
         <p class="card-text"><a href="/tag/{{ project.tag | slugify }}"><span class="badge tag mb-1">{{ project.tag }}</span></a></p>
+        {% endif %}
+        {% if project.website %}
+        <div style="margin-top: -0.3rem; font-size: 0.85rem;">
+            <a href="{{ project.website }}" target="_blank" class="usecase-read-more"><strong>Visit the project page ›</strong></a>
+        </div>
+        {% endif %}
+        {% if project.funding %}
+        <p class="card-text" style="font-size: 0.75rem; margin-top: 1rem; color: #9aa0a6;">{{ project.funding }}</p>
         {% endif %}
         </div>
     </div>
