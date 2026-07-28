@@ -19,7 +19,7 @@ title: OBIS Nodes
 
 # OBIS Nodes
 
-The 36 OBIS Nodes are the powerful knowledge lighthouses of the OBIS network. Spread across the globe, the 29 OBIS Regional Nodes and the 7 OBIS Thematic Nodes connect local expertise to the global OBIS platform. The OBIS Nodes are the main entry point to the OBIS Community. They support data holders in integrating their data into OBIS. Each Node works closely with data providers—researchers, institutions, and local, national or regional biodiversity monitoring programs—to ensure that high-quality, standardized marine biodiversity data integrates into OBIS. OBIS Nodes play a crucial role beyond data management: they contribute to local capacity-building through training and workshops and help elevate local and national data contributors to the global level. They engage with local scientific and citizen communities, support local capacity development, promote data-related best practices, connect with decision-makers and relay their needs to the OBIS Community. The Nodes are essential to make OBIS a global operational and collaborative initiative.
+The 37 OBIS Nodes are the powerful knowledge lighthouses of the OBIS network. Spread across the globe, the 30 OBIS Regional and National Nodes, as well as the 7 OBIS Thematic Nodes connect local expertise to the global OBIS platform. The OBIS Nodes are the main entry point to the OBIS Community. They support data holders in integrating their data into OBIS. Each Node works closely with data providers—researchers, institutions, and local, national or regional biodiversity monitoring programs—to ensure that high-quality, standardized marine biodiversity data integrates into OBIS. OBIS Nodes play a crucial role beyond data management: they contribute to local capacity-building through training and workshops and help elevate local and national data contributors to the global level. They engage with local scientific and citizen communities, support local capacity development, promote data-related best practices, connect with decision-makers and relay their needs to the OBIS Community. The Nodes are essential to make OBIS a global operational and collaborative initiative.
 
 # Explore the OBIS Nodes
 
@@ -53,6 +53,7 @@ Regional OBIS Nodes (RONs) are organizations that have committed to continuing t
 - [**OBIS Korea**](/node/fc5278f9-ea56-4a01-a48a-f8c4071e3b3e) (Korea)
 - [**OBIS Malaysia**](/node/52486ef2-e094-4e8b-af77-6d434cf30ef2) (Malaysia)
 - [**OBIS Panama**](/node/f224ae79-1a05-4744-b0e6-934386bd71ed) (Panama)
+- [**OBIS Poland**](/node/dfef65ad-91ce-4fcb-ae2a-8145f9cbcf0b) (Poland)
 - [**OBIS UK**](/node/f92d5d7f-47a6-4605-9fd0-a8538dfde3fd) (United Kingdom)
 - [**OBIS USA**](/node/b7c47783-a020-4173-b390-7b57c4fa1426) (USA)
 - [**PEGO-OBIS**](/node/066e070a-04ca-4cee-acb3-66379fe49d49) (Persian Gulf and Gulf of Oman)

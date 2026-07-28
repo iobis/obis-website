@@ -10,11 +10,9 @@ tags:
 purpose: news
 feed: true
 image: /images/DSCF0429_s.jpg
+imageAlt: "Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference"
+imageCaption: "Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference"
 ---
-<img alt="Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference" src="/images/DSCF0429_s.jpg" style="width: 100%;">
-<i>Emilie Boulanger, OBIS Scientific Officer, presenting at the Living Data 2025 Conference</i>  
-<br><br>
-
 For the International Day of Women and Girls in Science 2026, we sat down to discuss with Emilie Boulanger, an early-career scientist who joined the OBIS team in March 2024 as a scientific officer. Emilie is supporting the eDNA Expeditions 2026-2028, a community-driven project that aims to establish a global biomolecular observatory of 25 marine sites. Her work is at the intersection of data analysis, field implementation, and community engagement. In this conversation, Emilie shares insights on her path into marine science, her role within eDNA Expeditions, and how curiosity can be a personal driver for achievement.
 <br><br><br>
 **OBIS: Emilie, we are delighted to have you here. Can you tell us more about your role in OBIS and eDNA Expeditions?** 

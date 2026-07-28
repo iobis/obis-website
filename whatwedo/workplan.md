@@ -24,7 +24,7 @@ The OBIS Work Plan contributes to all five IOC high-level objectives.
 <br>
 
 <br>
-## **Project outcomes**
+## **Programme outcomes**
 <br>
 
 ### Outcome 1. Ensure an operational OBIS Nodes Coordination Group (NCG)

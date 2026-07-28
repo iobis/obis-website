@@ -58,35 +58,70 @@
             
             <div class="row">
                 <div class="col col-md-9">
+                    {% if dataset.abstract %}
                     <p>{{ dataset.abstract }}</p>
-                    
-                    {% if dataset.citation %}
-                    <p><b>Citation:</b> <i>{{ dataset.citation }}</i></p>
-                    {% endif %}
-                    
-                    {% if dataset.published %}
-                    <p><b>Published:</b> {{ dataset.published | datetimeformat }}</p>
                     {% endif %}
 
-                    {% if dataset.created %}
-                    <p><b>First registration:</b> {{ dataset.created | datetimeformat }}</p>
-                    {% endif %}
+                    <div class="mt-4">
+                        {% if dataset.citation %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>Citation</b></div>
+                            <div class="col-md-10"><em>{{ dataset.citation }}</em></div>
+                        </div>
+                        {% endif %}
 
-                    {% if dataset.intellectualrights %}
-                    <p><b>License:</b> {{ dataset.intellectualrights }}</p>
-                    {% endif %}
+                        {% if dataset.published %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>Published</b></div>
+                            <div class="col-md-10">{{ dataset.published | datetimeformat }}</div>
+                        </div>
+                        {% endif %}
 
-                    <p><b>URL:</b> <a href="{{ dataset.url }}" target="_blank">{{ dataset.url }}</a></p>
-                    
-                    <div class="row">
-                        <p><b>Contacts:</b></p>
-                        {% for contact in dataset.clean_contacts %}
-                        <div class="col-md-4">
-                            <p><i>{{ contact.clean_name }}</i>
-                                <br/>{% if contact.organization %}{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}{% endif %}</p>
+                        {% if dataset.created %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>First registration</b></div>
+                            <div class="col-md-10">{{ dataset.created | datetimeformat }}</div>
+                        </div>
+                        {% endif %}
+
+                        {% if dataset.intellectualrights %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>License</b></div>
+                            <div class="col-md-10 text-break">{{ dataset.intellectualrights }}</div>
+                        </div>
+                        {% endif %}
+
+                        {% if dataset.url %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>URL</b></div>
+                            <div class="col-md-10 text-break"><a href="{{ dataset.url }}" target="_blank">{{ dataset.url }}</a></div>
+                        </div>
+                        {% endif %}
+
+                        {% if dataset.archive %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>Archive</b></div>
+                            <div class="col-md-10 text-break"><a href="{{ dataset.archive }}" target="_blank">{{ dataset.archive }}</a></div>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    {% if dataset.clean_contacts %}
+                    <div class="mt-4">
+                        <p class="mb-3"><b>Contacts</b></p>
+                        <div class="row">
+                            {% for contact in dataset.clean_contacts %}
+                            <div class="col-md-4 mb-3">
+                                <p class="mb-0"><i>{{ contact.clean_name }}</i>
+                                    {% if contact.organization %}
+                                    <br/>{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}
+                                    {% endif %}
+                                </p>
                             </div>
                             {% endfor %}
                         </div>
+                    </div>
+                    {% endif %}
                         
                     </div>
                     <div class="col col-md-3 mb-2">

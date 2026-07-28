@@ -8,7 +8,7 @@ title: A global pillar for marine biodiversity data
 
 # A global pillar for marine biodiversity data
 
-OBIS is the world's largest open-access repository for marine biodiversity data. We are a global community of 29 Regional and 7 Thematic Nodes representing more than 1,000 institutions and over 6,000 scientists and data managers from all over the world. We contribute to advancing marine science to improve our knowledge of the Ocean. We support evidence-based conservation efforts to safeguard the health of our Ocean and our Planet.
+OBIS is the world's largest open-access repository for marine biodiversity data. We are a global community of 30 Regional and 7 Thematic Nodes representing more than 1,000 institutions and over 6,000 scientists and data managers from all over the world. We contribute to advancing marine science to improve our knowledge of the Ocean. We support evidence-based conservation efforts to safeguard the health of our Ocean and our Planet.
 <br>
 <br>
 <br>

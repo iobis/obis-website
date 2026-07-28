@@ -3,7 +3,7 @@ version: '3.8'
 services:
   jekyll:
     image: jekyll/jekyll:latest
-    command: bash -lc "bundle install && bundle exec jekyll serve --watch --livereload --host 0.0.0.0"
+    command: bash -lc "bundle install && bundle exec jekyll serve --watch --livereload --host 0.0.0.0 --config _config.yml,_config_dev.yml"
     ports:
       - "4000:4000"
       - "35729:35729"
@@ -26,6 +26,9 @@ services:
 
   nginx:
     image: nginx:alpine
+    depends_on:
+      - fastapi
+      - jekyll
     ports:
       - "80:80"
     volumes:

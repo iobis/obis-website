@@ -333,6 +333,23 @@ section {
     white-space: nowrap;
 }
 
+.table-meeting-reports th,
+.table-meeting-reports td {
+    padding: 0.4rem 0.75rem 0.4rem 0;
+    vertical-align: top;
+}
+
+.table-meeting-reports th:first-child,
+.table-meeting-reports td:first-child {
+    white-space: nowrap;
+    padding-right: 1.25rem;
+}
+
+.table-meeting-reports th:last-child,
+.table-meeting-reports td:last-child {
+    padding-right: 0;
+}
+
 .highlighter-rouge {
     background-color: #f8f9fa;
     border: 1px solid #e9ecef;
@@ -495,6 +512,8 @@ section {
 
 /* Inline image license tooltip, triggered on hover. Based on GBIGF Hosted Portal SASS */
 .feature-img { position: relative; }
+.feature-img-caption { text-align: center; font-style: italic; }
+.feature-img-caption p { margin: 0; }
 .feature-img-license { position: absolute; z-index: 10; bottom: 0; left: 0; right: 0; display: flex; flex-wrap: wrap; opacity: 0.9; font-size: 12px; color: white; }
 .feature-img-license:hover { opacity: 1; }
 .feature-img-license:hover .feature-img-license-text { display: block; }

@@ -10,10 +10,9 @@ tags:
 purpose: news
 feed: true
 image: /images/seagrass_01.jpg
+imageAlt: "Small fish school of Sarpa salpa above a seagrass meadow in Greece. Photo: Dimitris Poursanidis"
+imageCaption: "Small fish school of Sarpa salpa above a seagrass meadow in Greece. Photo: Dimitris Poursanidis"
 ---
-<img alt="Small fish school of Sarpa salpa above a seagrass meadow in Greece. Photo: Dimitris Poursanidis" src="/images/seagrass_01.jpg" style="width: 100%;">
-<i>Small fish school of Sarpa salpa above a seagrass meadow in Greece. Photo: Dimitris Poursanidis</i>  
-<br><br>
 Seagrasses are crucial to coastal ecosystems. Meadows of these flowering, submerged plants provide habitat and serve as nurseries for numerous marine species, including endangered ones; capture and store carbon in their biomass and in the sediments below; provide substantial ecological benefits supporting the livelihood of coastal communities; filter pollutants and contribute to protecting coastlines from erosion. Despite these fundamental ecological functions, available scientific information on seagrasses remains fragmented and hard to compare, mainly due to a lack of standardization in data collection and reporting. In a [new paper](https://academic.oup.com/bioscience/advance-article-abstract/doi/10.1093/biosci/biaf199/8407550) published in BioScience, "*Measuring and Reporting on Seagrass as an Essential Ocean Variable for Science and Management*", the authors proposed the first comprehensive, community-endorsed specification framework for measuring and reporting [seagrass as a Biology and Ecosystems Essential Ocean Variable](https://goosocean.org/document/17513) (BioEco EOV) under the Global Ocean Observing System (GOOS).
 <br><br>
 ### **The global need for standardised seagrass monitoring and reporting**
