@@ -1,7 +1,7 @@
 ---
 identifier: quality
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Quality control
 title: Quality control
 ---
