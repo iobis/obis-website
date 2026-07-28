@@ -1,7 +1,7 @@
 ---
 identifier: contribute
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Contribute to OBIS
 title: Contribute to OBIS
 ---
