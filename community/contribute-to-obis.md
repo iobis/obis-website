@@ -8,7 +8,11 @@ title: Contribute to OBIS
 
 # Contribute to OBIS
 
-OBIS is a marine biodiversity data platform and a community: it relies on the contributions and involvement of individuals and institutions to grow. We have listed below six potential entry points to contribute to OBIS, become an OBIS Node, or support the Community. If you do not find a path that suits you or if you need additional information, send the OBIS Secretariat a message at [helpdesk@obis.org](mailto:helpdesk@obis.org).
+OBIS is a marine biodiversity data platform and a community: it relies on the contributions and involvement of individuals and institutions to grow. 
+
+We have listed below three potential entry points to contribute to OBIS, become an OBIS Node, or support the Community. 
+
+If you do not find a path that suits you or if you need additional information, send the OBIS Secretariat a message at [helpdesk@obis.org](mailto:helpdesk@obis.org).
 <br>
 
 ## Contribute to OBIS with marine biodiversity data
