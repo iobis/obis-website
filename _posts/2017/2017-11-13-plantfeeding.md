@@ -9,7 +9,7 @@ excerpt: Poore et al. (2017) showed that the ability to eat seaweeds and plants 
   sampling in the tropics or in certain biogeographic regions.
 feed: true
 identifier: plantfeeding
-image: poore.png
+image: /images/poore.png
 lang: en
 layout: post
 link: http://dx.doi.org/10.1073/pnas.1706399114

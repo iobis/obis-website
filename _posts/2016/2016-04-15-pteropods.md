@@ -1,6 +1,6 @@
 ---
 identifier: pteropods
-image: pteropods.png
+image: /images/pteropods.png
 lang: en
 layout: post
 link: http://onesharedocean.org/open_ocean/ecosystems/pteropods_at_risk

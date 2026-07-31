@@ -4,7 +4,7 @@ excerpt: Species abundance distribution (SAD) models using OBIS and GBIF data re
   multimodality patterns are rather common and increase with ecological heterogeneity.
 feed: true
 identifier: sad
-image: SAD.png
+image: /images/SAD.png
 lang: en
 layout: post
 link: http://onlinelibrary.wiley.com/doi/10.1111/geb.12532/full

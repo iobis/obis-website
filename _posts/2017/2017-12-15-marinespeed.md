@@ -9,7 +9,7 @@ excerpt: Bosch et al. (2017) showed that while temperature is a relevant predict
   correlation groups.
 feed: true
 identifier: marinespeed
-image: marinespeed_freq_top_5_ranks.png
+image: /images/marinespeed_freq_top_5_ranks.png
 lang: en
 layout: post
 link: http://dx.doi.org/10.1111/ddi.12668
