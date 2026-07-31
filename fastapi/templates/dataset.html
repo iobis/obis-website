@@ -158,7 +158,7 @@
                             {% if dataset.statistics %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence - (dataset.statistics.dropped or 0)) }}</div>
-                                <div>accepted occurrences</div>
+                                <div><a href="/explore?dropped=exclude&absence=include&datasetid={{ dataset.id }}">accepted occurrences</a></div>
                             </div>
                             {% endif %}
                             {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
