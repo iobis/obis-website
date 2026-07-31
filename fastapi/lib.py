@@ -4,38 +4,11 @@ import json
 import re
 
 
-def humanize_role(value):
-    if not value:
-        return None
-    spaced = re.sub(r'(?<!^)(?=[A-Z])', ' ', value)
-    return spaced[0].upper() + spaced[1:]
-
-
-def get_contact_role(contact):
-    # The type_display is unreliable for several legitimate EML roles
-    # (processor, contributor, reviewer, programmer, editor all come back
-    # as the literal string "undefined"), and for Project "personnel"-type contacts
-    # the generic type isn't meaningful on its own - always prefer the raw
-    # EML role in that case rather than falling back to "personnel".
-    type_display = contact.get("type_display")
-    contact_type = contact.get("type")
-    raw_role = contact.get("role")
-
-    if contact_type == "personnel":
-        return humanize_role(raw_role)
-
-    if type_display and type_display != "undefined":
-        return type_display
-
-    return humanize_role(raw_role) or (humanize_role(contact_type) if contact_type != "personnel" else None)
-
-
 def process_contacts(contacts):
     if not contacts:
         return []
 
     unique_contacts = {}
-    order = []
 
     for contact in contacts:
         givenname = contact.get("givenname") or ""
@@ -46,23 +19,14 @@ def process_contacts(contacts):
         if not name:
             continue
 
-        role = get_contact_role(contact)
+        if name not in unique_contacts or (
+            contact.get("organization") and
+            not unique_contacts[name].get("organization")
+        ):
+            unique_contacts[name] = contact
+            unique_contacts[name]["clean_name"] = name
 
-        if name not in unique_contacts:
-            merged = dict(contact)
-            merged["clean_name"] = name
-            merged["roles"] = [role] if role else []
-            unique_contacts[name] = merged
-            order.append(name)
-        else:
-            existing = unique_contacts[name]
-            if role and role not in existing["roles"]:
-                existing["roles"].append(role)
-            if contact.get("organization") and not existing.get("organization"):
-                existing["organization"] = contact.get("organization")
-                existing["organization_oceanexpert_id"] = contact.get("organization_oceanexpert_id")
-
-    return [unique_contacts[name] for name in order]
+    return list(unique_contacts.values())
 
 
 def get_quality_statistics(filters: dict):
