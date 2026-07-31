@@ -1,6 +1,6 @@
 ---
 identifier: deepseaophiuroids
-image: deepseaophiuroids.png
+image: /images/deepseaophiuroids.png
 lang: en
 layout: post
 link: http://www.nature.com/nature/journal/vaop/ncurrent/full/nature17937.html

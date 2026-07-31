@@ -6,7 +6,7 @@ excerpt: Costello & Chaudhary (2017) used data from OBIS to show that marine spe
   conservation priorities.
 feed: true
 identifier: biomodal
-image: depth-spp.png
+image: /images/depth-spp.png
 lang: en
 layout: post
 link: http://www.cell.com/current-biology/abstract/S0960-9822(17)30505-5
