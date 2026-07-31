@@ -70,6 +70,16 @@
                         </div>
                         {% endif %}
 
+                        {% if dataset.publishing_organization and dataset.publishing_organization.name %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>Publishing organization</b></div>
+                            <div class="col-md-10">
+                                {% if dataset.publishing_organization.url %}<a href="{{ dataset.publishing_organization.url }}" target="_blank">{% endif %}{{ dataset.publishing_organization.name }}{% if dataset.publishing_organization.url %}</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                        {% endif %}
+                        
                         {% if dataset.published %}
                         <div class="row mb-2">
                             <div class="col-md-2"><b>Published</b></div>
@@ -91,6 +101,13 @@
                         </div>
                         {% endif %}
 
+                        {% if dataset.doi %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>DOI</b></div>
+                            <div class="col-md-10 text-break"><a href="https://doi.org/{{ dataset.doi }}" target="_blank">https://doi.org/{{ dataset.doi }}</a></div>
+                        </div>
+                        {% endif %}
+
                         {% if dataset.url %}
                         <div class="row mb-2">
                             <div class="col-md-2"><b>URL</b></div>
@@ -104,6 +121,13 @@
                             <div class="col-md-10 text-break"><a href="{{ dataset.archive }}" target="_blank">{{ dataset.archive }}</a></div>
                         </div>
                         {% endif %}
+
+                        {% if dataset.funding %}
+                        <div class="row mb-2">
+                            <div class="col-md-2"><b>Funding</b></div>
+                            <div class="col-md-10">{{ dataset.funding }}</div>
+                        </div>
+                        {% endif %}
                     </div>
 
                     {% if dataset.clean_contacts %}
@@ -115,25 +139,26 @@
                                 <p class="mb-0"><i>{{ contact.clean_name }}</i>
                                     {% if contact.organization %}
                                     <br/>{% if contact.organization_oceanexpert_id %}<a href="/organization/{{ contact.organization_oceanexpert_id }}">{% endif %}{{ contact.organization }}{% if contact.organization_oceanexpert_id %}</a>{% endif %}
-                                    {% endif %}
+                                    {% endif %}<br/>
+                                    {% for role in contact.roles %}<span class="badge bg-light text-dark ms-1">{{ role }}</span>{% endfor %}
                                 </p>
                             </div>
                             {% endfor %}
                         </div>
                     </div>
                     {% endif %}
-                        
-                    </div>
-                    <div class="col col-md-3 mb-2">
-                        <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
+
+                </div>
+                <div class="col col-md-3 mb-2">
+                    <div class="d-flex flex-row flex-md-column gap-3 justify-content-center justify-content-md-end">
                             <div class="text-center text-md-end">
-<div class="display-6 fw-bold">{% if dataset.statistics %}{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}{% else %}0{% endif %}</div>
+                                <div class="display-6 fw-bold">{% if dataset.statistics %}{{ "{:0,.0f}".format(dataset.statistics.Occurrence) }}{% else %}0{% endif %}</div>
                                 <div>total submitted occurrences</div>
                             </div>
                             {% if dataset.statistics %}
                             <div class="text-center text-md-end">
                                 <div class="display-6 fw-bold">{{ "{:0,.0f}".format(dataset.statistics.Occurrence - (dataset.statistics.dropped or 0)) }}</div>
-                                <div>accepted occurrences</div>
+                                <div><a href="/explore?dropped=exclude&absence=include&datasetid={{ dataset.id }}">accepted occurrences</a></div>
                             </div>
                             {% endif %}
                             {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
@@ -160,10 +185,9 @@
                                 <div>species</div>
                             </div>
                             {% endif %}
-                        </div>
                     </div>
                 </div>
-                
+            </div>
                 {% if dataset.core != "taxon" %}
                 <div class="row">
                     <div id="m"></div>
