@@ -9,7 +9,7 @@ permalink: /projects/
 
   <h1>Projects</h1>
 
-    <div class="mt-4">
+    <div class="mt-4" style="margin-bottom: 4rem;">
         {% include project_cards.html %}
     </div>
 

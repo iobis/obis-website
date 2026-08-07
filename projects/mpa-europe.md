@@ -5,7 +5,10 @@ description: The EU‑funded MPA Europe project (2023–2026) systematically ide
 website: https://mpa-europe.eu/
 start_date: 2023-01-01
 end_date: 2026-04-30
-contact: Silas Principe (s.principe@unesco.org)
-funding: Co-funded by the European Union, Grant Agreement 101059988 – MPA Europe under the call HORIZON-CL6-2021-BIODIV-01-12 — Improved science based maritime spatial planning and identification of marine protected areas.
+contact_name: Silas Principe
+contact_url: https://oceanexpert.org/expert/40122
+contact_email: s.principe@unesco.org
+funding: "The MPA Europe project is funded by the European Union, Grant Agreement #101059988."
 tag: MPA Europe
+logo: /images/mpa-europe_logo.png
 ---
