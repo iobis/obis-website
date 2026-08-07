@@ -36,6 +36,7 @@ exclude:
   - scripts
   - nginx
   - docker-compose.yml
+  - faq/HANDOVER.md
 
 collections:
   partnerships:
@@ -46,6 +47,16 @@ collections:
     output: true
   sources:
     output: true
+  faqs:
+    output: true
+    permalink: /faq/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: faqs
+    values:
+      layout: faq
 
 menu:
   - title: "Who we are"
@@ -64,6 +75,8 @@ menu:
     subitems:
     - title: "Core activities"
       url: "/whatwedo/core-activities"
+    - title: "Use cases"
+      url: "/usecases"
     - title: "Projects"
       url: "/projects"
     - title: "Partnerships"
@@ -74,21 +87,22 @@ menu:
       url: "/whatwedo/workplan"
   - title: "Data"
     subitems:
-    - title: "Data access"
+    - title: "Access OBIS data"
       url: "/data/access"
     - title: "Mapper"
       url: "https://mapper.obis.org"
       target: "_blank"
 #    - title: "Contribute data"
 #      url: "/data/contribute"
+    - title: "OBIS API"
+      url: "https://api.obis.org/"
+      target: "_blank"
     - title: "External sources"
       url: "/sources"
     - title: "Quality control"
       url: "/data/quality"
     - title: "Data policy"
       url: "/data/datapolicy"
-    - title: "Use cases"
-      url: "/usecases"
   - title: "Community"
     subitems:
     - title: "News"
@@ -108,6 +122,8 @@ menu:
       target: "_blank"
   - title: "Resources"
     subitems:
+    - title: "Knowledge base"
+      url: "/faq"
     - title: "Publications citing OBIS"
       url: "/resources/publications"
     - title: "OBIS manual"
