@@ -1,0 +1,54 @@
+- title: "Invasive Alien Species & Biosecurity"
+  slug: invasive-alien-species
+  icon: "bi bi-shield-exclamation"
+  color: "#2f6fef"
+
+- title: "Climate Change & Ocean Resilience"
+  slug: climate-change
+  icon: "bi bi-thermometer-high"
+  color: "#1976d2"
+
+- title: "Area-based Management"
+  slug: area-based-management
+  icon: "bi bi-map"
+  color: "#1448c8"
+
+- title: "Migratory Species & Connectivity"
+  slug: migratory-species
+  icon: "bi bi-arrow-left-right"
+  color: "#1565c0"
+
+- title: "Sustainable Use of the Ocean"
+  slug: sustainable-use
+  icon: "bi bi-water"
+  color: "#0277bd"
+
+- title: "Pollution, Habitats & Ecosystem Health"
+  slug: pollution-habitats
+  icon: "bi bi-exclamation-triangle"
+  color: "#01579b"
+
+- title: "Citizen Science & Public Engagement"
+  slug: citizen-science
+  icon: "bi bi-people"
+  color: "#0d47a1"
+
+- title: "Innovation & Emerging Technologies"
+  slug: innovation-technologies
+  icon: "bi bi-cpu"
+  color: "#0a3d91"
+
+- title: "Inclusive Knowledge"
+  slug: inclusive-knowledge
+  icon: "bi bi-book"
+  color: "#283593"
+
+- title: "Global Frameworks"
+  slug: global-frameworks
+  icon: "bi bi-globe"
+  color: "#1a3a6b"
+
+- title: "National Assessments & Reporting"
+  slug: national-assessments
+  icon: "bi bi-bar-chart"
+  color: "#0b2545"

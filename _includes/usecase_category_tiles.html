@@ -1,0 +1,16 @@
+<div class="row row-cols-1 row-cols-md-3 g-4 mt-2">
+  {% for category in site.data.usecase_categories %}
+  <div class="col">
+    <a href="/usecases/{{ category.slug }}" class="text-decoration-none">
+      <div class="usecase-category-tile">
+        <div class="usecase-category-icon-wrap">
+          <i class="{{ category.icon }} usecase-category-icon"></i>
+        </div>
+        <div class="usecase-category-title-wrap">
+          <h5 class="usecase-category-title">{{ category.title }}</h5>
+        </div>
+      </div>
+    </a>
+  </div>
+  {% endfor %}
+</div>
