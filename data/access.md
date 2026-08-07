@@ -1,12 +1,12 @@
 ---
 identifier: access
 lang: en
-layout: page
-shorttitle: Data access
-title: Data access
+layout: page_narrow
+shorttitle: Access OBIS data
+title: Access OBIS data
 ---
 
-# Data access
+# Access OBIS data
 
 OBIS harvests occurrence records from thousands of datasets and makes them available as a single integrated dataset. This page gives an overview of the the different ways the integrated OBIS dataset can be accessed. There is also a section on data access [in the OBIS manual](https://manual.obis.org/access).
 

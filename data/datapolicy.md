@@ -1,7 +1,7 @@
 ---
 identifier: datapolicy
 lang: en
-layout: page
+layout: page_narrow
 shorttitle: Data policy
 title: OBIS Data policy
 ---
