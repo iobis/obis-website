@@ -96,11 +96,64 @@ Membership:
 {% endfor %}
 </ul>
 
-Progress Status [<small><small>June 2026</small></small>]:
+Progress Status:
 
-* Internal online workshop on publication of eDNA derived occurrences data scheduled in July; a longer more detailed course on the same topic is currently in development phase.
-* OBIS data ingestion pipelines updated to allow ingestion of large eDNA datasets; currently moving away from an occurrence-centric data storage to deal with mass replication.
-* Plan to quantify and track Essential Ocean Variables data within OBIS approved; currently in testing phase.
+<style>
+  .dcg-meeting-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .dcg-meeting {
+    flex: 0 0 auto;
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .dcg-meeting[open] {
+    flex-basis: 100%;
+    width: 100%;
+  }
+
+  .dcg-meeting > summary {
+    white-space: nowrap;
+  }
+</style>
+
+<div style="margin-top: 2rem;">
+
+  <p style="font-weight: 600; margin-bottom: 0.5rem; color: var(--black);">2026</p>
+
+  <div class="dcg-meeting-list">
+
+  <details class="dcg-meeting">
+    <summary class="meeting-badge" style="cursor: pointer;"><strong>DCG#12</strong> – Aug. 26</summary>
+    <div style="padding: 0.75rem 0.75rem 0;">
+      <ul>
+        <li>Internal call for DCG co-chair open for candidates. See the <a href="https://manual.obis.org/nodes.html#obis-coordination-groups" target="_blank" rel="noopener noreferrer">CG co-chairs Terms of Reference</a>.</li>
+        <li>eDNA workshop and training slides available and expanding. Find them in the <a href="https://iobis.github.io/obis_edna_slides/index-dna.html" target="_blank" rel="noopener noreferrer">OBIS Training Slides</a> site.</li>
+        <li>Joint WoRMS/OBIS-UK workshop on taxon annotation improvements planned for mid-September.</li>
+        <li>A proof of concept for monitoring Essential Ocean Variables data within OBIS has been developed.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="dcg-meeting">
+    <summary class="meeting-badge" style="cursor: pointer;"><strong>DCG#11</strong> – Jun. 26</summary>
+    <div style="padding: 0.75rem 0.75rem 0;">
+      <ul>
+        <li>Internal online workshop on publication of eDNA derived occurrences data scheduled in July; a longer more detailed course on the same topic is currently in development phase.</li>
+        <li>OBIS data ingestion pipelines updated to allow ingestion of large eDNA datasets; currently moving away from an occurrence-centric data storage to deal with mass replication.</li>
+        <li>Plan to quantify and track Essential Ocean Variables data within OBIS approved; currently in testing phase.</li>
+      </ul>
+    </div>
+  </details>
+
+  </div>
+
+</div>
 
 ## OBIS Product Coordination Group (PCG)
 
