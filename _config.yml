@@ -75,7 +75,7 @@ menu:
     subitems:
     - title: "Core activities"
       url: "/whatwedo/core-activities"
-    - title: "Use cases"
+#    - title: "Use cases"
       url: "/usecases"
     - title: "Projects"
       url: "/projects"
