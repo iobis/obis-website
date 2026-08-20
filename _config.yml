@@ -122,8 +122,8 @@ menu:
       target: "_blank"
   - title: "Resources"
     subitems:
-    - title: "Knowledge base"
-      url: "/faq"
+    #- title: "Knowledge base"
+    #  url: "/faq"
     - title: "Publications citing OBIS"
       url: "/resources/publications"
     - title: "OBIS manual"
