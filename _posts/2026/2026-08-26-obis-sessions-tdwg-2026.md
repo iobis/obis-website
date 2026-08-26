@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "OBIS at TDWG 2026"
+title: "All the OBIS-related content at TDWG 2026 at a glance!"
 lang: en
 author: OBIS
 tags:
