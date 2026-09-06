@@ -49,12 +49,51 @@
       <span class="message">Marine biodiversity data<br/>you can trust</span>
     </div>
   </div>
-  <a href="/taxon/126436" target="_blank" class="btn btn-light" style="position: absolute; bottom: 20px; right: 20px; z-index: 10;">
+  <a id="headermap-explore" href="/taxon/126436" target="_blank" class="btn btn-light" style="position: absolute; bottom: 20px; right: 20px; z-index: 10;">
     Explore this map
   </a>
 </div>
 
 <script>
+  const colorScales = {
+    spectral: [
+      "interpolate", ["linear"], ["get", "doc_count"],
+      0, "#2c7bb6",
+      10, "#abd9e9",
+      100, "#ffffbf",
+      1000, "#fdae61",
+      10000, "#d7191c"
+    ],
+    hawaii: [
+      "interpolate", ["linear"], ["get", "doc_count"],
+      1, "#8c0862",
+      10, "#c2456e",
+      100, "#e08a5b",
+      1000, "#c9c35a",
+      10000, "#6db37a",
+      50000, "#2a6b7a"
+    ]
+  };
+
+  const headerMaps = [
+    {
+      tileQuery: "scientificname=Gadus",
+      center: [-50, 50],
+      zoom: 4,
+      exploreUrl: "/taxon/126436",
+      colorScale: "spectral"
+    },
+    {
+      tileQuery: "datasetid=12a9b8a9-845a-4dba-8f64-6a6fe48cfe44",
+      center: [-80.65, 25.31],
+      zoom: 9.6,
+      exploreUrl: "/dataset/12a9b8a9-845a-4dba-8f64-6a6fe48cfe44",
+      colorScale: "hawaii"
+    }
+  ];
+  const headerMapConfig = headerMaps[Math.floor(Math.random() * headerMaps.length)];
+  document.getElementById("headermap-explore").href = headerMapConfig.exploreUrl;
+
   const map = new maplibregl.Map({
     container: 'headermap',
     style: {
@@ -88,8 +127,8 @@
             }
         ]
     },
-    center: [-50, 50],
-    zoom: 4,
+    center: headerMapConfig.center,
+    zoom: headerMapConfig.zoom,
     projection: 'mercator',
     attributionControl: false,
     scrollZoom: false,
@@ -103,7 +142,7 @@
     map.addSource("occurrence", {
         type: "vector",
         tiles: [
-            "https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?scientificname=Gadus"
+            `https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?${headerMapConfig.tileQuery}`
         ],
         scheme: "xyz"
     });
@@ -114,16 +153,7 @@
         source: "occurrence",
         "source-layer": "grid",
         paint: {
-            "fill-color": [
-                "interpolate",
-                ["linear"],
-                ["get", "doc_count"],
-                0, "#2c7bb6",
-                10, "#abd9e9",
-                100, "#ffffbf",
-                1000, "#fdae61",
-                10000, "#d7191c"
-            ],
+            "fill-color": colorScales[headerMapConfig.colorScale],
             "fill-opacity": 0.3
         }
       });
