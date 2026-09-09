@@ -5,9 +5,6 @@ lang: en
 author: OBIS
 tags:
 - OBIS Poland
-- IO PAN
-- Baltic Sea
-- National Oceanographic Data Centre
 purpose: news
 feed: true
 image: /images/OBIS-Poland_00001.jpeg
