@@ -22,35 +22,35 @@ For the last 40 years, Poland has been a major actor in marine biodiversity data
 <br><br>
 <img alt="Aerial view of the Institute of Oceanology Polish Academy of Sciences (IO PAN), in Sopot, Poland. Photos: IO PAN" src="/images/OBIS-Poland_00002.jpg" style="width: 100%;">
 <p style="text-align: center;"><i>Aerial view of the Institute of Oceanology Polish Academy of Sciences (IO PAN), in Sopot, Poland.<br>Photo: IO PAN</i></p>
-<br><br>
+<br>
 
-### Building a unified flow for marine data in Poland
+#### Building a unified flow for marine data in Poland
 
 One of the first steps to address these challenges started at the Institute of Oceanology of the Polish Academy of Sciences (IO PAN), which would later become the country's NODC. *"In the nineties, we had a breakthrough at IO PAN when we realized that we have very valuable data, especially long time-series that could help monitor the effects of climate change, among many other potential applications,"* explains Jan Marcin Węsławski, marine biodiversity researcher and former director of IO PAN. *"We also realized that we would need data specialists in addition to scientists if we wanted to increase our capacity to publish that data."* The institute came up with an original solution: establishing data stewards whose role would be to assist researchers in organizing their data and publishing it, including historical data. Monika Grabowska, the current OBIS Poland Data Manager and a former data steward, describes that role as *"a link between informatics and science. Stewards can translate and transform technical parts into an easier, more understandable form that encourages researchers to engage and collaborate."* This solution contributed to placing IO PAN at the forefront of data mobilization in Poland, well-positioned to take a major and, eventually, leading role in the national effort to improve marine data management.
 
 Structurally, financially, and even scientifically, IO PAN sits apart from other Polish marine institutions. With a staff of about 200 people, IO PAN independently conducts transdisciplinary research, combining oceanography with marine physics and chemistry into a unique, holistic approach. *"Our main mission is to study and understand the oceans: how they function, and how they influence human lives,"* says Monika Kędra, IO PAN Deputy Director for Research. *"Through deep knowledge of marine ecosystems, and very good knowledge of the environmental conditions and factors that influence them, we can achieve a full understanding of how life functions in the oceans, and how it impacts the whole planet."*
 
-<br><br><br>
+<br><br>
 
 >We realized that we would need data specialists in addition to scientists if we wanted to increase our capacity to publish that data.
 
-<br><br><br>
+<br>
 
 <br><br>
 <img alt="Aboard the Research Vessel s/y OCEANIA. Photo: Tomaz Jankowski" src="/images/OBIS-Poland_00003.jpg" style="width: 100%;">
 <p style="text-align: center;"><i>Aboard the Research Vessel s/y OCEANIA.<br>Photo: Tomaz Jankowski</i></p>
 <br><br>
 
-### Poland's National Oceanographic Data Centre
+#### Poland's National Oceanographic Data Centre
 
 IO PAN's transdisciplinary expertise made it the ideal candidate to become Poland's National Oceanographic Data Centre in October 2025, opening the way to establish a unified marine data centralization workflow in the country. The workflow is aligned with open science, globally accepted biodiversity data standards, such as Darwin Core, and best practices, such as FAIR principles. *"This achievement crowns over 20 years of collective efforts from seven Polish marine institutions to establish such an organization,"* explains Marcin Wichorowski, OBIS Poland Node Manager. *"As the leader of that consortium, IO PAN also got to lead the Polish NODC, in cooperation with other institutes which cover different areas of oceanography, such as geology, physical oceanography, and sea fisheries resources. Together, we have all the attributes of a National Oceanographic Data Centre."*
 
 <br><br>
 <img alt="Collection of binding and encrusting organisms from the hard substrate of a rocky shore on Davidsonpynten, Svalbard, August 2018. Photo: IO PAN" src="/images/OBIS-Poland_00004.jpeg" style="width: 100%;">
 <p style="text-align: center;"><i>Collection of binding and encrusting organisms from the hard substrate of a rocky shore on Davidsonpynten, Svalbard, August 2018.<br>Photo: IO PAN</i></p>
-<br><br>
+<br>
 
-### Global recognition for Polish marine data providers
+#### Global recognition for Polish marine data providers
 
 From that, the creation of the OBIS Poland node, which took place on 17 July 2026, was a natural move: the idea of establishing it was an early part of the consortium discussions. *"There are a lot of marine biodiversity datasets in Poland that are not visible internationally and, for some, not even visible locally,"* continues Marcin Wichorowski. *"In too many cases, scientists collect data and put it on a local hard drive."* For the Polish marine institutes involved in establishing the national data management roadmap, an OBIS node in Poland would act as a catalyst to boost mobilization and publication, softly enforce national coordination by granting increased visibility and recognition to Polish data providers on the global stage, and drive the development of data standards fluency and publication skills across the country.
 
@@ -59,9 +59,9 @@ In addition, OBIS, as a global data platform, would also serve as a centralized 
 <br><br>
 <img alt="Members of the SIP expedition team carrying out the sampling of suspended matter at various distances from the front of the glacier in Davidsonpynten, Svalbard. Photo: IO PAN" src="/images/OBIS-Poland_00005.jpeg" style="width: 100%;">
 <p style="text-align: center;"><i>Members of the SIP expedition team carrying out the sampling of suspended matter at various distances from the front of the glacier in Davidsonpynten, Svalbard.<br>Photo: IO PAN</i></p>
-<br><br>
+<br>
 
-### A growing node with a global outlook
+#### A growing node with a global outlook
 
 Currently staffed with six members, including a Node manager, a Data Manager, a Physical Data Manager, a Chemical Data Manager, and two members assisting in exploring existing datasets and publishing them, the freshly created OBIS Poland Node has already been very active, with 35,460 records made available on the platform. *"We connect with the OBIS community as contributors, but also as users needing data to support evidence-based governmental decision-making,"* says Monika Kędra. *"Being now part of OBIS increases the visibility and hopefully the use of the data available on the platform in Poland."*
 
@@ -70,11 +70,11 @@ Currently staffed with six members, including a Node manager, a Data Manager, a 
 <p style="text-align: center;"><i>Collection of various organisms from soft sediment and hard bottom by the SIP expedition team.<br>Photo: IO PAN</i></p>
 <br><br>
 
-<br><br><br>
+<br>
 
 >We connect with the OBIS community as contributors, but also as users needing data to support evidence-based governmental decision-making.
 
-<br><br><br>
+<br>
 
 The Node also hopes that Polish-specific taxonomic expertise could be made useful for the OBIS community. *"We have expert taxonomic knowledge from the Baltic Sea and polar species across Poland, and we are making sure to sustain this expertise in the long term."* Eventually, the Node team aims to be able to provide the best possible data and services for scientists worldwide. *"We want to be part of the foundation that supports better science. We hope that within five years, Polish scientists will understand the benefits, for science and society, of having well-organised, well-described datasets, provided in a controlled way,"* concludes Marcin Wichorowski.
 
