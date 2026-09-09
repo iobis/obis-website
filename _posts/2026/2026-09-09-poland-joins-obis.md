@@ -67,10 +67,7 @@ Currently staffed with six members, including a Node manager, a Data Manager, a 
 <p style="text-align: center;"><i>Collection of various organisms from soft sediment and hard bottom by the SIP expedition team.<br>Photo: IO PAN</i></p>
 <br><br>
 
-<br>
-
 >We connect with the OBIS community as contributors, but also as users needing data to support evidence-based governmental decision-making.
-
 <br>
 
 The Node also hopes that Polish-specific taxonomic expertise could be made useful for the OBIS community. *"We have expert taxonomic knowledge from the Baltic Sea and polar species across Poland, and we are making sure to sustain this expertise in the long term."* Eventually, the Node team aims to be able to provide the best possible data and services for scientists worldwide. *"We want to be part of the foundation that supports better science. We hope that within five years, Polish scientists will understand the benefits, for science and society, of having well-organised, well-described datasets, provided in a controlled way,"* concludes Marcin Wichorowski.
