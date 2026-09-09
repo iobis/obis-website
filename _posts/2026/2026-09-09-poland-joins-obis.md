@@ -32,7 +32,7 @@ Structurally, financially, and even scientifically, IO PAN sits apart from other
 
 <br><br><br>
 
->We also realized that we would need data specialists in addition to scientists if we wanted to increase our capacity to publish that data.
+>We realized that we would need data specialists in addition to scientists if we wanted to increase our capacity to publish that data.
 
 <br><br><br>
 
