@@ -1,6 +1,6 @@
 ---
 identifier: cetaceanmodels
-image: model.jpg
+image: /images/model.jpg
 lang: en
 layout: post
 link: http://www.nature.com/articles/srep22615

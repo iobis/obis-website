@@ -5,7 +5,7 @@ excerpt: A global study based on time series datasets from OBIS published in Sci
   of diversity.
 feed: true
 identifier: betadiversity
-image: betadiversity.png
+image: /images/betadiversity.png
 lang: en
 layout: post
 link: http://science.sciencemag.org/content/344/6181/296.full

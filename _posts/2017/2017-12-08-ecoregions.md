@@ -6,7 +6,7 @@ excerpt: A new study using data from OBIS identified 33 mesopelagic ecoregions o
   "twilight" zone; world’s second-largest cumulative ecosystem.
 feed: true
 identifier: ecoregions
-image: ecoregions.png
+image: /images/ecoregions.png
 lang: en
 layout: post
 link: http://www.sciencedirect.com/science/article/pii/S0967063717301437
