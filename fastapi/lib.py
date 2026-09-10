@@ -176,11 +176,11 @@ def render_jsonld(dataset, statistics=None, variables=None):
                 for institute in institutes:
                     if "oceanexpert_id" in institute:
                         provider = {
-                            "@id": f"https://oceanexpert.org/institution/{institute['oceanexpert_id']}",
+                            "@id": f"https://oceanexpert.org/institute/{institute['oceanexpert_id']}",
                             "@type": "Organization",
                             "legalName": institute.get("name"),
                             "name": institute.get("name"),
-                            "url": f"https://oceanexpert.org/institution/{institute['oceanexpert_id']}"
+                            "url": f"https://oceanexpert.org/institute/{institute['oceanexpert_id']}"
                         }
                         providers.append(provider)
                 
