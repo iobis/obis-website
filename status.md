@@ -11,7 +11,7 @@ permalink: /status/
     <div id="status-error" class="alert alert-danger d-none" role="alert"></div>
 
     <div class="mb-4">
-      <h2 class="h4 mb-3">Queued tasks</h2>
+      <h2 class="h4 mb-3">Queued tasks <span id="status-queue-count"></span></h2>
       <div id="status-queue">
         <p class="text-muted mb-0">Loading queued tasks…</p>
       </div>
@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const errorEl = document.getElementById("status-error");
   const queueEl = document.getElementById("status-queue");
+  const queueCountEl = document.getElementById("status-queue-count");
   const feedsEl = document.getElementById("status-feeds");
   const datasetsEl = document.getElementById("status-datasets");
 
@@ -87,6 +88,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function renderQueue(queue) {
+    const count = queue ? queue.length : 0;
+    if (queueCountEl) {
+      queueCountEl.textContent = "(" + count + ")";
+    }
+
     if (!queue || queue.length === 0) {
       queueEl.innerHTML = '<p class="text-muted mb-0">No queued tasks.</p>';
       return;
