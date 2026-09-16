@@ -1,0 +1,10 @@
+# Dev/test deps for FastAPI SSR resilience tests.
+# From fastapi/: pip install -r ../requirements-dev.txt && PYTHONPATH=. pytest -q
+pytest
+pytest-asyncio
+httpx
+fastapi
+jinja2
+uvicorn
+starlette
+itsdangerous

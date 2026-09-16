@@ -1,7 +1,16 @@
-import requests
+import httpx
 import urllib
 import json
 import re
+
+API_TIMEOUT = httpx.Timeout(10.0)
+
+
+async def api_get(url: str, **kwargs):
+    async with httpx.AsyncClient(timeout=API_TIMEOUT) as client:
+        response = await client.get(url, **kwargs)
+        response.raise_for_status()
+        return response.json()
 
 
 def process_contacts(contacts):
@@ -29,38 +38,30 @@ def process_contacts(contacts):
     return list(unique_contacts.values())
 
 
-def get_quality_statistics(filters: dict):
+async def get_quality_statistics(filters: dict):
     params = urllib.parse.urlencode(filters)
     api_url = f"https://api.obis.org/statistics/qc?{params}"
     try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        result = response.json()
-        return result
+        return await api_get(api_url)
     except Exception as e:
         print(e)
 
 
-def get_dataset_variables(filters: dict):
+async def get_dataset_variables(filters: dict):
     params = urllib.parse.urlencode(filters)
-    api_url = f"https://api.obis.org/facet?size=10&facets=measurementTypeCombination&{params}";
+    api_url = f"https://api.obis.org/facet?size=10&facets=measurementTypeCombination&{params}"
     try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        result = response.json()
+        result = await api_get(api_url)
         return result["results"]["measurementTypeCombination"]
     except Exception as e:
         print(e)
 
 
-def get_statistics(filters: dict):
+async def get_statistics(filters: dict):
     params = urllib.parse.urlencode(filters)
     api_url = f"https://api.obis.org/statistics?{params}"
     try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        result = response.json()
-        return result
+        return await api_get(api_url)
     except Exception as e:
         print(e)
 

@@ -8,3 +8,6 @@ __pycache__
 Rakefile
 .env
 _cache
+fastapi/static
+.venv*
+.venv-ssr-test/

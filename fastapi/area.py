@@ -2,9 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
-import os
-from lib import get_statistics
+from lib import api_get, get_statistics
 
 
 router = APIRouter()
@@ -18,16 +16,14 @@ async def area(request: Request, area_id: int):
 
         # area metadata
 
-        response = requests.get(f"https://api.obis.org/area/{area_id}")
-        response.raise_for_status()
-        data = response.json()
+        data = await api_get(f"https://api.obis.org/area/{area_id}")
         if not data.get("results"):
             raise HTTPException(status_code=404, detail="Area not found")
         area = data["results"][0]
 
         # statistics
 
-        statistics = get_statistics({
+        statistics = await get_statistics({
             "areaid": area_id
         })
 

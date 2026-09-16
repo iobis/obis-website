@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
+from lib import api_get
 
 router = APIRouter()
 
@@ -12,9 +12,7 @@ shell_templates = Jinja2Templates(directory="static")
 @router.get("/{taxon_id}", response_class=HTMLResponse)
 async def taxon(request: Request, taxon_id: int):
     try:
-        response = requests.get(f"https://api.obis.org/taxon/{taxon_id}")
-        response.raise_for_status()
-        data = response.json()
+        data = await api_get(f"https://api.obis.org/taxon/{taxon_id}")
         
         if not data.get("results"):
             raise HTTPException(status_code=404, detail="Taxon not found")
@@ -35,4 +33,4 @@ async def taxon(request: Request, taxon_id: int):
         )
     except Exception as e:
         print(e)
-        raise HTTPException(status_code=404, detail="Taxon not found") 
+        raise HTTPException(status_code=404, detail="Taxon not found")
