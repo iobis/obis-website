@@ -87,6 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
     return str;
   }
 
+  function formatSize(value) {
+    const n = Number(value);
+    if (!Number.isFinite(n) || n < 0) return "";
+    return String(n);
+  }
+
   function renderQueue(queue) {
     const count = queue ? queue.length : 0;
     if (queueCountEl) {
@@ -101,6 +107,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const rows = queue.map(task => {
       const payload = task.payload || {};
       const datasetId = payload.dataset_id || "";
+      const sizeText = payload.size != null ? formatSize(payload.size) : "";
 
       let queryBadge = "";
       if (payload.query) {
@@ -115,6 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
           <td>${escapeText(task.priority)}</td>
           <td>${queryBadge}</td>
           <td>${escapeText(datasetId)}</td>
+          <td style="white-space: nowrap; text-align: right;">${escapeText(sizeText)}</td>
           <td style="white-space: nowrap;">${escapeText(formatDateTime(task.created_at))}</td>
           <td style="white-space: nowrap;">${escapeText(formatDateTime(task.locked_at))}</td>
         </tr>
@@ -131,6 +139,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <th scope="col">Priority</th>
               <th scope="col">Query</th>
               <th scope="col">Dataset ID</th>
+              <th scope="col" style="white-space: nowrap; text-align: right;">Size</th>
               <th scope="col" style="white-space: nowrap;">Created at</th>
               <th scope="col" style="white-space: nowrap;">Started at</th>
             </tr>
