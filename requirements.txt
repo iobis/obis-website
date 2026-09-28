@@ -1,4 +1,5 @@
 python-frontmatter
+markdown
 authlib
 python-dotenv
 starlette

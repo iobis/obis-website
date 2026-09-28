@@ -8,6 +8,16 @@
     --dna: #DA6C6C;
     --taxon: #BA487F;
     --black: rgb(33, 37, 41);
+
+    /* light-to-dark ramp for stacked composition plots (assets/plots.js), one step per tier */
+    --tier-1: color-mix(in srgb, var(--highlight) 40%, white);
+    --tier-2: color-mix(in srgb, var(--highlight) 55%, white);
+    --tier-3: color-mix(in srgb, var(--highlight) 70%, white);
+    --tier-4: color-mix(in srgb, var(--highlight) 85%, white);
+    --tier-5: var(--highlight);
+    --tier-6: color-mix(in srgb, var(--highlight) 85%, black);
+    --tier-7: color-mix(in srgb, var(--highlight) 70%, black);
+    --tier-8: color-mix(in srgb, var(--highlight) 55%, black);
 }
 
 html, body {
@@ -314,6 +324,46 @@ section {
   font: 12px sans-serif;
   box-shadow: 0 0 5px rgba(0,0,0,0.1);
   border-radius: 4px;
+}
+
+.plot-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    margin-top: 10px;
+}
+
+.plot-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    color: var(--black);
+}
+
+.plot-legend-swatch {
+    width: 10px;
+    height: 10px;
+    border-radius: 2px;
+    flex: none;
+}
+
+.plot-facet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+}
+
+.plot-facet-title {
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--black);
+    margin-bottom: 2px;
+}
+
+.plot-facet-panel svg {
+    max-width: 100%;
+    height: auto;
 }
 
 .nodename {

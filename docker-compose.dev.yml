@@ -22,6 +22,7 @@ services:
     volumes:
       - ./fastapi:/app
       - ./_site:/app/static
+      - ./_DATA_TEMP:/_DATA_TEMP
     command: uvicorn main:app --host 0.0.0.0 --port 8001
     ports:
       - "9001:8001"

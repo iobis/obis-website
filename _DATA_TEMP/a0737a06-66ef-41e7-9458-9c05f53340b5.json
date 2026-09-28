@@ -1,0 +1,69 @@
+{
+  "dataset_id": "a0737a06-66ef-41e7-9458-9c05f53340b5",
+  "title": "Australian Museum Ichthyology Collection",
+  "generated_at": "2026-09-26T14:46:08.773559+00:00",
+  "model": null,
+  "generation_method": "template",
+  "status": "ok",
+  "description": "The dataset 'Australian Museum Ichthyology Collection' spans 1858 to 2016 and includes 155,784 occurrence records, representing 4,282 distinct species. It covers 1,671 genera, 390 families, 72 orders, 7 classes, and 3 phyla (Annelida, Chordata, and Cnidaria). On the IUCN Red List, this dataset includes 16 species classified as Critically Endangered, 36 species classified as Endangered, and 66 species classified as Vulnerable. 508 species are represented by only one record (e.g. the genus [*Platybelone*](https://obis.org/taxon/125689), [*Stalix histrio*](https://obis.org/taxon/282862), and [*Etmopterus dianthus*](https://obis.org/taxon/271632)). 496 species are rare across OBIS as a whole - recorded in a handful of other datasets, but not only this one, including the genus [*Odontostomops*](https://obis.org/taxon/125667), the genus [*Ahliesaurus*](https://obis.org/taxon/125671), and the genus [*Zu*](https://obis.org/taxon/125789). 15 species are found here but in none of the nearby OBIS datasets sharing its geographic footprint, such as the genus [*Zu*](https://obis.org/taxon/125789), the family [Osphronemidae](https://obis.org/taxon/151378), and the family [Aplodactylidae](https://obis.org/taxon/151476); and 11 species have never been recorded by any other OBIS dataset at all, including the family [Aplodactylidae](https://obis.org/taxon/151476), the family [Osteoglossidae](https://obis.org/taxon/152242), and the genus [*Silurus*](https://obis.org/taxon/154200). Most records belong to the phylum [Chordata](https://obis.org/taxon/1821), with 6,883 records. This dataset's geographic footprint overlaps with 5,250 other OBIS datasets; the closest match is [UWFC Ichthyology Collection](https://obis.org/dataset/4e88f9c8-868e-4b0a-bc48-3d409a5448fe), sharing 459 species across 177 geographic cells, including the family [Myctophidae](https://obis.org/taxon/125498), [*Mugil cephalus*](https://obis.org/taxon/126983), and the genus [*Pomacentrus*](https://obis.org/taxon/204256).",
+  "highlights": [
+    {
+      "text": "16 species in this dataset are classified as Critically Endangered on the IUCN Red List.",
+      "evidence": [
+        "redlist_stats.n_species_cr"
+      ]
+    },
+    {
+      "text": "36 species in this dataset are classified as Endangered on the IUCN Red List.",
+      "evidence": [
+        "redlist_stats.n_species_en"
+      ]
+    },
+    {
+      "text": "66 species in this dataset are classified as Vulnerable on the IUCN Red List.",
+      "evidence": [
+        "redlist_stats.n_species_vu"
+      ]
+    },
+    {
+      "text": "11 species have never been recorded by any other OBIS dataset, including the family [Aplodactylidae](https://obis.org/taxon/151476), the family [Osteoglossidae](https://obis.org/taxon/152242), and the genus [*Silurus*](https://obis.org/taxon/154200).",
+      "evidence": [
+        "unique_species.global.n_species"
+      ]
+    },
+    {
+      "text": "15 species are unique to this dataset among the datasets sharing its geographic footprint, such as the genus [*Zu*](https://obis.org/taxon/125789), the family [Osphronemidae](https://obis.org/taxon/151378), and the family [Aplodactylidae](https://obis.org/taxon/151476).",
+      "evidence": [
+        "unique_species.zone.n_species"
+      ]
+    },
+    {
+      "text": "The most frequently recorded taxon is the phylum [Chordata](https://obis.org/taxon/1821), with 6,883 records.",
+      "evidence": [
+        "prevalent_species[0].name",
+        "prevalent_species[0].records"
+      ]
+    },
+    {
+      "text": "Its closest match is [UWFC Ichthyology Collection](https://obis.org/dataset/4e88f9c8-868e-4b0a-bc48-3d409a5448fe), sharing 459 species across 177 geographic cells, including the family [Myctophidae](https://obis.org/taxon/125498), [*Mugil cephalus*](https://obis.org/taxon/126983), and the genus [*Pomacentrus*](https://obis.org/taxon/204256).",
+      "evidence": [
+        "overlap_summary.top_overlaps[0].title",
+        "overlap_summary.top_overlaps[0].dataset_id",
+        "overlap_summary.top_overlaps[0].n_shared_species_zone",
+        "overlap_summary.top_overlaps[0].n_shared_cells"
+      ]
+    },
+    {
+      "text": "508 species in this dataset are represented by only one record, e.g. the genus [*Platybelone*](https://obis.org/taxon/125689), [*Stalix histrio*](https://obis.org/taxon/282862), and [*Etmopterus dianthus*](https://obis.org/taxon/271632).",
+      "evidence": [
+        "redlist_stats.n_species_single_record"
+      ]
+    }
+  ],
+  "validation": {
+    "attempts": 0,
+    "remaining_issues": {}
+  },
+  "facts_path": "summaries/a0737a06-66ef-41e7-9458-9c05f53340b5.json",
+  "facts_hash": "c337281d1ef6ccad"
+}

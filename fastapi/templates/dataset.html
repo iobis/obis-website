@@ -32,6 +32,11 @@
                 <li class="nav-item" role="presentation">
                     <button class="nav-link active" id="overview-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="overview" aria-selected="true">Overview</button>
                 </li>
+                {% if insights %}
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="insights-tab" data-bs-toggle="tab" data-bs-target="#insights" type="button" role="tab" aria-controls="data-overview" aria-selected="false">Insights</button>
+                </li>
+                {% endif %}
                 <li class="nav-item" role="presentation">
                     <button class="nav-link" id="quality-tab" data-bs-toggle="tab" data-bs-target="#quality" type="button" role="tab" aria-controls="profile" aria-selected="false">Data quality</button>
                 </li>
@@ -168,17 +173,49 @@
                 <div class="row">
                     <div id="m"></div>
                 </div>
-                
-                <div class="row align-items-center">
+
+                <h3 class="mt-5">Taxonomic composition</h3>
+                <div class="row align-items-start">
                     <div class="col-12 col-md-6">
-                        <div id="timeplot"></div>
+                        <h5>Identification completeness</h5>
+                        <p class="text-muted">How precisely records in this dataset are identified, and how many report a sampling depth.</p>
+                        <div id="completeness" class="mb-5"></div>
+                        <h5>Depth coverage</h5>
+                        <div id="depth-coverage"></div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div id="sunburst" style="height: 600px;"></div>
                     </div>
                 </div>
+
+                <h3 class="mt-5">Temporal distribution</h3>
+                <p class="text-muted">Distribution of records from this dataset by year and month, both considering the date from the record, not publishing date.</p>
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h5>Records by year</h5>
+                        <div id="by-year"></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h5>Records by month</h5>
+                        <div id="by-month"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h5>Cumulative species recorded</h5>
+                        <div id="cum-species"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h5 id="cum-species-groups-title">Cumulative species by group</h5>
+                        <div id="cum-species-groups"></div>
+                    </div>
+                </div>
                 {% endif %}
-                
+
             </div>
             
             {% if dataset.core != "taxon" %}
@@ -195,6 +232,44 @@
             {% endif %}
             
         </div>
+
+        <!-- New tab, Data Overview -->
+        <!-- <div class="tab-pane" id="data-overview" role="tabpanel" aria-labelledby="insights-tab">
+
+            <div class="container mb-5">
+                <div class="mb-4">
+                </div>
+            </div>
+        </div> -->
+
+        <!-- New tab, Insights -->
+         <div class="tab-pane" id="insights" role="tabpanel" aria-labelledby="insights-tab">
+
+            <div class="container mb-5">
+                {% if insights %}
+                <div class="mb-4">
+                    <h3 class="mb-1">Insights</h3>
+                    <p class="text-muted small mb-4">{% if insights.generated_at %}Generated on {{ insights.generated_at | datetimeformat("%B %d, %Y") }}. {% endif %}This section is experimental — insights are auto-generated and may not be fully accurate.</p>
+                    {{ insights.description_html }}
+                    {% if insights.highlights %}
+                    <h5 class="mt-4 mb-3">Highlights</h5>
+                    <div class="row g-3">
+                        {% for highlight in insights.highlights %}
+                        <div class="col-6 col-md-4 col-lg-3">
+                            <div class="p-3 rounded h-100" style="background-color: var(--light-grey);">
+                                {% if highlight.number %}<div class="display-6 fw-bold">{{ highlight.number }}</div>{% endif %}
+                                <div>{{ highlight.caption_html }}</div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                </div>
+                {% else %}
+                <p>No insights available for this dataset yet.</p>
+                {% endif %}
+            </div>
+         </div>
         
         <div class="tab-pane" id="quality" role="tabpanel" aria-labelledby="quality-tab">
             
@@ -314,7 +389,6 @@
         });
         renderMap("m", { datasetid: "{{ dataset.id }}" })
         renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
-        renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
         {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
         renderMeasurementTypes("mofs", { datasetid: "{{ dataset.id }}" })
         {% endif %}
@@ -322,3 +396,80 @@
         renderDNATable("dnas", { datasetid: "{{ dataset.id }}" })
         {% endif %}
     </script>
+
+    {% if dataset.core != "taxon" %}
+    <script type="module">
+        import { BarChart, StackedHorizontal, FacetedArea, fillCumulativeGaps } from "/assets/plots.js";
+
+        fetch("/dataset/{{ dataset.id }}/metrics")
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+                return response.json();
+            })
+            .then((metrics) => {
+                StackedHorizontal("completeness", {
+                    x: metrics.taxon_level.map((d) => d.total_perc),
+                    y: metrics.taxon_level.map(() => ""),
+                    fill: metrics.taxon_level.map((d) => d.higher_level),
+                    domain: ["Species", "Genus", "Family", "Order", "Class", "Phylum", "Kingdom", "Other"],
+                    xLabel: "Share of records identified to rank",
+                    format: (v) => `${v.toFixed(1)}%`
+                });
+
+                StackedHorizontal("depth-coverage", {
+                    x: metrics.depth_coverage.map((d) => d.total_perc),
+                    y: metrics.depth_coverage.map(() => ""),
+                    fill: metrics.depth_coverage.map((d) => d.depth_coverage),
+                    domain: ["Both", "Minimum depth only", "Maximum depth only", "None"],
+                    xLabel: "Share of records reporting depth",
+                    format: (v) => `${v.toFixed(1)}%`
+                });
+
+                BarChart("by-year", {
+                    x: metrics.by_year.map((d) => d.date_year),
+                    y: metrics.by_year.map((d) => d.total),
+                    xLabel: "Year",
+                    yLabel: "Records"
+                });
+
+                BarChart("by-month", {
+                    x: metrics.by_month.map((d) => d.month),
+                    y: metrics.by_month.map((d) => d.total),
+                    xLabel: "Month",
+                    yLabel: "Records"
+                });
+
+                // the source only has one row per year that actually gained species;
+                // fill the years in between so the bars read as a continuous cumulative total
+                const cumSpecies = fillCumulativeGaps({
+                    x: metrics.cum_species_by_year.map((d) => d.first_year),
+                    y: metrics.cum_species_by_year.map((d) => d.cumulative_species)
+                });
+                BarChart("cum-species", {
+                    x: cumSpecies.x,
+                    y: cumSpecies.y,
+                    xLabel: "Year",
+                    yLabel: "Cumulative species",
+                    height: 280
+                });
+
+                // a handful of rows are missing `taxon` in the current export; drop them
+                // rather than showing a stray "undefined" facet panel
+                const byGroup = metrics.cum_species_by_year_higher.filter((d) => d.taxon);
+                FacetedArea("cum-species-groups", {
+                    x: byGroup.map((d) => d.first_year),
+                    y: byGroup.map((d) => d.cumulative_species),
+                    facet: byGroup.map((d) => d.taxon),
+                    xLabel: "Year",
+                    yLabel: "Species"
+                });
+                if (metrics.higher_level && metrics.higher_level.length) {
+                    document.getElementById("cum-species-groups-title").textContent =
+                        `Cumulative species by ${metrics.higher_level.join(", ")}`;
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    </script>
+    {% endif %}
