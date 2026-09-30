@@ -127,14 +127,56 @@
                 
         <section class="section-dense">
             <div class="container">
-                <div class="row align-items-center">
+
+                <h3>Taxonomic composition</h3>
+                <div class="row align-items-start">
                     <div class="col-12 col-md-6">
-                        <div id="timeplot"></div>
+                        <h5>Identification completeness</h5>
+                        <p class="text-muted">How precisely records for this node are identified, and how many report a sampling depth.</p>
+                        <div id="completeness" class="mb-5"></div>
+                        <h5>Depth coverage</h5>
+                        <div id="depth-coverage"></div>
                     </div>
                     <div class="col-12 col-md-6">
                         <div id="sunburst" style="height: 600px;"></div>
                     </div>
                 </div>
+
+                <h3 class="mt-5">Temporal distribution</h3>
+                <p class="text-muted">Distribution of records for this node by year and month, both considering the date from the record, not publishing date.</p>
+                <div class="row align-items-center">
+                    <div class="col-12 col-md-6">
+                        <h5>Records by year</h5>
+                        <div id="by-year"></div>
+                    </div>
+                    <div class="col-12 col-md-6">
+                        <h5>Records by month</h5>
+                        <div id="by-month"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h5>Published records by year</h5>
+                        <p class="text-muted">Cumulative records, by dataset publication year rather than record date.</p>
+                        <div id="published-by-year"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h5>Cumulative species recorded</h5>
+                        <div id="cum-species"></div>
+                    </div>
+                </div>
+
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h5 id="cum-species-groups-title">Cumulative species by group</h5>
+                        <div id="cum-species-groups"></div>
+                    </div>
+                </div>
+
             </div>
         </section>
                 
@@ -234,5 +276,93 @@
     renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
     renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
     renderMap("m", { nodeid: "{{ node.id }}" })
-    renderTimeplot("timeplot", { nodeid: "{{ node.id }}" })
+</script>
+
+<script type="module">
+    import { BarChart, StackedHorizontal, FacetedArea, fillCumulativeGaps } from "/assets/plots.js";
+
+    fetch("/node/{{ node.id }}/metrics")
+        .then((response) => {
+            if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+            return response.json();
+        })
+        .then((metrics) => {
+            StackedHorizontal("completeness", {
+                x: metrics.taxon_level.map((d) => d.total_perc),
+                y: metrics.taxon_level.map(() => ""),
+                fill: metrics.taxon_level.map((d) => d.higher_level),
+                domain: ["Species", "Genus", "Family", "Order", "Class", "Phylum", "Kingdom", "Other"],
+                xLabel: "Share of records identified to rank",
+                format: (v) => `${v.toFixed(1)}%`
+            });
+
+            StackedHorizontal("depth-coverage", {
+                x: metrics.depth_coverage.map((d) => d.total_perc),
+                y: metrics.depth_coverage.map(() => ""),
+                fill: metrics.depth_coverage.map((d) => d.depth_coverage),
+                domain: ["Both", "Minimum depth only", "Maximum depth only", "None"],
+                xLabel: "Share of records reporting depth",
+                format: (v) => `${v.toFixed(1)}%`
+            });
+
+            BarChart("by-year", {
+                x: metrics.by_year.map((d) => d.date_year),
+                y: metrics.by_year.map((d) => d.total),
+                xLabel: "Year",
+                yLabel: "Records"
+            });
+
+            BarChart("by-month", {
+                x: metrics.by_month.map((d) => d.month),
+                y: metrics.by_month.map((d) => d.total),
+                xLabel: "Month",
+                yLabel: "Records"
+            });
+
+            // published_by_year is already one row per year with no gaps, but
+            // fill defensively anyway in case a future node export is sparser
+            const published = fillCumulativeGaps({
+                x: metrics.published_by_year.map((d) => d.year),
+                y: metrics.published_by_year.map((d) => d.cumulative)
+            });
+            BarChart("published-by-year", {
+                x: published.x,
+                y: published.y,
+                xLabel: "Year",
+                yLabel: "Cumulative records",
+                height: 280
+            });
+
+            // the source only has one row per year that actually gained species;
+            // fill the years in between so the bars read as a continuous cumulative total
+            const cumSpecies = fillCumulativeGaps({
+                x: metrics.cum_species_by_year.map((d) => d.first_year),
+                y: metrics.cum_species_by_year.map((d) => d.cumulative_species)
+            });
+            BarChart("cum-species", {
+                x: cumSpecies.x,
+                y: cumSpecies.y,
+                xLabel: "Year",
+                yLabel: "Cumulative species",
+                height: 280
+            });
+
+            // a handful of rows can be missing `taxon` in this export; drop them
+            // rather than showing a stray "undefined" facet panel
+            const byGroup = metrics.cum_species_by_year_higher.filter((d) => d.taxon);
+            FacetedArea("cum-species-groups", {
+                x: byGroup.map((d) => d.first_year),
+                y: byGroup.map((d) => d.cumulative_species),
+                facet: byGroup.map((d) => d.taxon),
+                xLabel: "Year",
+                yLabel: "Species"
+            });
+            if (metrics.higher_level && metrics.higher_level.length) {
+                document.getElementById("cum-species-groups-title").textContent =
+                    `Cumulative species by ${metrics.higher_level.join(", ")}`;
+            }
+        })
+        .catch((error) => {
+            console.error(error);
+        });
 </script>

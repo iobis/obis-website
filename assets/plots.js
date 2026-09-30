@@ -70,13 +70,23 @@ export function BarChart(container, { x, y, xLabel, yLabel, format = compactForm
     const el = resolveContainer(container);
     if (!el) return;
     const data = toRows({ x, y });
+    const distinctX = [...new Set(x)].sort((a, b) => a - b);
+
+    // x is always an integer (year, month). Plot's automatic tick step is
+    // fine on wide ranges (it naturally lands on whole multi-year steps),
+    // but on a narrow range (e.g. 9 years) it can pick a fractional step to
+    // hit its target tick count, and tickFormat "d" then rounds adjacent
+    // fractional ticks to the same/adjacent value — apparent duplicate
+    // labels. So when there are few enough distinct values to label
+    // directly, tell Plot to use exactly those as ticks instead of guessing.
+    const tickConfig = distinctX.length <= 12 ? { ticks: distinctX } : {};
 
     const plot = Plot.plot({
         width: el.clientWidth,
         height,
         marginLeft: 56,
         style: { background: "transparent", fontFamily: "inherit" },
-        x: { label: xLabel, tickFormat: "d" },
+        x: { label: xLabel, tickFormat: "d", ...tickConfig },
         y: { label: yLabel, grid: true, tickFormat: format },
         marks: [
             Plot.ruleY([0], { stroke: "var(--light-grey)" }),
