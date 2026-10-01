@@ -1,0 +1,326 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="/assets/main.css">
+    <link rel="icon" href="/assets/favicon.png">
+    <link href="/assets/maplibre-gl.css" rel="stylesheet" />
+    <script src="/assets/maplibre-gl.js"></script>
+    <script src="https://cdn.plot.ly/plotly-3.0.1.min.js" charset="utf-8"></script>
+    <script src="/assets/script.js"></script>
+    <title>{{ node.name }} — Report | OBIS</title>
+</head>
+<body class="report-page">
+
+    <div class="report-toolbar no-print">
+        <a href="/node/{{ node.id }}">&larr; Back to node page</a>
+        <div class="d-flex align-items-center gap-3">
+            <div class="form-check form-switch mb-0">
+                <input class="form-check-input" type="checkbox" role="switch" id="include-quality" checked onchange="document.getElementById('quality-section').style.display = this.checked ? '' : 'none';">
+                <label class="form-check-label" for="include-quality">Include data quality</label>
+            </div>
+            <button type="button" class="btn" onclick="window.print()">Generate PDF</button>
+        </div>
+    </div>
+
+    <div class="report-container">
+
+        <p class="text-muted small mb-0">Node report{% if generated_at %} — generated {{ generated_at | datetimeformat("%B %d, %Y") }}{% endif %}</p>
+        <h1>{{ node.name }}</h1>
+
+        {% if node.description %}
+        <p>{{ node.description }}</p>
+        {% endif %}
+
+        <div class="row g-3 mt-4">
+            <div class="col-6 col-md-3">
+                <div class="report-block p-3 rounded h-100 text-center" style="background-color: var(--light-grey);">
+                    <div class="fs-2 fw-bold">{{ "{:0,.0f}".format(statistics.records) }}</div>
+                    <div>occurrence records</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="report-block p-3 rounded h-100 text-center" style="background-color: var(--light-grey);">
+                    <div class="fs-2 fw-bold">{{ "{:0,.0f}".format(statistics.taxa) }}</div>
+                    <div>taxa</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="report-block p-3 rounded h-100 text-center" style="background-color: var(--light-grey);">
+                    <div class="fs-2 fw-bold">{{ "{:0,.0f}".format(statistics.species) }}</div>
+                    <div>species</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="report-block p-3 rounded h-100 text-center" style="background-color: var(--light-grey);">
+                    <div class="fs-2 fw-bold">{{ "{:0,.0f}".format(statistics.datasets) }}</div>
+                    <div>datasets</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-4">
+            <div class="col col-12">
+                {% if node.clean_contacts %}
+                <div class="mt-4">
+                    <p class="mb-3"><b>Contacts</b></p>
+                    <div class="row">
+                        {% for contact in node.clean_contacts %}
+                        <div class="col-md-4 mb-3">
+                            <p class="mb-0"><i>{{ contact.clean_name }}</i>
+                                {% if contact.organization %}
+                                <br/>{{ contact.organization }}
+                                {% elif contact.email %}
+                                <br/>{{ contact.email }}
+                                {% endif %}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% elif node.contacts %}
+                <div class="mt-4">
+                    <p class="mb-3"><b>Contacts</b></p>
+                    <div class="row">
+                        {% for contact in node.contacts %}
+                        <div class="col-md-4 mb-3">
+                            <p class="mb-0"><i>{{ contact.givenname }} {{ contact.surname }}</i>
+                                {% if contact.organization %}
+                                <br/>{{ contact.organization }}
+                                {% elif contact.email %}
+                                <br/>{{ contact.email }}
+                                {% endif %}
+                            </p>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="report-block">
+            <div id="m"></div>
+        </div>
+
+        <h2 class="mt-5">Taxonomic composition</h2>
+        <div class="row align-items-start">
+            <div class="col-12 col-md-6">
+                <div class="report-block">
+                    <h5>Identification completeness</h5>
+                    <p class="text-muted">How precisely records for this node are identified, and how many report a sampling depth.</p>
+                    <div id="completeness"></div>
+                </div>
+                <div class="report-block mt-5">
+                    <h5>Depth coverage</h5>
+                    <div id="depth-coverage"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="report-block">
+                    <div id="sunburst" style="height: 600px;"></div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="mt-5">Temporal distribution</h2>
+        <p class="text-muted">Distribution of records for this node by year and month, both considering the date from the record, not publishing date.</p>
+        <div class="row align-items-center">
+            <div class="col-12 col-md-6">
+                <div class="report-block">
+                    <h5>Records by year</h5>
+                    <div id="by-year"></div>
+                </div>
+            </div>
+            <div class="col-12 col-md-6">
+                <div class="report-block">
+                    <h5>Records by month</h5>
+                    <div id="by-month"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="report-block">
+                    <h5>Published records by year</h5>
+                    <p class="text-muted">Cumulative records, by dataset publication year rather than record date.</p>
+                    <div id="published-by-year"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <div class="report-block">
+                    <h5>Cumulative species recorded</h5>
+                    <div id="cum-species"></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <h5 id="cum-species-groups-title">Cumulative species by group</h5>
+                <div id="cum-species-groups"></div>
+            </div>
+        </div>
+
+        <div id="quality-section">
+        <h2 class="mt-5">Data quality</h2>
+        <div class="mb-4">
+            <h5>Missing and invalid fields</h5>
+            {% if quality_statistics.fields %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Field</th>
+                        <th>Missing</th>
+                        <th>Invalid</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for field, stats in quality_statistics.fields.items() %}
+                    <tr>
+                        <td>{{ field }}</td>
+                        <td>{{ "{:0,.0f}".format(stats.missing) if stats.missing else "" }}</td>
+                        <td>{{ "{:0,.0f}".format(stats.invalid) if stats.invalid else "" }}</td>
+                        <td>{{ (stats.total / statistics.records * 100)|round(1) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No missing or invalid fields.</p>
+            {% endif %}
+        </div>
+        <div>
+            <h5>Quality flags</h5>
+            {% if quality_statistics.flags %}
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Flag</th>
+                        <th>Records</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for flag, records in quality_statistics.flags.items() %}
+                    <tr>
+                        <td>{{ flag }}</td>
+                        <td>{{ "{:0,.0f}".format(records) if records else "" }}</td>
+                        <td>{{ (records / statistics.records * 100)|round(1) }}%</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p>No quality flags.</p>
+            {% endif %}
+        </div>
+        </div>
+
+        <hr class="mt-5">
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+            <p class="text-muted small mb-0">Produced by <a href="https://obis.org/" target="_blank">OBIS</a> — the Ocean Biodiversity Information System.</p>
+            <img src="https://obis.org/images/IOC_OBIS_logo_b.png" alt="IOC / OBIS" class="report-footer-logo">
+        </div>
+
+    </div>
+
+    <script>
+        renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
+        renderMap("m", { nodeid: "{{ node.id }}" })
+    </script>
+
+    <script type="module">
+        import { BarChart, StackedHorizontal, FacetedArea, fillCumulativeGaps } from "/assets/plots.js";
+
+        fetch("/node/{{ node.id }}/metrics")
+            .then((response) => {
+                if (!response.ok) throw new Error(`HTTP error ${response.status}`);
+                return response.json();
+            })
+            .then((metrics) => {
+                StackedHorizontal("completeness", {
+                    x: metrics.taxon_level.map((d) => d.total_perc),
+                    y: metrics.taxon_level.map(() => ""),
+                    fill: metrics.taxon_level.map((d) => d.higher_level),
+                    domain: ["Species", "Genus", "Family", "Order", "Class", "Phylum", "Kingdom", "Other"],
+                    xLabel: "Share of records identified to rank",
+                    format: (v) => `${v.toFixed(1)}%`
+                });
+
+                StackedHorizontal("depth-coverage", {
+                    x: metrics.depth_coverage.map((d) => d.total_perc),
+                    y: metrics.depth_coverage.map(() => ""),
+                    fill: metrics.depth_coverage.map((d) => d.depth_coverage),
+                    domain: ["Both", "Minimum depth only", "Maximum depth only", "None"],
+                    xLabel: "Share of records reporting depth",
+                    format: (v) => `${v.toFixed(1)}%`
+                });
+
+                BarChart("by-year", {
+                    x: metrics.by_year.map((d) => d.date_year),
+                    y: metrics.by_year.map((d) => d.total),
+                    xLabel: "Year",
+                    yLabel: "Records"
+                });
+
+                BarChart("by-month", {
+                    x: metrics.by_month.map((d) => d.month),
+                    y: metrics.by_month.map((d) => d.total),
+                    xLabel: "Month",
+                    yLabel: "Records"
+                });
+
+                const published = fillCumulativeGaps({
+                    x: metrics.published_by_year.map((d) => d.year),
+                    y: metrics.published_by_year.map((d) => d.cumulative)
+                });
+                BarChart("published-by-year", {
+                    x: published.x,
+                    y: published.y,
+                    xLabel: "Year",
+                    yLabel: "Cumulative records",
+                    height: 280
+                });
+
+                const cumSpecies = fillCumulativeGaps({
+                    x: metrics.cum_species_by_year.map((d) => d.first_year),
+                    y: metrics.cum_species_by_year.map((d) => d.cumulative_species)
+                });
+                BarChart("cum-species", {
+                    x: cumSpecies.x,
+                    y: cumSpecies.y,
+                    xLabel: "Year",
+                    yLabel: "Cumulative species",
+                    height: 280
+                });
+
+                const byGroup = metrics.cum_species_by_year_higher.filter((d) => d.taxon);
+                FacetedArea("cum-species-groups", {
+                    x: byGroup.map((d) => d.first_year),
+                    y: byGroup.map((d) => d.cumulative_species),
+                    facet: byGroup.map((d) => d.taxon),
+                    xLabel: "Year",
+                    yLabel: "Species"
+                });
+                if (metrics.higher_level && metrics.higher_level.length) {
+                    document.getElementById("cum-species-groups-title").textContent =
+                        `Cumulative species by ${metrics.higher_level.join(", ")}`;
+                }
+            })
+            .catch((error) => {
+                console.error(error);
+            });
+    </script>
+
+</body>
+</html>

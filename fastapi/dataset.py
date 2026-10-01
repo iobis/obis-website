@@ -149,6 +149,36 @@ async def dataset_metrics(dataset_id: str):
     return metrics
 
 
+@router.get("/{dataset_id}/report", response_class=HTMLResponse)
+async def dataset_report(dataset_id: str):
+
+    dataset = get_metadata(dataset_id)
+    if dataset is None:
+        raise HTTPException(status_code=404, detail="Dataset not found")
+
+    statistics = get_statistics({
+        "datasetid": dataset_id
+    })
+
+    quality_statistics = get_quality_statistics({
+        "datasetid": dataset_id,
+        "dropped": "include",
+        "absence": "include"
+    })
+
+    insights = get_insights(dataset_id)
+
+    html = templates.get_template("dataset_report.html").render(
+        dataset=dataset,
+        statistics=statistics,
+        quality_statistics=quality_statistics,
+        insights=insights,
+        generated_at=datetime.utcnow()
+    )
+
+    return HTMLResponse(html)
+
+
 @router.get("/{dataset_id}", response_class=HTMLResponse)
 async def dataset_page(request: Request, dataset_id: str):
 

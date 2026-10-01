@@ -1122,7 +1122,13 @@ function renderMap(element, filter) {
         projection: "mercator",
         attributionControl: false,
         scrollZoom: false,
-        dragPan: false
+        dragPan: false,
+        // without this, the WebGL canvas reliably shows on screen but comes
+        // back blank from window.print()/page.pdf() — Chromium's print
+        // pipeline doesn't capture a canvas's last-rendered frame unless the
+        // browser is told to keep it around after compositing. MapLibre v5
+        // nests this under canvasContextAttributes, not as a top-level option.
+        canvasContextAttributes: { preserveDrawingBuffer: true }
     });
 
     let params = new URLSearchParams(filter).toString();

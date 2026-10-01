@@ -758,3 +758,112 @@ section {
     margin-left: -50px;
     margin-bottom: -0.75rem;
 }
+
+/* fastapi/templates/*_report.html — standalone print-to-PDF pages, bypassing
+   the site shell (no nav/footer) so window.print() produces a clean PDF */
+.report-page {
+    background: #ffffff;
+    /* browsers strip background colors on print by default (to save ink)
+       unless the user checks "Background graphics" in the print dialog —
+       this tells them to keep ours (the stat tiles, chart legend swatches,
+       stacked-bar segments) without needing that checkbox */
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+}
+
+.report-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 0.75rem 1.25rem;
+    background: #ffffff;
+    border-bottom: 1px solid #d8d8d8;
+}
+
+.report-toolbar .btn {
+    background-color: var(--highlight);
+    color: #ffffff;
+    border: none;
+}
+
+.report-container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 1rem 1.5rem 3rem;
+}
+
+.report-container h2 {
+    margin-top: 2.5rem;
+}
+
+.report-footer-logo {
+    height: 36px;
+}
+
+@media print {
+    .no-print {
+        display: none !important;
+    }
+    /* Deliberately NOT resizing .report-container for print (no max-width/
+       padding override here): the map inside it is a MapLibre canvas, sized
+       to its container's pixel width at render time. Widening the container
+       only when print CSS kicks in triggers a canvas resize+repaint that
+       doesn't reliably finish before the browser captures the page, leaving
+       a blank map. Keeping the container width identical between screen and
+       print avoids that resize entirely. (The SVG-based Plot charts don't
+       have this problem — they scale via viewBox — but the map does.) */
+
+    /* Bootstrap's md breakpoint (768px) is narrower than a printed page, so
+       .col-md-6 side-by-side pairs (the sunburst next to the completeness
+       bars, records-by-year next to records-by-month) still apply in print
+       — squeezing a wide chart into half a page, which is what made the
+       sunburst's labels unreadable. Stack those two specifically; the
+       smaller tile grids (stat tiles, insight highlights) are fine narrow
+       and multi-per-row, so leave them alone. */
+    .report-container .col-md-6 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+
+    /* Keep each heading+chart unit intact rather than letting the page break
+       land between a bar and its legend, or a heading and its chart. These
+       target whole widgets (report-block, a facet panel, a table row) —
+       not whole multi-widget sections — so the page still fills up
+       naturally instead of jumping a widget to the next page over a mostly-
+       empty one. */
+    .report-block,
+    .plot-facet-panel,
+    .map-container,
+    table tr {
+        break-inside: avoid;
+    }
+
+    /* break-inside: avoid on .report-block (the insight tiles) isn't reliably
+       honored by Chromium when the parent is a flex container — Bootstrap's
+       .row is display:flex, and flex children have weak print-fragmentation
+       support even in browsers that handle ordinary block children fine (as
+       the charts above, in ordinary .row > .col divs, demonstrate). Grid
+       items don't have this problem, so switch just this row to grid. */
+    .report-container .row.g-3 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+    .report-container .row.g-3 > div {
+        width: auto;
+        max-width: none;
+        flex: none;
+    }
+    h2, h3, h4, h5 {
+        break-after: avoid;
+    }
+
+    .maplibregl-ctrl,
+    .map-click-message {
+        display: none !important;
+    }
+}

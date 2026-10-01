@@ -23,6 +23,7 @@
             {% endif %}
             <a href="https://mapper.obis.org?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
             <a href="/explore?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+            <a href="/dataset/{{ dataset.id }}/report" class="badge badge-mapper" target="blank">Generate report</a>
         </p>
         {% if dataset.disable_extensions and "http://rs.iobis.org/obis/terms/ExtendedMeasurementOrFact" in dataset.disable_extensions %}
         <p class="mb-0 p-3 rounded" style="background-color: var(--light-grey);" role="note"><strong>Note:</strong> The ExtendedMeasurementOrFact extension for this dataset is not indexed in OBIS, but extension records are available from <a href="{{ dataset.url }}" target="_blank">IPT</a>.</p>
