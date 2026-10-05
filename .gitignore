@@ -8,3 +8,4 @@ __pycache__
 Rakefile
 .env
 _cache
+.claude/
