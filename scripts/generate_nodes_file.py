@@ -9,6 +9,8 @@ from urllib3.util import Retry
 BASE_URL = "https://oceanexpert.org/api/v1/group/{group_id}.json"
 ROOT_GROUP_ID = 386
 OBIS_NODES_URL = "https://api.obis.org/node"
+SECRETARIAT_GROUP_ID = 432
+HIDDEN_NODE_MEMBER_IDS = {11770, 72350}  # Ward Appeltans, Laurent Chmiel
 
 
 def create_session() -> requests.Session:
@@ -49,10 +51,16 @@ def build_subgroups_with_members(session: requests.Session, root_group_json: Dic
         if sg_id is None:
             continue
         sg_details = fetch_group(session, int(sg_id))
+        members = extract_members(sg_details)
+        if int(sg_id) != SECRETARIAT_GROUP_ID:
+            members = [
+                m for m in members
+                if int(m.get("idInd") or 0) not in HIDDEN_NODE_MEMBER_IDS
+            ]
         results.append({
             "idGroup": sg_details.get("idGroup", sg_id),
             "groupname": sg_details.get("groupname", sg.get("groupname")),
-            "members": extract_members(sg_details),
+            "members": members,
         })
     return results
 
