@@ -7,7 +7,7 @@ API_TIMEOUT = httpx.Timeout(10.0)
 
 
 async def api_get(url: str, **kwargs):
-    async with httpx.AsyncClient(timeout=API_TIMEOUT) as client:
+    async with httpx.AsyncClient(timeout=API_TIMEOUT, follow_redirects=True) as client:
         response = await client.get(url, **kwargs)
         response.raise_for_status()
         return response.json()
