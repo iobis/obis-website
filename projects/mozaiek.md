@@ -9,6 +9,6 @@ tag: MOZAIEK
 contact_name: Silas Principe
 contact_url: https://oceanexpert.org/expert/40122
 contact_email: s.principe@unesco.org
-logo: /images/pacman_logo.png
+logo: /images/MOZAIEK.png
 funding: MOZAIEK is a 3-year (2026-2029) project funded by the Flanders Government, through the Flanders UNESCO Trust Fund (FUST) for the support of UNESCO's activities in the field of Science.
 ---
