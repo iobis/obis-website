@@ -1,0 +1,44 @@
+<html>
+  {% include head.html %}
+
+  <body>
+    {% include map_libraries.html %}
+    <link rel="stylesheet" href="{{ '/assets/story/story.css' | relative_url }}" />
+    {% include header.html %}
+
+    <div class="container container-post mt-5" style="margin-bottom: 6rem;">
+        <p>News</p>
+        <h1>{{ page.title }}</h1>
+        {% if page.subtitle %}
+        <h4>{{ page.subtitle }}</h4>
+        {% endif %}
+        <p>{{ page.date | date: "%-d %B %Y" }}</p>
+        <div class="mb-4">
+          {% for tag in page.tags %}
+              <a href="/tag/{{ tag | slugify }}"><span class="badge tag mb-1">{{ tag }}</span></a>
+          {% endfor %}
+        </div>
+        {% if page.image %}
+        <div class="feature-img" style="position: relative;">
+          <img src="{{ page.image }}" alt="{{ page.imageAlt | default: page.title }}" style="width: 100%;">
+        </div>
+        {% if page.imageCaption %}
+        <div class="feature-img-caption">{{ page.imageCaption | markdownify }}</div>
+        <br>
+        {% endif %}
+        {% endif %}
+        {% if page.intro %}
+        <p class="intro">{{ page.intro }}</p>
+        {% endif %}
+        {{ content }}
+    </div>
+
+    {% include footer.html %}
+
+    {% comment %} components.js registers the <obis-*> elements. Optional story_script: an ES module that imports from /assets/story/story.js and mounts components into placeholders in the article. {% endcomment %}
+    <script type="module" src="{{ '/assets/story/components.js' | relative_url }}"></script>
+    {% if page.story_script %}
+    <script type="module" src="{{ page.story_script | relative_url }}"></script>
+    {% endif %}
+  </body>
+</html>
