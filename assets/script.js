@@ -1000,6 +1000,31 @@ function renderRedListBadge(category) {
     return "";
 }
 
+const EDNA_DATASET_TAG = "https://rs.obis.org/obis/vocabulary/DatasetType/EnvironmentalDna";
+
+function buildMapQueryParams(baseFilter, mapFilterState) {
+    const active = Object.assign({}, baseFilter || {});
+    let tags = active.exclude_tags
+        ? String(active.exclude_tags).split(",").map((t) => t.trim()).filter(Boolean)
+        : [];
+
+    if (mapFilterState.excludeEdna) {
+        if (!tags.includes(EDNA_DATASET_TAG)) {
+            tags.push(EDNA_DATASET_TAG);
+        }
+    } else {
+        tags = tags.filter((t) => t !== EDNA_DATASET_TAG);
+    }
+
+    if (tags.length) {
+        active.exclude_tags = tags.join(",");
+    } else {
+        delete active.exclude_tags;
+    }
+
+    return active;
+}
+
 function renderMap(element, filter) {
     let container = (typeof element === "string") ? document.getElementById(element) : element;
     if (!container) return;
@@ -1007,6 +1032,15 @@ function renderMap(element, filter) {
     const uniqueId = "map_" + Math.random().toString(36).substr(2, 9);
     const mapId = uniqueId + "_map";
     const legendId = uniqueId + "_legend";
+    const occurrenceLayerId = "obis-occurrence-layer-" + uniqueId;
+    const numbersLayerId = "numbers-layer-" + uniqueId;
+
+    const initialTags = filter && filter.exclude_tags
+        ? String(filter.exclude_tags).split(",").map((t) => t.trim())
+        : [];
+    const mapFilterState = {
+        excludeEdna: initialTags.includes(EDNA_DATASET_TAG)
+    };
 
     container.innerHTML = `
         <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
@@ -1021,6 +1055,15 @@ function renderMap(element, filter) {
             </div>
             <div id="${uniqueId}_click-message" class="map-click-message">
                 Click the map to<br/>start interacting
+            </div>
+            <div id="${uniqueId}_filter-panel" class="map-filter-panel" hidden>
+                <p>Filters</p>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude eDNA datasets</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-edna${mapFilterState.excludeEdna ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeEdna ? "true" : "false"}" aria-label="Exclude eDNA datasets">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
             </div>
         </div>
     `;
@@ -1125,19 +1168,35 @@ function renderMap(element, filter) {
         dragPan: false
     });
 
-    let params = new URLSearchParams(filter).toString();
+    function getTileParams() {
+        return new URLSearchParams(buildMapQueryParams(filter, mapFilterState)).toString();
+    }
 
-    map.on("load", function() {
+    function occurrenceTileUrls(params) {
+        return [`https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?${params}`];
+    }
+
+    function refreshOccurrenceSource() {
+        const tiles = occurrenceTileUrls(getTileParams());
+        const source = map.getSource("occurrence");
+        if (source && typeof source.setTiles === "function") {
+            source.setTiles(tiles);
+            return;
+        }
+        if (map.getLayer(numbersLayerId)) map.removeLayer(numbersLayerId);
+        if (map.getLayer(occurrenceLayerId)) map.removeLayer(occurrenceLayerId);
+        if (map.getSource("occurrence")) map.removeSource("occurrence");
         map.addSource("occurrence", {
             type: "vector",
-            tiles: [
-                `https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?${params}`
-            ],
+            tiles: tiles,
             scheme: "xyz"
         });
+        addOccurrenceLayers();
+    }
 
+    function addOccurrenceLayers() {
         map.addLayer({
-            id: "obis-occurrence-layer-" + uniqueId,
+            id: occurrenceLayerId,
             type: "fill",
             source: "occurrence",
             "source-layer": "grid",
@@ -1157,7 +1216,7 @@ function renderMap(element, filter) {
         });
 
         map.addLayer({
-            id: "numbers-layer-" + uniqueId,
+            id: numbersLayerId,
             type: "symbol",
             source: "occurrence",
             "source-layer": "grid",
@@ -1173,6 +1232,16 @@ function renderMap(element, filter) {
                 "text-halo-blur": 0
             }
         });
+    }
+
+    map.on("load", function() {
+        map.addSource("occurrence", {
+            type: "vector",
+            tiles: occurrenceTileUrls(getTileParams()),
+            scheme: "xyz"
+        });
+
+        addOccurrenceLayers();
 
         map.addControl(new maplibregl.ScaleControl({
             maxWidth: 100,
@@ -1192,33 +1261,106 @@ function renderMap(element, filter) {
             }
         });
 
-        class CustomControl {
-            constructor(options) {
-                this.options = options;
+        class FilterControl {
+            onAdd(mapInstance) {
+                this.map = mapInstance;
+                this.container = document.createElement("div");
+                this.container.className = "maplibregl-ctrl maplibregl-ctrl-group map-filter-control";
+                this.container.innerHTML = '<button type="button" title="Filters" aria-label="Filters" aria-expanded="false"></button>';
+
+                const button = this.container.querySelector("button");
+                const panel = document.getElementById(`${uniqueId}_filter-panel`);
+                const mapContainer = panel.closest(".map-container");
+                const toggle = panel.querySelector(".map-filter-exclude-edna");
+
+                const syncActiveState = () => {
+                    button.classList.toggle("is-active", mapFilterState.excludeEdna);
+                    toggle.setAttribute("aria-checked", mapFilterState.excludeEdna ? "true" : "false");
+                    toggle.classList.toggle("is-on", mapFilterState.excludeEdna);
+                };
+                syncActiveState();
+
+                const positionPanel = () => {
+                    const btnRect = button.getBoundingClientRect();
+                    const containerRect = mapContainer.getBoundingClientRect();
+                    const gap = 8;
+                    panel.style.left = `${btnRect.right - containerRect.left + gap}px`;
+                    panel.style.bottom = `${containerRect.bottom - btnRect.bottom}px`;
+                    panel.style.top = "auto";
+                };
+
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    const open = panel.hasAttribute("hidden");
+                    if (open) {
+                        panel.removeAttribute("hidden");
+                        positionPanel();
+                    } else {
+                        panel.setAttribute("hidden", "");
+                    }
+                    button.setAttribute("aria-expanded", open ? "true" : "false");
+                });
+
+                toggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeEdna = !mapFilterState.excludeEdna;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                this._onDocClick = (event) => {
+                    if (!this.container.contains(event.target) && !panel.contains(event.target)) {
+                        panel.setAttribute("hidden", "");
+                        button.setAttribute("aria-expanded", "false");
+                    }
+                };
+                document.addEventListener("click", this._onDocClick);
+
+                this._onResize = () => {
+                    if (!panel.hasAttribute("hidden")) {
+                        positionPanel();
+                    }
+                };
+                window.addEventListener("resize", this._onResize);
+
+                return this.container;
             }
-    
-            onAdd(map) {
-                this.map = map;
+
+            onRemove() {
+                if (this._onDocClick) {
+                    document.removeEventListener("click", this._onDocClick);
+                }
+                if (this._onResize) {
+                    window.removeEventListener("resize", this._onResize);
+                }
+                this.container.parentNode.removeChild(this.container);
+                this.map = undefined;
+            }
+        }
+
+        class ExploreControl {
+            onAdd(mapInstance) {
+                this.map = mapInstance;
                 this.container = document.createElement('div');
-                this.container.className = 'maplibregl-ctrl maplibregl-ctrl-group explore-control'; // Apply default control styling
-                this.container.innerHTML = '<button></button>';
+                this.container.className = 'maplibregl-ctrl maplibregl-ctrl-group explore-control';
+                this.container.innerHTML = '<button type="button" title="Explore this area" aria-label="Explore this area"></button>';
                 this.container.querySelector('button').addEventListener('click', () => {
                     const bounds = this.map.getBounds();
                     const wkt = `POLYGON((${bounds.getWest().toFixed(5)} ${bounds.getSouth().toFixed(5)}, ${bounds.getEast().toFixed(5)} ${bounds.getSouth().toFixed(5)}, ${bounds.getEast().toFixed(5)} ${bounds.getNorth().toFixed(5)}, ${bounds.getWest().toFixed(5)} ${bounds.getNorth().toFixed(5)}, ${bounds.getWest().toFixed(5)} ${bounds.getSouth().toFixed(5)}))`;
-                    let explore_filter = {...filter, geometry: wkt};
-                    let explore_params = new URLSearchParams(explore_filter).toString();
+                    const explore_filter = Object.assign({}, buildMapQueryParams(filter, mapFilterState), { geometry: wkt });
+                    const explore_params = new URLSearchParams(explore_filter).toString();
                     window.open(`/explore?${explore_params}`, '_blank');
                 });
                 return this.container;
             }
-    
+
             onRemove() {
                 this.container.parentNode.removeChild(this.container);
                 this.map = undefined;
             }
         }
 
-        const myCustomControl = new CustomControl({});
-        map.addControl(myCustomControl, 'bottom-left');
+        map.addControl(new ExploreControl(), 'bottom-left');
+        map.addControl(new FilterControl(), 'bottom-left');
     });
 }
