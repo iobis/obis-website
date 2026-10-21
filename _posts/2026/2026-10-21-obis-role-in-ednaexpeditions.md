@@ -70,12 +70,6 @@ Species-level assignments from SINTAX not confirmed by the more conservative VSE
 
 After that first taxonomic step, the data moves down the management platform to a quality control step that combines an automated tool and local human expertise. The automated tool assesses all the identified records using the species’ distribution — the areas where a given species is known to live based on information from OBIS and GBIF (excluding eDNA occurrences) — and the species’ thermal range — the range of temperatures in which a species is known to live. All species identifications receive a score based on these categories. If a species was identified from a sample outside its known living areas or if the temperature at the sampling site is outside the suitable range for that species, the identification receives an overall low score and is highlighted on the list. A low score might mean a misidentification, or could be a real discovery, such as the identification of a newly arrived invader, a species expanding its habitat, or a species that was thought to be locally extinct. This is when local experts come in to support the quality control process. They can confirm, question, or correct each identification. Their decisions carry through to the data published on OBIS and are recorded in the identificationRemarks field. The data is finally delivered in the Darwin Core format, ready for publication to OBIS and GBIF.
 
-<br>
-
->A low score might mean a misidentification, or could be a real discovery
-
-<br>
-
 <br><br>
 <img alt="Example of a dataset quality profile. The X axis represents the agreement with the known distribution of the species, the Y axis represents how well detections align with the known temperature preference of the species. Identifications in the lower left corner are usually low quality. Detections in the top left corner do not correspond well to the currently known distribution, but could be explained by range expansions or incomplete reference data." src="/images/edNA_QC_03.png" style="width: 100%;">
 <p style="text-align: center;"><i>Example of a dataset quality profile. The X axis represents the agreement with the known distribution of the species, the Y axis represents how well detections align with the known temperature preference of the species. Identifications in the lower left corner are usually low quality. Detections in the top left corner do not correspond well to the currently known distribution, but could be explained by range expansions or incomplete reference data.</i></p>
