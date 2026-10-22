@@ -80,7 +80,7 @@ If a species was identified from a sample outside its known living areas or if t
 <p style="text-align: center;"><i>Example of a suspect identification. While the identification scores reasonably well on temperature suitability, its location (Philippines) does not at all correspond to the known distribution of the species (Caribbean). Further investigation of the <a href="https://www.ncbi.nlm.nih.gov/nuccore/MK473902">reference sequence</a> revealed that it was obtained from Malaysia, so it may have been misidentified by the submitter.</i></p>
 <br><br>
 
-eDNA Expeditions 2026-2028 aims at one thing: making change happen. The initiative supports local impact by providing local communities and site managers with the reliable data they need. If successful, eDNA Expeditions 2026-2028 can pave the way to an even more ambitious initiative: establishing a future global biomolecular marine biodiversity observation network. ◼️
+eDNA Expeditions 2026-2028 aims at one thing: making change happen. The initiative supports local impact by providing local communities and site managers with the reliable data they need. If successful, eDNA Expeditions 2026-2028 can pave the way to an even more ambitious project: establishing a future global biomolecular marine biodiversity observation network. ◼️
 
 
 eDNA Expeditions 2026-2028 is a project endorsed by the UN Decade of Ocean Science for Sustainable Development 2021–2030.
