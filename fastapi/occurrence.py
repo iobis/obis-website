@@ -2,9 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
-import os
-from lib import get_statistics
+from lib import api_get
 
 
 router = APIRouter()
@@ -16,9 +14,7 @@ shell_templates = Jinja2Templates(directory="static")
 async def occurrence(request: Request, occurrence_id: str):
     url = f"https://api.obis.org/occurrence/{occurrence_id}?mof=true&dna=true&dropped=include"
     try:
-        response = requests.get(url)
-        response.raise_for_status()
-        data = response.json()
+        data = await api_get(url)
         if not data.get("results"):
             raise HTTPException(status_code=404, detail=f"Occurrence {url} not found")
         occurrence = data["results"][0]
@@ -37,4 +33,4 @@ async def occurrence(request: Request, occurrence_id: str):
         )
     except Exception as e:
         print(e)
-        raise HTTPException(status_code=404, detail=f"Occurrence {url} not found") 
+        raise HTTPException(status_code=404, detail=f"Occurrence {url} not found")

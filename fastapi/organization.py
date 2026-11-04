@@ -2,9 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
-import urllib
-from lib import get_statistics
+from lib import api_get, get_statistics
 
 router = APIRouter()
 
@@ -17,15 +15,13 @@ async def organization_page(request: Request, organization_id: str):
 
     api_url = f"https://api.obis.org/institute/{organization_id}"
     try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        response_json = response.json()
+        response_json = await api_get(api_url)
         organization = response_json["results"][0]
     except Exception as e:
         print(e)
         raise HTTPException(status_code=404, detail="Organization not found")
 
-    statistics = get_statistics({
+    statistics = await get_statistics({
         "instituteid": organization_id
     })
 

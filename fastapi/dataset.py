@@ -2,9 +2,16 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
+import asyncio
 from datetime import datetime
-from lib import get_statistics, get_quality_statistics, render_jsonld, get_dataset_variables, process_contacts
+from lib import (
+    api_get,
+    get_statistics,
+    get_quality_statistics,
+    render_jsonld,
+    get_dataset_variables,
+    process_contacts,
+)
 
 
 router = APIRouter()
@@ -19,12 +26,10 @@ def datetimeformat(value, format="%B %d, %Y at %H:%M"):
 templates.filters["datetimeformat"] = datetimeformat
 
 
-def get_metadata(dataset_id: str):
+async def get_metadata(dataset_id: str):
     api_url = f"https://api.obis.org/dataset/{dataset_id}"
     try:
-        response = requests.get(api_url)
-        response.raise_for_status()
-        response_json = response.json()
+        response_json = await api_get(api_url)
         dataset = response_json["results"][0]
         if "contacts" in dataset:
             dataset["clean_contacts"] = process_contacts(dataset["contacts"])
@@ -34,13 +39,11 @@ def get_metadata(dataset_id: str):
     return dataset
 
 
-def get_blacklist(dataset_id: str):
+async def get_blacklist(dataset_id: str):
     api_url = f"https://api.obis.org/dataset/blacklist/{dataset_id}"
     try:
         print(api_url)
-        response = requests.get(api_url)
-        response.raise_for_status()
-        results = response.json()["results"]
+        results = (await api_get(api_url))["results"]
         if len(results) > 0:
             return results[0]
         else:
@@ -55,11 +58,11 @@ async def dataset_page(request: Request, dataset_id: str):
 
     # dataset metadata
 
-    dataset = get_metadata(dataset_id)
+    dataset = await get_metadata(dataset_id)
 
     if dataset is None:
 
-        blacklist = get_blacklist(dataset_id)
+        blacklist = await get_blacklist(dataset_id)
 
         dataset_block = templates.get_template("dataset_404.html").render(
             dataset_id=dataset_id,
@@ -75,28 +78,24 @@ async def dataset_page(request: Request, dataset_id: str):
             }
         )
 
-    # statistics
+    # statistics, quality statistics, variables (parallel)
 
-    statistics = get_statistics({
-        "datasetid": dataset_id
-    })
-
-    # quality statistics
-
-    quality_statistics = get_quality_statistics({
-        "datasetid": dataset_id,
-        "dropped": "include",
-        "absence": "include"
-    })
-
-    # variables
-
-    variables = get_dataset_variables({
-        "datasetid": dataset_id,
-        "dropped": "include",
-        "absence": "include",
-        "event": "include"
-    })
+    statistics, quality_statistics, variables = await asyncio.gather(
+        get_statistics({
+            "datasetid": dataset_id
+        }),
+        get_quality_statistics({
+            "datasetid": dataset_id,
+            "dropped": "include",
+            "absence": "include"
+        }),
+        get_dataset_variables({
+            "datasetid": dataset_id,
+            "dropped": "include",
+            "absence": "include",
+            "event": "include"
+        }),
+    )
 
     # jsonld
 

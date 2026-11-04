@@ -12,6 +12,10 @@ module Obis
     OE_BASE_URL = "https://oceanexpert.org/api/v1/group/%{group_id}.json?limit=1000"
     OE_LOGIN_URL = "https://oceanexpert.org/api/login_check"
     OBIS_NODES_URL = "https://api.obis.org/node"
+    # Temporary: hide OceanExpert "group leaders" from node staff lists.
+    # Keep them on the Secretariat (432) and coordination groups (503, 538).
+    SECRETARIAT_GROUP_ID = 432
+    HIDDEN_NODE_MEMBER_IDS = [11770, 72350].freeze # Ward Appeltans, Laurent Chmiel
 
     def generate(site)
       return unless build_enabled?(site)
@@ -161,6 +165,9 @@ module Obis
         next nil if sg_id.nil?
         details = fetch_json(format(OE_BASE_URL, group_id: sg_id), auth_token)
         members = extract_members(details)
+        unless sg_id.to_i == SECRETARIAT_GROUP_ID
+          members = reject_hidden_node_members(members)
+        end
         sort_members!(members)
 
         {
@@ -169,6 +176,10 @@ module Obis
           "members" => members
         }
       end.compact
+    end
+
+    def reject_hidden_node_members(members)
+      members.reject { |m| HIDDEN_NODE_MEMBER_IDS.include?(m["idInd"].to_i) }
     end
 
     def map_nodes_by_name(obis_nodes)

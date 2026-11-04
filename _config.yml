@@ -35,6 +35,7 @@ exclude:
   - vendor
   - scripts
   - nginx
+  - runtime
   - docker-compose.yml
   - faq/HANDOVER.md
 

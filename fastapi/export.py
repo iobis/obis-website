@@ -2,7 +2,7 @@ from fastapi import APIRouter, Request, HTTPException
 from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
-import requests
+from lib import api_get
 
 
 router = APIRouter()
@@ -18,9 +18,7 @@ async def export_page(request: Request, export_id: str):
     doi = f"10.25607/obis.export.{export_id}"
     url = f"https://data.datacite.org/application/vnd.datacite.datacite+json/{doi}"
     try:
-        resp = requests.get(url, headers={"Accept": "application/vnd.datacite.datacite+json"})
-        resp.raise_for_status()
-        export = resp.json()
+        export = await api_get(url, headers={"Accept": "application/vnd.datacite.datacite+json"})
     except Exception as e:
         raise HTTPException(status_code=404, detail=f"DOI metadata not found for export {export_id}")
 

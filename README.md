@@ -32,6 +32,25 @@ This repository has two deployment targets:
 3. Review your changes on the dev site.
 4. When ready for production, open a pull request from `dev` into `master`. Once merged, the production site will update automatically (`Deploy to server (PROD)`).
 
+### Status banner (outages / notices)
+
+Nginx can inject a site-wide banner from a file on the server without rebuilding the site. The file is mounted from `runtime/` into the nginx container.
+
+- **Show a banner** (on the server host):
+
+  ```bash
+  cp runtime/status-banner.example.inc runtime/status-banner.inc
+  # edit the message in runtime/status-banner.inc as needed
+  ```
+
+- **Hide the banner**:
+
+  ```bash
+  : > runtime/status-banner.inc
+  ```
+
+The file is raw HTML (Bootstrap `alert` markup). Empty or missing file means no banner. After the first deploy of this feature, recreate the nginx container so the `runtime` volume mount is applied (`docker compose up -d --force-recreate nginx`). Dataset/taxon pages may take up to 15 minutes to reflect a toggle because of nginx `proxy_cache`.
+
 ### Add a page
 
 Most content on this site lives in one of two places:
