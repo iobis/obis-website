@@ -530,7 +530,7 @@ section {
     box-shadow: 0 0 5px rgba(0,0,0,0.1);
     border-radius: 4px;
     z-index: 2;
-    min-width: 210px;
+    min-width: 270px;
 }
 
 .map-filter-panel p {
@@ -544,6 +544,10 @@ section {
     gap: 16px;
     margin: 0;
     line-height: 1.3;
+}
+
+.map-filter-option + .map-filter-option {
+    margin-top: 8px;
 }
 
 .map-filter-option-label {

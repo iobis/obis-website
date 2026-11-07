@@ -1001,6 +1001,17 @@ function renderRedListBadge(category) {
 }
 
 const EDNA_DATASET_TAG = "https://rs.obis.org/obis/vocabulary/DatasetType/EnvironmentalDna";
+const CITIZEN_SCIENCE_DATASET_TAG = "https://rs.obis.org/obis/vocabulary/DatasetType/CitizenScience";
+
+function applyExcludeTag(tags, enabled, tag) {
+    if (enabled) {
+        if (!tags.includes(tag)) {
+            tags.push(tag);
+        }
+        return tags;
+    }
+    return tags.filter((t) => t !== tag);
+}
 
 function buildMapQueryParams(baseFilter, mapFilterState) {
     const active = Object.assign({}, baseFilter || {});
@@ -1008,13 +1019,8 @@ function buildMapQueryParams(baseFilter, mapFilterState) {
         ? String(active.exclude_tags).split(",").map((t) => t.trim()).filter(Boolean)
         : [];
 
-    if (mapFilterState.excludeEdna) {
-        if (!tags.includes(EDNA_DATASET_TAG)) {
-            tags.push(EDNA_DATASET_TAG);
-        }
-    } else {
-        tags = tags.filter((t) => t !== EDNA_DATASET_TAG);
-    }
+    tags = applyExcludeTag(tags, mapFilterState.excludeEdna, EDNA_DATASET_TAG);
+    tags = applyExcludeTag(tags, mapFilterState.excludeCitizenScience, CITIZEN_SCIENCE_DATASET_TAG);
 
     if (tags.length) {
         active.exclude_tags = tags.join(",");
@@ -1039,7 +1045,8 @@ function renderMap(element, filter) {
         ? String(filter.exclude_tags).split(",").map((t) => t.trim())
         : [];
     const mapFilterState = {
-        excludeEdna: initialTags.includes(EDNA_DATASET_TAG)
+        excludeEdna: initialTags.includes(EDNA_DATASET_TAG),
+        excludeCitizenScience: initialTags.includes(CITIZEN_SCIENCE_DATASET_TAG)
     };
 
     container.innerHTML = `
@@ -1061,6 +1068,12 @@ function renderMap(element, filter) {
                 <div class="map-filter-option">
                     <span class="map-filter-option-label">Exclude eDNA datasets</span>
                     <button type="button" class="map-filter-switch map-filter-exclude-edna${mapFilterState.excludeEdna ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeEdna ? "true" : "false"}" aria-label="Exclude eDNA datasets">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude citizen science datasets</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-citizen-science${mapFilterState.excludeCitizenScience ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeCitizenScience ? "true" : "false"}" aria-label="Exclude citizen science datasets">
                         <span class="map-filter-switch-thumb"></span>
                     </button>
                 </div>
@@ -1271,12 +1284,18 @@ function renderMap(element, filter) {
                 const button = this.container.querySelector("button");
                 const panel = document.getElementById(`${uniqueId}_filter-panel`);
                 const mapContainer = panel.closest(".map-container");
-                const toggle = panel.querySelector(".map-filter-exclude-edna");
+                const ednaToggle = panel.querySelector(".map-filter-exclude-edna");
+                const citizenScienceToggle = panel.querySelector(".map-filter-exclude-citizen-science");
+
+                const syncToggle = (toggle, on) => {
+                    toggle.setAttribute("aria-checked", on ? "true" : "false");
+                    toggle.classList.toggle("is-on", on);
+                };
 
                 const syncActiveState = () => {
-                    button.classList.toggle("is-active", mapFilterState.excludeEdna);
-                    toggle.setAttribute("aria-checked", mapFilterState.excludeEdna ? "true" : "false");
-                    toggle.classList.toggle("is-on", mapFilterState.excludeEdna);
+                    button.classList.toggle("is-active", mapFilterState.excludeEdna || mapFilterState.excludeCitizenScience);
+                    syncToggle(ednaToggle, mapFilterState.excludeEdna);
+                    syncToggle(citizenScienceToggle, mapFilterState.excludeCitizenScience);
                 };
                 syncActiveState();
 
@@ -1301,9 +1320,16 @@ function renderMap(element, filter) {
                     button.setAttribute("aria-expanded", open ? "true" : "false");
                 });
 
-                toggle.addEventListener("click", (event) => {
+                ednaToggle.addEventListener("click", (event) => {
                     event.stopPropagation();
                     mapFilterState.excludeEdna = !mapFilterState.excludeEdna;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                citizenScienceToggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeCitizenScience = !mapFilterState.excludeCitizenScience;
                     syncActiveState();
                     refreshOccurrenceSource();
                 });
