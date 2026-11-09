@@ -44,7 +44,10 @@ Its responsibilities include:
 
   <p style="font-weight: 600; margin-bottom: 0.5rem; color: var(--black);">2026</p>
   <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
-    <span class="meeting-badge"><strong>NCG#10</strong> – Apr. 26</span>
+    <a href="https://docs.google.com/document/d/1AQytjzOxkeQh-GMSY5NsUVrWAN21KgkCwj4_vrVQoEg/edit?usp=sharing" target="_blank" class="meeting-badge text-decoration-none"><strong>NCG#13</strong> – Oct. 26</a>
+    <a href="https://docs.google.com/document/d/1gXw5DXzHGKKnVknXpfaJiH3RbI_B1Jb5Bv-KMkWmve4/edit?usp=sharing" target="_blank" class="meeting-badge text-decoration-none"><strong>NCG#12</strong> – Aug. 26</a>
+    <a href="https://docs.google.com/document/d/1S_5WawfVsdmrtwHuR2Pgfai8GHBPYotkZzW2JtD5ePE/edit?usp=sharing" target="_blank" class="meeting-badge text-decoration-none"><strong>NCG#11</strong> – Jun. 26</a>
+    <a href="https://docs.google.com/document/d/1x6FyQRiJKaOugLKBtKWiMGv2arnuoEuwxvZeHBM4E1E/edit?usp=sharing" target="_blank" class="meeting-badge text-decoration-none"><strong>NCG#10</strong> – Apr. 26</a>
     <a href="https://docs.google.com/document/d/1t2AyWbdPWNkhDW3vmlYrNye_xT4Lh20IKfDoev_f_2U/edit?usp=sharing" target="_blank" class="meeting-badge text-decoration-none"><strong>NCG#9</strong> – Feb. 26</a>
   </div>
 
