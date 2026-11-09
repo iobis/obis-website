@@ -77,7 +77,7 @@ menu:
     - title: "Core activities"
       url: "/whatwedo/core-activities"
 #    - title: "Use cases"
-      url: "/usecases"
+#      url: "/usecases"
     - title: "Projects"
       url: "/projects"
     - title: "Partnerships"
