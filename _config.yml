@@ -51,6 +51,9 @@ collections:
   faqs:
     output: true
     permalink: /faq/:name/
+  cg_reports:
+    output: true
+    permalink: /community/coordination-groups/:name/
 
 defaults:
   - scope:
@@ -58,6 +61,11 @@ defaults:
       type: faqs
     values:
       layout: faq
+  - scope:
+      path: ""
+      type: cg_reports
+    values:
+      layout: cg_report
 
 menu:
   - title: "Who we are"
