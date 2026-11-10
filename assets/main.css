@@ -193,10 +193,22 @@ section {
 
 .badge-mapper {
     color: var(--black);
-    background-color: #eeeeee;
+    background-color: #ffffff;
+    border: 1px solid #ced4da;
     text-decoration: none;
     font-weight: normal;
     font-size: 0.9rem;
+    margin-left: 0.65rem;
+    cursor: pointer;
+}
+.badge-mapper:hover,
+.badge-mapper:focus {
+    color: var(--black);
+    background-color: #f8f9fa;
+}
+p > .badge-mapper:first-child,
+h1 + .badge-mapper {
+    margin-left: 0;
 }
 
 .tagline {
