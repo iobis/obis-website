@@ -3,15 +3,10 @@ from fastapi.responses import HTMLResponse, JSONResponse
 from fastapi.templating import Jinja2Templates
 from jinja2 import Environment, FileSystemLoader
 import requests
-import json
-import os
 import re
 import markdown
 from datetime import datetime
-from lib import get_statistics, get_quality_statistics, render_jsonld, get_dataset_variables, process_contacts
-
-# temporary local source for dataset insights, will be replaced by an API call
-INSIGHTS_DIR = os.path.join(os.path.dirname(__file__), "..", "_DATA_TEMP")
+from lib import get_statistics, get_quality_statistics, get_report, get_metrics, render_jsonld, get_dataset_variables, process_contacts
 
 # same IUCN Red List palette as renderRedListBadge() in assets/script.js — keep in sync
 REDLIST_COLORS = {
@@ -96,12 +91,10 @@ def split_highlight(text: str):
 
 
 def get_insights(dataset_id: str):
-    path = os.path.join(INSIGHTS_DIR, f"{dataset_id}.json")
-    if not os.path.exists(path):
+    insights = get_report("insights", {"datasetid": dataset_id})
+    if insights is None:
         return None
     try:
-        with open(path) as f:
-            insights = json.load(f)
         insights["description_html"] = highlight_redlist_terms(markdown.markdown(insights["description"]))
         for highlight in insights.get("highlights", []):
             number, caption_text = split_highlight(highlight["text"])
@@ -111,18 +104,6 @@ def get_insights(dataset_id: str):
         print(e)
         return None
     return insights
-
-
-def get_metrics(dataset_id: str):
-    path = os.path.join(INSIGHTS_DIR, f"{dataset_id}_metrics.json")
-    if not os.path.exists(path):
-        return None
-    try:
-        with open(path) as f:
-            return json.load(f)
-    except Exception as e:
-        print(e)
-        return None
 
 
 def get_blacklist(dataset_id: str):
@@ -143,7 +124,7 @@ def get_blacklist(dataset_id: str):
 
 @router.get("/{dataset_id}/metrics", response_class=JSONResponse)
 async def dataset_metrics(dataset_id: str):
-    metrics = get_metrics(dataset_id)
+    metrics = get_metrics({"datasetid": dataset_id})
     if metrics is None:
         raise HTTPException(status_code=404, detail="Metrics not found")
     return metrics

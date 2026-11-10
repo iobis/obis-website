@@ -29,6 +29,28 @@ def process_contacts(contacts):
     return list(unique_contacts.values())
 
 
+def get_report(report_type: str, filters: dict):
+    params = urllib.parse.urlencode({"type": report_type, **filters})
+    api_url = f"https://api.obis.org/reports?{params}"
+    try:
+        response = requests.get(api_url)
+        if response.status_code == 404:
+            return None
+        response.raise_for_status()
+        return response.json()["content"]
+    except Exception as e:
+        print(e)
+        return None
+
+
+def get_metrics(filters: dict):
+    metrics = get_report("metrics", filters)
+    if metrics is not None and isinstance(metrics.get("higher_level"), str):
+        # the templates expect a list of rank names
+        metrics["higher_level"] = [metrics["higher_level"]]
+    return metrics
+
+
 def get_quality_statistics(filters: dict):
     params = urllib.parse.urlencode(filters)
     api_url = f"https://api.obis.org/statistics/qc?{params}"
