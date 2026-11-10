@@ -38,7 +38,7 @@ Its responsibilities include:
 * Capture and share success stories and community updates.
 * Maintain shared resources and FAQs, and coordinate with the PCG and DCG.
 
-{% include cg_meeting_reports.html group="ncg" %}
+{% include cg_meeting_reports.html group="ncg" heading="Access the Nodes Coordination Group meeting summaries below:" %}
 
 <br>
 
@@ -69,7 +69,7 @@ Membership:
 {% endfor %}
 </ul>
 
-{% include cg_meeting_reports.html group="dcg" %}
+{% include cg_meeting_reports.html group="dcg" heading="Progress status:" %}
 
 <a id="pcg"></a>
 ## OBIS Product Coordination Group (PCG)

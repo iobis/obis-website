@@ -113,14 +113,15 @@ Jekyll collections group related content so it can be iterated over and rendered
 
 ### Add a coordination group meeting report
 
-Add one Markdown file per meeting to `_cg_reports/`. The coordination groups page lists them automatically in a Meeting / Report table under the matching group. Each file is its own page.
+Add one Markdown file per meeting to `_cg_reports/`. The coordination groups page lists them automatically as pills under the matching group, grouped by year. Each file is its own page.
 
-Filename: `YYYY-MM-DD-group-number.md`, for example `_cg_reports/2026-10-01-ncg-13.md`. The date in the filename should match `date` in the front matter. Use the first day of the month when the exact day is unknown.
+Filename: `YYYY-MM-DD-group-number.md`, for example `_cg_reports/2026-10-01-ncg-13.md`. The date in the filename should match `date` in the front matter. Use the first day of the month when the exact day is unknown, and set `date_precision: month` so the pill and the page show the month only.
 
 ```markdown
 ---
 title: "NCG#13"
 date: 2026-10-01
+date_precision: month
 group: ncg
 source: https://docs.google.com/document/d/example
 ---
@@ -128,9 +129,10 @@ source: https://docs.google.com/document/d/example
 Report text in Markdown.
 ```
 
-- `title`: report title in the table, such as `NCG#13`, `DCG#12`, or `PCG#3`.
-- `date`: meeting date, `YYYY-MM-DD`. This sets the sort order and the date in the Meeting column.
+- `title`: pill label, such as `NCG#13`, `DCG#12`, or `PCG#3`.
+- `date`: meeting date, `YYYY-MM-DD`. This sets the sort order and the pill date.
+- `date_precision`: optional. Set to `month` when the day is unknown.
 - `group`: `ncg`, `dcg`, or `pcg`.
-- `source`: optional link to the original notes. Shown at the bottom of the report page.
+- `source`: optional link to the original notes. The report page shows it as “The meeting notes are available here.”
 
 Leave `layout` unset. The site layout is applied from `_config.yml`. Do not put these files in `_posts`; that would publish them as news.

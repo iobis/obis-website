@@ -636,6 +636,9 @@ section {
     cursor: default;
     color: var(--black);
 }
+a.meeting-badge {
+    cursor: pointer;
+}
 .meeting-badge:hover {
     background-color: #eeeeee;
     color: var(--black);

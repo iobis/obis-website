@@ -1,20 +1,29 @@
 {% assign reports = site.cg_reports | where: "group", include.group | sort: "date" | reverse %}
 {% if reports.size > 0 %}
-<p><strong>Meeting reports</strong></p>
-<table class="table-meeting-reports">
-  <thead>
-    <tr>
-      <th>Meeting</th>
-      <th>Report</th>
-    </tr>
-  </thead>
-  <tbody>
-    {% for report in reports %}
-    <tr>
-      <td>{{ report.date | date: "%-d %B %Y" }}</td>
-      <td><a href="{{ report.url | relative_url }}">{{ report.title }}</a></td>
-    </tr>
-    {% endfor %}
-  </tbody>
-</table>
+{% if include.heading %}
+<p><strong>{{ include.heading }}</strong></p>
+{% endif %}
+<div style="margin-top: 2rem;">
+{% assign current_year = "" %}
+{% for report in reports %}
+  {% assign year = report.date | date: "%Y" %}
+  {% if year != current_year %}
+    {% if current_year != "" %}
+      </div>
+      <hr style="border: none; border-top: 1px solid var(--black); margin-bottom: 1.25rem;">
+    {% endif %}
+    <p style="font-weight: 600; margin-bottom: 0.5rem; color: var(--black);">{{ year }}</p>
+    <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.25rem;">
+    {% assign current_year = year %}
+  {% endif %}
+  {% assign month = report.date | date: "%m" %}
+  {% if month == "09" %}
+    {% assign month_label = "Sept" %}
+  {% else %}
+    {% assign month_label = report.date | date: "%b" %}
+  {% endif %}
+  <a href="{{ report.url | relative_url }}" class="meeting-badge text-decoration-none"><strong>{{ report.title }}</strong> – {{ month_label }}. {{ report.date | date: "%y" }}</a>
+{% endfor %}
+</div>
+</div>
 {% endif %}
