@@ -129,6 +129,18 @@ Progress Status:
   <div class="dcg-meeting-list">
 
   <details class="dcg-meeting">
+    <summary class="meeting-badge" style="cursor: pointer;"><strong>DCG#13</strong> – Oct. 26</summary>
+    <div style="padding: 0.75rem 0.75rem 0;">
+      <ul>
+        <li>DCG co-chair open call. See the <a href="https://manual.obis.org/nodes.html#obis-coordination-groups" target="_blank" rel="noopener noreferrer">CG co-chairs Terms of Reference</a> and contact the <a href="mailto:helpdesk@obis.org">OBIS Secretariat</a> for more information.</li>
+        <li>Planning a workshop on the use of eDNA data for Species Distribution Modelling. Currently looking for potential instructors and use cases.</li>
+        <li>Successful WoRMS non-matching taxa validation Training and Annotation Sprint for OBIS data.</li>
+        <li>First EOV datasets visible through the <a href="https://bioeco.goosocean.org/?layer=data" target="_blank" rel="noopener noreferrer">BioEco Portal</a>.</li>
+      </ul>
+    </div>
+  </details>
+
+  <details class="dcg-meeting">
     <summary class="meeting-badge" style="cursor: pointer;"><strong>DCG#12</strong> – Aug. 26</summary>
     <div style="padding: 0.75rem 0.75rem 0;">
       <ul>
