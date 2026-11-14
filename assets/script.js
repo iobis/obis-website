@@ -8,50 +8,350 @@ async function fetchTaxonomy(query) {
     return await response.json();
 }
 
-function convertToSunburst(taxonomyTree) {
-    const { labels, parents, values } = flattenForSunburst(taxonomyTree);
-    const plotlyData = [{
-      type: "sunburst",
-      labels,
-      parents,
-      values,
-      leaf: { opacity: 1 },
-      branchvalues: "total"
-    }];
-    return plotlyData;
+const TREEMAP_GAP = 1;
+const TREEMAP_HEADER = 20;
+const TREEMAP_MAX_PHYLA = 12;
+const TREEMAP_MAX_CLASSES = 8;
+const TREEMAP_HEIGHT = 320;
+const TREEMAP_SURFACE = "#f8fafc";
+const TREEMAP_FILL_OPACITY = 0.55;
+const TREEMAP_BASE_COLORS = ["#4e79a7", "#f28e2c", "#e15759", "#76b7b2", "#59a14f", "#edc949", "#af7aa1", "#ff9da7", "#9c755f", "#bab0ab"];
+
+function blendTreemapColor(hex, opacity = TREEMAP_FILL_OPACITY, surface = TREEMAP_SURFACE) {
+    const parse = (value) => {
+        const h = value.replace("#", "");
+        return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)];
+    };
+    const [r, g, b] = parse(hex);
+    const [sr, sg, sb] = parse(surface);
+    const mix = (c, s) => Math.round(c * opacity + s * (1 - opacity));
+    return `rgb(${mix(r, sr)}, ${mix(g, sg)}, ${mix(b, sb)})`;
 }
 
-function flattenForSunburst(node, parent = "") {
-    const labels = [];
-    const parents = [];
-    const values = [];
+const TREEMAP_COLORS = TREEMAP_BASE_COLORS.map((hex) => blendTreemapColor(hex));
 
-    function recurse(currentNode, currentParent) {
-        let { name, value, children } = currentNode;
+function byTreemapValue(a, b) {
+    return b.value - a.value || a.name.localeCompare(b.name);
+}
 
-        if (name === currentParent) {
-            name = `${name}_child`;
+function limitNodes(nodes, max) {
+    if (nodes.length <= max) return nodes;
+    const kept = nodes.slice(0, max);
+    const otherValue = nodes.slice(max).reduce((sum, item) => sum + item.value, 0);
+    if (otherValue > 0) {
+        kept.push({ name: "Other", value: otherValue, children: [{ name: "Other", value: otherValue }] });
+    }
+    return kept;
+}
+
+function limitClasses(classes) {
+    if (classes.length <= TREEMAP_MAX_CLASSES) return classes;
+    const kept = classes.slice(0, TREEMAP_MAX_CLASSES);
+    const otherValue = classes.slice(TREEMAP_MAX_CLASSES).reduce((sum, item) => sum + item.value, 0);
+    if (otherValue > 0) kept.push({ name: "Other", value: otherValue });
+    return kept;
+}
+
+function phylumClassTree(root) {
+    const phyla = [];
+    for (const phylum of root?.children || []) {
+        if (!phylum?.name) continue;
+        const classes = [];
+        for (const child of phylum.children || []) {
+            const value = Number(child?.value) || 0;
+            if (value > 0 && child?.name) classes.push({ name: child.name, value });
+        }
+        const classSum = classes.reduce((sum, item) => sum + item.value, 0);
+        const phylumValue = Number(phylum.value) || 0;
+        const leftover = Math.max(0, phylumValue - classSum);
+        // Records identified only to phylum (no class) — show as their own tile.
+        if (leftover > 0) classes.push({ name: phylum.name, value: leftover });
+        if (!classes.length && phylumValue > 0) {
+            classes.push({ name: phylum.name, value: phylumValue });
+        }
+        if (!classes.length) continue;
+        classes.sort(byTreemapValue);
+        const limited = limitClasses(classes);
+        phyla.push({
+            name: phylum.name,
+            value: limited.reduce((sum, item) => sum + item.value, 0),
+            children: limited,
+        });
+    }
+    phyla.sort(byTreemapValue);
+    if (!phyla.length) return null;
+    return { name: "Records", children: limitNodes(phyla, TREEMAP_MAX_PHYLA) };
+}
+
+function tileBinary(parent, x0, y0, x1, y1) {
+    const nodes = parent.children;
+    const n = nodes.length;
+    const sums = new Array(n + 1);
+    sums[0] = 0;
+    let sum = 0;
+    for (let i = 0; i < n; i++) {
+        sum += nodes[i].value;
+        sums[i + 1] = sum;
+    }
+
+    partition(0, n, parent.value, x0, y0, x1, y1);
+
+    function partition(i, j, value, left, top, right, bottom) {
+        if (i >= j - 1) {
+            const node = nodes[i];
+            node.x0 = left;
+            node.y0 = top;
+            node.x1 = right;
+            node.y1 = bottom;
+            return;
         }
 
-        if (typeof value !== "number" && Array.isArray(children)) {
-            value = children.reduce((sum, child) => {
-                return sum + (typeof child.value === "number" ? child.value : 0);
-            }, 0);
+        const valueOffset = sums[i];
+        const valueTarget = value / 2 + valueOffset;
+        let k = i + 1;
+        let hi = j - 1;
+        while (k < hi) {
+            const mid = (k + hi) >>> 1;
+            if (sums[mid] < valueTarget) k = mid + 1;
+            else hi = mid;
+        }
+        if (valueTarget - sums[k - 1] < sums[k] - valueTarget && i + 1 < k) k -= 1;
+
+        const valueLeft = sums[k] - valueOffset;
+        const valueRight = value - valueLeft;
+        if (right - left > bottom - top) {
+            const xk = value ? (left * valueRight + right * valueLeft) / value : right;
+            partition(i, k, valueLeft, left, top, xk, bottom);
+            partition(k, j, valueRight, xk, top, right, bottom);
+        } else {
+            const yk = value ? (top * valueRight + bottom * valueLeft) / value : bottom;
+            partition(i, k, valueLeft, left, top, right, yk);
+            partition(k, j, valueRight, left, yk, right, bottom);
+        }
+    }
+}
+
+function treemapSidePadding(depth) {
+    return depth === 0 ? TREEMAP_GAP : 0;
+}
+
+function treemapTopPadding(depth) {
+    if (depth === 0) return TREEMAP_GAP;
+    if (depth === 1) return TREEMAP_HEADER + TREEMAP_GAP;
+    return 0;
+}
+
+function positionTreemap(node, depth, paddingStack) {
+    let pad = paddingStack[depth] || 0;
+    let x0 = node.x0 + pad;
+    let y0 = node.y0 + pad;
+    let x1 = node.x1 - pad;
+    let y1 = node.y1 - pad;
+    if (x1 < x0) x0 = x1 = (x0 + x1) / 2;
+    if (y1 < y0) y0 = y1 = (y0 + y1) / 2;
+    node.x0 = x0;
+    node.y0 = y0;
+    node.x1 = x1;
+    node.y1 = y1;
+    if (!node.children?.length) return;
+
+  pad = paddingStack[depth + 1] = TREEMAP_GAP / 2;
+  // Header padding is top-only; using it on y1 left empty bands under every phylum.
+  x0 += treemapSidePadding(depth) - pad;
+  y0 += treemapTopPadding(depth) - pad;
+  x1 -= treemapSidePadding(depth) - pad;
+  y1 -= treemapSidePadding(depth) - pad;
+  if (x1 < x0) x0 = x1 = (x0 + x1) / 2;
+  if (y1 < y0) y0 = y1 = (y0 + y1) / 2;
+  tileBinary(node, x0, y0, x1, y1);
+    for (const child of node.children) positionTreemap(child, depth + 1, paddingStack);
+}
+
+function roundTreemapNode(node) {
+    node.x0 = Math.round(node.x0);
+    node.y0 = Math.round(node.y0);
+    node.x1 = Math.round(node.x1);
+    node.y1 = Math.round(node.y1);
+    for (const child of node.children || []) roundTreemapNode(child);
+}
+
+function layoutTreemap(tree, width, height) {
+    if (!tree?.children?.length || width < 40 || height < 40) return [];
+    const root = {
+        name: tree.name,
+        value: tree.children.reduce((sum, item) => sum + item.value, 0),
+        x0: 0,
+        y0: 0,
+        x1: width,
+        y1: height,
+        children: tree.children.map((phylum, index) => ({
+            name: phylum.name,
+            value: phylum.value,
+            color: TREEMAP_COLORS[index % TREEMAP_COLORS.length],
+            children: phylum.children.map((item) => ({ name: item.name, value: item.value })),
+        })),
+    };
+    positionTreemap(root, 0, [0]);
+    roundTreemapNode(root);
+    return root.children.map((phylum) => ({
+        name: phylum.name,
+        value: phylum.value,
+        color: phylum.color,
+        x: phylum.x0,
+        y: phylum.y0,
+        width: Math.max(0, phylum.x1 - phylum.x0),
+        height: Math.max(0, phylum.y1 - phylum.y0),
+        classes: (phylum.children || []).map((item) => ({
+            name: item.name,
+            value: item.value,
+            phylum: phylum.name,
+            x: item.x0,
+            y: item.y0,
+            width: Math.max(0, item.x1 - item.x0),
+            height: Math.max(0, item.y1 - item.y0),
+        })),
+    }));
+}
+
+function formatTreemapNumber(value) {
+    if (value == null || value === "" || Number.isNaN(Number(value))) return "";
+    return new Intl.NumberFormat("en-US").format(value);
+}
+
+function truncateSvgText(node, text, available) {
+    if (!text || available < 28) {
+        node.textContent = "";
+        return;
+    }
+    let label = text;
+    node.textContent = label;
+    const length = () => (typeof node.getComputedTextLength === "function" ? node.getComputedTextLength() : label.length * 6);
+    while (label.length > 3 && length() > available) {
+        label = label.slice(0, -1);
+        node.textContent = `${label}…`;
+    }
+}
+
+function recordsLabel(count) {
+    return count === 1 ? "1 record" : `${formatTreemapNumber(count)} records`;
+}
+
+function fitsTreemapLabel(cell) {
+    return cell.width >= 36 && cell.height >= 14;
+}
+
+function mountTaxonomyTreemap(container, tree) {
+    container.classList.add("taxonomy-treemap");
+    container.setAttribute("role", "img");
+    container.setAttribute("aria-label", "Records by phylum and class");
+    container.innerHTML = "";
+
+    const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+    container.appendChild(svg);
+
+    let tooltip = document.querySelector(".taxonomy-treemap-tooltip");
+    if (!tooltip) {
+        tooltip = document.createElement("div");
+        tooltip.className = "taxonomy-treemap-tooltip";
+        tooltip.hidden = true;
+        document.body.appendChild(tooltip);
+    }
+
+    function showTip(event, text) {
+        tooltip.hidden = false;
+        tooltip.textContent = text;
+        tooltip.style.left = `${Math.min(event.clientX + 12, window.innerWidth - 220)}px`;
+        tooltip.style.top = `${Math.min(event.clientY + 12, window.innerHeight - 36)}px`;
+    }
+
+    function hideTip() {
+        tooltip.hidden = true;
+    }
+
+    function render() {
+        const width = container.clientWidth;
+        const height = container.clientHeight;
+        svg.setAttribute("width", width);
+        svg.setAttribute("height", height);
+        svg.setAttribute("viewBox", `0 0 ${width} ${height}`);
+        svg.replaceChildren();
+
+        if (width < 40 || height < 40) return;
+
+        function paintRect(x, y, w, h, fill, onMove, onLeave) {
+            const rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+            rect.setAttribute("x", x);
+            rect.setAttribute("y", y);
+            rect.setAttribute("width", Math.max(0, w));
+            rect.setAttribute("height", Math.max(0, h));
+            rect.setAttribute("fill", fill);
+            rect.addEventListener("mousemove", onMove);
+            rect.addEventListener("mouseleave", onLeave);
+            svg.appendChild(rect);
+            return rect;
         }
 
-        labels.push(name);
-        parents.push(currentParent);
-        values.push(value);
+        const nodes = layoutTreemap(tree, width, height);
+        for (const phylum of nodes) {
+            const showHeader = phylum.height >= TREEMAP_HEADER + 4;
+            const tipText = `${phylum.name} — ${recordsLabel(phylum.value)}`;
+            const visibleClasses = phylum.classes.filter((cell) => cell.width > 0 && cell.height > 0);
 
-        if (children && children.length > 0) {
-            for (const child of children) {
-                recurse(child, name);
+            // Fill the whole cell only when class tiles collapsed — avoids large empty voids
+            // while keeping normal 1px hairlines between header/class tiles.
+            if (!visibleClasses.length) {
+                paintRect(phylum.x, phylum.y, phylum.width, phylum.height, phylum.color,
+                    (event) => showTip(event, tipText), hideTip);
+            }
+
+            if (showHeader) {
+                paintRect(phylum.x, phylum.y, phylum.width, Math.min(TREEMAP_HEADER, phylum.height), phylum.color,
+                    (event) => showTip(event, tipText), hideTip);
+
+                const phylumLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                phylumLabel.setAttribute("class", "taxonomy-phylum-label");
+                phylumLabel.setAttribute("x", phylum.x + 4);
+                phylumLabel.setAttribute("y", phylum.y + 14);
+                svg.appendChild(phylumLabel);
+                truncateSvgText(phylumLabel, phylum.name, phylum.width - 8);
+            }
+
+            for (const cell of visibleClasses) {
+                paintRect(cell.x, cell.y, cell.width, cell.height, phylum.color,
+                    (event) => showTip(event, `${cell.phylum} · ${cell.name} — ${recordsLabel(cell.value)}`), hideTip);
+
+                if (!fitsTreemapLabel(cell)) continue;
+
+                const classLabel = document.createElementNS("http://www.w3.org/2000/svg", "text");
+                classLabel.setAttribute("class", "taxonomy-class-label");
+
+                const nameSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                nameSpan.setAttribute("x", cell.x + 4);
+                nameSpan.setAttribute("y", cell.y + 13);
+                classLabel.appendChild(nameSpan);
+
+                if (cell.height >= 28) {
+                    const valueSpan = document.createElementNS("http://www.w3.org/2000/svg", "tspan");
+                    valueSpan.setAttribute("class", "taxonomy-class-value");
+                    valueSpan.setAttribute("x", cell.x + 4);
+                    valueSpan.setAttribute("dy", "1.1em");
+                    valueSpan.textContent = formatTreemapNumber(cell.value);
+                    classLabel.appendChild(valueSpan);
+                }
+
+                svg.appendChild(classLabel);
+                truncateSvgText(nameSpan, cell.name, cell.width - 8);
             }
         }
     }
 
-    recurse(node, parent);
-    return { labels, parents, values };
+    render();
+    const observer = new ResizeObserver(render);
+    observer.observe(container);
+    return () => {
+        observer.disconnect();
+        hideTip();
+    };
 }
 
 function renderTable(element, results, totalResults, skip, pageSize, renderItem, onPageChange) {
@@ -969,13 +1269,21 @@ async function renderEvents(element) {
 }
 
 function renderSunburst(element, filter) {
-    fetchTaxonomy(filter).then(convertToSunburst).then((data) => {
-        var layout = {
-            margin: {l: 0, r: 0, b: 30, t: 30},
-            sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-            // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
-        };
-        Plotly.newPlot(element, data, layout);
+    const container = typeof element === "string" ? document.getElementById(element) : element;
+    if (!container) return;
+    container.style.height = `${TREEMAP_HEIGHT}px`;
+    container.innerHTML = '<p class="taxonomy-treemap-loading">Loading taxonomy…</p>';
+
+    fetchTaxonomy(filter).then((data) => {
+        const tree = phylumClassTree(data);
+        if (!tree) {
+            container.innerHTML = '<p class="taxonomy-treemap-loading">No taxonomy data available</p>';
+            return;
+        }
+        mountTaxonomyTreemap(container, tree);
+    }).catch((error) => {
+        container.innerHTML = '<p class="taxonomy-treemap-loading">Error loading taxonomy</p>';
+        console.error(error);
     });
 }
 

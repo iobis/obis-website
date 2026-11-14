@@ -289,6 +289,59 @@ h1 + .badge-mapper {
     background-color: var(--highlight);
 }
 
+.taxonomy-treemap {
+    position: relative;
+    width: 100%;
+    min-height: 200px;
+    background: #f8fafc;
+}
+
+.taxonomy-treemap svg {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-family: "Open Sans", sans-serif;
+    font-size: 10px;
+}
+
+.taxonomy-phylum-label,
+.taxonomy-class-label {
+    fill: #1c2430;
+    pointer-events: none;
+}
+
+.taxonomy-phylum-label {
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.taxonomy-class-value {
+    fill-opacity: 0.7;
+}
+
+.taxonomy-treemap-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    margin: 0;
+    color: #6c757d;
+}
+
+.taxonomy-treemap-tooltip {
+    position: fixed;
+    z-index: 30;
+    max-width: 18rem;
+    padding: 4px 8px;
+    border: 1px solid #dee2e6;
+    border-radius: 4px;
+    background: #fff;
+    color: #1c2430;
+    font-size: 12px;
+    line-height: 1.3;
+    pointer-events: none;
+}
+
 .map-container {
     position: relative;
 }

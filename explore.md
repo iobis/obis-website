@@ -23,7 +23,7 @@ title: Explore
             <div id="timeplot"></div>
         </div>
         <div class="col-12 col-md-6">
-            <div id="sunburst" style="height: 600px;"></div>
+            <div id="sunburst" style="height: 320px;"></div>
         </div>
     </div>
 
@@ -50,13 +50,6 @@ if (Object.keys(params).length > 0) {
 renderMap("m", params);
 
 renderOccurrenceTable("occurrences", "/occurrence", params);
-fetchTaxonomy(params).then(convertToSunburst).then((data) => {
-    var layout = {
-        margin: {l: 0, r: 0, b: 30, t: 30},
-        sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-        // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
-    };
-    Plotly.newPlot("sunburst", data, layout);
-});
+renderSunburst("sunburst", params);
 renderTimeplot("timeplot", params);
 </script>
