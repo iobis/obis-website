@@ -23,7 +23,7 @@ title: Explore
             <div id="timeplot"></div>
         </div>
         <div class="col-12 col-md-6">
-            <div id="sunburst" style="height: 320px;"></div>
+            <div id="sunburst" style="height: 600px;"></div>
         </div>
     </div>
 

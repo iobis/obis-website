@@ -8,6 +8,56 @@ async function fetchTaxonomy(query) {
     return await response.json();
 }
 
+// Toggle between the Plotly sunburst and the custom treemap without deleting either path.
+const TAXONOMY_CHART = "sunburst"; // "sunburst" | "treemap"
+const SUNBURST_HEIGHT = 600;
+
+function convertToSunburst(taxonomyTree) {
+    const { labels, parents, values } = flattenForSunburst(taxonomyTree);
+    const plotlyData = [{
+      type: "sunburst",
+      labels,
+      parents,
+      values,
+      leaf: { opacity: 1 },
+      branchvalues: "total"
+    }];
+    return plotlyData;
+}
+
+function flattenForSunburst(node, parent = "") {
+    const labels = [];
+    const parents = [];
+    const values = [];
+
+    function recurse(currentNode, currentParent) {
+        let { name, value, children } = currentNode;
+
+        if (name === currentParent) {
+            name = `${name}_child`;
+        }
+
+        if (typeof value !== "number" && Array.isArray(children)) {
+            value = children.reduce((sum, child) => {
+                return sum + (typeof child.value === "number" ? child.value : 0);
+            }, 0);
+        }
+
+        labels.push(name);
+        parents.push(currentParent);
+        values.push(value);
+
+        if (children && children.length > 0) {
+            for (const child of children) {
+                recurse(child, name);
+            }
+        }
+    }
+
+    recurse(node, parent);
+    return { labels, parents, values };
+}
+
 const TREEMAP_GAP = 1;
 const TREEMAP_HEADER = 20;
 const TREEMAP_MAX_PHYLA = 12;
@@ -1268,7 +1318,7 @@ async function renderEvents(element) {
     container.innerHTML = html;
 }
 
-function renderSunburst(element, filter) {
+function renderTaxonomyTreemap(element, filter) {
     const container = typeof element === "string" ? document.getElementById(element) : element;
     if (!container) return;
     container.style.height = `${TREEMAP_HEIGHT}px`;
@@ -1285,6 +1335,31 @@ function renderSunburst(element, filter) {
         container.innerHTML = '<p class="taxonomy-treemap-loading">Error loading taxonomy</p>';
         console.error(error);
     });
+}
+
+function renderTaxonomySunburst(element, filter) {
+    const container = typeof element === "string" ? document.getElementById(element) : element;
+    if (!container) return;
+    container.style.height = `${SUNBURST_HEIGHT}px`;
+
+    fetchTaxonomy(filter).then(convertToSunburst).then((data) => {
+        const layout = {
+            margin: { l: 0, r: 0, b: 30, t: 30 },
+            sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
+            // sunburstcolorway: ["#54bebe", "#76c8c8", "#98d1d1", "#badbdb", "#dedad2", "#e4bcad", "#df979e", "#d7658b", "#c80064"]
+        };
+        Plotly.newPlot(container, data, layout);
+    }).catch((error) => {
+        console.error(error);
+    });
+}
+
+function renderSunburst(element, filter) {
+    if (TAXONOMY_CHART === "treemap") {
+        renderTaxonomyTreemap(element, filter);
+        return;
+    }
+    renderTaxonomySunburst(element, filter);
 }
 
 function renderRedListBadge(category) {
