@@ -22,7 +22,7 @@
             <span class="badge tag tag-taxon">Checklist</span>
             {% endif %}
             <a href="https://mapper.obis.org?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Open in mapper</a>
-            <a href="/explore?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a>
+            {# <a href="/explore?datasetid={{ dataset.id }}" class="badge badge-mapper" target="blank">Explore occurrences</a> #}
         </p>
         {% if dataset.disable_extensions and "http://rs.iobis.org/obis/terms/ExtendedMeasurementOrFact" in dataset.disable_extensions %}
         <p class="mb-0 p-3 rounded" style="background-color: var(--light-grey);" role="note"><strong>Note:</strong> The ExtendedMeasurementOrFact extension for this dataset is not indexed in OBIS, but extension records are available from <a href="{{ dataset.url }}" target="_blank">IPT</a>.</p>
@@ -305,13 +305,7 @@
     </div>
     
     <script>
-        fetchTaxonomy({ datasetid: "{{ dataset.id }}" }).then(convertToSunburst).then((data) => {
-            var layout = {
-                margin: {l: 0, r: 0, b: 30, t: 30},
-                sunburstcolorway: ["#a6cee3", "#1f78b4", "#b2df8a", "#33a02c", "#fb9a99", "#e31a1c", "#fdbf6f", "#ff7f00", "#cab2d6", "#6a3d9a", "#ffff99", "#b15928"]
-            };
-            Plotly.newPlot("sunburst", data, layout);
-        });
+        renderSunburst("sunburst", { datasetid: "{{ dataset.id }}" });
         renderMap("m", { datasetid: "{{ dataset.id }}" })
         renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
         renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
