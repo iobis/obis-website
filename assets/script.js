@@ -1411,6 +1411,18 @@ function buildMapQueryParams(baseFilter, mapFilterState) {
         delete active.exclude_tags;
     }
 
+    if (mapFilterState.excludeDropped) {
+        delete active.dropped;
+    } else {
+        active.dropped = "include";
+    }
+
+    if (mapFilterState.excludeAbsence) {
+        delete active.absence;
+    } else {
+        active.absence = "include";
+    }
+
     return active;
 }
 
@@ -1429,8 +1441,12 @@ function renderMap(element, filter) {
         : [];
     const mapFilterState = {
         excludeEdna: initialTags.includes(EDNA_DATASET_TAG),
-        excludeCitizenScience: initialTags.includes(CITIZEN_SCIENCE_DATASET_TAG)
+        excludeCitizenScience: initialTags.includes(CITIZEN_SCIENCE_DATASET_TAG),
+        // Default: exclude dropped/absence (API default). Dataset/node pages pass include.
+        excludeDropped: !(filter && filter.dropped === "include"),
+        excludeAbsence: !(filter && filter.absence === "include")
     };
+    const mapFilterDefaults = Object.assign({}, mapFilterState);
 
     container.innerHTML = `
         <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
@@ -1457,6 +1473,18 @@ function renderMap(element, filter) {
                 <div class="map-filter-option">
                     <span class="map-filter-option-label">Exclude citizen science datasets</span>
                     <button type="button" class="map-filter-switch map-filter-exclude-citizen-science${mapFilterState.excludeCitizenScience ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeCitizenScience ? "true" : "false"}" aria-label="Exclude citizen science datasets">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude dropped records</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-dropped${mapFilterState.excludeDropped ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeDropped ? "true" : "false"}" aria-label="Exclude dropped records">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude absence records</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-absence${mapFilterState.excludeAbsence ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeAbsence ? "true" : "false"}" aria-label="Exclude absence records">
                         <span class="map-filter-switch-thumb"></span>
                     </button>
                 </div>
@@ -1669,16 +1697,27 @@ function renderMap(element, filter) {
                 const mapContainer = panel.closest(".map-container");
                 const ednaToggle = panel.querySelector(".map-filter-exclude-edna");
                 const citizenScienceToggle = panel.querySelector(".map-filter-exclude-citizen-science");
+                const droppedToggle = panel.querySelector(".map-filter-exclude-dropped");
+                const absenceToggle = panel.querySelector(".map-filter-exclude-absence");
 
                 const syncToggle = (toggle, on) => {
                     toggle.setAttribute("aria-checked", on ? "true" : "false");
                     toggle.classList.toggle("is-on", on);
                 };
 
+                const hasNonDefaultFilters = () => (
+                    mapFilterState.excludeEdna !== mapFilterDefaults.excludeEdna ||
+                    mapFilterState.excludeCitizenScience !== mapFilterDefaults.excludeCitizenScience ||
+                    mapFilterState.excludeDropped !== mapFilterDefaults.excludeDropped ||
+                    mapFilterState.excludeAbsence !== mapFilterDefaults.excludeAbsence
+                );
+
                 const syncActiveState = () => {
-                    button.classList.toggle("is-active", mapFilterState.excludeEdna || mapFilterState.excludeCitizenScience);
+                    button.classList.toggle("is-active", hasNonDefaultFilters());
                     syncToggle(ednaToggle, mapFilterState.excludeEdna);
                     syncToggle(citizenScienceToggle, mapFilterState.excludeCitizenScience);
+                    syncToggle(droppedToggle, mapFilterState.excludeDropped);
+                    syncToggle(absenceToggle, mapFilterState.excludeAbsence);
                 };
                 syncActiveState();
 
@@ -1713,6 +1752,20 @@ function renderMap(element, filter) {
                 citizenScienceToggle.addEventListener("click", (event) => {
                     event.stopPropagation();
                     mapFilterState.excludeCitizenScience = !mapFilterState.excludeCitizenScience;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                droppedToggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeDropped = !mapFilterState.excludeDropped;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                absenceToggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeAbsence = !mapFilterState.excludeAbsence;
                     syncActiveState();
                     refreshOccurrenceSource();
                 });

@@ -306,7 +306,7 @@
     
     <script>
         renderSunburst("sunburst", { datasetid: "{{ dataset.id }}" });
-        renderMap("m", { datasetid: "{{ dataset.id }}" })
+        renderMap("m", { datasetid: "{{ dataset.id }}", dropped: "include", absence: "include" })
         renderTaxonTable("taxa", "/checklist", { datasetid: "{{ dataset.id }}" })
         renderTimeplot("timeplot", { datasetid: "{{ dataset.id }}" })
         {% if dataset.statistics and dataset.statistics.MeasurementOrFact %}
