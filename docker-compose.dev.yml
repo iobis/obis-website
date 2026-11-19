@@ -29,7 +29,7 @@ services:
       - jekyll
 
   nginx:
-    image: nginx:alpine
+    image: nginx:1.30.7-alpine
     ports:
       - "9002:80"
     volumes:
