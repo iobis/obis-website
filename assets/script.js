@@ -1411,6 +1411,18 @@ function buildMapQueryParams(baseFilter, mapFilterState) {
         delete active.exclude_tags;
     }
 
+    if (mapFilterState.excludeDropped) {
+        delete active.dropped;
+    } else {
+        active.dropped = "include";
+    }
+
+    if (mapFilterState.excludeAbsence) {
+        delete active.absence;
+    } else {
+        active.absence = "include";
+    }
+
     return active;
 }
 
@@ -1429,8 +1441,25 @@ function renderMap(element, filter) {
         : [];
     const mapFilterState = {
         excludeEdna: initialTags.includes(EDNA_DATASET_TAG),
-        excludeCitizenScience: initialTags.includes(CITIZEN_SCIENCE_DATASET_TAG)
+        excludeCitizenScience: initialTags.includes(CITIZEN_SCIENCE_DATASET_TAG),
+        // Default: exclude dropped/absence (API default). Dataset/node pages pass include.
+        excludeDropped: !(filter && filter.dropped === "include"),
+        excludeAbsence: !(filter && filter.absence === "include")
     };
+    const mapFilterDefaults = Object.assign({}, mapFilterState);
+    let pointsMode = false;
+    const POINTS_CELLSPERTILE = 256;
+    const POINT_COLOR = "#8c0862"; // mapper Hawaii scheme point color
+    const countColorExpression = [
+        "interpolate",
+        ["linear"],
+        ["get", "doc_count"],
+        0, "#2c7bb6",
+        10, "#abd9e9",
+        100, "#ffffbf",
+        1000, "#fdae61",
+        10000, "#d7191c"
+    ];
 
     container.innerHTML = `
         <div class="map-container my-5" style="height: 500px; width: 100%; position: relative;">
@@ -1457,6 +1486,18 @@ function renderMap(element, filter) {
                 <div class="map-filter-option">
                     <span class="map-filter-option-label">Exclude citizen science datasets</span>
                     <button type="button" class="map-filter-switch map-filter-exclude-citizen-science${mapFilterState.excludeCitizenScience ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeCitizenScience ? "true" : "false"}" aria-label="Exclude citizen science datasets">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude dropped records</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-dropped${mapFilterState.excludeDropped ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeDropped ? "true" : "false"}" aria-label="Exclude dropped records">
+                        <span class="map-filter-switch-thumb"></span>
+                    </button>
+                </div>
+                <div class="map-filter-option">
+                    <span class="map-filter-option-label">Exclude absence records</span>
+                    <button type="button" class="map-filter-switch map-filter-exclude-absence${mapFilterState.excludeAbsence ? " is-on" : ""}" role="switch" aria-checked="${mapFilterState.excludeAbsence ? "true" : "false"}" aria-label="Exclude absence records">
                         <span class="map-filter-switch-thumb"></span>
                     </button>
                 </div>
@@ -1565,23 +1606,42 @@ function renderMap(element, filter) {
     });
 
     function getTileParams() {
-        return new URLSearchParams(buildMapQueryParams(filter, mapFilterState)).toString();
+        const params = new URLSearchParams(buildMapQueryParams(filter, mapFilterState));
+        if (pointsMode) {
+            params.set("tiletype", "point");
+            params.set("cellspertile", String(POINTS_CELLSPERTILE));
+        }
+        return params.toString();
     }
 
     function occurrenceTileUrls(params) {
         return [`https://api.obis.org/occurrence/tile/{x}/{y}/{z}.mvt?${params}`];
     }
 
-    function refreshOccurrenceSource() {
+    function syncLegendVisibility() {
+        const legend = document.getElementById(legendId);
+        if (legend) {
+            legend.hidden = pointsMode;
+        }
+    }
+
+    function removeOccurrenceLayers() {
+        if (map.getLayer(numbersLayerId)) map.removeLayer(numbersLayerId);
+        if (map.getLayer(occurrenceLayerId)) map.removeLayer(occurrenceLayerId);
+    }
+
+    function refreshOccurrenceSource(options) {
+        const rebuildLayers = options && options.rebuildLayers;
         const tiles = occurrenceTileUrls(getTileParams());
         const source = map.getSource("occurrence");
-        if (source && typeof source.setTiles === "function") {
+
+        if (!rebuildLayers && source && typeof source.setTiles === "function") {
             source.setTiles(tiles);
             return;
         }
-        if (map.getLayer(numbersLayerId)) map.removeLayer(numbersLayerId);
-        if (map.getLayer(occurrenceLayerId)) map.removeLayer(occurrenceLayerId);
-        if (map.getSource("occurrence")) map.removeSource("occurrence");
+
+        removeOccurrenceLayers();
+        if (source) map.removeSource("occurrence");
         map.addSource("occurrence", {
             type: "vector",
             tiles: tiles,
@@ -1591,22 +1651,31 @@ function renderMap(element, filter) {
     }
 
     function addOccurrenceLayers() {
+        if (pointsMode) {
+            map.addLayer({
+                id: occurrenceLayerId,
+                type: "circle",
+                source: "occurrence",
+                "source-layer": "grid",
+                paint: {
+                    "circle-radius": 3.5,
+                    "circle-color": POINT_COLOR,
+                    "circle-opacity": 0.4,
+                    "circle-stroke-width": 1,
+                    "circle-stroke-color": "#ffffff",
+                    "circle-stroke-opacity": 0.9
+                }
+            });
+            return;
+        }
+
         map.addLayer({
             id: occurrenceLayerId,
             type: "fill",
             source: "occurrence",
             "source-layer": "grid",
             paint: {
-                "fill-color": [
-                    "interpolate",
-                    ["linear"],
-                    ["get", "doc_count"],
-                    0, "#2c7bb6",
-                    10, "#abd9e9",
-                    100, "#ffffbf",
-                    1000, "#fdae61",
-                    10000, "#d7191c"
-                ],
+                "fill-color": countColorExpression,
                 "fill-opacity": 0.8
             }
         });
@@ -1669,16 +1738,27 @@ function renderMap(element, filter) {
                 const mapContainer = panel.closest(".map-container");
                 const ednaToggle = panel.querySelector(".map-filter-exclude-edna");
                 const citizenScienceToggle = panel.querySelector(".map-filter-exclude-citizen-science");
+                const droppedToggle = panel.querySelector(".map-filter-exclude-dropped");
+                const absenceToggle = panel.querySelector(".map-filter-exclude-absence");
 
                 const syncToggle = (toggle, on) => {
                     toggle.setAttribute("aria-checked", on ? "true" : "false");
                     toggle.classList.toggle("is-on", on);
                 };
 
+                const hasNonDefaultFilters = () => (
+                    mapFilterState.excludeEdna !== mapFilterDefaults.excludeEdna ||
+                    mapFilterState.excludeCitizenScience !== mapFilterDefaults.excludeCitizenScience ||
+                    mapFilterState.excludeDropped !== mapFilterDefaults.excludeDropped ||
+                    mapFilterState.excludeAbsence !== mapFilterDefaults.excludeAbsence
+                );
+
                 const syncActiveState = () => {
-                    button.classList.toggle("is-active", mapFilterState.excludeEdna || mapFilterState.excludeCitizenScience);
+                    button.classList.toggle("is-active", hasNonDefaultFilters());
                     syncToggle(ednaToggle, mapFilterState.excludeEdna);
                     syncToggle(citizenScienceToggle, mapFilterState.excludeCitizenScience);
+                    syncToggle(droppedToggle, mapFilterState.excludeDropped);
+                    syncToggle(absenceToggle, mapFilterState.excludeAbsence);
                 };
                 syncActiveState();
 
@@ -1713,6 +1793,20 @@ function renderMap(element, filter) {
                 citizenScienceToggle.addEventListener("click", (event) => {
                     event.stopPropagation();
                     mapFilterState.excludeCitizenScience = !mapFilterState.excludeCitizenScience;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                droppedToggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeDropped = !mapFilterState.excludeDropped;
+                    syncActiveState();
+                    refreshOccurrenceSource();
+                });
+
+                absenceToggle.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    mapFilterState.excludeAbsence = !mapFilterState.excludeAbsence;
                     syncActiveState();
                     refreshOccurrenceSource();
                 });
@@ -1769,7 +1863,41 @@ function renderMap(element, filter) {
             }
         }
 
+        class PointsModeControl {
+            onAdd(mapInstance) {
+                this.map = mapInstance;
+                this.container = document.createElement("div");
+                this.container.className = "maplibregl-ctrl maplibregl-ctrl-group map-points-control";
+                this.container.innerHTML = '<button type="button" title="Show points" aria-label="Show points" aria-pressed="false"></button>';
+
+                const button = this.container.querySelector("button");
+                const syncButton = () => {
+                    button.classList.toggle("is-active", pointsMode);
+                    button.setAttribute("aria-pressed", pointsMode ? "true" : "false");
+                    button.title = pointsMode ? "Show grid" : "Show points";
+                    button.setAttribute("aria-label", button.title);
+                };
+                syncButton();
+
+                button.addEventListener("click", (event) => {
+                    event.stopPropagation();
+                    pointsMode = !pointsMode;
+                    syncButton();
+                    syncLegendVisibility();
+                    refreshOccurrenceSource({ rebuildLayers: true });
+                });
+
+                return this.container;
+            }
+
+            onRemove() {
+                this.container.parentNode.removeChild(this.container);
+                this.map = undefined;
+            }
+        }
+
         map.addControl(new ExploreControl(), 'bottom-left');
         map.addControl(new FilterControl(), 'bottom-left');
+        map.addControl(new PointsModeControl(), 'bottom-left');
     });
 }

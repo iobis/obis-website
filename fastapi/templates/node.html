@@ -233,6 +233,6 @@
 <script>
     renderSunburst("sunburst", { nodeid: "{{ node.id }}" });
     renderDatasetTable("datasets", { nodeid: "{{ node.id }}" });
-    renderMap("m", { nodeid: "{{ node.id }}" })
+    renderMap("m", { nodeid: "{{ node.id }}", dropped: "include", absence: "include" })
     renderTimeplot("timeplot", { nodeid: "{{ node.id }}" })
 </script>
