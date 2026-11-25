@@ -46,6 +46,25 @@
             {% endif %}
         </p>
 
+        {% if dataset.clean_contacts %}
+        <div class="report-contributors">
+            <p class="report-contributors-label">Dataset provided by</p>
+            <div class="report-contributors-list">
+                {% for contact in dataset.clean_contacts %}
+                <div class="report-contributor">
+                    <span class="report-contributor-icon"><i class="bi {% if contact.organization and contact.organization == contact.clean_name %}bi-building{% else %}bi-person-fill{% endif %}"></i></span>
+                    <div>
+                        <div class="report-contributor-name">{{ contact.clean_name }}</div>
+                        {% if contact.organization and contact.organization != contact.clean_name %}
+                        <div class="report-contributor-org">{{ contact.organization }}</div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
         {% if dataset.abstract %}
         <p>{{ dataset.abstract }}</p>
         {% endif %}
@@ -113,23 +132,6 @@
                 <div class="row mb-2">
                     <div class="col-md-2"><b>URL</b></div>
                     <div class="col-md-10 text-break">{{ dataset.url }}</div>
-                </div>
-                {% endif %}
-
-                {% if dataset.clean_contacts %}
-                <div class="mt-4">
-                    <p class="mb-3"><b>Contacts</b></p>
-                    <div class="row">
-                        {% for contact in dataset.clean_contacts %}
-                        <div class="col-md-4 mb-3">
-                            <p class="mb-0"><i>{{ contact.clean_name }}</i>
-                                {% if contact.organization %}
-                                <br/>{{ contact.organization }}
-                                {% endif %}
-                            </p>
-                        </div>
-                        {% endfor %}
-                    </div>
                 </div>
                 {% endif %}
             </div>
@@ -281,7 +283,7 @@
 
         <hr class="mt-5">
         <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
-            <p class="text-muted small mb-0">Produced by <a href="https://obis.org/" target="_blank">OBIS</a> — the Ocean Biodiversity Information System.</p>
+            <p class="text-muted small mb-0">Produced by <a href="https://www.ioc.unesco.org" target="_blank">IOC</a>-<a href="https://obis.org/" target="_blank">OBIS</a> — the Ocean Biodiversity Information System.</p>
             <img src="https://obis.org/images/IOC_OBIS_logo_b.png" alt="IOC / OBIS" class="report-footer-logo">
         </div>
 
