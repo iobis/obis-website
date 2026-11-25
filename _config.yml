@@ -153,3 +153,5 @@ menu:
     - title: "OBIS YouTube"
       url: "https://www.youtube.com/playlist?list=PLlgUwSvpCFS4TS7ZN0fhByj_3EBZ5lXbF"
       target: "_blank"
+    - title: "Reports"
+      url: "/resources/reports"
