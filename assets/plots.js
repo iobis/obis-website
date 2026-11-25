@@ -45,6 +45,29 @@ export function fillCumulativeGaps({ x, y, from, to }) {
     return { x: filledX, y: filledY };
 }
 
+// Records without a usable date come through the metrics as null or 0 in the
+// year/month field (or as an empty series). Keeps only rows with a real
+// positive x (<= max, for months) and a positive value, so a plot built from
+// the result is empty exactly when no record carries a date.
+export function validRows(rows, key, valueKey, max = Infinity) {
+    return (rows ?? []).filter((d) => Number.isFinite(d[key]) && d[key] > 0 && d[key] <= max && d[valueKey] > 0);
+}
+
+// Hides a plot's block when there is nothing to draw, and the whole row too
+// when that leaves it empty. Returns hasData so callers can chain it as a guard.
+export function showPlot(container, hasData) {
+    const el = resolveContainer(container);
+    if (!el || hasData) return hasData;
+    const col = el.closest(".col-12");
+    if (!col) return hasData;
+    col.style.display = "none";
+    const row = col.closest(".row");
+    if (row && Array.from(row.children).every((child) => child.style.display === "none")) {
+        row.style.display = "none";
+    }
+    return hasData;
+}
+
 function buildLegend(domain, colors) {
     const legend = document.createElement("div");
     legend.className = "plot-legend";
@@ -91,12 +114,16 @@ export function BarChart(container, { x, y, xLabel, yLabel, format = compactForm
         marks: [
             Plot.ruleY([0], { stroke: "var(--light-grey)" }),
             // explicit x1/x2 centers each bar on its own value, so a gap
-            // between sparse x values still renders as a real gap
+            // between sparse x values still renders as a real gap. Bars span
+            // 90% of their slot (plus 0.25 pixel inset) so dense series
+            // like years don't fuse into one block
             Plot.rectY(data, {
-                x1: (d) => d.x - 0.5,
-                x2: (d) => d.x + 0.5,
+                x1: (d) => d.x - 0.45,
+                x2: (d) => d.x + 0.45,
                 y: "y",
                 fill: "var(--highlight)",
+                insetLeft: 0.25,
+                insetRight: 0.25,
                 rx: 3
             }),
             Plot.tip(data, Plot.pointerX({ x: "x", y: "y", format: { x: "d", y: format } }))

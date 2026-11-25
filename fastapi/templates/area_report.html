@@ -73,8 +73,10 @@
             </div>
         </div>
 
-        <h2 class="mt-5">Temporal distribution</h2>
-        <p class="text-muted">Distribution of records for this area by year and month, both considering the date from the record, not publishing date.</p>
+        <div id="temporal-intro">
+            <h2 class="mt-5">Temporal distribution</h2>
+            <p class="text-muted">Distribution of records for this area by year and month, both considering the date from the record, not publishing date.</p>
+        </div>
         <div class="row align-items-center">
             <div class="col-12 col-md-6">
                 <div class="report-block">
@@ -90,7 +92,7 @@
             </div>
         </div>
 
-        <div class="row mt-5" id="published-by-year-row">
+        <div class="row mt-5">
             <div class="col-12">
                 <div class="report-block">
                     <h5>Published records by year</h5>
@@ -129,7 +131,7 @@
     </script>
 
     <script type="module">
-        import { BarChart, StackedHorizontal, FacetedArea, fillCumulativeGaps } from "/assets/plots.js";
+        import { BarChart, StackedHorizontal, FacetedArea, fillCumulativeGaps, validRows, showPlot } from "/assets/plots.js";
 
         fetch("/area/{{ area.id }}/metrics")
             .then((response) => {
@@ -155,59 +157,79 @@
                     format: (v) => `${v.toFixed(1)}%`
                 });
 
-                BarChart("by-year", {
-                    x: metrics.by_year.map((d) => d.date_year),
-                    y: metrics.by_year.map((d) => d.total),
-                    xLabel: "Year",
-                    yLabel: "Records"
-                });
+                const byYear = validRows(metrics.by_year, "date_year", "total");
+                const byMonth = validRows(metrics.by_month, "month", "total", 12);
+                const published = validRows(metrics.published_by_year, "year", "cumulative");
+                const cumSpeciesRows = validRows(metrics.cum_species_by_year, "first_year", "cumulative_species");
+                // a handful of rows can be missing `taxon` in the export; drop them
+                // rather than showing a stray "undefined" facet panel
+                const byGroup = validRows(metrics.cum_species_by_year_higher, "first_year", "cumulative_species")
+                    .filter((d) => d.taxon);
 
-                BarChart("by-month", {
-                    x: metrics.by_month.map((d) => d.month),
-                    y: metrics.by_month.map((d) => d.total),
-                    xLabel: "Month",
-                    yLabel: "Records"
-                });
+                if (showPlot("by-year", byYear.length)) {
+                    BarChart("by-year", {
+                        x: byYear.map((d) => d.date_year),
+                        y: byYear.map((d) => d.total),
+                        xLabel: "Year",
+                        yLabel: "Records"
+                    });
+                }
 
-                if (metrics.published_by_year && metrics.published_by_year.length) {
-                    const published = fillCumulativeGaps({
-                        x: metrics.published_by_year.map((d) => d.year),
-                        y: metrics.published_by_year.map((d) => d.cumulative)
+                if (showPlot("by-month", byMonth.length)) {
+                    BarChart("by-month", {
+                        x: byMonth.map((d) => d.month),
+                        y: byMonth.map((d) => d.total),
+                        xLabel: "Month",
+                        yLabel: "Records"
+                    });
+                }
+
+                if (showPlot("published-by-year", published.length)) {
+                    const publishedFilled = fillCumulativeGaps({
+                        x: published.map((d) => d.year),
+                        y: published.map((d) => d.cumulative)
                     });
                     BarChart("published-by-year", {
-                        x: published.x,
-                        y: published.y,
+                        x: publishedFilled.x,
+                        y: publishedFilled.y,
                         xLabel: "Year",
                         yLabel: "Cumulative records",
                         height: 280
                     });
-                } else {
-                    document.getElementById("published-by-year-row").style.display = "none";
                 }
 
-                const cumSpecies = fillCumulativeGaps({
-                    x: metrics.cum_species_by_year.map((d) => d.first_year),
-                    y: metrics.cum_species_by_year.map((d) => d.cumulative_species)
-                });
-                BarChart("cum-species", {
-                    x: cumSpecies.x,
-                    y: cumSpecies.y,
-                    xLabel: "Year",
-                    yLabel: "Cumulative species",
-                    height: 280
-                });
+                if (showPlot("cum-species", cumSpeciesRows.length)) {
+                    // the source only has one row per year that actually gained species;
+                    // fill the years in between so the bars read as a continuous cumulative total
+                    const cumSpecies = fillCumulativeGaps({
+                        x: cumSpeciesRows.map((d) => d.first_year),
+                        y: cumSpeciesRows.map((d) => d.cumulative_species)
+                    });
+                    BarChart("cum-species", {
+                        x: cumSpecies.x,
+                        y: cumSpecies.y,
+                        xLabel: "Year",
+                        yLabel: "Cumulative species",
+                        height: 280
+                    });
+                }
 
-                const byGroup = metrics.cum_species_by_year_higher.filter((d) => d.taxon);
-                FacetedArea("cum-species-groups", {
-                    x: byGroup.map((d) => d.first_year),
-                    y: byGroup.map((d) => d.cumulative_species),
-                    facet: byGroup.map((d) => d.taxon),
-                    xLabel: "Year",
-                    yLabel: "Species"
-                });
-                if (metrics.higher_level && metrics.higher_level.length) {
-                    document.getElementById("cum-species-groups-title").textContent =
-                        `Cumulative species by ${metrics.higher_level.join(", ")}`;
+                if (showPlot("cum-species-groups", byGroup.length)) {
+                    FacetedArea("cum-species-groups", {
+                        x: byGroup.map((d) => d.first_year),
+                        y: byGroup.map((d) => d.cumulative_species),
+                        facet: byGroup.map((d) => d.taxon),
+                        xLabel: "Year",
+                        yLabel: "Species"
+                    });
+                    if (metrics.higher_level && metrics.higher_level.length) {
+                        document.getElementById("cum-species-groups-title").textContent =
+                            `Cumulative species by ${metrics.higher_level.join(", ")}`;
+                    }
+                }
+
+                if (!(byYear.length || byMonth.length || published.length || cumSpeciesRows.length || byGroup.length)) {
+                    document.getElementById("temporal-intro").style.display = "none";
                 }
             })
             .catch((error) => {
